@@ -168,7 +168,7 @@ Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing 
 Combine make directory and change directory into a single command:
 
 ```
-mk() { mkdir -p $1 && cd $1 }
+mk() { mkdir -p $1 && cd $1; }
 ```
 
 Example usage:
