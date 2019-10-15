@@ -20,4 +20,4 @@
 
 ### To access the links above, point your browser to
 
-`https://github.com/jdh4/removing_tedium/blob/master/setup.md`
+`https://bit.ly/2IT3q4W`
