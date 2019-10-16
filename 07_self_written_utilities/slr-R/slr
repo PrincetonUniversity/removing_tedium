@@ -1,0 +1,39 @@
+#!/usr/bin/env Rscript
+suppressPackageStartupMessages(library("argparse"))
+
+# create parser object
+parser <- ArgumentParser()
+
+# specify our desired options
+# by default ArgumentParser will add a help option
+parser$add_argument("--noGPU", action="store_true", default=TRUE,
+    help="Do not write GPU line")
+parser$add_argument("-g", "--gpu", action="store_false",
+    dest="noGPU", help="Write the GPU line")
+parser$add_argument("-t", "--time", type="integer", default=24, 
+    help="Number of hours to run", metavar="number")
+parser$add_argument("-n", "--ntasks", type="integer", default=1, 
+    help="Number of tasks across all nodes", metavar="number")
+
+# get command line options, if help option encountered print help and exit,
+# otherwise if options not found on command line then set defaults, 
+args <- parser$parse_args()
+
+hours <- trimws(toString(args$time))
+ntasks <- trimws(toString(args$ntasks))
+
+sink("job.slurm")
+cat("#!/bin/bash\n")
+cat("#SBATCH --job-name=myjob         # create a short name for your job\n")
+cat("#SBATCH --nodes=1                # node count\n")
+cat(paste("#SBATCH --ntasks=", ntasks, "               # total number of tasks across all nodes\n", sep=""))
+cat("#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multithread tasks)\n")
+cat("#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)\n")
+if ( !args$noGPU ) { cat("#SBATCH --gpus=gres:1            # number of gpus per node\n") }
+cat(paste("#SBATCH --time=", hours, ":00:00          # total run time limit (HH:MM:SS)\n", sep=""))
+cat("#SBATCH --mail-type=begin        # send mail when process begins\n")
+cat("#SBATCH --mail-type=end          # send email when job ends\n")
+cat("#SBATCH --mail-user=<YourNetID>@princeton.edu\n")
+cat("\n")
+cat("srun Rscript myscript.R\n")
+sink()
