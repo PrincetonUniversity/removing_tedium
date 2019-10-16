@@ -1,0 +1,58 @@
+#!/Users/jhalverson/software/anaconda3/bin/python
+
+import argparse
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import datetime
+
+import warnings
+warnings.filterwarnings('ignore')
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-f', type=str, action='store', dest='filename',
+                    default=None, help='File name of data')
+parser.add_argument('-d', type=str, action='store', dest='jobpath',
+                    default=None, help='Job directory')
+parser.add_argument('--plot', action='store_true', dest='plots',
+                    help='Flag to make plots')
+args = parser.parse_args()
+name = args.filename
+plots = args.plots
+
+mpl.rcParams["figure.figsize"] = (10, 7)
+mpl.rcParams["axes.titlesize"] = 14
+mpl.rcParams["axes.labelsize"] = 20
+mpl.rcParams["xtick.labelsize"] = 16
+mpl.rcParams["ytick.labelsize"] = 16
+
+dt = 0.005
+bs = pd.read_csv(name, sep="\s+|\t+|\s+\t+|\t+\s+", header=0, skiprows=50, skipfooter=27)
+
+now = datetime.datetime.now()
+mytitle = now.strftime("%Y-%m-%d %H:%M") + ' ' + args.jobpath
+
+if (plots):
+  plt.scatter(dt * bs.Step[0:], bs.Press[0:], marker='o', c='b', s=15)
+  plt.xlim(0, dt * 55000)
+  plt.ylim(2.4, 2.7)
+  plt.xlabel('Time')
+  plt.ylabel('Pressure')
+  plt.title(mytitle, fontsize=20)
+  plt.savefig('pressure.jpg', dpi=96)
+
+  plt.close()
+
+  plt.scatter(dt * bs.Step[0:], bs.Temp[0:], marker='o', c='r', s=15)
+  plt.xlim(0, dt * 55000)
+  plt.ylim(0.9, 1.05)
+  plt.xlabel('Time')
+  plt.ylabel('Temperature')
+  plt.title(mytitle, fontsize=20)
+  plt.savefig('temperature.jpg', dpi=96)
+
+  with open('index.html', 'w') as f:
+    f.write("<html><head></head><body>\n")
+    f.write('<img src="pressure.jpg"><p>\n')
+    f.write('<img src="temperature.jpg">\n')
+    f.write("</body></html>\n")
