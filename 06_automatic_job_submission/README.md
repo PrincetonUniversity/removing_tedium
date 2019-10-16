@@ -1,4 +1,4 @@
-# Automatic job resubmission for long jobs
+# Automatic Job Resubmission for Long Jobs
 
 Each cluster imposes a wall clock limit on the running time of a job (e.g., on Tiger it is 6 days). If you need to run a job
 for much longer than this time then you should consider using the job dependency technique described below.
