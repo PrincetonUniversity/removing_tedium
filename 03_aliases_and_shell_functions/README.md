@@ -157,7 +157,7 @@ alias ff='$EDITOR -- "$(ls -t | head -n 1)"'
 alias dd='$EDITOR -- "$(ls -t | head -n 2 | tail -n 1)"'
 ```
 
-Let's break down each one. The `jj` command prints the contents of the newest file to the terminal while `kk` prints out the second newest file. `jj` *is arguably the most useful alias on this entire page. Start using it*! The `ff` command loads the newest file in your specified text editor while `dd` loads the second newest file. The routine use of `ll`, `jj` and `ff` can save you lots of time. Note that `dd` overwrites an existing command. Because the original `dd` is obscure, this can be overlooked. If you are left-handed then you may consider transposing the aliases.
+Let's break down each one. The `jj` command prints the contents of the newest file to the terminal while `kk` prints out the second newest file. `jj` **is arguably the most useful alias on this entire page. Start using it**! The `ff` command loads the newest file in your specified text editor while `dd` loads the second newest file. The routine use of `ll`, `jj` and `ff` can save you lots of time. Note that `dd` overwrites an existing command. Because the original `dd` is obscure, this can be overlooked. If you are left-handed then you may consider transposing the aliases.
 
 Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing command, it is obscure and can be overwritten. `gg` and `hh` are also available.
 
