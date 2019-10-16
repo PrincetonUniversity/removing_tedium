@@ -123,7 +123,7 @@ $ slr -g 4
 $ jj
 ```
 
-If you encounter a `Permission denied` error then you probably failed to add execute permision to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
+If you encounter a `Permission denied` error then you probably failed to add execute permission to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
 
 ### R source code
 
@@ -196,4 +196,4 @@ $ slr -t 72 -n 4 -g
 $ jj
 ```
 
-If you encounter a `Permission denied` error then you probably failed to add execute permision to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
+If you encounter a `Permission denied` error then you probably failed to add execute permission to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
