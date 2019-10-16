@@ -80,9 +80,7 @@ source /tigress/<NetID>/my_aliases.bash
 
 This approach eliminates redundancy. Changes made to `my_aliases.bash` are propagated to all the clusters that you have access to. Unfortunately, this will not work for Adroit or Nobel since these clusters do not mount tigress.
 
-### Exercise
-
-SSH to one of HPC clusters and add the `qq` alias to `~/.bashrc` (Adroit) or `/tigress/<NetID>/my_aliases.bash` (any cluster except Adroit).
+*Exercise*: SSH to one of HPC clusters and add the `qq` alias to `~/.bashrc` (Adroit) or `/tigress/<NetID>/my_aliases.bash` (any cluster except Adroit).
 
 ## A word of caution
 
