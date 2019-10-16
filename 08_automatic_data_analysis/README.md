@@ -6,7 +6,7 @@ Note that the techniques presented here only work if one has followed the previo
 
 ## Running scripts just before you start the day using cron
 
-`cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, we can use it on our local machines. Below shows the format of an entry in `crontab`:
+`cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, we can use it on our **local machine**. Below shows the format of an entry in `crontab`:
 
 ```
 * * * * * command
