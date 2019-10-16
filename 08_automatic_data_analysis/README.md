@@ -6,7 +6,7 @@ Note that the techniques presented here only work if one has followed the previo
 
 ## Running scripts just before you start the day using cron
 
-`cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, we can use it on our local machines. Below shows the format of an entry in `crontab`.
+`cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, we can use it on our local machines. Below shows the format of an entry in `crontab`:
 
 ```
 * * * * * command
@@ -30,7 +30,7 @@ The entry above will run `auto_single.sh` Monday thru Friday at 9 am. If `cron` 
 
 ## Pipeline example script
 
-The contents of the Bash script `auto_single.sh` are shown below. After defining some variables the script downloads data from Tiger. It then runs a self-written utility called `calc` on that data to generate two figures and an HTML page. The figures and HTML page are then uploaded to Tiger where they are moved onto `tigress-web`. One can then view the figures in a web browser.
+The contents of the Bash script `auto_single.sh` are shown below:
 
 ```bash
 #!/bin/bash
@@ -47,7 +47,10 @@ ssh $NETID@tiger.princeton.edu "cd $JOBPATH; mkdir -p $TGR; mv *.jpg index.html 
 
 echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
 ```
-In this example we focused on a single job but this approach can be extended to multiple jobs. Furthermore, after generating the figures one could also run a second script on the new data and take actions like launching additional jobs or canceling queued jobs. And all this would occur before you arrive in the morning.
+
+After defining some variables the script downloads data from Tiger. It then runs a self-written utility called `calc` on that data to generate two figures and an HTML page. The figures and HTML page are then uploaded to Tiger where they are moved onto `tigress-web`. One can then view the figures in a web browser.
+
+In this example we focused on a single job but this approach can be extended to multiple jobs. Furthermore, in addition to generating figures, the script could also take actions based on the new data like launching new jobs or canceling queued jobs. And all this would occur before you arrive in the morning.
 
 The `index.html` file is simply this:
 
