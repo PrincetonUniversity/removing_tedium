@@ -26,7 +26,7 @@ $ crontab -l
 0 9 * * 1-5 cd ~/research/automate && ./auto_single.sh > /dev/null
 ```
 
-The entry above will run `auto_single.sh` Monday thru Friday at 9 am. If `cron` is not available then consider `at`. One can also simply run the script manually when arriving or run it remotely.
+The entry above will run `auto_single.sh` Monday thru Friday at 9 am. If `cron` is not available then consider `at`. One can also simply run the script manually when arriving.
 
 ## Pipeline example script
 
@@ -47,7 +47,16 @@ ssh $NETID@tiger.princeton.edu "cd $JOBPATH; mkdir -p $TGR; mv *.jpg index.html 
 
 echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
 ```
-In this example we focused on a single job but this approach can be extended to multiple jobs. Furthermore, after generating the figures one could also run a second script on the new data and take actions like launching additional jobs or canceling queued jobs. And all of this occurs before you arrive in the morning.
+In this example we focused on a single job but this approach can be extended to multiple jobs. Furthermore, after generating the figures one could also run a second script on the new data and take actions like launching additional jobs or canceling queued jobs. And all this would occur before you arrive in the morning.
+
+The `index.html` file is simply this:
+
+```html
+<html><head></head><body>
+<img src="pressure.jpg"><p>
+<img src="temperature.jpg">
+</body></html>
+```
 
 If you only have an account on Adroit then you will not be able to use `tigress-web`. In this case simply view the generated plots on your local machine.
 
