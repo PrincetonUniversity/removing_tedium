@@ -6,7 +6,7 @@
 
 + Connect to the eduroam wireless network
 
-+ Install a VPN client on your laptop by following this <a href="https://princeton.service-now.com/snap?id=kb_article&sys_id=ce2a27064f9ca20018ddd48e5210c745" target="_black">OIT KnowledgeBase article</a> (see bottom of this page for link)
++ Install a VPN client on your laptop by following this <a href="https://princeton.service-now.com/snap?id=kb_article&sys_id=ce2a27064f9ca20018ddd48e5210c745" target="_black">OIT KnowledgeBase article</a>
 
 + For Windows PuTTY users (not PowerShell), to setup passwordless logins, install <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank">PuTTY gen</a> (puttygen.exe)
 
