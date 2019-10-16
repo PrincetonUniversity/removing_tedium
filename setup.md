@@ -2,6 +2,8 @@
 
 ## Setup for live workshop
 
+### Point your browser to `https://bit.ly/2IT3q4W`
+
 + Connect to the eduroam wireless network
 
 + Install a VPN client on your laptop by following this <a href="https://princeton.service-now.com/snap?id=kb_article&sys_id=ce2a27064f9ca20018ddd48e5210c745" target="_black">OIT KnowledgeBase article</a> (see bottom of this page for link)
@@ -17,7 +19,3 @@
 + SSH to a Princeton HPC cluster (prefer Tiger, Della, Perseus or Traverse over Adroit) [click [here](https://researchcomputing.princeton.edu/faq/why-cant-i-login-to-a-clu) for help]
 
 + For the live workshop, to get priority access on Adroit, add this line to your Slurm script: `#SBATCH -p class`
-
-### To access the links above, point your browser to
-
-`https://bit.ly/2IT3q4W`
