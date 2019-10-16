@@ -2,7 +2,7 @@
 
 While carrying out computational research you will probably find yourself entering the same commands over and over again. Typing or copying the same command repeatedly reduces your productivity.
 
-You can save yourself some time by creating aliases for common commands. Aliases are like custom shortcuts used to represent a command. Shell functions are similar to aliases but they provide more flexibility. Here is a common alias:
+You can save yourself time by creating aliases for common commands. Aliases are like custom shortcuts used to represent a command. Shell functions are similar to aliases but they provide more flexibility. Here is a common alias:
 
 ```
 alias qq='squeue -u <NetID>'
