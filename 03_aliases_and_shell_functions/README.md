@@ -65,7 +65,7 @@ After saving the file, refresh your shell with the changes in `~/.bashrc` by run
 
 *IMPORTANT*: Your new aliases and shell functions will not be active until you run the command above.
 
-Now the `qq` command can be used instead of `squeue -u <NetID>`. To view the expected start times of queued jobs use `alias qqs='squeue -u <NetId> --start'`.
+Now the `qq` command can be used instead of `squeue -u <NetID>`. To view the expected start times of queued jobs use `alias qqs='squeue -u <NetID> --start'`.
 
 ## What if I have access to multiple HPC clusters?
 
