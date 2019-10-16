@@ -1,4 +1,4 @@
-# Navigating and editing the command line
+# Navigating and Editing the Command Line
 
 On this page we present the essential keyboard shortcuts and concepts for working efficiently on the command line. For a complete guide see the [GNU readline](https://tiswww.case.edu/php/chet/readline/readline.html) documentation.
 
