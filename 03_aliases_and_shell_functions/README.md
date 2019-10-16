@@ -303,7 +303,7 @@ alias pending='join -j 1 -o 1.1,1.3,1.4,1.5,1.6,1.7,2.3 <(squeue -u $USER --star
 
 ## Getting your fairshare value
 
-Your fairshare value plays a key role in determining your job wait times. The more jobs you run in a 30-day period the lower your fairshare value. The maximum value is 1.
+Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your group run in a given period of time the lower your fairshare value. The maximum value is 1.
 
 ```
 alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
