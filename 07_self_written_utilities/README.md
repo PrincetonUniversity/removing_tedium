@@ -48,8 +48,7 @@ Be sure to run `source ~/.bashrc` so that the changes to `PATH` take effect.
 
 ## First example: Generate a custom Slurm script
 
-Previously we used a template file to generate a Slurm script in the current working directory. This was an improvement but it gave us the same file every time. Now we will write our own
-utility which will allow for customizations to be made.
+Previously we used a template file to generate a Slurm script in the current working directory. This was an improvement but it gave us the same file every time. Now we will write our own utility called `slr` which will allow for customizations to be made.
 
 ### Python source code
 
@@ -91,11 +90,18 @@ with open('job.slurm', 'w') as f:
   f.write("srun python my-tf-script.py\n")
 ```
 
-Copy the source code above and save it with the file name `slr` in `my-utilities`. Then change the execute permissions: `chmod u+x slr`. A `Permission denied` error will result if you fail to add execute permisions. Now try it out:
+Use `wget` to get a copy of `slr` in `my-utilities`:
 
 ```
-$ cd
-$ mk test
+cd <path/to>/my-utilities/
+wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/07_self_written_utilities/slr-python/slr
+```
+
+Then make the script executable by changing the permissions: `chmod u+x slr`. Now try it out:
+
+```
+$ cd ~
+$ mk test   # mk is a shell function defined previously
 $ slr -h
 usage: slr [-h] [-j JOBNAME] [-t WALLTIME] [-g GPU]
 
@@ -112,10 +118,12 @@ Try these options:
 
 ```
 $ slr -j eta2 -t 72
-$ jj
+$ jj   # jj is an alias defined previously
 $ slr -g 4
 $ jj
 ```
+
+If you encounter a `Permission denied` error then you probably failed to add execute permision to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
 
 ### R source code
 
@@ -161,7 +169,14 @@ cat("srun Rscript myscript.R\n")
 sink()
 ```
 
-Copy the source code above and save it with the file name `slr` in `my-utilities`. Then change the execute permissions: `chmod u+x slr`. Then install the `argparse` package:
+Use `wget` to get a copy of `slr` in `my-utilities`:
+
+```
+cd <path/to>/my-utilities/
+wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/07_self_written_utilities/slr-R/slr
+```
+
+Then make the script executable by changing the permissions: `chmod u+x slr`. Next install the `argparse` package:
 
 ```
 $ module load rh/devtoolset/6
@@ -173,10 +188,12 @@ $ R
 Now try it out:
 
 ```
-$ cd
-$ mk test
+$ cd ~
+$ mk test   # mk is a shell function defined previously
 $ slr
-$ jj
+$ jj   # jj is an alias defined previously
 $ slr -t 72 -n 4 -g
 $ jj
 ```
+
+If you encounter a `Permission denied` error then you probably failed to add execute permision to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
