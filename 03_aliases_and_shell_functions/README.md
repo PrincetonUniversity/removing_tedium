@@ -298,7 +298,7 @@ This method will not work when multiple nodes are used to run the job.
 The following alias combines the output of squeue and sprio to explicitly show your job priority:
 
 ```
-alias myprio='join -j 1 -o 1.1,1.3,1.4,1.5,1.6,1.7,2.3 <(squeue -u $USER | sort) <(sprio | sort) | sort -g'
+alias pending='join -j 1 -o 1.1,1.3,1.4,1.5,1.6,1.7,2.3 <(squeue -u $USER --start | sort) <(sprio | sort) | sort -g'
 ```
 
 ## Getting your fairshare value
