@@ -8,7 +8,7 @@ To use job dependencies your application must have a way of writing a checkpoint
 ## Job Dependencies
 
 For the first step, run your job as usual: `sbatch job.slurm`. Make sure it finishes before the time limit and make
-sure you write a checkpoint file. Then modify the your application script to read in the checkpoint file at the start of the job step, for example:
+sure you write a checkpoint file. Then modify your application script to automatically read the checkpoint file at the start of each job step, for example, in pseudocode:
 
 ```
 // read newest checkpoint file at start
