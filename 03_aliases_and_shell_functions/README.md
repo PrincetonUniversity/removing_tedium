@@ -1,4 +1,4 @@
-# Aliases and shell functions
+# Aliases and Shell Functions
 
 While carrying out computational research you will probably find yourself entering the same commands over and over again. Typing or copying the same command repeatedly reduces your productivity.
 
@@ -52,7 +52,7 @@ Let's illustrate the process of creating an alias using this popular command:
 $ squeue -u <NetID>
 ```
 
-In the above command you should replaced `<NetID>` with your actual NetID (e.g., ceisgrub). Instead of typing this every time, we will use the much shorter alias of `qq` (or consider calling it `sq`). Open your `.bashrc` file using a text editor and add the following line:
+In the above command you should replace `<NetID>` with your actual NetID (e.g., ceisgrub). Instead of typing this every time, we will use the much shorter alias of `qq` (or call it `sq` if you prefer). Open your `.bashrc` file using a text editor and add the following line:
 
 ```
 # User specific aliases and functions
