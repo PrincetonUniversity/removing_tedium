@@ -82,7 +82,7 @@ This approach eliminates redundancy. Changes made to `my_aliases.bash` are propa
 
 ### Exercise
 
-SSH to one of HPC clusters and add the `qq` alias to `~/.bashrc` or `/tigress/<NetID>/my_aliases.bash`.
+SSH to one of HPC clusters and add the `qq` alias to `~/.bashrc` (Adroit) or `/tigress/<NetID>/my_aliases.bash` (any cluster except Adroit).
 
 ## A word of caution
 
