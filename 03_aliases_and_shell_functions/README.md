@@ -128,7 +128,7 @@ alias traX='ssh -X $myid@traverse.princeton.edu'
 Watch the list of jobs:
 
 ```
-alias wq='watch -n 1 squeue -u <NetID> --start'
+alias wq='watch -n 1 squeue -u <NetID>'
 ```
 
 This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To end the command hold down [Ctrl] and press [c].
