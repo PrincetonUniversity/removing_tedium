@@ -223,7 +223,7 @@ If you submit a lot of jobs with commands like `sbatch job.slurm`, `sbatch submi
 
 ```
 SLURMSCRIPT='job.slurm'
-alias sb='sbatch job.slurm'
+alias sb='sbatch $SLURMSCRIPT'
 ```
 
 You can distinguish different jobs by setting the job name in the Slurm script:
