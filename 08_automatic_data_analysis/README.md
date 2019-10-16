@@ -23,7 +23,7 @@ Make an entry with `crontab -e`. To view the entries:
 
 ```
 $ crontab -l
-0 9 * * 1-5 cd ~/research/automate && ./auto_single.sh
+0 9 * * 1-5 cd ~/research/automate && ./auto_single.sh > /dev/null
 ```
 
 The entry above will run `auto_single.sh` Monday thru Friday at 9 am. If `cron` is not available then consider `at`. One can also simply run the script manually when arriving or run it remotely.
@@ -38,6 +38,7 @@ NETID=ceisgrub
 JOBNAME=myjob
 JOBPATH=/home/$NETID/$JOBNAME
 TGR=/tigress/$NETID/public_html/$JOBNAME
+PATH=$HOME/software/my-utilities:$PATH
 
 scp $NETID@tiger.princeton.edu:$JOBPATH/fluid.dat .
 calc -f fluid.dat --plot   # generates pressure.jpg, temperature.jpg and index.html
