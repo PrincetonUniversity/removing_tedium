@@ -10,7 +10,7 @@
 
 + The more proficient you are with vim or emacs, the faster you will be able to work.
 
-+ Bypass the wall time limits imposed on jobs by using Slurm job dependencies to run continuously for weeks (there is monthly downtime).
++ Bypass the wall time limits imposed on jobs by using Slurm job dependencies to run continuously for weeks or months.
 
 + Write your own utilities to automate your research work. Combine these utilities with system commands to construct a pipeline.
 
