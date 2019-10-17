@@ -52,4 +52,6 @@ ln --symbolic /tigress/<NetID> grs   # Tiger, Della, Perseus, Traverse
 
 Can you think of another symbolic link that could be used to speed-up your workflow?
 
+### How to remove a symbolic link
+
 *IMPORTANT*: To remove a symbolic link use, for example, `rm grs`. Do not include a trailing slash after the symbolic link name.
