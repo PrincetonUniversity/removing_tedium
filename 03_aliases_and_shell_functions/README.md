@@ -273,7 +273,7 @@ The above alias uses two commands. The `&&` operator ensures that the command on
 
 Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in these scripts.
 
-## CPU and memory usage of a job
+## CPU and memory usage of a completed job
 
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
