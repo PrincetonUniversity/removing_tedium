@@ -1,4 +1,4 @@
-# Automatic Data Analysis and Presentation
+# Automated Data Analysis and Presentation
 
 Most researchers who use HPC clusters start their day by downloading data from the clusters, running analysis scripts and then examining the resulting figures. This page shows you how to automate the first two of these operations so that when you arrive in the morning the figures will have been generated just a few minutes earlier.
 
