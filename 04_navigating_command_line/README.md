@@ -27,7 +27,7 @@ The tab key can be used to autocomplete the command. Most everyone is aware of t
 
 ## A general note on text editors
 
-Be sure to explore the shortcuts offered by your text editor. Editors like vim and emacs cannot be mastered in only a few hours. Make sure that you are taking adavantage of these tools. To test your vim knowledge, run this command: `vimtutor`
+Be sure to explore the shortcuts offered by your text editor. Editors like vim and emacs cannot be mastered in only a few hours. Make sure that you are taking advantage of these tools. To test your vim knowledge, run this command: `vimtutor`
 
 ## Fix command (fc)
 
