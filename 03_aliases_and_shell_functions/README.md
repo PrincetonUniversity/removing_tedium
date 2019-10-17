@@ -84,7 +84,7 @@ This approach eliminates redundancy. Changes made to `my_aliases.bash` are propa
 
 ## A word of caution
 
-Be sure not to name an alias after an existing command. If your shell is not behaving as expected if may be because you created an alias using the name of a pre-existing command. Try running your proposed alias name on the command llne to see if it is already a command before creating a new alias.
+Be sure not to name an alias after an existing command. If your shell is not behaving as expected if may be because you created an alias using the name of a pre-existing command. Try running your proposed alias name on the command line to see if it is already a command before creating a new alias.
 
 Aliases take precedence over commands loaded via modules. This is illustrated below with the `intel` module:
 
@@ -263,7 +263,7 @@ Python programmers may benefit from:
 alias mla='module load anaconda3'
 ```
 
-If you are a Python user with many conda environments then the following can be used to print out your environments:
+If you are a Python user with many Conda environments then the following can be used to print out your environments:
 
 ```
 alias myenvs='module load anaconda3 && conda info --envs'
@@ -285,7 +285,7 @@ Note that the Slurm database is purged every so often so your results may not be
 
 ## Go to compute node where most recent job is running
 
-It is often useful to SSH to the compute node where you job is running. From there one can inspect memory usage, whether threads are peforming properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
+It is often useful to SSH to the compute node where you job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
 
 ```
 goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
