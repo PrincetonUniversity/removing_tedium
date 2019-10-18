@@ -342,7 +342,7 @@ srun ./hello_world
 Then create this alias:
 
 ```
-SLURMSCRIPT="job.slurm"
+SLURMSCRIPT='job.slurm'
 alias slr='cp -i ~/.template-files/$SLURMSCRIPT . && echo "Wrote job.script"'
 ```
 
@@ -444,7 +444,7 @@ Add this alias to `~/.bash_profile` on your Mac:
 alias wget='curl -O'
 ```
 
-This will allow you call wget as you would on a Linux machine. The `wget` command can be used to download files from the internet.
+This will allow you call `wget` as you would on a Linux machine. The `wget` command can be used to download files from the internet.
 
 ## Our minimal recommendation
 
