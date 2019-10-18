@@ -446,6 +446,12 @@ alias wget='curl -O'
 
 This will allow you call `wget` as you would on a Linux machine. The `wget` command can be used to download files from the internet.
 
+## Checking for AVX-512
+
+```
+alias has512='lscpu | grep -E --color=always "avx512"'
+```
+
 ## Our minimal recommendation
 
 We suggest that Princeton HPC users use the following aliases and shell functions at a minimum:
