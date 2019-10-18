@@ -46,7 +46,13 @@ Copy the public key to the server's `authorized_keys` file (enter your password 
 ssh-copy-id <NetID>@<hpc_cluster>.princeton.edu
 ```
 
-For example:
+Note that the `ssh-copy-id` command is essentially doing the following:
+
+```
+cat ~/.ssh/id_rsa.pub | ssh <NetID>@<hpc-cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+```
+
+Here is an example session:
 
 ```
 [jdh4@notexa ~]$ ssh-copy-id jdh4@tiger.princeton.edu
