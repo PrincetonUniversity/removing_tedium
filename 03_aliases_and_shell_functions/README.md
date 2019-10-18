@@ -219,7 +219,7 @@ Return to the **Word of caution** section above and try running `\icc` at the ve
 
 ## sbatch
 
-If you submit a lot of jobs with commands like `sbatch job.slurm`, `sbatch submit.sh`. You may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
+If you submit a lot of jobs with commands like `sbatch job.slurm` or `sbatch submit.sh`. You may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
 
 ```
 SLURMSCRIPT='job.slurm'
