@@ -38,7 +38,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. Keep your private key private. Do not shared it. However, you can share your public key and we will do that next.
+The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. Keep your private key private. Do not share it. However, you can share your public key and we will do that next.
 
 Copy the public key to the server's `authorized_keys` file (enter your password for the **HPC cluster** when prompted):
 
