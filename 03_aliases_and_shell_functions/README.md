@@ -296,7 +296,7 @@ This method will not work when multiple nodes are used to run the job.
 ## Canceling the most recently submitted job
 
 ```
-clast() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
+mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
 ```
 
 ## A better squeue for pending jobs: Combining squeue with sprio
