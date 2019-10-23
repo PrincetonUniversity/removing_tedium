@@ -293,6 +293,12 @@ goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
 
 This method will not work when multiple nodes are used to run the job.
 
+## Canceling the most recently submitted job
+
+```
+clast() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
+```
+
 ## A better squeue for pending jobs: Combining squeue with sprio
 
 The following alias combines the output of squeue and sprio to explicitly show your job priority and expected start time for queued jobs:
