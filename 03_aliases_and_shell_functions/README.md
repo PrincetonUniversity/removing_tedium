@@ -273,7 +273,7 @@ The above alias uses two commands. The `&&` operator ensures that the command on
 
 Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in these scripts.
 
-## CPU and memory usage of a completed job
+## CPU and memory efficiency of a completed job
 
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
@@ -288,7 +288,7 @@ Note that the Slurm database is purged every so often so your results may not be
 It is often useful to SSH to the compute node where you job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
 
 ```
-goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
+goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=9); }
 ```
 
 This method will not work when multiple nodes are used to run the job.
@@ -296,7 +296,7 @@ This method will not work when multiple nodes are used to run the job.
 ## Canceling the most recently submitted job
 
 ```
-mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
+mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=2); }
 ```
 
 ## A better squeue for pending jobs: Combining squeue with sprio
