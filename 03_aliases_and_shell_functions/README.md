@@ -278,7 +278,7 @@ Note that aliases do not work in Slurm scripts. You will need to explicitly load
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
 ```
-eff() { seff $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9'; ))); }
+eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
 ```
 
 Note that the Slurm database is purged every so often so your results may not be available. 
