@@ -19,3 +19,5 @@
 + SSH to a Princeton HPC cluster (prefer Tiger, Della, Perseus or Traverse over Adroit) [click [here](https://researchcomputing.princeton.edu/faq/why-cant-i-login-to-a-clu) for help]
 
 + For the live workshop, to get priority access on Adroit, add this line to your Slurm script: `#SBATCH -p class`
+
++ Go to the main page by [clicking here](https://github.com/PrincetonUniversity/removing_tedium).
