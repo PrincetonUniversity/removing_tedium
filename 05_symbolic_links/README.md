@@ -16,8 +16,6 @@ However, with a symbolic link called `grs` you would just type:
 cd scr
 ```
 
-One could use an alias instead of a symbolic link but the symbolic link is the better choice because it is more general in that it allows for tab completion so you can easily `cd` into a subdirectory (e.g., `cd /scr/data`).
-
 Here is how to create the link in your home directory:
 
 ```
@@ -42,6 +40,8 @@ $ pwd -P
 $ ll
 -rw-r--r--.  1 ceisgrub pres  226 Oct  5 23:50 file1.txt
 ```
+
+One could use an alias for `scr` instead of a symbolic link but the symbolic link is the better choice because it is more general in that it allows for tab completion so you can easily `cd` into a subdirectory (e.g., `cd /scr/data`).
 
 ## Tigress
 
