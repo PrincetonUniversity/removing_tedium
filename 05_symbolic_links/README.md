@@ -36,9 +36,11 @@ $ touch file1.txt
 $ cp file1.txt scr
 $ cd scr
 $ pwd
-/scratch/gpfs/jdh4
+/home/ceisgrub/scr
+$ pwd -P
+/scratch/gpfs/ceisgrub
 $ ll
--rw-r--r--.  1 jdh4 cses  226 Oct  5 23:50 file1.txt
+-rw-r--r--.  1 ceisgrub pres  226 Oct  5 23:50 file1.txt
 ```
 
 ## Tigress
