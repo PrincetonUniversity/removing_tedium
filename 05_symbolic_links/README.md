@@ -23,10 +23,10 @@ Here is how to create the link in your home directory:
 ```
 cd
 ln --symbolic /scratch/gpfs/<NetID> scr       # Tiger, Della, Perseus, Traverse
-ln --symbolic /scratch/network/<NetID> ntwk   # Adroit
+ln --symbolic /scratch/network/<NetID> scr    # Adroit
 ```
 
-You can use different names instead of `scr` and `ntwk`. Choose something concise, representative and original (so that it doesn't conflict with an existing command).
+You can use a different name instead of `scr`. Choose something concise, representative and original (so that it doesn't conflict with an existing command).
 
 Symbolic links can be used for any operation involving a path, for example:
 
@@ -49,7 +49,7 @@ Make a second symbolic link from your home directory to tigress:
 
 ```
 cd
-ln --symbolic /tigress/<NetID> grs   # Tiger, Della, Perseus, Traverse
+ln --symbolic /tigress/<NetID> grs   # Tiger, Della, Perseus and (for some) Traverse
 ```
 
 Can you think of another symbolic link that could be used to speed-up your workflow?
