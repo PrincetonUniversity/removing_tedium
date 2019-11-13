@@ -10,6 +10,20 @@ To install a VPN client on your laptop follow this [OIT KnowledgeBase article](h
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
 
+### If the Linux VPN is not working
+
+Try the procedure below your VPN client on Linux is not working:
+
+```
+echo "Enter your netid"
+read netid
+wget --user=$netid --ask-password https://web.princeton.edu/sites/oitdownloads/vpn/Linux%20x64/ConnectTunnel-Linux64.tar
+tar -xvf ConnectTunnel-Linux64.tar
+sudo ./install.sh
+sudo apt-get install openjdk-8-jre
+startctui
+```
+
 #### What if VPN is too slow from off-campus?
 
 It is true that a VPN may reduce your transfer speeds. If this is the case then do not use it. Instead, ssh to `tigressgateway.princeton.edu` and then from 
