@@ -2,7 +2,7 @@
 
 DUO enhances security. It can also be annoying and disruptive. Here are two approaches to suppressing DUO. We recommend using the first approach below due to its simplicity.
 
-## The VPN approach
+## I. The VPN approach
 
 Install a VPN client. Connect via the VPN client. Start you work. You will only need to DUO authenticate once per session.
 
@@ -10,9 +10,9 @@ To install a VPN client on your laptop follow this [OIT KnowledgeBase article](h
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
 
-### If the Linux VPN is not working
+#### If the Linux VPN is not working
 
-Try the procedure below your VPN client on Linux is not working:
+Try the procedure below from T. Jones of the Tech Clinic if your VPN client on Linux is not working:
 
 ```
 echo "Enter your netid"
@@ -29,7 +29,7 @@ startctui
 It is true that a VPN may reduce your transfer speeds. If this is the case then do not use it. Instead, ssh to `tigressgateway.princeton.edu` and then from 
 there, ssh to your desired cluster. If you are transferring many files you will want to use multiplexing to avoid DUO authentication as described below.
 
-## The multiplexing approach
+## II. The Multiplexing Approach
 
 The following solution is from Bill Wichser of Research Computing. It is reproduced here from [this post](https://askrc.princeton.edu/question/331/how-do-i-avoid-having-to-authenticate-with-duo-every-time/).
 
