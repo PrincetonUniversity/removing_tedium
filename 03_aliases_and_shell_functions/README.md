@@ -494,7 +494,7 @@ history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/c
 
 ## More ideas
 
-See [this page](https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions) for more aliases and shell functions. To see aliases used by other users on the cluster use:
+See [this page](https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions) for more aliases and shell functions. To see aliases used by other users on the cluster, run this command:
 
 ```
 find /home -maxdepth 2 -type f -name '.bashrc' 2>/dev/null | xargs grep 'alias'
