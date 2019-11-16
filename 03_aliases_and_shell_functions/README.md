@@ -421,9 +421,10 @@ Follow @igor_chubin for wttr.in updates
 
 ```
 alias myddt='/usr/licensed/bin/ddt'
-alias mystata='/usr/licensed/bin/stata-12.0'
+alias mystata='/usr/licensed/bin/stata-15.0'
 alias vi='vim'
 alias top='htop'
+alias cmake='cmake3'
 ```
 
 ## Watch anything
@@ -493,7 +494,11 @@ history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/c
 
 ## More ideas
 
-See [this page](https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions) for more aliases and shell functions.
+See [this page](https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions) for more aliases and shell functions. To see aliases used by other users on the cluster use:
+
+```
+find /home -maxdepth 2 -type f -name '.bashrc' 2>/dev/null | xargs grep 'alias'
+```
 
 ## How to contribute?
 
