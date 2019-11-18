@@ -232,6 +232,14 @@ You can distinguish different jobs by setting the job name in the Slurm script:
 #SBATCH --job-name=multivar      # create a short name for your job
 ```
 
+## salloc
+
+For a 5-minute interactive allocation on the GPU:
+
+```
+alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:1'
+```
+
 ## checkquota
 
 The `checkquota` command provides information about available storage space and number of files. While it's only 10 characters, given its frequent use you may consider reducing it to 2:
