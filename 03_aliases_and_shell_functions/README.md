@@ -234,7 +234,7 @@ You can distinguish different jobs by setting the job name in the Slurm script:
 
 ## salloc
 
-For a 5-minute interactive allocation on the GPU:
+For a 5-minute interactive allocation on a GPU node:
 
 ```
 alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:1'
