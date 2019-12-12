@@ -477,7 +477,7 @@ export EDITOR=/usr/bin/vim   # or emacs or nano
 SLURMSCRIPT='job.slurm'
 
 alias ll='ls -ltrh'
-alias sq='squeue -u $USER --start'
+alias sq='squeue -u $USER'
 alias wq='watch -n 1 squeue -u $USER'
 alias jj='cat -- "$(ls -t | head -n 1)"'
 alias kk='cat -- "$(ls -t | head -n 2 | tail -n 1)"'
