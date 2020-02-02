@@ -86,3 +86,68 @@ Host perseus.princeton.edu
 From my local machine I can `ssh perseus` which says to use the proxyjump server called tigressgateway. It first goes to tigressgateway, Duo authenticates, then hops to perseus. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through.
 
 You should be able to `scp localfile bill@perseus.princeton.edu` without incurring extra Duo authentications since the connection is established and multiplexed.
+
+Below is a sample file of `.ssh/config`:
+
+```
+Host tigressgateway.princeton.edu
+         ControlMaster auto
+         ControlPersist yes
+         ControlPath ~/.ssh/sockets/%p-%h-%r
+         LocalForward 5908 traverse.princeton.edu:5908
+         LocalForward 5909 traverse.princeton.edu:5909
+         LocalForward 5910 tigergpu.princeton.edu:5910
+         LocalForward 5911 tigergpu.princeton.edu:5911
+         LocalForward 5912 tigercpu.princeton.edu:5912
+         LocalForward 5913 tigercpu.princeton.edu:5913
+         LocalForward 5914 della.princeton.edu:5914
+         LocalForward 5915 della.princeton.edu:5915
+         LocalForward 5916 perseus.princeton.edu:5916
+         LocalForward 5917 perseus.princeton.edu:5917
+         LocalForward 5918 adroit.princeton.edu:5918
+         LocalForward 5919 adroit.princeton.edu:5919
+         LocalForward 5920 tigressdata.princeton.edu:5920
+         LocalForward 5921 tigressdata.princeton.edu:5921
+
+Host traverse.princeton.edu
+         ProxyJump jdh4@tigressgateway.princeton.edu
+         ControlMaster auto
+         ControlPersist yes
+         ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host tigergpu.princeton.edu
+         ProxyJump jdh4@tigressgateway.princeton.edu
+         ControlMaster auto
+         ControlPersist yes
+         ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host tigercpu.princeton.edu
+         ProxyJump jdh4@tigressgateway.princeton.edu
+         ControlMaster auto
+         ControlPersist yes
+         ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host della.princeton.edu
+         ProxyJump jdh4@tigressgateway.princeton.edu
+         ControlMaster auto
+         ControlPersist yes
+         ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host perseus.princeton.edu
+         ProxyJump jdh4@tigressgateway.princeton.edu
+         ControlMaster auto
+         ControlPersist yes
+         ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host adroit.princeton.edu
+         ProxyJump jdh4@tigressgateway.princeton.edu
+         ControlMaster auto
+         ControlPersist yes
+         ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host tigressdata.princeton.edu
+         ProxyJump jdh4@tigressgateway.princeton.edu
+         ControlMaster auto
+         ControlPersist yes
+         ControlPath ~/.ssh/sockets/%p-%h-%r
+```
