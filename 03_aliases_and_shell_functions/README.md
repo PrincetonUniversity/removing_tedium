@@ -232,11 +232,18 @@ You can distinguish different jobs by setting the job name in the Slurm script:
 #SBATCH --job-name=multivar      # create a short name for your job
 ```
 
-## salloc
-
-For a 5-minute interactive allocation on a GPU node:
+This alias submits the job then launches watch:
 
 ```
+alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
+```
+
+## salloc
+
+For a 5-minute interactive allocation on a CPU or GPU node:
+
+```
+alias cpu5='salloc -N 1 -n 1 -t 5'
 alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:1'
 ```
 
@@ -254,6 +261,20 @@ On your laptop:
 
 ```
 alias jn='jupyter notebook'
+```
+
+## Listing and removing Conda environments
+
+To list environments:
+
+```
+alias myenvs='module load anaconda3 && conda info --envs'
+```
+
+Below is a shell function to remove an environment by name (e.g., $ rmenv torch-env):
+
+```
+rmenv() { conda remove --name "$1" --all; }
 ```
 
 ## Environment modules
