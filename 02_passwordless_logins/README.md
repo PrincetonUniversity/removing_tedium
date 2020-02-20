@@ -74,6 +74,8 @@ and check to make sure that only the key(s) you wanted were added.
 
 Then try to ssh to the cluster. You should no longer need to enter a password. Run the `ssh-copy-id` for each HPC cluster that you have an account on.
 
+If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
+
 ### Trouble with tigressdata
 
 If the procedure above fails on tigressdata (i.e., you still have to enter your password) then ssh to tigressdata and run this command:
