@@ -255,7 +255,7 @@ The `checkquota` command provides information about available storage space and 
 alias cq='checkquota'
 ```
 
-Another tip is to put the following in your `~/.bashrc` file to see your storage usage each time you login:
+Another tip is to put the following in your `~/.bashrc` file to see your remaining space each time you login:
 
 ```bash
 if [ ! -z "$PS1" ]; then
