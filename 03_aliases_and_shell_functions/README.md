@@ -279,7 +279,7 @@ To list environments:
 alias myenvs='module load anaconda3 && conda info --envs'
 ```
 
-Below is a shell function to remove an environment by name (e.g., $ rmenv torch-env):
+Below is a shell function to remove an environment by name (e.g., `$ rmenv torch-env`):
 
 ```
 rmenv() { conda remove --name "$1" --all; }
