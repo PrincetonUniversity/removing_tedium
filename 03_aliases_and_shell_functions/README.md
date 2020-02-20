@@ -255,6 +255,14 @@ The `checkquota` command provides information about available storage space and 
 alias cq='checkquota'
 ```
 
+Another tip is to put the following in your `~/.bashrc` file to see your storage usage each time you login:
+
+```bash
+if [ ! -z "$PS1" ]; then
+        checkquota
+fi
+```
+
 ## Jupyter notebooks
 
 On your laptop:
@@ -284,6 +292,7 @@ Here are two aliases for purging and listing loaded modules:
 ```
 alias mp='module purge'
 alias ml='module list'
+alias ma='module avail'
 ```
 
 Python programmers may benefit from:
