@@ -271,29 +271,17 @@ On your laptop:
 alias jn='jupyter notebook'
 ```
 
-## Listing and removing Conda environments
-
-To list environments:
-
-```
-alias myenvs='module load anaconda3 && conda info --envs'
-```
-
-Below is a shell function to remove an environment by name (e.g., `$ rmenv torch-env`):
-
-```
-rmenv() { conda remove --name "$1" --all; }
-```
-
 ## Environment modules
 
-Here are two aliases for purging and listing loaded modules:
+Here are three aliases for purging, showing and listing modules:
 
 ```
 alias mp='module purge'
-alias ml='module list'
 alias ma='module avail'
+alias ml='module list'
 ```
+
+## Listing and removing Conda environments
 
 Python programmers may benefit from:
 
@@ -310,6 +298,12 @@ alias myenvs='module load anaconda3 && conda info --envs'
 The above alias uses two commands. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. Can you think of an alias involving the modules you use?
 
 Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in these scripts.
+
+Below is a shell function to remove an environment by name (e.g., `$ rmenv torch-env`):
+
+```
+rmenv() { conda remove --name "$1" --all; }
+```
 
 ## CPU and memory efficiency of a completed job
 
