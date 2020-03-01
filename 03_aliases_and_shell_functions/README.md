@@ -263,6 +263,12 @@ if [ ! -z "$PS1" ]; then
 fi
 ```
 
+To list the size of each directory:
+
+```
+alias dirsize='du -h --max-depth=1 | sort -hr'
+```
+
 ## Jupyter notebooks
 
 On your laptop:
