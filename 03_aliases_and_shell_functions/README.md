@@ -174,9 +174,9 @@ Example usage:
 ```
 $ pwd
 /home/ceisgrub
-$ mk pancakes
+$ mk myproj
 $ pwd
-/home/ceisgrub/pancakes
+/home/ceisgrub/myproj
 ```
 
 Combine change directory and list files into a single command:
@@ -298,7 +298,7 @@ alias mla='module load anaconda3'
 If you are a Python user with many Conda environments then the following can be used to print out your environments:
 
 ```
-alias myenvs='module load anaconda3 && printf "\n" && conda info --envs | grep . | grep -v "#" | cat -n'
+alias myenvs='module load anaconda3 && conda info --envs | grep . | grep -v "#" | cat -n'
 ```
 
 The above alias uses two commands. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. Can you think of an alias involving the modules you use?
@@ -307,6 +307,17 @@ To activate an environment by its number:
 
 ```
 actenv() { conda activate $(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d ' ' -f 1); }
+```
+
+A session using the two aliases above might look like this:
+
+```bash
+[ceisgrub@tigergpu ~]$ myenvs
+     1	tf2-gpu                  /home/jdh4/.conda/envs/tf2-gpu
+     2	torch-env                /home/jdh4/.conda/envs/torch-env
+     3	base                  *  /usr/licensed/anaconda3/2019.10
+[ceisgrub@tigergpu ~]$ actenv 2
+(torch-env) [ceisgrub@tigergpu ~]$
 ```
 
 Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in these scripts.
