@@ -287,7 +287,7 @@ alias ma='module avail'
 alias ml='module list'
 ```
 
-## Listing and removing Conda environments
+## Listing, activating and removing Conda environments
 
 Python programmers may benefit from:
 
@@ -298,10 +298,16 @@ alias mla='module load anaconda3'
 If you are a Python user with many Conda environments then the following can be used to print out your environments:
 
 ```
-alias myenvs='module load anaconda3 && conda info --envs'
+alias myenvs='module load anaconda3 && printf "\n" && conda info --envs | grep . | grep -v "#" | cat -n'
 ```
 
 The above alias uses two commands. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. Can you think of an alias involving the modules you use?
+
+To activate an environment by its number:
+
+```
+actenv() { conda activate $(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d ' ' -f 1); }
+```
 
 Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in these scripts.
 
