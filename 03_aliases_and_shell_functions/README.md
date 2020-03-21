@@ -311,7 +311,7 @@ actenv() { conda activate $(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' |
 
 A session using the two aliases above might look like this:
 
-```bash
+```
 [ceisgrub@tigergpu ~]$ myenvs
      1	tf2-gpu                  /home/jdh4/.conda/envs/tf2-gpu
      2	torch-env                /home/jdh4/.conda/envs/torch-env
