@@ -159,3 +159,16 @@ Host tigressdata.princeton.edu
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
+
+## Preventing VPN disconnects
+
+If your VPN is disconnecting too frequently then try adding these lines to your `~/.ssh/config` file:
+
+```
+Host *
+     Compression yes
+     ServerAliveInterval 30
+     ServerAliveCountMax 10
+```
+
+This will cause a "ping" every 30 seconds and hopefully prevent disconnections.
