@@ -5,10 +5,10 @@ While carrying out computational research you will probably find yourself enteri
 You can save yourself time by creating aliases for common commands. Aliases are like custom shortcuts used to represent a command. Shell functions are similar to aliases but they provide more flexibility. Here is a common alias:
 
 ```
-alias qq='squeue -u <NetID>'
+alias qq='squeue -u <YourNetID>'
 ```
 
-After defining this alias, one can type `qq` instead of the much longer `squeue -u <NetID>`.
+After defining this alias, one can type `qq` instead of the much longer `squeue -u <YourNetID>`.
 
 ## Store permanent aliases and shell functions in .bashrc
 
@@ -49,14 +49,14 @@ The above is saying that if with run the `l.` command, for example, the shell is
 Let's illustrate the process of creating an alias using this popular command:
 
 ```
-$ squeue -u <NetID>
+$ squeue -u <YourNetID>
 ```
 
-In the above command you should replace `<NetID>` with your actual NetID (e.g., ceisgrub). Instead of typing this every time, we will use the much shorter alias of `qq` (or call it `sq` if you prefer). Open your `.bashrc` file using a text editor and add the following line:
+In the above command you should replace `<YourNetID>` with your actual NetID (e.g., ceisgrub). Instead of typing this every time, we will use the much shorter alias of `qq` (or call it `sq` if you prefer). Open your `.bashrc` file using a text editor and add the following line:
 
 ```
 # User specific aliases and functions
-alias qq='squeue -u <NetID>'
+alias qq='squeue -u <YourNetID>'
 ```
 
 After saving the file, refresh your shell with the changes in `~/.bashrc` by running this command:
@@ -65,22 +65,22 @@ After saving the file, refresh your shell with the changes in `~/.bashrc` by run
 
 *IMPORTANT*: Your new aliases and shell functions will not be active until you run the command above.
 
-Now the `qq` command can be used instead of `squeue -u <NetID>`. To view the expected start times of queued jobs use `alias qqs='squeue -u <NetID> --start'`.
+Now the `qq` command can be used instead of `squeue -u <NetID>`. To view the expected start times of queued jobs use `alias qqs='squeue -u <YourNetID> --start'`.
 
 ## What if I have access to multiple HPC clusters?
 
 Perseus, Della, Tiger and Traverse all mount the tigress file system. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on tigress and `source` this from each `.bashrc` file on the clusters that you have accounts on.
 
-For example, make the file `/tigress/<NetID>/my_aliases.bash` and put your aliases and functions there. Then add this line to each of your `.bashrc` files:
+For example, make the file `/tigress/<YourNetID>/my_aliases.bash` and put your aliases and functions there. Then add this line to each of your `.bashrc` files:
 
 ```
 # User specific aliases and functions
-source /tigress/<NetID>/my_aliases.bash
+source /tigress/<YourNetID>/my_aliases.bash
 ```
 
 This approach eliminates redundancy. Changes made to `my_aliases.bash` are propagated to all the clusters that you have access to. Unfortunately, this will not work for Adroit or Nobel since these clusters do not mount tigress.
 
-*Exercise*: SSH to one of the HPC clusters and add the `qq` alias to `~/.bashrc` (Adroit) or `/tigress/<NetID>/my_aliases.bash` (all clusters except Adroit).
+*Exercise*: SSH to one of the HPC clusters and add the `qq` alias to `~/.bashrc` (Adroit) or `/tigress/<YourNetID>/my_aliases.bash` (all clusters except Adroit).
 
 ## A word of caution
 
@@ -104,7 +104,7 @@ If you run the commands above, `icc` will not be the Intel C compiler as one may
 On your **local machine** (e.g., laptop), add the aliases below for the clusters that you have access to. For Linux see `~/.bashrc` for Mac see `~/.bash_profile`.
 
 ```
-myid=<NetID>
+myid=<YourNetID>
 alias nobel='ssh $myid@nobel.princeton.edu'
 alias adroit='ssh $myid@adroit.princeton.edu'
 alias perseus='ssh $myid@perseus.princeton.edu'
@@ -128,7 +128,7 @@ alias traX='ssh -X $myid@traverse.princeton.edu'
 Watch the list of jobs:
 
 ```
-alias wq='watch -n 1 squeue -u <NetID>'
+alias wq='watch -n 1 squeue -u <YourNetID>'
 ```
 
 This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To end the command hold down [Ctrl] and press [c].
