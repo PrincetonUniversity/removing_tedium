@@ -87,7 +87,7 @@ From my local machine I can `ssh perseus` which says to use the proxyjump server
 
 You should be able to `scp localfile bill@perseus.princeton.edu` without incurring extra Duo authentications since the connection is established and multiplexed.
 
-Below is a sample file of `.ssh/config` (**REPLACE aturing with your NetID**):
+Below is a sample file of `.ssh/config` (**replace aturing with your NetID**):
 
 ```
 Host tigressgateway.princeton.edu
