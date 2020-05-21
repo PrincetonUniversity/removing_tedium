@@ -112,49 +112,49 @@ Host tigressgateway.princeton.edu
          LocalForward 5923 tigressdata.princeton.edu:5923
 
 Host traverse.princeton.edu
-         ProxyJump ceisgrub@tigressgateway.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host tigergpu.princeton.edu
-         ProxyJump ceisgrub@tigressgateway.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host tigercpu.princeton.edu
-         ProxyJump ceisgrub@tigressgateway.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host della.princeton.edu
-         ProxyJump ceisgrub@tigressgateway.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host perseus.princeton.edu
-         ProxyJump ceisgrub@tigressgateway.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host adroit.princeton.edu
-         ProxyJump ceisgrub@tigressgateway.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host nobel.princeton.edu
-         ProxyJump ceisgrub@tigressgateway.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host tigressdata.princeton.edu
-         ProxyJump ceisgrub@tigressgateway.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
