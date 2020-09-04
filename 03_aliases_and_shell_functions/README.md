@@ -482,6 +482,8 @@ alias top='htop'
 alias cmake='cmake3'
 ```
 
+Shadowing is the remapping of a command with different parameters.
+
 ## Watch anything
 
 Use this alias to watch anything:
