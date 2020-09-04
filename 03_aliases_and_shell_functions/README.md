@@ -541,6 +541,12 @@ mk() { mkdir -p $1 && cd $1 }
 cdl() { cd $1 && ls -ltrh }
 ```
 
+## To see shell functions
+
+```
+$ set | less
+```
+
 ## Examine your history for commands to be aliased
 
 Try running the following command on your history to look for common commands to create an alias for:
