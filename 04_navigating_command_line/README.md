@@ -79,7 +79,7 @@ See the next section for a modern alternative.
 
 ## Search and running a previous command
 
-Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Type a letter - like s - and you'll get a match for the most recent command in your history that starts with s. Keep typing to narrow your match. When you find the desired command, press `[Enter]` to execute.
+Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Type a letter - like s - and you'll get a match for the most recent command in your history that starts with s. Keep typing to narrow your search. When you find the desired command, press `[Enter]` to execute.
 
 ## Programmable keyboards
 
