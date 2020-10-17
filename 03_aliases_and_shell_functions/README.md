@@ -33,7 +33,7 @@ fi
 
 The last line above is showing us where to store aliases and shell function but exactly how to do this depends on where you have accounts.
 
-### If you only have an account on Adroit
+### If you only have an account on Adroit ...
 
 You make your aliases and shell functions permanent by adding them to the bottom of your `.bashrc` file on Adroit and then source the file. For instance, use a text editor like vim or emacs to add the `sq` alias:
 
@@ -50,7 +50,7 @@ $ source .bashrc
 
 Now try out the aliases.
 
-### If you have an account on Della, Perseus, Tiger or Tigressdata
+### If you have an account on Della, Perseus, Tiger or Tigressdata ...
 
 Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `.bashrc` file on the clusters that you have accounts on:
 
