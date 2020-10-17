@@ -1,14 +1,17 @@
 # Aliases and Shell Functions
 
-While carrying out computational research you will probably find yourself entering the same commands over and over again. Typing or copying the same command repeatedly reduces your productivity.
+While working on the HPC clusters you will probably find yourself entering the same commands over and over again. There will also be times when you will run multiple commands to get a result. These two types of actions reduce your productivity.
 
-You can save yourself time by creating aliases for common commands. Aliases are like custom shortcuts used to represent a command. Shell functions are similar to aliases but they provide more flexibility. Here is a common alias:
+Commonly repeated commands should be replaced by an alias, which is a shorter name for the command. A shell function should be used instead of an alias when command line parameters are need or many individual steps need to be carried out.
+
+
+Here is a common alias:
 
 ```
-alias qq='squeue -u <YourNetID>'
+$ alias sq='squeue -u <YourNetID>'
 ```
 
-After defining this alias, one can type `qq` instead of the much longer `squeue -u <YourNetID>`.
+After defining this alias, one can type `sq` instead of the much longer `squeue -u <YourNetID>`. Note that aliases defined on the command line will be available until you exit the shell. To make them permanent continue reading.
 
 ## Store permanent aliases and shell functions in .bashrc
 
