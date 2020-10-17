@@ -417,6 +417,14 @@ You may consider removing write permission on template files with chmod 600.
 
 While X11 forwarding (via `ssh -X`) is usually sufficient to work with graphics on the HPC clusters, TurboVNC is a faster alternative. See the bottom of [this page](https://researchcomputing.princeton.edu/faq/how-do-i-use-vnc-on-tigre) for shells function to ease the setup.
 
+## Time Limits on Della
+
+```
+if [[ $(hostname) == della* ]]; then
+    alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '"'"'/_MINS/ {print $1, $2, $3" mins ("$3/60 " hrs)"}'"'"''
+fi
+```
+
 ## Weather
 
 Get a weather report for Princeton, NJ:
