@@ -54,11 +54,13 @@ Save the changes then activate the alias in the current shell by "sourcing" your
 $ source .bashrc
 ```
 
-Now try out the aliases:
+Now try out the alias:
 
 ```
 $ sq
 ```
+
+You only need to source your `.bashrc` file when you add an alias in the current session. When you first log in all aliases will be available.
 
 ### If you have an account on Della, Perseus, Tiger or Tigressdata
 
