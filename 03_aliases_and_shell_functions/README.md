@@ -71,6 +71,8 @@ Now the `qq` command can be used instead of `squeue -u <NetID>`. To view the exp
 
 Perseus, Della, Tiger and Traverse all mount the tigress file system. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on tigress and `source` this from each `.bashrc` file on the clusters that you have accounts on.
 
+![shortcuts](https://tigress-web.princeton.edu/~jdh4/)
+
 For example, make the file `/tigress/<YourNetID>/my_aliases.bash` and put your aliases and functions there. Then add this line to each of your `.bashrc` files:
 
 ```
