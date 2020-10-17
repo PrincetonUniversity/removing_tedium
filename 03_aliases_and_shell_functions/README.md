@@ -2,7 +2,7 @@
 
 While working on the HPC clusters you will probably find yourself entering the same commands over and over again. There will also be times when you will run multiple commands to get a result. These two types of actions reduce your productivity.
 
-Commonly repeated commands should be replaced by an alias, which is a shorter name for the command. A shell function should be used instead of an alias when command line parameters are need or many individual steps need to be carried out.
+Commonly repeated commands should be replaced by an alias, which is a shorter name for the command. An alias can also combine multiple commands into one. Shell functions are like aliases but they are more flexible because they accept command-line parameters.
 
 
 Here is a common alias:
@@ -11,7 +11,7 @@ Here is a common alias:
 $ alias sq='squeue -u <YourNetID>'
 ```
 
-After defining this alias, one can type `sq` instead of the much longer `squeue -u <YourNetID>`. Note that aliases defined on the command line will be available until you exit the shell. To make them permanent continue reading.
+After defining this alias, one can type `sq` instead of the much longer `squeue -u <YourNetID>`. Note that aliases defined on the command line will only be available until you exit the shell. To make them permanent continue reading.
 
 ## Store permanent aliases and shell functions in .bashrc
 
