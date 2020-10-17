@@ -38,17 +38,27 @@ The last line above is showing us where to store aliases and shell function but 
 You make your aliases and shell functions permanent by adding them to the bottom of your `.bashrc` file on Adroit and then source the file. For instance, use a text editor like vim or emacs to add the `sq` alias:
 
 ```
+$ nano ~/.bashrc  # or vim, emacs, etc.
+```
+
+Add this line:
+
+```
 # User specific aliases and functions
 alias sq='squeue -u <YourNetID>'
 ```
 
-Then activate the alias in the current shell by sourcing your .bashrc file:
+Save the changes then activate the alias in the current shell by "sourcing" your .bashrc file:
 
 ```
 $ source .bashrc
 ```
 
-Now try out the aliases.
+Now try out the aliases:
+
+```
+$ sq
+```
 
 ### If you have an account on Della, Perseus, Tiger or Tigressdata
 
