@@ -31,21 +31,43 @@ fi
 # User specific aliases and functions
 ```
 
-The last line is telling us where to add our custom aliases and shell functions. A new account on Springdale Linux will come with certain aliases. To see your aliases use the `alias` command:
+The last line above is showing us where to store aliases and shell function but exactly how to do this depends on where you have accounts.
+
+### If you only have an account on Adroit
+
+You make your aliases and shell functions permanent by adding them to the bottom of your `.bashrc` file on Adroit and then source the file. For instance, use a text editor like vim or emacs to add the `sq` alias:
 
 ```
-$ alias
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias grep='grep --color=auto'
-alias l.='ls -d .* --color=auto'
-alias ll='ls -l --color=auto'
-alias ls='ls --color=auto'
-alias vi='vim'
-alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+# User specific aliases and functions
+alias sq='squeue -u <YourNetID>'
 ```
 
-The above is saying that if with run the `l.` command, for example, the shell is really running `ls -d .* --color=auto`. Take a look at the examples below to see how aliases can save you time.
+Then activate the alias in the current shell by sourcing your .bashrc file:
+
+```
+$ source .bashrc
+```
+
+Now try out the aliases.
+
+### If you have an account on Della, Perseus, Tiger or Tigressdata
+
+Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `.bashrc` file on the clusters that you have accounts on:
+
+<br/><br/>
+![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
+<br/><br/>
+
+For example, make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add this line to each of your `.bashrc` files:
+
+```
+# User specific aliases and functions
+source /tigress/<YourNetID>/myshortcuts.sh
+```
+
+This approach eliminates redundancy. Changes made to `myshortcuts.sh` are available to all the clusters that you have access to. Unfortunately, this will not work for Adroit or Nobel since these clusters do not mount `/tigress`.
+
+*Exercise*: SSH to one of the HPC clusters and add the `sq` alias to `~/.bashrc` (Adroit) or `/tigress/<YourNetID>/myshortcuts.sh` (all clusters except Adroit).
 
 ## squeue
 
@@ -70,24 +92,23 @@ After saving the file, refresh your shell with the changes in `~/.bashrc` by run
 
 Now the `qq` command can be used instead of `squeue -u <NetID>`. To view the expected start times of queued jobs use `alias qqs='squeue -u <YourNetID> --start'`.
 
-## What if I have access to multiple HPC clusters?
+## nope
 
-Perseus, Della, Tiger and Traverse all mount the tigress file system. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on tigress and `source` this from each `.bashrc` file on the clusters that you have accounts on.
-
-<br/><br/>
-![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
-<br/><br/>
-
-For example, make the file `/tigress/<YourNetID>/my_aliases.bash` and put your aliases and functions there. Then add this line to each of your `.bashrc` files:
+A new account on Springdale Linux will come with certain aliases. To see your aliases use the `alias` command:
 
 ```
-# User specific aliases and functions
-source /tigress/<YourNetID>/my_aliases.bash
+$ alias
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l.='ls -d .* --color=auto'
+alias ll='ls -l --color=auto'
+alias ls='ls --color=auto'
+alias vi='vim'
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 ```
 
-This approach eliminates redundancy. Changes made to `my_aliases.bash` are propagated to all the clusters that you have access to. Unfortunately, this will not work for Adroit or Nobel since these clusters do not mount tigress.
-
-*Exercise*: SSH to one of the HPC clusters and add the `qq` alias to `~/.bashrc` (Adroit) or `/tigress/<YourNetID>/my_aliases.bash` (all clusters except Adroit).
+The above is saying that if with run the `l.` command, for example, the shell is really running `ls -d .* --color=auto`. Take a look at the examples below to see how aliases can save you time.
 
 ## A word of caution
 
