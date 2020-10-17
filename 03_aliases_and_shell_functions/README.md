@@ -421,7 +421,7 @@ While X11 forwarding (via `ssh -X`) is usually sufficient to work with graphics 
 
 ```
 if [[ $(hostname) == della* ]]; then
-    alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '"'"'/_MINS/ {print $1, $2, $3" mins ("$3/60 " hrs)"}'"'"''
+    alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '\''/_MINS/ {print "  "$1,"<=",$3" mins ("$3/60 " hrs)"}'\'''
 fi
 ```
 
