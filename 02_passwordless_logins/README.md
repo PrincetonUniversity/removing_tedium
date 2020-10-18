@@ -117,9 +117,11 @@ Install [PuTTY gen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.ht
 
 # Running commands without logging in
 
-Once you have setup passwordless logins, you can run commands on the clusters without formally connecting. This command will create a file on Della:
+Once you have setup passwordless logins, you can run commands on a cluster without formally connecting. The command below will create a file on Della using the touch command:
 
 ```
 # on your laptop
-$ ssh aturing@della.princeton.edu "touch myfile42"
+$ ssh aturing@della.princeton.edu "touch myfile"
 ```
+
+Note that you can also use the approach above to run scripts on the HPC cluster without formally connecting. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script on, say, Della. If the script generated webpages then the output could be viewed on `tigress-web`.
