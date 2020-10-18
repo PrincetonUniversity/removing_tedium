@@ -43,7 +43,7 @@ The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identific
 Copy the public key to the server's `authorized_keys` file (enter your password for the **HPC cluster** when prompted):
 
 ```
-$ ssh-copy-id <NetID>@<hpc_cluster>.princeton.edu
+$ ssh-copy-id <YourNetID>@<hpc_cluster>.princeton.edu
 ```
 
 Here is an example session:
