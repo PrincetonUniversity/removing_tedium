@@ -12,9 +12,9 @@ On your **local machine** (e.g., laptop), first create the RSA key pair. This is
 
 ```
 $ ssh-keygen -t rsa
-  [Enter] 
-  [Enter] 
-  [Enter] 
+ [Enter] 
+ [Enter] 
+ [Enter] 
 ```
 
 Here is an example:
