@@ -11,7 +11,7 @@ Here is a common alias:
 $ alias sq='squeue -u <YourNetID>'
 ```
 
-After defining this alias, one can type `sq` instead of the much longer `squeue -u <YourNetID>`. Note that aliases defined on the command line will only be available until you exit the shell. To make them permanent continue reading.
+Be sure replace to replace <YourNetID> with  your actual NetID (e.g., aturing). After defining this alias, one can type `sq` instead of the much longer `squeue -u <YourNetID>`. Note that aliases defined on the command line will only be available until you exit the shell. To make them permanent continue reading.
 
 ## Store permanent aliases and shell functions in .bashrc
 
