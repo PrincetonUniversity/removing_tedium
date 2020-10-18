@@ -83,7 +83,7 @@ and check to make sure that only the key(s) you wanted were added.
 
 ### Step 3: Connect to the HPC cluster
 
-Then try to ssh to the cluster. You should no longer need to enter a password.
+Try to ssh to the cluster. You should no longer need to enter a password.
 
 If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
 
