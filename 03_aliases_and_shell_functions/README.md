@@ -10,22 +10,7 @@ Let's illustrate the process of creating an alias using this popular command:
 $ squeue -u <YourNetID>
 ```
 
-In the command above, be sure to replace `<YourNetID>` with your NetID (e.g., aturing). Instead of typing this every time, we will use the much shorter alias of `sq`. Open your `~/.bashrc` file using a text editor and add the following line:
-
-```
-# User specific aliases and functions
-alias qq='squeue -u <YourNetID>'
-```
-
-After saving the file, refresh your shell with the changes in `~/.bashrc` by running this command:
-
-`$ source ~/.bashrc`
-
-*IMPORTANT*: Your new aliases and shell functions will not be active until you run the command above.
-
-Now the `sq` command can be used instead of `squeue -u <NetID>`. To view the expected start times of queued jobs use `alias sqs='squeue -u <YourNetID> --start'`.
-
-Here is a common alias:
+Instead of typing this every time, we will use the much shorter alias of `sq`:
 
 ```
 $ alias sq='squeue -u <YourNetID>'
