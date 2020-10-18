@@ -43,6 +43,19 @@ sudo apt-get install openjdk-8-jre
 startctui
 ```
 
+### Preventing VPN disconnects
+
+If your VPN is disconnecting too frequently (minutes instead of hours) then try adding these lines to your `~/.ssh/config` file:
+
+```
+Host *
+     Compression yes
+     ServerAliveInterval 30
+     ServerAliveCountMax 10
+```
+
+This will cause a "ping" every 30 seconds and hopefully prevent disconnections. OIT manages the VPN. Please [contact](https://princeton.service-now.com/service) them for assistance.
+
 
 
 ## II. Multiplexing Approach
@@ -171,16 +184,3 @@ Host tigressdata.princeton.edu
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
-
-## Preventing VPN disconnects
-
-If your VPN is disconnecting too frequently then try adding these lines to your `~/.ssh/config` file:
-
-```
-Host *
-     Compression yes
-     ServerAliveInterval 30
-     ServerAliveCountMax 10
-```
-
-This will cause a "ping" every 30 seconds and hopefully prevent disconnections.
