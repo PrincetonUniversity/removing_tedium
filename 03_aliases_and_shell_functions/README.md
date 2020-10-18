@@ -120,7 +120,7 @@ Note that some aliases are automatically created. The above is saying that if wi
 
 ## A word of caution
 
-Be sure not to name an alias after an existing command. If your shell is not behaving as expected if may be because you created an alias using the name of a pre-existing command. Try running your proposed alias name on the command line to see if it is already a command before creating a new alias.
+Be sure not to name an alias after an existing command. If your shell is not behaving as expected it may be because you created an alias using the name of a pre-existing command. Try running your proposed alias name on the command line to see if it is already a command before creating a new alias.
 
 Aliases take precedence over commands loaded via modules. This is illustrated below with the `intel` module:
 
