@@ -9,7 +9,7 @@ To login to an HPC cluster without entering a password we will first create publ
 On your **local machine** (e.g., laptop), first create the RSA key pair. This is done with the following command (press the [Enter] key 3 times after running the command below, i.e., do not answer any of the questions):
 
 ```
-ssh-keygen -t rsa
+$ ssh-keygen -t rsa
 ```
 
 Here is an example:
@@ -43,7 +43,7 @@ The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identific
 Copy the public key to the server's `authorized_keys` file (enter your password for the **HPC cluster** when prompted):
 
 ```
-ssh-copy-id <NetID>@<hpc_cluster>.princeton.edu
+$ ssh-copy-id <NetID>@<hpc_cluster>.princeton.edu
 ```
 
 Here is an example session:
@@ -81,7 +81,7 @@ If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try 
 If the procedure above fails on tigressdata (i.e., you still have to enter your password) then ssh to tigressdata and run this command:
 
 ```
-restorecon -R ~/.ssh
+$ restorecon -R ~/.ssh
 ```
 
 Exit from tigressdata, and the next time you connect you should not need your password.
@@ -91,7 +91,7 @@ Exit from tigressdata, and the next time you connect you should not need your pa
 Follow [these directions](https://www.techrepublic.com/blog/10-things/how-to-generate-ssh-keys-in-openssh-for-windows-10/) to create the keys but don't follow the "Copying the public key securely" procedure. If your public key is on your laptop in `~/.ssh/id_rsa.pub` then the following can be used to copy it to the desired HPC cluster:
 
 ```
-cat ~/.ssh/id_rsa.pub | ssh <NetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+$ cat ~/.ssh/id_rsa.pub | ssh <NetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 ## Windows for PuTTY users
