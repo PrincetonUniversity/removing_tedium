@@ -126,4 +126,4 @@ Once you have setup passwordless logins, you can run commands on a cluster witho
 $ ssh aturing@della.princeton.edu "touch myfile"
 ```
 
-Note that you can also use the approach above to run scripts on the HPC cluster without formally connecting. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script on, say, Della. If the script generated webpages then the output could be viewed on `https://tigress-web.princeton.edu/~<YourNetID>/`.
+Note that you can also use the approach above to run scripts on an HPC cluster. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script on, say, Della. If the script generated webpages as the output then those pages could be viewed on `https://tigress-web.princeton.edu/~<YourNetID>/`.
