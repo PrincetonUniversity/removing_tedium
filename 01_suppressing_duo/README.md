@@ -78,8 +78,8 @@ It will Duo authenticate. But any other sessions will now use that connection an
 Some handy commands from your desktop:
 
 ```
-ssh -O check mcmillan    -- this checks whether a multiplexed session is already open
-ssh -O stop mcmillan     -- kills the multiplexed session
+$ ssh -O check mcmillan    -- this checks whether a multiplexed session is already open
+$ ssh -O stop mcmillan     -- kills the multiplexed session
 ```
 
 As if that wasn't enough information, there is yet another option which can use a proxy server. See `man ssh_config` in the section for ProxyJump. In your local .ssh/config you'll continue using the multiplexer as stated above but with a different config. You'll need to do a `mkdir ~/.ssh/sockets` in order to use this approach.
