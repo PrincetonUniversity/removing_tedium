@@ -115,7 +115,7 @@ Install [PuTTY gen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.ht
 
 [Watch this video](https://youtu.be/2nkAQ9M6ZF8) but at 2:27 do not enter a passphrase and stop watching the video around 5:22.
 
-# Running commands without logging in
+## Looking ahead
 
 Once you have setup passwordless logins, you can run commands on a cluster without formally connecting. The command below will create a file on Della using the touch command:
 
