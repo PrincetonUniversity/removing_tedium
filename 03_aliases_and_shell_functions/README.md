@@ -4,6 +4,26 @@ While working on the HPC clusters you will probably find yourself entering the s
 
 Commonly repeated commands should be replaced by an alias, which is a shorter name for the command. An alias can also combine multiple commands into one. Shell functions are like aliases but they are more flexible because they accept command-line parameters.
 
+Let's illustrate the process of creating an alias using this popular command:
+
+```
+$ squeue -u <YourNetID>
+```
+
+In the command above, be sure to replace `<YourNetID>` with your NetID (e.g., aturing). Instead of typing this every time, we will use the much shorter alias of `sq`. Open your `~/.bashrc` file using a text editor and add the following line:
+
+```
+# User specific aliases and functions
+alias qq='squeue -u <YourNetID>'
+```
+
+After saving the file, refresh your shell with the changes in `~/.bashrc` by running this command:
+
+`$ source ~/.bashrc`
+
+*IMPORTANT*: Your new aliases and shell functions will not be active until you run the command above.
+
+Now the `sq` command can be used instead of `squeue -u <NetID>`. To view the expected start times of queued jobs use `alias sqs='squeue -u <YourNetID> --start'`.
 
 Here is a common alias:
 
@@ -79,29 +99,6 @@ source /tigress/<YourNetID>/myshortcuts.sh
 This approach eliminates redundancy. Changes made to `myshortcuts.sh` are available to all the clusters that you have access to. Unfortunately, this will not work for Adroit or Nobel since these clusters do not mount `/tigress`.
 
 *Exercise*: SSH to one of the HPC clusters and add the `sq` alias to `~/.bashrc` (Adroit) or `/tigress/<YourNetID>/myshortcuts.sh` (all clusters except Adroit).
-
-## squeue
-
-Let's illustrate the process of creating an alias using this popular command:
-
-```
-$ squeue -u <YourNetID>
-```
-
-In the above command you should replace `<YourNetID>` with your actual NetID (e.g., ceisgrub). Instead of typing this every time, we will use the much shorter alias of `qq` (or call it `sq` if you prefer). Open your `.bashrc` file using a text editor and add the following line:
-
-```
-# User specific aliases and functions
-alias qq='squeue -u <YourNetID>'
-```
-
-After saving the file, refresh your shell with the changes in `~/.bashrc` by running this command:
-
-`$ source ~/.bashrc`
-
-*IMPORTANT*: Your new aliases and shell functions will not be active until you run the command above.
-
-Now the `qq` command can be used instead of `squeue -u <NetID>`. To view the expected start times of queued jobs use `alias qqs='squeue -u <YourNetID> --start'`.
 
 ## nope
 
@@ -609,7 +606,3 @@ See [this page](https://www.digitalocean.com/community/tutorials/an-introduction
 ```
 find /home -maxdepth 2 -type f -name '.bashrc' 2>/dev/null | xargs grep 'alias' | grep -v 'User specific aliases and functions' | sed 's/^.*\(alias\)/\1/' | sort | uniq | cat -n
 ```
-
-## How to contribute?
-
-If you create an alias that you think would be useful for the Princeton HPC community then please modify this page and submit a pull request.
