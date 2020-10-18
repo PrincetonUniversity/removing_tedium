@@ -10,6 +10,16 @@ To install a VPN client on your laptop follow this [OIT KnowledgeBase article](h
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
 
+
+| VPN           | Download (Mbps)| Upload (Mbps)  |
+| ------------- |:-------------:| -----:|
+| No VPN        | 901           |   712 |
+| No VPN        | 912           |   660 |
+| GlobalProtect | 473           |   342 |
+| GlobalProtect | 511           |   290 |
+| SonicWall     | 38            |    52 |
+| SonicWall     | 38            |    54 |
+
 #### If the Linux VPN is not working
 
 Try the procedure below from T. Jones of the Tech Clinic if your VPN client on Linux is not working:
