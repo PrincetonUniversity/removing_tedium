@@ -91,7 +91,13 @@ source /tigress/<YourNetID>/myshortcuts.sh
 
 This approach ensures that your shortcuts remain in sync across all of you accounts. Unfortunately, this will not work for Adroit or Nobel since those clusters do not mount `/tigress`. You will have to manually update the `~/.bashrc` files for those systems.  One way to do this is to scp `myshortcuts.sh` from `/tigress` to those machines.
 
-*Exercise*: SSH to one of the HPC clusters and add the `sq` alias to `~/.bashrc` (Adroit) or `/tigress/<YourNetID>/myshortcuts.sh` (all clusters except Adroit).
+Once the setup is complete, begin adding aliases and shell functions to `myshortcuts.sh`. See an [example file](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) which is in this repo. 
+
+You can make new additions to `myshortcuts.sh` activate in the current shell by sourcing your `.bashrc` file which will in turn source `myshortcuts.sh`:
+
+```
+$ source ~/.bashrc
+```
 
 ## nope
 
