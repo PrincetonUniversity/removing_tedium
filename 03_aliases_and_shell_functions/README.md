@@ -99,9 +99,9 @@ You can make new additions to `myshortcuts.sh` activate in the current shell by 
 $ source ~/.bashrc
 ```
 
-## nope
+## Checking which aliases are available
 
-A new account on Springdale Linux will come with certain aliases. To see your aliases use the `alias` command:
+To see your aliases use the `alias` command:
 
 ```
 $ alias
@@ -111,11 +111,12 @@ alias grep='grep --color=auto'
 alias l.='ls -d .* --color=auto'
 alias ll='ls -l --color=auto'
 alias ls='ls --color=auto'
+alias sq='squeue -u aturing'
 alias vi='vim'
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 ```
 
-The above is saying that if with run the `l.` command, for example, the shell is really running `ls -d .* --color=auto`. Take a look at the examples below to see how aliases can save you time.
+Note that some aliases are automatically created. The above is saying that if with run the `l.` command, for example, the shell is really running `ls -d .* --color=auto`.
 
 ## A word of caution
 
@@ -132,7 +133,12 @@ $ module load intel
 $ icc
 ```
 
-If you run the commands above, `icc` will not be the Intel C compiler as one may expect. Be careful of this and put some effort into choosing alias names. Note that in the above session because the alias was not stored in `~/.bashrc` it will expire when the session ends (i.e., the terminal is closed).
+If you run the commands above, `icc` will not be the Intel C compiler as one may expect. Be careful of this and put some effort into choosing alias names. Note that in the above session because the alias was not stored in `~/.bashrc` it will expire when the session ends (i.e., the shell is exited). When choosing a name for an alias, always make sure that it is not already in use:
+
+```
+$ cq
+-bash: cq: command not found
+```
 
 ## Connecting to a cluster
 
