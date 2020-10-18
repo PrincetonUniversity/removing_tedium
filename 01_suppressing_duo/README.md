@@ -99,7 +99,15 @@ $ ssh -O stop mcmillan     -- kills the multiplexed session
 
 ### Off-Campus
 
-As if that wasn't enough information, there is yet another option which can use a proxy server. See `man ssh_config` in the section for ProxyJump. In your local .ssh/config you'll continue using the multiplexer as stated above but with a different config. You'll need to do a `mkdir ~/.ssh/sockets` in order to use this approach.
+There is another option which uses the `tigressgateway` proxy server which is needed for VPN-free access from off-campus. See `man ssh_config` in the section for ProxyJump.
+
+Step 1: On your local machine make this directory:
+
+```
+$ mkdir ~/.ssh/sockets
+```
+
+Step 2: Modify your `.ssh/config` files as follows:
 
 ```
 Host tigressgateway.princeton.edu
@@ -116,11 +124,17 @@ Host perseus.princeton.edu
          ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
-From my local machine I can `ssh perseus` which says to use the proxyjump server called tigressgateway. It first goes to tigressgateway, Duo authenticates, then hops to perseus. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through.
+From the local machine, one can then do:
+
+```
+$ ssh <YourNetID>@perseus.princeton.edu
+```
+
+The above command will use the proxyjump server `tigressgateway`. The connection first goes to tigressgateway where it Duo authenticates before hopping to perseus. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through.
 
 You should be able to `scp localfile aturing@perseus.princeton.edu` without incurring extra Duo authentications since the connection is established and multiplexed.
 
-Below is a sample file of `.ssh/config` (**replace aturing with your NetID**):
+Below is a sample file of `.ssh/config` (**replace aturing with your NetID**) for multiple clusters:
 
 ```
 Host tigressgateway.princeton.edu
