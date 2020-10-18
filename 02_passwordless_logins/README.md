@@ -1,6 +1,6 @@
 # SSH login without password
 
-To login to an HPC cluster without entering a password we will first create public and private "keys" on our **local machine**. The public key will then be appended to `~/.ssh/authorized_keys` on the desired cluster. When we try to connect to that cluster if the public and private keys match then we will be granted access without needing to type our password.
+To login to an HPC cluster without entering a password we will first create public and private "keys" on our **local machine** (e.g., laptop). The public key will then be appended to `~/.ssh/authorized_keys` on the desired cluster. When we try to connect to that cluster if the public and private keys match then we will be granted access without needing to type our password.
 
  <p align="center"><img src="http://itdoc.hitachi.co.jp/manuals/3021/3021335010e/GRAPHICS/ZU020130.GIF" align="center"></p>
 
