@@ -20,7 +20,7 @@ Be sure to replace `<YourNetID>` with your actual NetID (e.g., aturing). After d
 
 ## Store your aliases and shell functions in .bashrc
 
-To make your aliases and shell functions available to all shells, store them in your `.bashrc` file. Here is the contents of `.bashrc` for a new account:
+To make your aliases and shell functions available each time you log in, store them in your `.bashrc` file. Here is the contents of `.bashrc` for a new account:
 
 ```
 $ cat ~/.bashrc
@@ -36,7 +36,7 @@ fi
 # User specific aliases and functions
 ```
 
-The last line above is showing us where to store aliases and shell function but exactly how to do this depends on where you have accounts.
+The last line above indicates where to store aliases and shell functions, but exactly how to do this depends on where you have accounts.
 
 ### If you only have an account on Adroit
 
@@ -69,19 +69,20 @@ You only need to source your `~/.bashrc` file when you add an alias in the curre
 
 ### If you have an account on Della, Perseus, Tiger or Tigressdata
 
-Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `.bashrc` file on the clusters that you have accounts on:
+Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `.bashrc` file for each account. Here is the three-step procedure for this:
+
 <br/><br/>
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
 <br/><br/>
 
-For example, make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add this line to each of your `.bashrc` files:
+That is, make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add the following line to each of your `.bashrc` files:
 
 ```
 # User specific aliases and functions
 source /tigress/<YourNetID>/myshortcuts.sh
 ```
 
-This approach eliminates redundancy. Changes made to `myshortcuts.sh` are available to all the clusters that you have access to. Unfortunately, this will not work for Adroit or Nobel since these clusters do not mount `/tigress`.
+This approach ensures that your shortcuts remain in sync across all of you accounts. Unfortunately, this will not work for Adroit or Nobel since those clusters do not mount `/tigress`. You will have to manually update the `~/.bashrc` files for those systems.  One way to do this is to scp `myshortcuts.sh` from `/tigress` to those machines.
 
 *Exercise*: SSH to one of the HPC clusters and add the `sq` alias to `~/.bashrc` (Adroit) or `/tigress/<YourNetID>/myshortcuts.sh` (all clusters except Adroit).
 
