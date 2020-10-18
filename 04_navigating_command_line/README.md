@@ -60,6 +60,8 @@ $ pwd
 /home/aturing/work
 ```
 
+See `pushd` and `popd` for a more general approach for returning to previous locations.
+
 ## Keyboard remappings
 
 Consider having the `[Caps Lock]` key remapped to the `[Ctrl]` or `[Esc]` key. What other remapping can you make to improve productivity?
