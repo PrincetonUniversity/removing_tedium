@@ -1,6 +1,6 @@
 # Suppressing DUO
 
-DUO enhances security. It can also be annoying and disruptive. Here are two approaches to suppressing DUO. We recommend using the first approach below due to its simplicity.
+DUO enhances security. It can also be annoying and disruptive. Here are two approaches to suppressing DUO. We recommend using the first approach below due to its simplicity. Note that by "suppressing" we mean minimizing as opposed to eliminating. You will still need to Duo authenticate but much less so.
 
 ## I. The VPN approach
 
