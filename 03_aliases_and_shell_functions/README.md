@@ -182,6 +182,8 @@ Let's break down each one. The `jj` command prints the contents of the newest fi
 
 Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing command, it is obscure and can be overwritten. `gg` and `hh` are also available.
 
+The meaning of `--` in the commands above is explained [here](https://unix.stackexchange.com/questions/510857/what-is-meaning-of-double-hyphen-in-ls-command).
+
 ## Common shell functions
 
 Combine make directory and change directory into a single command:
