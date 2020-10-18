@@ -71,7 +71,6 @@ You only need to source your `~/.bashrc` file when you add an alias in the curre
 
 Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `.bashrc` file for each account. Here is the three-step procedure for this:
 
-<br/><br/>
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
 <br/><br/>
 
