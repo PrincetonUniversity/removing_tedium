@@ -14,8 +14,8 @@ The use of a VPN will decrease your internet connection speed. The table below w
 
 | VPN           | Download (Mbps)| Upload (Mbps)  |
 | ------------- |:-------------:|:-----:|
-| No VPN        | 901           |   712 |
-| No VPN        | 912           |   660 |
+| None          | 901           |   712 |
+| None          | 912           |   660 |
 | GlobalProtect | 473           |   342 |
 | GlobalProtect | 511           |   290 |
 | SonicWall     | 38            |    52 |
