@@ -91,7 +91,7 @@ Exit from tigressdata, and the next time you connect you should not need your pa
 Follow [these directions](https://www.techrepublic.com/blog/10-things/how-to-generate-ssh-keys-in-openssh-for-windows-10/) to create the keys but don't follow the "Copying the public key securely" procedure. If your public key is on your laptop in `~/.ssh/id_rsa.pub` then the following can be used to copy it to the desired HPC cluster:
 
 ```
-$ cat ~/.ssh/id_rsa.pub | ssh <NetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+$ cat ~/.ssh/id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 ## Windows for PuTTY users
