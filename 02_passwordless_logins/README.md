@@ -51,6 +51,8 @@ Copy the public key to the server's `authorized_keys` file (enter your password 
 
 ```
 $ ssh-copy-id <YourNetID>@<hpc_cluster>.princeton.edu
+# answer "yes"
+# enter password and DUO authenticate
 ```
 
 Here is an example session:
