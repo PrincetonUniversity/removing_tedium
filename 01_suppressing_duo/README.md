@@ -1,6 +1,6 @@
-# Suppressing DUO
+# Suppressing Duo
 
-DUO enhances security. It can also be annoying and disruptive. Here are two approaches to suppressing DUO. We recommend using the first approach below due to its simplicity. Note that by "suppressing" we mean minimizing as opposed to eliminating. You will still need to Duo authenticate but much less so.
+DUO enhances security. It can also be annoying and disruptive. Here are two approaches to suppressing Duo. We recommend using the first approach below due to its simplicity. Note that by "suppressing" we mean minimizing as opposed to eliminating. You will still need to Duo authenticate but much less so.
 
 ## I. VPN Approach
 
@@ -27,7 +27,7 @@ The use of a VPN will decrease your internet connection speed. The table below w
 
 The SonicWall VPN severely decreases transfer rates and should be avoided. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below.
 
-Another approach which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della). If you are transferring many files you will want to use multiplexing to avoid DUO authentication as described below.
+Another approach which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della). If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
 
 ### If the Linux VPN is not working
 
@@ -49,11 +49,11 @@ startctui
 
 The following solution is from Bill Wichser of Research Computing. It is reproduced here from [this post](https://askrc.princeton.edu/question/331/how-do-i-avoid-having-to-authenticate-with-duo-every-time/).
 
-Q: *How do I avoid having to authenticate with DUO every time?*
+Q: *How do I avoid having to authenticate with Duo every time?*
 
 A: Yes this is painful! But there are a few things one can do. I will explain one approach using ssh multiplexing which uses a single ssh connection and channels all communication over that channel. This means that only once will you need to DUO authenticate.
 
-But do be aware of why DUO is being used in the first place. It is to protect our systems. As a member or affiliate of Princeton University, you are a part of that "our systems" group. The reason I mention this is because you do have options with the method I am going to provide with respect to time limits on how long the multiplexed functionality remains operational. Set too low and the next ssh/scp will require DUO authentication again. But set too high, protection could be bypassed which makes us all vulnerable.
+But do be aware of why Duo is being used in the first place. It is to protect our systems. As a member or affiliate of Princeton University, you are a part of that "our systems" group. The reason I mention this is because you do have options with the method I am going to provide with respect to time limits on how long the multiplexed functionality remains operational. Set too low and the next ssh/scp will require DUO authentication again. But set too high, protection could be bypassed which makes us all vulnerable.
 
 To make this work, on your Linux or macOS machine, edit the file `~/.ssh/config` and add a machine stanza which looks like this:
 
@@ -73,7 +73,7 @@ The very first login to mcmillan would now start the multiplexing option.
 ssh mcmillan
 ```
 
-It will DUO authenticate. But any other sessions will now use that connection and not require it. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, for the time limit once the last ssh session has terminated.
+It will Duo authenticate. But any other sessions will now use that connection and not require it. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, for the time limit once the last ssh session has terminated.
 
 Some handy commands from your desktop:
 
