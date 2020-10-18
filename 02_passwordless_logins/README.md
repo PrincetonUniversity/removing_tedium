@@ -121,5 +121,5 @@ Once you have setup passwordless logins, you can run commands on the clusters wi
 
 ```
 # on your laptop
-$ ssh jdh4@della.princeton.edu "touch myfile42"
+$ ssh aturing@della.princeton.edu "touch myfile42"
 ```
