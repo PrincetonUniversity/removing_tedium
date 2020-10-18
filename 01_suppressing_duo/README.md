@@ -6,14 +6,14 @@ DUO enhances security. It can also be annoying and disruptive. Here are two appr
 
 Install a VPN client. Connect via the VPN client. Start you work. You will only need to DUO authenticate once per session.
 
-To install a VPN client on your laptop follow this [OIT KnowledgeBase article](https://princeton.service-now.com/snap?id=kb_article&sys_id=ce2a27064f9ca20018ddd48e5210c745) (see "How to configure a Secure Remote Access (SRA) connection" near the bottom).
+To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn) (see "How to configure a Secure Remote Access (SRA) connection" near the bottom). In fact, OIT is responsible for the VPN so please direct any questions or problems to [them](https://princeton.service-now.com/service).
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
 
-The use of a VPN will decrease your internet connect speed. The table below as generated on 10/18/2020 at an off-campus location in Princeton with a FIOS connection using [speedtest.net](https://www.speedtest.net):
+The use of a VPN will decrease your internet connection speed. The table below was generated on 10/18/2020 at an off-campus location in Princeton with a FIOS connection using [speedtest.net](https://www.speedtest.net):
 
 | VPN           | Download (Mbps)| Upload (Mbps)  |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------:|:-----:|
 | No VPN        | 901           |   712 |
 | No VPN        | 912           |   660 |
 | GlobalProtect | 473           |   342 |
