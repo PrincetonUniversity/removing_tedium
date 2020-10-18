@@ -55,7 +55,9 @@ A: Yes this is painful! But there are a few things one can do. I will explain on
 
 But do be aware of why Duo is being used in the first place. It is to protect our systems. As a member or affiliate of Princeton University, you are a part of that "our systems" group. The reason I mention this is because you do have options with the method I am going to provide with respect to time limits on how long the multiplexed functionality remains operational. Set too low and the next ssh/scp will require Duo authentication again. But set too high, protection could be bypassed which makes us all vulnerable.
 
-To make this work, on your Linux or macOS machine, edit the file `~/.ssh/config` and add a machine stanza which looks like this:
+### On-Campus
+
+Step 1: To make this work, on your Linux or macOS machine, edit the file `~/.ssh/config` and add a machine stanza which looks like this:
 
 ```
 Host mcmillan
@@ -65,7 +67,7 @@ Host mcmillan
         ControlPersist 10m
 ```        
 
-Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
+Step 2: Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
 
 The very first login to mcmillan (from on-campus since no VPN) would start the multiplexing option.
 
@@ -81,6 +83,8 @@ Some handy commands from your desktop:
 $ ssh -O check mcmillan    -- this checks whether a multiplexed session is already open
 $ ssh -O stop mcmillan     -- kills the multiplexed session
 ```
+
+### Off-Campus
 
 As if that wasn't enough information, there is yet another option which can use a proxy server. See `man ssh_config` in the section for ProxyJump. In your local .ssh/config you'll continue using the multiplexer as stated above but with a different config. You'll need to do a `mkdir ~/.ssh/sockets` in order to use this approach.
 
