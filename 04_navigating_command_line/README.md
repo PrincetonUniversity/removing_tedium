@@ -69,7 +69,7 @@ Consider having the `[Caps Lock]` key remapped to the `[Esc]` key. This is espec
 Rerun the most recent `<command>` in your history with `!<command>`. Here is an example:
 
 ```
-$ ssh <NetID>@adroit.princeton.edu
+$ ssh <YourNetID>@adroit.princeton.edu
 $ ll
 $ date
 $ !ssh
