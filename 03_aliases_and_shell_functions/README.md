@@ -40,7 +40,7 @@ The last line above indicates where to store aliases and shell functions, but ex
 
 ### If you only have an account on Adroit
 
-You make your aliases and shell functions permanent by adding them to the bottom of your `.bashrc` file on Adroit and then source the file. For instance, use a text editor like vim or emacs to add the `sq` alias:
+You make your aliases and shell functions permanent by adding them to your `.bashrc` file and then sourcing the file. For instance, use a text editor like vim or emacs to add the `sq` alias:
 
 ```
 $ nano ~/.bashrc  # or vim, emacs, MyAdroit, etc.
@@ -66,6 +66,14 @@ $ sq
 ```
 
 You only need to source your `~/.bashrc` file when you add an alias in the current session. When you first log in all aliases will be available.
+
+Once you have built up your `.bashrc` file it will contain aliases and shell functions like those in the example [myshortcuts.sh](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) file in this repo. If you wish to use all the shortcuts in that file then run these commands:
+
+```
+$ wget 
+# add 
+$ source ~/.bashrc
+```
 
 ### If you have an account on Della, Perseus, Tiger or Tigressdata
 
