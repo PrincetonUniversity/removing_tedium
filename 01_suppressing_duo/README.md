@@ -58,7 +58,7 @@ This will cause a "ping" every 30 seconds and hopefully prevent disconnections. 
 
 
 
-## II. Multiplexing Approach
+## II. Multiplexing Approach (VPN free)
 
 The following solution is from Bill Wichser of Research Computing. It is reproduced here from [this post](https://askrc.princeton.edu/question/331/how-do-i-avoid-having-to-authenticate-with-duo-every-time/).
 
