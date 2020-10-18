@@ -67,7 +67,7 @@ Host mcmillan
 
 Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
 
-The very first login to mcmillan would now start the multiplexing option.
+The very first login to mcmillan (from on-campus since no VPN) would start the multiplexing option.
 
 ```
 ssh mcmillan
