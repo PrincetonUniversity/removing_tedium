@@ -8,7 +8,7 @@ To login to an HPC cluster without entering a password we will first create publ
 
 ### Step 1: Create the private/public key pair
 
-On your **local machine** (e.g., laptop), first create the RSA key pair. This is done with the following command (press the [Enter] key 3 times after running the command below, i.e., do not answer any of the questions):
+On your **local machine** (e.g., laptop), first create the RSA key pair. This is done with the following command (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
 
 ```
 $ ssh-keygen -t rsa
