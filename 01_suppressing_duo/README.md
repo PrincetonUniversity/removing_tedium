@@ -6,7 +6,7 @@ DUO enhances security. It can also be annoying and disruptive. Here are two appr
 
 Install a VPN client. Connect via the VPN client. Start you work. You will only need to DUO authenticate once per session (which typically lasts a few hours).
 
-To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn) (see "How to configure a Secure Remote Access (SRA) connection" near the bottom).
+To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn).
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
 
@@ -27,7 +27,7 @@ The use of a VPN will decrease your internet connection speed. The table below w
 
 The SonicWall VPN severely decreases transfer rates and should be avoided. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below.
 
-It is true that a VPN connection will reduce your transfer speeds. If this is the case then do not use it. Instead, ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster. If you are transferring many files you will want to use multiplexing to avoid DUO authentication as described below.
+Another approach which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster. If you are transferring many files you will want to use multiplexing to avoid DUO authentication as described below.
 
 ### If the Linux VPN is not working
 
