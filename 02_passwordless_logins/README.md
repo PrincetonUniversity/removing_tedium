@@ -81,13 +81,13 @@ and check to make sure that only the key(s) you wanted were added.
 
 ### Step 3: Connect to the HPC cluster
 
-Then try to ssh to the cluster. You should no longer need to enter a password. Run the `ssh-copy-id` for each HPC cluster that you have an account on.
+Then try to ssh to the cluster. You should no longer need to enter a password.
 
 If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
 
-### Step 4: Return to step 2 for each HPC cluster
+### Step 4: Return to step 2 for additional HPC clusters
 
-Copy the public key generated in step 1 to each cluster that you have an account on.
+Return to step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test.
 
 ### Trouble with tigressdata
 
