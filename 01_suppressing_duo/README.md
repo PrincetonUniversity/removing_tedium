@@ -4,11 +4,15 @@ DUO enhances security. It can also be annoying and disruptive. Here are two appr
 
 ## I. The VPN approach
 
-Install a VPN client. Connect via the VPN client. Start you work. You will only need to DUO authenticate once per session.
+Install a VPN client. Connect via the VPN client. Start you work. You will only need to DUO authenticate once per session (which typically lasts a few hours).
 
-To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn) (see "How to configure a Secure Remote Access (SRA) connection" near the bottom). In fact, OIT is responsible for the VPN so please direct any questions or problems to [them](https://princeton.service-now.com/service).
+To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn) (see "How to configure a Secure Remote Access (SRA) connection" near the bottom).
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
+
+OIT is responsible for the VPN so please direct any questions or problems to [them](https://princeton.service-now.com/service).
+
+### What if the VPN is too slow?
 
 The use of a VPN will decrease your internet connection speed. The table below was generated on 10/18/2020 at an off-campus location in Princeton with a FIOS connection using [speedtest.net](https://www.speedtest.net):
 
@@ -23,7 +27,9 @@ The use of a VPN will decrease your internet connection speed. The table below w
 
 The SonicWall VPN severely decreases transfer rates and should be avoided. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below.
 
-#### If the Linux VPN is not working
+It is true that a VPN connection will reduce your transfer speeds. If this is the case then do not use it. Instead, ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster. If you are transferring many files you will want to use multiplexing to avoid DUO authentication as described below.
+
+### If the Linux VPN is not working
 
 Try the procedure below from T. Jones of the Tech Clinic if your VPN client on Linux is not working:
 
@@ -37,10 +43,7 @@ sudo apt-get install openjdk-8-jre
 startctui
 ```
 
-#### What if VPN is too slow from off-campus?
 
-It is true that a VPN may reduce your transfer speeds. If this is the case then do not use it. Instead, ssh to `tigressgateway.princeton.edu` and then from 
-there, ssh to your desired cluster. If you are transferring many files you will want to use multiplexing to avoid DUO authentication as described below.
 
 ## II. The Multiplexing Approach
 
