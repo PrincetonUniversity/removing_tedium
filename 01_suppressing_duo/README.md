@@ -126,10 +126,8 @@ Host tigressgateway.princeton.edu
          LocalForward 5917 perseus.princeton.edu:5917
          LocalForward 5918 adroit.princeton.edu:5918
          LocalForward 5919 adroit.princeton.edu:5919
-         LocalForward 5920 nobel.princeton.edu:5920
-         LocalForward 5921 nobel.princeton.edu:5921
-         LocalForward 5922 tigressdata.princeton.edu:5922
-         LocalForward 5923 tigressdata.princeton.edu:5923
+         LocalForward 5922 tigressdata.princeton.edu:5920
+         LocalForward 5923 tigressdata.princeton.edu:5921
 
 Host traverse.princeton.edu
          ProxyJump aturing@tigressgateway.princeton.edu
@@ -162,12 +160,6 @@ Host perseus.princeton.edu
          ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host adroit.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
-
-Host nobel.princeton.edu
          ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
