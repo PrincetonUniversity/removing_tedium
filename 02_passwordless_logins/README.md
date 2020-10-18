@@ -6,6 +6,8 @@ To login to an HPC cluster without entering a password we will first create publ
 
 ## Linux and Mac
 
+### Step 1: Create the private/public key pair
+
 On your **local machine** (e.g., laptop), first create the RSA key pair. This is done with the following command (press the [Enter] key 3 times after running the command below, i.e., do not answer any of the questions):
 
 ```
@@ -43,6 +45,8 @@ The key's randomart image is:
 
 The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. Keep your private key private. Do not share it. However, you can share your public key and we will do that next.
 
+### Step 2: Copy the public key to the HPC cluster
+
 Copy the public key to the server's `authorized_keys` file (enter your password for the **HPC cluster** when prompted):
 
 ```
@@ -75,9 +79,15 @@ Now try logging into the machine, with:   "ssh 'jdh4@tiger.princeton.edu'"
 and check to make sure that only the key(s) you wanted were added.
 ```
 
+### Step 3: Connect to the HPC cluster
+
 Then try to ssh to the cluster. You should no longer need to enter a password. Run the `ssh-copy-id` for each HPC cluster that you have an account on.
 
 If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
+
+### Step 4: Return to step 2 for each HPC cluster
+
+Copy the public key generated in step 1 to each cluster that you have an account on.
 
 ### Trouble with tigressdata
 
