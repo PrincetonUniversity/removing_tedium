@@ -51,18 +51,18 @@ Here is a sample session:
 
 ```
 $ pwd
-/home/ceisgrub/work
-$ cd /tigress/ceisgrub/plasma/proposal
+/home/aturing/work
+$ cd /tigress/aturing/crypto/research
 $ pwd
-/tigress/ceisgrub/plasma/proposal
+/tigress/aturing/crypto/research
 $ cd -
 $ pwd
-/home/ceisgrub/work
+/home/aturing/work
 ```
 
 ## Keyboard remappings
 
-Consider having the `[Caps Lock]` key remapped to the `[Esc]` key. This is especially useful for `vim` users. What other remapping can you make to improve productivity?
+Consider having the `[Caps Lock]` key remapped to the `[Ctrl]` or `[Esc]` key. What other remapping can you make to improve productivity?
 
 ## Running a previous command
 
