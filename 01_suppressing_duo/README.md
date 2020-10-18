@@ -2,7 +2,7 @@
 
 DUO enhances security. It can also be annoying and disruptive. Here are two approaches to suppressing DUO. We recommend using the first approach below due to its simplicity. Note that by "suppressing" we mean minimizing as opposed to eliminating. You will still need to Duo authenticate but much less so.
 
-## I. The VPN approach
+## I. VPN Approach
 
 Install a VPN client. Connect via the VPN client. Start you work. You will only need to DUO authenticate once per session (which typically lasts a few hours).
 
@@ -45,7 +45,7 @@ startctui
 
 
 
-## II. The Multiplexing Approach
+## II. Multiplexing Approach
 
 The following solution is from Bill Wichser of Research Computing. It is reproduced here from [this post](https://askrc.princeton.edu/question/331/how-do-i-avoid-having-to-authenticate-with-duo-every-time/).
 
