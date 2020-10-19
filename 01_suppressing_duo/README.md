@@ -70,7 +70,7 @@ But do be aware of why Duo is being used in the first place. It is to protect ou
 
 ### On-Campus
 
-Step 1: To make this work, on your Linux or macOS machine, edit the file `~/.ssh/config` and add a machine stanza which looks like this:
+Step 1: To make this work, on your Linux or macOS machine, edit the file `~/.ssh/config` and add a machine stanza which looks like this (replace aturing with your NetID):
 
 ```
 Host della.princeton.edu della
