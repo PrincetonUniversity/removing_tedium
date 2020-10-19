@@ -224,6 +224,14 @@ $ pwd
 
 The `cl` function cd's into a specified directory and runs the `ll` alias. The `..` alias above allows us to type 2 keys instead of 5 to go up a level.
 
+## To see your shell functions
+
+```
+$ set | less
+```
+
+Note that there are many pre-defined functions.
+
 ## Environment modules
 
 Here are some aliases for quickly working with modules:
