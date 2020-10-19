@@ -689,6 +689,8 @@ shopt -s autocd      # change directory w/o cd if entry is invalid
 shopt -s extglob     # enable extended glob patterns
 ```
 
+For all the possible options and their meanings see `man bash`.
+
 With `shopt -s autocd` one can `cd` without typing `cd`:
 
 ```
