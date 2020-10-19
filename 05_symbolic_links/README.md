@@ -16,7 +16,7 @@ However, with a symbolic link called `scr` you would just type:
 $ cd scr
 ```
 
-With `shopt -s autocd` in your `.bashrc` file the `cd` could be omitted and one just use: `$ scr` 
+With `shopt -s autocd` in your `.bashrc` file the `cd` could be omitted: `$ scr` 
 
 Here is how to create the link in your home directory:
 
