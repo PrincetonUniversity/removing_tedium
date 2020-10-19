@@ -101,11 +101,11 @@ $ ssh -O stop della     -- kills the multiplexed session
 
 When off-campus and not using a VPN, one can use `tigressgateway` as a proxyjump server.
 
-Step 1: On your local machine make these directories:
+Step 1: On your local machine make these directories and set the permissions:
 
 ```
-$ mkdir -p ~/.ssh/sockets
 $ mkdir -p ~/.ssh/controlmasters
+$ mkdir -p ~/.ssh/sockets
 $ chmod 700 ~/.ssh/sockets
 ```
 
