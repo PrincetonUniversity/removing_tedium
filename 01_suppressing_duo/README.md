@@ -49,9 +49,9 @@ If your VPN is disconnecting too frequently (minutes instead of hours) then try 
 
 ```
 Host *
-     Compression yes
-     ServerAliveInterval 30
-     ServerAliveCountMax 10
+  Compression yes
+  ServerAliveInterval 30
+  ServerAliveCountMax 10
 ```
 
 This will cause a "ping" every 30 seconds and hopefully prevent disconnections. OIT manages the VPN. Please [contact](https://princeton.service-now.com/service) them for assistance.
