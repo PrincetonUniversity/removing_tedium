@@ -502,55 +502,6 @@ To list the size of each directory to know which files to delete to free space:
 alias dirsize='du -h --max-depth=1 | sort -hr'
 ```
 
-## Jupyter notebooks
-
-On your laptop:
-
-```
-alias jn='jupyter notebook'
-```
-
-## Listing, activating and removing Conda environments
-
-Python programmers may benefit from:
-
-```
-alias mla='module load anaconda3'
-```
-
-If you are a Python user with many Conda environments then the following can be used to print out your environments:
-
-```
-alias myenvs='module load anaconda3 && conda info --envs | grep . | grep -v "#" | cat -n'
-```
-
-The above alias uses two commands.  Can you think of an alias involving the modules you use?
-
-To activate an environment by its number:
-
-```
-actenv() { conda activate $(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d ' ' -f 1); }
-```
-
-A session using the two aliases above might look like this:
-
-```
-[ceisgrub@tigergpu ~]$ myenvs
-     1	tf2-gpu                  /home/jdh4/.conda/envs/tf2-gpu
-     2	torch-env                /home/jdh4/.conda/envs/torch-env
-     3	base                  *  /usr/licensed/anaconda3/2019.10
-[ceisgrub@tigergpu ~]$ actenv 2
-(torch-env) [ceisgrub@tigergpu ~]$
-```
-
-Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in these scripts.
-
-Below is a shell function to remove an environment by name (e.g., `$ rmenv torch-env`):
-
-```
-rmenv() { conda remove --name "$1" --all; }
-```
-
 ## Weather
 
 Get a weather report for Princeton, NJ:
@@ -606,7 +557,7 @@ Location: Princeton, Mercer County, New Jersey, United States of America [40.349
 Follow @igor_chubin for wttr.in updates
 ```
 
-## Calling applications and better commands
+## Enhanced commands
 
 ```
 alias vi='vim'
@@ -642,12 +593,6 @@ alias ldd='otool -L'
 ```
 
 This will allow you call `wget` as you would on a Linux machine. The `wget` command can be used to download files from the internet.
-
-## To see shell functions
-
-```
-$ set | less
-```
 
 ## Examine your history for commands to be aliased
 
