@@ -123,7 +123,7 @@ optional arguments:
 Try these options:
 
 ```
-$ slr -j myjob -t 72
+$ slr -j test -t 72
 $ jj   # jj is an alias defined previously
 $ slr -g 4
 $ jj
