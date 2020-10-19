@@ -1,4 +1,4 @@
-#!/usr/licensed/anaconda3/2019.3/bin/python
+#!/usr/licensed/anaconda3/2020.7/bin/python
 
 import argparse
 
@@ -29,7 +29,8 @@ with open('job.slurm', 'w') as f:
   f.write("#SBATCH --mail-type=end          # send email when job ends\n")
   f.write("#SBATCH --mail-user=<YourNetID>@princeton.edu\n")
   f.write("\n")
+  f.write("module purge\n")
   f.write("module load anaconda3\n")
-  f.write("conda activate tf-gpu\n")
+  f.write("conda activate myenv\n")
   f.write("\n")
-  f.write("srun python my-tf-script.py\n")
+  f.write("python myscript.py\n")
