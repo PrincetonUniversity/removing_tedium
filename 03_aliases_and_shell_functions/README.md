@@ -377,7 +377,7 @@ $ cpu5 -t 20
 
 For more on salloc see [this page](https://researchcomputing.princeton.edu/slurm).
 
-### ssh to the compute node where your last job is running
+### ssh to the compute node where your last job is running without knowing the job id
 
 It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, thread performance and GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
 
@@ -387,7 +387,7 @@ goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
 
 This method will not work when multiple nodes are used to run the job.
 
-### Cancel your most recently submitted job
+### Cancel your most recently submitted job without knowing the job id
 
 Running `mycancel` will automatically find the job id of your most recent job and cancel it:
 
