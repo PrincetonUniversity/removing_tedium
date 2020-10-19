@@ -63,7 +63,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-j', '--job-name', type=str, action='store', dest='jobname',
-                    default='tf-gan', help='Job name')
+                    default='myjob', help='Job name')
 parser.add_argument('-t', '--time', type=str, action='store', dest='walltime',
                     default='48', help='Required time')
 parser.add_argument('-g', '--gpu', type=int, action='store', dest='gpu',
