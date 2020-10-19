@@ -237,13 +237,13 @@ alias mlc='module load cudatoolkit'
 alias rh8='module load rh/devtoolset/8'
 ```
 
-Another approach would be to define aliases like this:
+Another approach would be to define an alias like this:
 
 ```
 alias modl='module load'
 ```
 
-The above alias could be used like this:
+Then use it as follows:
 
 ```
 $ modl anaconda3
