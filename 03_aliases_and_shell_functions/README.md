@@ -516,60 +516,7 @@ Your fairshare value plays a key role in determining your job priority. The more
 alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
 ```
 
-To learn more about job priority see [this post](https://askrc.princeton.edu/question/238/what-determines-my-jobs-priority-under-slurm/).
-
-## Template files
-
-There are often cases where you want a default version of a file. There is where template files can be used. First create a directory for these files:
-
-```
-mkdir ~/.template-files
-```
-
-Create file in that directory called `job.slurm` with the following contents:
-
-```
-#!/bin/bash
-#SBATCH --job-name=cxx_serial    # create a short name for your job
-#SBATCH --nodes=1                # node count
-#SBATCH --ntasks=1               # total number of tasks across all nodes
-#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multithread tasks)
-#SBATCH --mem-per-cpu=1G         # memory per cpu-core (4G is default)
-#SBATCH --time=00:00:10          # total run time limit (HH:MM:SS)
-#SBATCH --mail-type=begin        # send mail when process begins
-#SBATCH --mail-type=end          # send email when job ends
-#SBATCH --mail-user=<YourNetID>@princeton.edu
-
-module purge
-module load intel
-
-srun ./hello_world
-```
-
-Then create this alias:
-
-```
-SLURMSCRIPT='job.slurm'
-alias slr='cp -i ~/.template-files/$SLURMSCRIPT . && echo "Wrote job.script"'
-```
-
-After sourcing your `.bashrc` file, when you run `slr` it will place a copy of `job.slurm` in the current directory. Can you think of other files that could serve as a template?
-
-If you have accounts of more than one HPC cluster then you should create the `.template-files` directory on tigress. This will allow you to have all these files in one place. Of course, your aliases should also be saved in `my_aliases.bash` in your tigress directory.
-
-You may consider removing write permission on template files with chmod 600.
-
-## TurboVNC
-
-While X11 forwarding (via `ssh -X`) is usually sufficient to work with graphics on the HPC clusters, TurboVNC is a faster alternative. See the bottom of [this page](https://researchcomputing.princeton.edu/faq/how-do-i-use-vnc-on-tigre) for shells function to ease the setup.
-
-## Time Limits on Della
-
-```
-if [[ $(hostname) == della* ]]; then
-    alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '\''/_MINS/ {print "  "$1,"<=",$3" mins ("$3/60 " hrs)"}'\'''
-fi
-```
+To learn more about job priority see [this post](https://researchcomputing.princeton.edu/priority).
 
 ## Weather
 
