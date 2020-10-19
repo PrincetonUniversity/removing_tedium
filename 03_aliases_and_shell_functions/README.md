@@ -298,7 +298,7 @@ Loading anaconda3 module ...
      3	tf2-gpu                  /home/aturing/.conda/envs/tf2-gpu
      4	torch-env                /home/aturing/.conda/envs/torch-env
      5	base                  *  /usr/licensed/anaconda3/2019.10
-[aturing@tigergpu ~]$ conac 4
+(base) [aturing@tigergpu ~]$ conac 4
 (torch-env) [aturing@tigergpu ~]$
 (torch-env) [aturing@tigergpu ~]$ conde
 (base) [aturing@tigergpu ~]$ conrm 1
