@@ -50,7 +50,7 @@ Be sure to run `source ~/.bashrc` so that the changes to `PATH` take effect.
 
 Earlier we learned how to cancel the most recently submitted job using `mycancel`:
 
-```
+```bash
 mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
 ```
 
