@@ -139,4 +139,4 @@ test
 </body></html>
 ```
 
-Note that whatever you place in your `public_hmtl` directory will be on the internet. Also, the contents of that directory are backed-up so don't put thousands of files in it or large files unless you need to. More on this later.
+Note that whatever you place in your `public_html` directory will be on the internet. Also, the contents of that directory are backed-up so don't put thousands of files in it or large files unless you need to. More on this later.
