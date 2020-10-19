@@ -10,7 +10,7 @@ From your home directory you could `cd` to your `/scratch/gpfs` directory with:
 $ cd /scratch/gpfs/<NetID>
 ```
 
-However, with a symbolic link called `grs` you would just type:
+However, with a symbolic link called `scr` you would just type:
 
 ```
 $ cd scr
