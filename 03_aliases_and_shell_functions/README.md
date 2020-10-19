@@ -574,6 +574,7 @@ Follow @igor_chubin for wttr.in updates
 alias vi='vim'
 alias top='htop'
 alias cmake='cmake3'
+alias R='R --vanilla --quiet'
 ```
 
 Shadowing is the remapping of a command with different parameters.
