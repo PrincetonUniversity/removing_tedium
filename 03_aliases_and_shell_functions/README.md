@@ -8,7 +8,7 @@ Commonly repeated commands should be replaced by an alias, which is a shorter na
 
 Let's illustrate the process of creating an alias using this popular command:
 
-```
+```bash
 $ squeue -u <YourNetID>
 ```
 
@@ -56,7 +56,7 @@ $ nano ~/.bashrc  # or vim, emacs, MyAdroit, etc.
 
 Add this line:
 
-```
+```bash
 # User specific aliases and functions
 alias sq='squeue -u <YourNetID>'
 ```
@@ -103,7 +103,7 @@ Once the setup is complete, begin adding aliases and shell functions to `myshort
 
 You can make new additions to `myshortcuts.sh` activate in the current shell by sourcing your `.bashrc` file which will in turn source `myshortcuts.sh`:
 
-```
+```bash
 $ source ~/.bashrc
 ```
 
@@ -143,14 +143,14 @@ $ icc
 
 If you run the commands above, `icc` will not be the Intel C compiler as one may expect. Be careful of this and put some effort into choosing alias names. When choosing a name for an alias, always make sure that it is not already in use:
 
-```
+```bash
 $ cq
 -bash: cq: command not found
 ```
 
 We see that `cq` is not in use so this could be used as an alias for the `checkquota` command:
 
-```
+```bash
 alias cq='checkquota'
 ```
 
@@ -205,7 +205,7 @@ The meaning of `--` in the commands above is explained [here](https://unix.stack
 
 Here are some shell functions and aliases for creating directories and moving around the filesystem:
 
-```
+```bash
 mk() { mkdir -p "$1" && cd "$1"; }
 cl() { cd "$1" && ll; } # uses alias defined above
 alias ..='cd ..'
@@ -214,7 +214,7 @@ alias ...='cd ../..'
 
 `mk` is the first shell function that we have encountered. The existence of `$1` in the body of the function corresponds to the input paramter. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. The `mk` function makes a directory and then cd's into that directory:
 
-```
+```bash
 $ pwd
 /home/aturing
 $ mk myproj
@@ -226,7 +226,7 @@ The `cl` function cd's into a specified directory and runs the `ll` alias. The `
 
 ## To see your shell functions
 
-```
+```bash
 $ set | less
 ```
 
@@ -236,7 +236,7 @@ Note that there are many pre-defined functions.
 
 Here are some aliases for quickly working with modules:
 
-```
+```bash
 alias ma='module avail'
 alias mp='module purge'
 alias ml='module list'
@@ -247,13 +247,13 @@ alias rh8='module load rh/devtoolset/8'
 
 Another approach would be to define an alias like this:
 
-```
+```bash
 alias modl='module load'
 ```
 
 Then use it as follows:
 
-```
+```bash
 $ modl anaconda3
 ```
 
@@ -300,7 +300,7 @@ Remove an environment by the number given by `conen`. This command is similar to
 
 A session using the shortcuts above might look like this:
 
-```
+```bash
 [aturing@tigergpu ~]$ conen
 Loading anaconda3 module ...
      1  py36                     /home/aturing/.conda/envs/py36
@@ -323,7 +323,7 @@ Note that aliases do not work in Slurm scripts. You will need to explicitly load
 
 If you submit a lot of jobs with commands like `sbatch job.slurm` or `sbatch submit.sh`. You may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
 
-```
+```bash
 SLURMSCRIPT='job.slurm'
 alias sb='sbatch $SLURMSCRIPT'
 ```
@@ -336,13 +336,13 @@ $ sb
 
 You can distinguish different jobs by setting the job name in the Slurm script:
 
-```
+```bash
 #SBATCH --job-name=multivar      # create a short name for your job
 ```
 
 The alias below submits the job and then launches `watch`. This allows one to know when short test jobs start running:
 
-```
+```bash
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 ```
 
@@ -350,19 +350,19 @@ alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 
 Show the state of your running and pending jobs:
 
-```
+```bash
 alias sq='squeue -u $USER'
 ```
 
 See the expected start times of pending jobs:
 
-```
+```bash
 alias sqs='squeue -u $USER --start'
 ```
 
 Watch your jobs in the queue (useful for knowing when test jobs run):
 
-```
+```bash
 alias wq='watch -n 1 squeue -u $USER'
 ```
 
@@ -372,14 +372,14 @@ This will create an alias which will display the result of the squeue command fo
 
 Use the aliases below to work interactively on a compute nodes (with and without a GPU) for 5 minutes:
 
-```
+```bash
 alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
 alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
 ```
 
 Note that you can modify the values of the parameters. For instance, for a 20-minute CPU allocation:
 
-```
+```bash
 $ cpu5 -t 20
 ```
 
@@ -389,7 +389,7 @@ For more on salloc see [this page](https://researchcomputing.princeton.edu/slurm
 
 It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, thread performance and GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
 
-```
+```bash
 goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
 ```
 
@@ -399,7 +399,7 @@ This method will not work when multiple nodes are used to run the job.
 
 Running `mycancel` will automatically find the job id of your most recent job and cancel it:
 
-```
+```bash
 mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=2); }
 ```
 
@@ -407,7 +407,7 @@ mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -
 
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
-```
+```bash
 eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
 ```
 
@@ -417,7 +417,7 @@ The `eff` shortcuts automatically figures out the job id and runs `seff` on that
 
 Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your group run in a given period of time the lower your fairshare value. The maximum value is 1.
 
-```
+```bash
 alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
 ```
 
@@ -425,7 +425,7 @@ To learn more about job priority see [this page](https://researchcomputing.princ
 
 ## GPU aliases
 
-```
+```bash
 alias smi='nvidia-smi'
 alias wsmi='watch -n 1 nvidia-smi'
 ```
@@ -434,7 +434,7 @@ After submitting a GPU job it is common to run `goto` followed by `wsmi` on the 
 
 ## Specific to Adroit
 
-```
+```bash
 if [[ $(hostname) == adroit* ]]; then
   alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:tesla_v100:1'
   alias v100='ssh adroit-h11g1'
@@ -447,7 +447,7 @@ There is one node on Adroit with V100 GPUs. The aliases are concerned with this 
 
 To get the run time limits for the different job partitions (qos) on Della:
 
-```
+```bash
 if [[ $(hostname) == della* ]]; then
     alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '"'"'/_MINS/ \
                   {print "  "$1,"<=",$3" mins ("$3/60 " hrs)"}'"'"''
@@ -463,7 +463,7 @@ While X11 forwarding (via `ssh -X`) is usually sufficient to work with graphics 
 
 The `checkquota` command provides information about available storage space and number of files. While it's only 10 characters, given its frequent use you may consider reducing it to 2:
 
-```
+```bash
 alias cq='checkquota'
 ```
 
@@ -509,7 +509,7 @@ To learn about interactive shells and `$PS1` see [this page](https://www.gnu.org
 
 To list the size of each directory to know which files to delete to free space:
 
-```
+```bash
 alias dirsize='du -h --max-depth=1 | sort -hr'
 ```
 
@@ -517,7 +517,7 @@ alias dirsize='du -h --max-depth=1 | sort -hr'
 
 Get a weather report for Princeton, NJ:
 
-```
+```bash
 alias wthr='/usr/bin/clear && date && curl -s wttr.in/princeton'
 ```
 
@@ -570,7 +570,7 @@ Follow @igor_chubin for wttr.in updates
 
 ## Enhanced commands
 
-```
+```bash
 alias vi='vim'
 alias top='htop'
 alias cmake='cmake3'
@@ -583,13 +583,13 @@ Shadowing is the remapping of a command with different parameters.
 
 Use this alias to watch anything:
 
-```
+```bash
 alias wa='watch -n 1'
 ```
 
 Use it as follows:
 
-```
+```bash
 $ wa ls -l # if downloading a file
 $ wa date
 $ wa squeue -u $USER
@@ -599,7 +599,7 @@ $ wa squeue -u $USER
 
 Add this alias to `~/.bash_profile` on your Mac:
 
-```
+```bash
 alias wget='curl -O'
 alias ldd='otool -L'
 ```
@@ -610,23 +610,23 @@ This will allow you call `wget` as you would on a Linux machine. The `wget` comm
 
 Try running the following command on your history to look for common commands to create an alias for:
 
-```
-history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
+```bash
+$ history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
 ```
 
 ## More ideas
 
 See [this page](https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions) for more aliases and shell functions. To see aliases used by other users on the cluster, run this command:
 
-```
-find /home -maxdepth 2 -type f -name '.bashrc' 2>/dev/null | xargs grep 'alias' | grep -v 'User specific aliases and functions' | sed 's/^.*\(alias\)/\1/' | sort | uniq | cat -n
+```bash
+$ find /home -maxdepth 2 -type f -name '.bashrc' 2>/dev/null | xargs grep 'alias' | grep -v 'User specific aliases and functions' | sed 's/^.*\(alias\)/\1/' | sort | uniq | cat -n
 ```
 
 # History
 
 Your `~/.bash_history` file stores the commands you ran. The settings below increase the number of entries allowed in this file, include a timestamp with each command and combine history from different shells.
 
-```
+```bash
 export HISTSIZE=50000                # lines of history to keep
 export HISTFILESIZE=50000            # keep extended history file
 export HISTTIMEFORMAT='%F %T '       # show date and time of past commands
@@ -638,7 +638,7 @@ alias h8='history 150 | cut -c 28-'  # ignore index and timestamp
 
 Enhance your shell with these settings:
 
-```
+```bash
 shopt -s histappend  # all shells write to same history
 shopt -s checkjobs   # check if background jobs are running on exit
 shopt -s cdspell     # guess misspelled cd commands
@@ -650,7 +650,7 @@ For all the possible options and their meanings see `man bash`.
 
 With `shopt -s autocd` one can `cd` without typing `cd`:
 
-```
+```bash
 $ pwd
 /home/aturing
 $ ls
@@ -663,7 +663,7 @@ $ pwd
 
 With `shopt -s cdspell` one can do:
 
-```
+```bash
 $ cd mypoj
 myproj
 $ pwd
