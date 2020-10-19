@@ -141,7 +141,7 @@ $ module load intel
 $ icc
 ```
 
-If you run the commands above, `icc` will not be the Intel C compiler as one may expect. Be careful of this and put some effort into choosing alias names. Note that in the above session because the alias was not stored in `~/.bashrc` it will expire when the session ends (i.e., the shell is exited). When choosing a name for an alias, always make sure that it is not already in use:
+If you run the commands above, `icc` will not be the Intel C compiler as one may expect. Be careful of this and put some effort into choosing alias names. When choosing a name for an alias, always make sure that it is not already in use:
 
 ```
 $ cq
