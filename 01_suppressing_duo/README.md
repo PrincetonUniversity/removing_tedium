@@ -73,8 +73,8 @@ But do be aware of why Duo is being used in the first place. It is to protect ou
 Step 1: To make this work, on your Linux or macOS machine, edit the file `~/.ssh/config` and add a machine stanza which looks like this:
 
 ```
-Host mcmillan
-        HostName mcmillan.princeton.edu
+Host della
+        HostName della.princeton.edu
         ControlPath ~/.ssh/controlmasters/%r@%h:%p
         ControlMaster auto
         ControlPersist 10m
@@ -82,60 +82,60 @@ Host mcmillan
 
 Step 2: Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
 
-The very first login to mcmillan (from on-campus since no VPN) would start the multiplexing option.
+The very first login to `della` (from on-campus since no VPN) would start the multiplexing option.
 
 ```
-ssh mcmillan
+$ ssh della
 ```
 
-It will Duo authenticate. But any other sessions will now use that connection and not require it. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, for the time limit once the last ssh session has terminated.
+It will Duo authenticate but subsequent sessions will use that connection and not require Duo. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, for the time limit once the last ssh session has terminated.
 
-Some handy commands from your desktop:
+Some handy commands from your local machine (laptop/desktop):
 
 ```
-$ ssh -O check mcmillan    -- this checks whether a multiplexed session is already open
-$ ssh -O stop mcmillan     -- kills the multiplexed session
+$ ssh -O check della    -- this checks whether a multiplexed session is already open
+$ ssh -O stop della     -- kills the multiplexed session
 ```
 
 ### Off-Campus
 
-There is another option which uses the `tigressgateway` proxy server which is needed for VPN-free access from off-campus. See `man ssh_config` in the section for ProxyJump.
+When off-campus and not using a VPN, one can use `tigressgateway` as a proxyjump server.
 
-Step 1: On your local machine make this directory:
+Step 1: On your local machine make these directories:
 
 ```
-$ mkdir ~/.ssh/sockets
-$ mkdir ~/.ssh/controlmasters
+$ mkdir -p ~/.ssh/sockets
+$ mkdir -p ~/.ssh/controlmasters
 ```
 
-Step 2: Modify your `.ssh/config` files as follows:
+Step 2: Modify your `.ssh/config` file as follows (**replace aturing with your NetID**):
 
 ```
 Host tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
-         LocalForward 5908 perseus.princeton.edu:5908
-         LocalForward 5909 perseus.princeton.edu:5909
+         LocalForward 5908 della.princeton.edu:5908
+         LocalForward 5909 della.princeton.edu:5909
 
-Host perseus.princeton.edu
-         ProxyJump bill@tigressgateway.princeton.edu
+Host della.princeton.edu
+         ProxyJump aturing@tigressgateway.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
-From the local machine, one can then do:
+You can then connect from your local machine (laptop/desktop) using the following command:
 
 ```
-$ ssh <YourNetID>@perseus.princeton.edu
+$ ssh della
 ```
 
-The above command will use the proxyjump server `tigressgateway`. The connection first goes to tigressgateway where it Duo authenticates before hopping to perseus. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through.
+If your username on your local machine differs from your NetID then use `ssh <YourNetID>@della`. The above command will use the proxyjump server `tigressgateway`. The connection first goes to `tigressgateway` where it Duo authenticates before hopping to della. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through. See `man ssh_config` in the section for ProxyJump.
 
-You should be able to `scp localfile aturing@perseus.princeton.edu` without incurring extra Duo authentications since the connection is established and multiplexed.
+You should be able to `scp localfile aturing@della:` without incurring extra Duo authentications since the connection is established and multiplexed.
 
-Below is a sample file of `.ssh/config` (**replace aturing with your NetID**) for multiple clusters:
+Below is a sample file of `.ssh/config` for multiple clusters (**replace aturing with your NetID**):
 
 ```
 Host tigressgateway.princeton.edu
