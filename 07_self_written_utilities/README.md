@@ -97,11 +97,12 @@ with open('job.slurm', 'w') as f:
 Use `wget` to get a copy of `slr` in `my-utilities`:
 
 ```
-cd <path/to>/my-utilities/
-wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/07_self_written_utilities/slr-python/slr
+$ cd <path/to>/my-utilities/
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/07_self_written_utilities/slr-python/slr
+$ chmod u+x slr
 ```
 
-Then make the script executable by changing the permissions: `chmod u+x slr`. Now try it out:
+The last command above makes the script executable by changing the permissions. Now try it out:
 
 ```
 $ cd ~
@@ -176,14 +177,15 @@ sink()
 Use `wget` to get a copy of `slr` in `my-utilities`:
 
 ```
-cd <path/to>/my-utilities/
-wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/07_self_written_utilities/slr-R/slr
+$ cd <path/to>/my-utilities/
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/07_self_written_utilities/slr-R/slr
+$ chmod u+x slr
 ```
 
-Then make the script executable by changing the permissions: `chmod u+x slr`. Next install the `argparse` package:
+The last command above makes the script executable by changing the permissions. Next install the `argparse` package:
 
 ```
-$ module load rh/devtoolset/6
+$ module load rh/devtoolset/8
 $ R
 > install.packages("argparse")
 > q()
