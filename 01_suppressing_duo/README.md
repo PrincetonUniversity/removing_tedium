@@ -88,7 +88,7 @@ The very first login to `della` (from on-campus since no VPN) would start the mu
 $ ssh della
 ```
 
-It will Duo authenticate but subsequent sessions will use that connection and not require Duo. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, for the time limit once the last ssh session has terminated.
+If your username on your local machine differs from your NetID then use `ssh <YourNetID>@della`. The command above will Duo authenticate but subsequent sessions will use that connection and not require Duo. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, for the time limit once the last ssh session has terminated.
 
 Some handy commands from your local machine (laptop/desktop):
 
