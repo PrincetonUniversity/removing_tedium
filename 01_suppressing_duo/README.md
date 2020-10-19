@@ -105,6 +105,7 @@ Step 1: On your local machine make this directory:
 
 ```
 $ mkdir ~/.ssh/sockets
+$ mkdir ~/.ssh/controlmasters
 ```
 
 Step 2: Modify your `.ssh/config` files as follows:
