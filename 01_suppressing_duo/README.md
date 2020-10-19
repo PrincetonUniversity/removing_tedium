@@ -70,7 +70,7 @@ But do be aware of why Duo is being used in the first place. It is to protect ou
 
 ### On-Campus
 
-Step 1: To make this work, on your Linux or macOS machine, edit the file `~/.ssh/config` and add a machine stanza which looks like this (replace aturing with your NetID):
+Step 1: To make this work, on your Linux or macOS **local machine** (laptop/desktop), edit the file `~/.ssh/config` and add a machine stanza which looks like this (replace aturing with your NetID):
 
 ```
 Host della.princeton.edu della
@@ -102,7 +102,7 @@ $ ssh -O stop della     -- kills the multiplexed session
 
 When off-campus and not using a VPN, one can use `tigressgateway` as a proxyjump server.
 
-Step 1: On your local machine make these directories and set the permissions:
+Step 1: On your **local machine** (laptop/desktop) make these directories and set the permissions:
 
 ```
 $ mkdir -p ~/.ssh/controlmasters
