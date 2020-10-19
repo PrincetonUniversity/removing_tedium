@@ -45,7 +45,7 @@ $ ll
 
 One could use an alias for `scr` instead of a symbolic link but the symbolic link is the better choice because it is more general in that it allows for tab completion so you can easily `cd` into a subdirectory (e.g., `cd /scr/data`).
 
-Consider adding this alias so that symbolic links get resolved in paths:
+Consider adding this alias so that symbolic links are always resolved:
 
 ```
 alias pwd='pwd -P'
