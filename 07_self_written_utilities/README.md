@@ -7,7 +7,7 @@ A utility is a standalone code that performs some operation. A pipeline is set o
 Earlier we created an alias for checkquota. Now lets take a look at the source code:
 
 ```
-cat `which checkquota`
+$ cat $(which checkquota)
 ```
 
 These commands are not magic. You can write your own from scratch to accelerate your research workflow.
@@ -27,9 +27,9 @@ To get our own utilities to work like the standard Linux commands, we need to do
 ### Create a my-utilities directory
 
 ```
-mkdir /tigress/<NetID>/my-utilities   # Tiger, Della, Perseus, Traverse
+$ mkdir /tigress/<NetID>/my-utilities   # Tiger, Della, Perseus, Traverse
   or
-mkdir /home/<NetID>/my-utilities      # if only have account on Adroit
+$ mkdir /home/<NetID>/my-utilities      # if only have account on Adroit
 ```
 
 Once you have some scripts stored in this directory, you should put the directory under version control using git, for example.
