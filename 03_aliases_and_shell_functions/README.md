@@ -107,7 +107,7 @@ You can make new additions to `myshortcuts.sh` activate in the current shell by 
 $ source ~/.bashrc
 ```
 
-## Checking which aliases are available
+## Checking which aliases are defined
 
 To see your aliases use the `alias` command:
 
