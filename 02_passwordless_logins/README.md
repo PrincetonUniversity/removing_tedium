@@ -127,3 +127,16 @@ $ ssh aturing@della.princeton.edu "touch myfile"
 ```
 
 Note that you can also use the approach above to run scripts on an HPC cluster. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script on, say, Della. If the script generated webpages as the output then those pages could be viewed on `https://tigress-web.princeton.edu/~<YourNetID>/`.
+
+If you have access to the `/tigress` filesystem then you can share webpages:
+
+```
+$ mkdir -p /tigress/<YourNetID>/public_html
+$ cd /tigress/<YourNetID>/public_html
+$ cat index.html
+<html><head></head><body>
+test
+</body></html>
+```
+
+Note that whatever you place in your `public_hmtl` will be on the internet. Also, the contents of that directory are backed-up so don't put thousands of files in it or large files unless you need to. More on this later.
