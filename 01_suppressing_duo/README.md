@@ -119,6 +119,7 @@ Host tigressgateway.princeton.edu tigressgateway
   ControlMaster auto
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
+  ServerAliveInterval 300
   LocalForward 5908 della.princeton.edu:5908
   LocalForward 5909 della.princeton.edu:5909
 
