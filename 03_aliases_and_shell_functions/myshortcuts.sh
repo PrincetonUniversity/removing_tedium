@@ -29,7 +29,7 @@ shopt -s extglob     # enable extended glob patterns
 ####################
 # home keys system #
 ####################
-EDITOR="/usr/bin/vim"
+export EDITOR="/usr/bin/vim"
 alias ll='ls -ltrh'                                       # list newest files at bottom
 alias jj='cat -- "$(ls -t | head -n 1)"'                  # display newest file
 alias kk='cat -- "$(ls -t | head -n 2 | tail -n 1)"'      # display 2nd newest file
