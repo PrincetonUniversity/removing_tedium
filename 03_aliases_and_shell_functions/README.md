@@ -667,6 +667,8 @@ find /home -maxdepth 2 -type f -name '.bashrc' 2>/dev/null | xargs grep 'alias' 
 
 # History
 
+Your `.history` file stores the commands you ran. The settings below increase the number of entries allowed in this file, include a timestamp with each command and combine history from different shells.
+
 ```
 export HISTSIZE=50000                # lines of history to keep
 export HISTFILESIZE=50000            # keep extended history file
@@ -676,6 +678,8 @@ alias h8='history 150 | cut -c 28-'  # ignore index and timestamp
 ```
 
 # Shell options
+
+Enhance your shell with these settings:
 
 ```
 shopt -s histappend  # all shells write to same history
@@ -697,3 +701,14 @@ cd myproj
 $ pwd
 /home/aturing/myproj
 ```
+
+With `shopt -s cdspell` one can do:
+
+```
+$ cd mypoj
+myproj
+$ pwd
+/home/aturing/myproj
+```
+
+This enhancement is only somewhat useful since users should be using tab completion.
