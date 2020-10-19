@@ -148,6 +148,12 @@ $ cq
 -bash: cq: command not found
 ```
 
+We see that `cq` is not in use so this could be used as an alias for the `checkquota` command:
+
+```
+alias cq='checkquota'
+```
+
 ## Connecting to a cluster
 
 On your **local machine** (e.g., laptop), add the aliases below for the clusters that you have access to. For Linux see `~/.bashrc` for Mac see `~/.bash_profile`.
