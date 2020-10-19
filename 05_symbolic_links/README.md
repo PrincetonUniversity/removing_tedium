@@ -31,16 +31,16 @@ You can use a different name instead of `scr`. Choose something concise, represe
 Symbolic links can be used for any operation involving a path, for example:
 
 ```
-$ cd
+$ cd ~
 $ touch file1.txt
 $ cp file1.txt scr
 $ cd scr
 $ pwd
-/home/ceisgrub/scr
+/home/aturing/scr
 $ pwd -P
-/scratch/gpfs/ceisgrub
+/scratch/gpfs/aturing
 $ ll
--rw-r--r--.  1 ceisgrub pres  226 Oct  5 23:50 file1.txt
+-rw-r--r--.  1 aturing math  226 Oct  5 23:50 file1.txt
 ```
 
 One could use an alias for `scr` instead of a symbolic link but the symbolic link is the better choice because it is more general in that it allows for tab completion so you can easily `cd` into a subdirectory (e.g., `cd /scr/data`).
