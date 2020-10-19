@@ -288,7 +288,9 @@ Deactivate the current environment.
 ### conrm
 Remove an environment by the number given by `conen`. This command is similar to `conda remove --name <name> --all` but it works by number instead of name.
 
-A session using the two of the functions above might look like this:
+### Example
+
+A session using the shortcuts above might look like this:
 
 ```
 [aturing@tigergpu ~]$ conen
@@ -308,50 +310,7 @@ Note that aliases do not work in Slurm scripts. You will need to explicitly load
 
 ## Slurm
 
-Below are several aliases and shell functions for working with Slurm:
-
-```bash
-SLURMSCRIPT="job.slurm"
-alias sq='squeue -u $USER'
-alias sqs='squeue -u $USER --start'
-alias wq='watch -n 1 squeue -u $USER'
-alias sb='sbatch $SLURMSCRIPT'
-alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
-alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
-alias st='slurmtop'
-alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
-FRMT="1.1,1.3,1.4,1.5,1.6,1.7,2.3"
-alias myprio='join -j 1 -o ${FRMT} <(sqs | sort) <(sprio | sort) | sort -g'
-mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
-maxmem() { snodes | tr -s [:blank:] | cut -d' ' -f7 | sort -g | uniq; }
-eff() { seff $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
-goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
-alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
-```
-
-There are advantages to naming all your Slurm scripts the same.
-
-Most of the shortcuts above are self-evident. Here are some of the nonobvious ones:
-
-sqs - show the expected start times of queued jobs  
-wq - watch your queued jobs (use Ctrl + c to exit)  
-mycancel - run scancel on your most recently submitted job  
-maxmem - list the amount of memory of the different nodes on the cluster  
-eff - run seff using the job id from the newest slurm-xxxxxx.out file in the current directory  
-goto - ssh to the compute node where your most recently submitted job is running  
-sw - "submit" and "watch" the queue  
-
-### wq
-
-Watch the list of jobs:
-
-```
-alias wq='watch -n 1 squeue -u <YourNetID>'
-```
-
-This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To end the command hold down [Ctrl] and press [c].
-
-### sb and sw
+### Submitting batch jobs
 
 If you submit a lot of jobs with commands like `sbatch job.slurm` or `sbatch submit.sh`. You may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
 
@@ -366,13 +325,60 @@ You can distinguish different jobs by setting the job name in the Slurm script:
 #SBATCH --job-name=multivar      # create a short name for your job
 ```
 
-This alias submits the job then launches watch:
+This alias submits the job then launches watch which is useful for short test jobs:
 
 ```
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 ```
 
-#### eff
+### Enhancements to squeue
+
+Show the state of you running and pending jobs:
+
+```
+alias sq='squeue -u $USER'
+```
+
+See the expected start times of pending jobs:
+
+```
+alias sqs='squeue -u $USER --start'
+```
+
+Watch your jobs in the queue (useful for knowing when test jobs run):
+
+```
+alias wq='watch -n 1 squeue -u $USER'
+```
+
+This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To end the command hold down [Ctrl] and press [c].
+
+### Interactive allocations
+
+Use the aliases below to work interactively on a compute nodes (with and without a GPU) for 5 minutes:
+
+```
+alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
+alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
+```
+
+Note that you can modify the values of the parameters. For instance, for a 20-minute CPU allocation:
+
+```
+$ cpu5 -t 20
+```
+
+For more on salloc see [this page](https://researchcomputing.princeton.edu/slurm).
+
+### Get your fairshare value
+
+Your fairshare value in part determines your :
+
+```
+alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
+```
+
+### eff
 
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
@@ -382,15 +388,15 @@ eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
 
 Note that the Slurm database is purged every so often so your results may not be available for very old jobs. 
 
-#### goto
+### ssh to the compute node where your last job is running
 
 It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on.
 
 This method will not work when multiple nodes are used to run the job.
 
-### mycancel
+### Cancel your most recently submitted job
 
-Canceling the most recently submitted job:
+Running `mycancel` will automatically find the job id of your most recent job and cancel it:
 
 ```
 mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=2); }
@@ -404,7 +410,7 @@ The following alias combines the output of squeue and sprio to explicitly show y
 alias pending='join -j 1 -o 1.1,1.3,1.4,1.5,1.6,1.7,2.3 <(squeue -u $USER --start | sort) <(sprio | sort) | sort -g'
 ```
 
-### Getting your fairshare value
+### Gett your fairshare value
 
 Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your group run in a given period of time the lower your fairshare value. The maximum value is 1.
 
@@ -412,7 +418,7 @@ Your fairshare value plays a key role in determining your job priority. The more
 alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
 ```
 
-To learn more about job priority see [this post](https://researchcomputing.princeton.edu/priority).
+To learn more about job priority see [this page](https://researchcomputing.princeton.edu/priority).
 
 ### salloc
 
