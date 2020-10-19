@@ -46,7 +46,54 @@ export PATH=$PATH:/home/<NetID>/my-utilities      # if only gave account on Adro
 
 Be sure to run `source ~/.bashrc` so that the changes to `PATH` take effect.
 
-## First example: Generate a custom Slurm script
+## Your first utility: pycancel as a replacement for mycancel
+
+Earlier we learned how to cancel the most recently submitted job using `mycancel`:
+
+```
+mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
+```
+
+The above shell function is written in Bash. Below is `pycancel` which does exactly the same thing as `mycancel` except it is written in Python which is a language that most people prefer writing:
+
+```
+#!/usr/licensed/anaconda3/2020.7/bin/python
+
+import os
+import subprocess
+
+netid = os.environ["USER"]
+cmd = f"squeue -u {netid}"
+output = subprocess.run(cmd, capture_output=True, shell=True, timeout=5)
+lines = output.stdout.decode("utf-8").split('\n')
+if len(lines) == 2:
+  print("There are no running or pending jobs.")
+else:
+  job_ids = []
+  for line in lines[1:-1]:
+    job_ids.append(int(line.split()[0]))
+  max_id = max(job_ids)
+  cmd = f"scancel {max_id}"
+  _ = subprocess.run(cmd, shell=True, timeout=5)
+  print(f"Canceled job {max_id}")
+```
+
+Copy the source code above and paste it into a file called `pycancel` in the directory `/tigress/<YourNetID>/my-utilities`. Then give it execute permissions:
+
+```
+$ chmod 744 pycancel
+```
+
+Try it out by submitting a test job:
+
+```
+$ sbatch job.slurm  # or the alias sb
+$ sq
+$ pycancel
+$ sq
+```
+
+## Generate a custom Slurm script
 
 Previously we used a template file to generate a Slurm script in the current working directory. This was an improvement but it gave us the same file every time. Now we will write our own utility called `slr` which will allow for customizations to be made.
 
