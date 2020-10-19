@@ -36,7 +36,7 @@ The contents of the Bash script `auto_single.sh` are shown below:
 
 ```bash
 #!/bin/bash
-NETID=ceisgrub
+NETID=aturing
 JOBNAME=myjob
 JOBPATH=/home/$NETID/$JOBNAME
 TGR=/tigress/$NETID/public_html/$JOBNAME
