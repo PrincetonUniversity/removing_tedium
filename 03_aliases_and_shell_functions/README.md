@@ -319,13 +319,19 @@ SLURMSCRIPT='job.slurm'
 alias sb='sbatch $SLURMSCRIPT'
 ```
 
+Jobs can then be submitted with:
+
+```
+$ sb
+```
+
 You can distinguish different jobs by setting the job name in the Slurm script:
 
 ```
 #SBATCH --job-name=multivar      # create a short name for your job
 ```
 
-This alias submits the job then launches watch which is useful for short test jobs:
+The alias below submits the job and then launches `watch`. This allows one to know when short test jobs start running:
 
 ```
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
@@ -370,27 +376,13 @@ $ cpu5 -t 20
 
 For more on salloc see [this page](https://researchcomputing.princeton.edu/slurm).
 
-### Get your fairshare value
-
-Your fairshare value in part determines your :
-
-```
-alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
-```
-
-### eff
-
-If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
-
-```
-eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
-```
-
-Note that the Slurm database is purged every so often so your results may not be available for very old jobs. 
-
 ### ssh to the compute node where your last job is running
 
-It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on.
+It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
+
+```
+goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
+```
 
 This method will not work when multiple nodes are used to run the job.
 
@@ -402,15 +394,17 @@ Running `mycancel` will automatically find the job id of your most recent job an
 mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=2); }
 ```
 
-### myprio
+### Efficiency reports without the job id
 
-The following alias combines the output of squeue and sprio to explicitly show your job priority and expected start time for queued jobs:
+If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
 ```
-alias pending='join -j 1 -o 1.1,1.3,1.4,1.5,1.6,1.7,2.3 <(squeue -u $USER --start | sort) <(sprio | sort) | sort -g'
+eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
 ```
 
-### Gett your fairshare value
+The `eff` shortcuts automatically figures out the job id and runs `seff` on that.
+
+### Get your fairshare value
 
 Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your group run in a given period of time the lower your fairshare value. The maximum value is 1.
 
@@ -420,15 +414,6 @@ alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1
 
 To learn more about job priority see [this page](https://researchcomputing.princeton.edu/priority).
 
-### salloc
-
-For a 5-minute interactive allocation on a CPU or GPU node:
-
-```
-alias cpu5='salloc -N 1 -n 1 -t 5'
-alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:1'
-```
-
 ## GPU aliases
 
 ```
@@ -437,7 +422,6 @@ alias wsmi='watch -n 1 nvidia-smi'
 ```
 
 After submitting a GPU job it is common to run `goto` followed by `wsmi` on the compute node.
-
 
 ## Specific to Adroit
 
