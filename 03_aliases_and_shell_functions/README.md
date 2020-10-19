@@ -231,19 +231,19 @@ Here are some aliases for quickly working with modules:
 ```
 alias ma='module avail'
 alias mp='module purge'
-alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
+alias ml='module list'
 alias mla='module load anaconda3'
 alias mlc='module load cudatoolkit'
 alias rh8='module load rh/devtoolset/8'
 ```
 
-Another approach would be to define:
+Another approach would be to define aliases like this:
 
 ```
 alias modl='module load'
 ```
 
-And then use it like this:
+The above alias could be used like this:
 
 ```
 $ modl anaconda3
