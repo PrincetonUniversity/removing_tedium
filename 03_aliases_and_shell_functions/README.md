@@ -664,3 +664,36 @@ See [this page](https://www.digitalocean.com/community/tutorials/an-introduction
 ```
 find /home -maxdepth 2 -type f -name '.bashrc' 2>/dev/null | xargs grep 'alias' | grep -v 'User specific aliases and functions' | sed 's/^.*\(alias\)/\1/' | sort | uniq | cat -n
 ```
+
+# History
+
+```
+export HISTSIZE=50000                # lines of history to keep
+export HISTFILESIZE=50000            # keep extended history file
+export HISTTIMEFORMAT='%F %T '       # show date and time of past commands
+PROMPT_COMMAND='history -a'          # append current session to history
+alias h8='history 150 | cut -c 28-'  # ignore index and timestamp
+```
+
+# Shell options
+
+```
+shopt -s histappend  # all shells write to same history
+shopt -s checkjobs   # check if background jobs are running on exit
+shopt -s cdspell     # guess misspelled cd commands
+shopt -s autocd      # change directory w/o cd if entry is invalid
+shopt -s extglob     # enable extended glob patterns
+```
+
+With `shopt -s autocd` one can `cd` without typing `cd`:
+
+```
+$ pwd
+/home/aturing
+$ ls
+myproj file.txt
+$ myproj
+cd myproj
+$ pwd
+/home/aturing/myproj
+```
