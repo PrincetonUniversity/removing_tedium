@@ -18,7 +18,13 @@ Instead of typing this every time, we will use the much shorter alias of `sq`:
 $ alias sq='squeue -u <YourNetID>'
 ```
 
-Be sure to replace `<YourNetID>` with your actual NetID (e.g., aturing). After defining this alias, one can type `sq` instead of the much longer `squeue -u <YourNetID>`. Note that aliases defined on the command line will only be available in the current shell. To make them permanent see the next section.
+Be sure to replace `<YourNetID>` with your actual NetID (e.g., aturing). After defining this alias, one can type `sq` instead of the much longer `squeue -u <YourNetID>`:
+
+```
+$ sq
+```
+
+Note that aliases defined on the command line will only be available in the current shell. To make them permanent see the next section.
 
 ## Store your aliases and shell functions in .bashrc
 
