@@ -357,7 +357,7 @@ This alias submits the job then launches watch:
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 ```
 
-### eff
+#### eff
 
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
@@ -367,13 +367,9 @@ eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
 
 Note that the Slurm database is purged every so often so your results may not be available for very old jobs. 
 
-### goto
+#### goto
 
-It is often useful to SSH to the compute node where you job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
-
-```
-goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=9); }
-```
+It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on.
 
 This method will not work when multiple nodes are used to run the job.
 
