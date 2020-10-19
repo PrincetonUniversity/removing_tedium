@@ -14,7 +14,7 @@ $ squeue -u <YourNetID>
 
 Instead of typing this every time, we will use the much shorter alias of `sq`:
 
-```
+```bash
 $ alias sq='squeue -u <YourNetID>'
 ```
 
@@ -30,7 +30,7 @@ Note that aliases defined on the command line will only be available in the curr
 
 To make your aliases and shell functions available each time you log in, store them in your `.bashrc` file. Here is the contents of `.bashrc` for a new account:
 
-```
+```bash
 $ cat ~/.bashrc
 
 # Source global definitions
@@ -77,7 +77,7 @@ You only need to source your `~/.bashrc` file when you add an alias in the curre
 
 Once you have built up your `.bashrc` file it will contain aliases and shell functions like those in the example [myshortcuts.sh](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) file in this repo. If you wish to use all the shortcuts in that file then run these commands:
 
-```
+```bash
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/03_aliases_and_shell_functions/myshortcuts.sh
 # add "source myshortcuts.sh" to your .bashrc file
 $ source ~/.bashrc
@@ -92,7 +92,7 @@ Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If yo
 
 That is, make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add the following line to each of your `.bashrc` files:
 
-```
+```bash
 # User specific aliases and functions
 source /tigress/<YourNetID>/myshortcuts.sh
 ```
@@ -111,7 +111,7 @@ $ source ~/.bashrc
 
 To see your aliases use the `alias` command:
 
-```
+```bash
 $ alias
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -132,7 +132,7 @@ Be sure not to name an alias after an existing command. If your shell is not beh
 
 Aliases take precedence over commands loaded via modules. This is illustrated below with the `intel` module:
 
-```
+```bash
 $ module load intel
 $ icc
 $ module purge
@@ -184,7 +184,7 @@ On a QWERTY keyboard the home keys are A, S, D, F, J, K, L and the semicolon. Si
 
 Consider the system below based on the home keys:
 
-```
+```bash
 export EDITOR=/usr/bin/vim   # or emacs or nano
 alias ll='ls -ltrh'
 alias jj='cat -- "$(ls -t | head -n 1)"'
