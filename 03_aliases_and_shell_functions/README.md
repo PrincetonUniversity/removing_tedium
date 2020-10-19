@@ -463,11 +463,40 @@ Another tip is to put the following in your `~/.bashrc` file to see your remaini
 
 ```bash
 if [ ! -z "$PS1" ]; then
-        checkquota
+  case $(hostname) in
+    adroit?)
+      echo 
+      timeout 5 checkquota | head -n 3
+      echo ;;
+    della*.*)
+      echo 
+      timeout 5 checkquota | head -n 3
+      echo ;;
+    perseus)
+      echo 
+      timeout 5 checkquota | head -n 3
+      echo ;;
+    tigercpu*)
+      echo
+      timeout 5 checkquota | head -n 3
+      echo ;;
+    tigergpu*)
+      echo
+      timeout 5 checkquota | head -n 3
+      echo ;;
+    tigressdata*)
+      echo
+      timeout 5 checkquota | head -n 7
+      echo ;;
+    traverse*.*)
+      echo
+      timeout 5 checkquota | head -n 3
+      echo ;;
+  esac
 fi
 ```
 
-To list the size of each directory:
+To list the size of each directory to know which files to delete to free space:
 
 ```
 alias dirsize='du -h --max-depth=1 | sort -hr'
