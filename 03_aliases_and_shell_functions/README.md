@@ -667,7 +667,7 @@ find /home -maxdepth 2 -type f -name '.bashrc' 2>/dev/null | xargs grep 'alias' 
 
 # History
 
-Your `.history` file stores the commands you ran. The settings below increase the number of entries allowed in this file, include a timestamp with each command and combine history from different shells.
+Your `~/.bash_history` file stores the commands you ran. The settings below increase the number of entries allowed in this file, include a timestamp with each command and combine history from different shells.
 
 ```
 export HISTSIZE=50000                # lines of history to keep
