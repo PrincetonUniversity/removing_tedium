@@ -63,7 +63,7 @@ alias sq='squeue -u <YourNetID>'
 
 Save the changes and then return to the command line. Make the new alias available in the current shell by "sourcing" your `.bashrc` file:
 
-```
+```bash
 $ source ~/.bashrc
 ```
 
