@@ -154,6 +154,28 @@ We see that `cq` is not in use so this could be used as an alias for the `checkq
 alias cq='checkquota'
 ```
 
+## Viewing your aliases and selectively turning them off
+
+To see the aliases that you are using run this command:
+
+```
+$ alias
+```
+
+To turn off a specific alias for the current shell session:
+
+```
+$ unalias <alias>
+```
+
+Or for a single command:
+
+```
+$ \<alias>
+```
+
+Return to the **Word of caution** section above and try running `\icc` at the very end.
+
 ## The home keys system: Working with recent files
 
 On a QWERTY keyboard the home keys are A, S, D, F, J, K, L and the semicolon. Since your fingers typically rest on these keys they make great alias names.
@@ -179,61 +201,95 @@ Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing 
 
 The meaning of `--` in the commands above is explained [here](https://unix.stackexchange.com/questions/510857/what-is-meaning-of-double-hyphen-in-ls-command).
 
-## Common shell functions
+## Navigation
 
-Combine make directory and change directory into a single command:
-
-```
-mk() { mkdir -p $1 && cd $1; }
-```
-
-Example usage:
+Here are some shell functions and aliases for creating directories and moving around the filesystem:
 
 ```
-$ pwd
-/home/ceisgrub
-$ mk myproj
-$ pwd
-/home/ceisgrub/myproj
-```
-
-Combine change directory and list files into a single command:
-
-```
-cdl() { cd $1 && ls -ltrh }
-```
-
-## Navigating the filesystem
-
-```
+mk() { mkdir -p "$1" && cd "$1"; }
+cl() { cd "$1" && ll; } # uses alias defined above
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ....='cd ../../..'
 ```
 
-The first alias above allows us to type 2 keys instead of 5 to go up a level.
-
-## Viewing your aliases and selectively turning them off
-
-To see the aliases that you are using run this command:
+`mk` is the first shell function that we have encountered. The existence of `$1` in the body of the function corresponds to the input paramter. The `mk` function makes a directory and then cd's into that directory:
 
 ```
-$ alias
+$ pwd
+/home/aturing
+$ mk myproj
+$ pwd
+/home/aturing/myproj
 ```
 
-To turn off a specific alias for the current shell session:
+The `cl` function cd's into a specified directory and runs the `ll` alias. The `..` alias above allows us to type 2 keys instead of 5 to go up a level.
+
+## Environment modules
+
+Here are some aliases for quickly working with modules:
 
 ```
-$ unalias <alias>
+alias ma='module avail'
+alias mp='module purge'
+alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
+alias mla='module load anaconda3'
+alias mlc='module load cudatoolkit'
+alias rh8='module load rh/devtoolset/8'
 ```
 
-Or for a single command:
+Another approach would be define:
 
 ```
-$ \<alias>
+alias modl='module load'
 ```
 
-Return to the **Word of caution** section above and try running `\icc` at the very end.
+And then use it like this:
+
+```
+$ modl anaconda3
+```
+
+## Conda environments
+
+The shell functions and alias below can be used to work with conda environments:
+
+```
+conen() {
+  if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
+    echo "Loading anaconda3 module ..."
+    module load anaconda3
+  fi 
+  conda info --envs | grep . | grep -v "#" | cat -n
+}
+conac() {
+  name=$(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
+  conda activate $name
+}
+alias conde='conda deactivate'
+conrm() {
+  name=$(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
+  conda remove --name $name --all -y -q
+  echo; conen; echo
+}
+```
+
+conen - displays your conda environments (and load anaconda3 if necessary)  
+conac - activates an environment by number  
+conde - deactivates the current environment  
+conrm - removes an environment by number  
+
+A session using the two of the functions above might look like this:
+
+```
+[aturing@tigergpu ~]$ conen
+     1	tf2-gpu                  /home/jdh4/.conda/envs/tf2-gpu
+     2	torch-env                /home/jdh4/.conda/envs/torch-env
+     3	base                  *  /usr/licensed/anaconda3/2019.10
+[aturing@tigergpu ~]$ actenv 2
+(torch-env) [aturing@tigergpu ~]$
+```
+
+Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in these scripts.
 
 ## Slurm
 
