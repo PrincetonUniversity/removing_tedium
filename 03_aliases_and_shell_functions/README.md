@@ -251,7 +251,7 @@ $ modl anaconda3
 
 ## Conda environments
 
-The shell functions and alias below can be used to work with conda environments:
+The shell functions and alias below can be used to list your enumerated conda environments (conen), activate an environment by number (conac), deactivate the current environment (conde) and remove or delete an environment (conrm):
 
 ```bash
 conen() {
@@ -261,11 +261,14 @@ conen() {
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
+
 conac() {
   name=$(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
   conda activate $name
 }
+
 alias conde='conda deactivate'
+
 conrm() {
   name=$(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
   conda remove --name $name --all -y -q
@@ -274,32 +277,30 @@ conrm() {
 ```
 
 ### conen
-Displayed your enumerated conda environments (and load the anaconda3 module if necessary). This is similar to `conda env list` which can also be used.
+Display your enumerated conda environments (and load the anaconda3 module if necessary). This is similar to `conda env list` which can also be used.
 
 ### conac
-Activate an environment by number. This is similar to `conda activate <name>` which can also be used.
+Activate an environment by number. The `conen` command enumerates your environments. This command is similar to `conda activate <name>`, which can also be used, but it takes a number instead of a name.
 
 ### conde
 Deactivate the current environment.
 
 ### conrm
-Remove an environment by number. This is similar to the by name command of `conda remove --name <name> --all`.
-
-
-conen - displays your conda environments (and load anaconda3 if necessary)  
-conac - activates an environment by number  
-conde - deactivates the current environment  
-conrm - removes an environment by number  
+Remove an environment by the number given by `conen`. This command is similar to `conda remove --name <name> --all` but it works by number instead of name.
 
 A session using the two of the functions above might look like this:
 
 ```
 [aturing@tigergpu ~]$ conen
-     1	tf2-gpu                  /home/jdh4/.conda/envs/tf2-gpu
-     2	torch-env                /home/jdh4/.conda/envs/torch-env
-     3	base                  *  /usr/licensed/anaconda3/2019.10
-[aturing@tigergpu ~]$ conac 2
+     1  py36                     /home/aturing/.conda/envs/py36
+     2	pytools-env              /home/aturing/.conda/envs/pytools-env
+     3	tf2-gpu                  /home/aturing/.conda/envs/tf2-gpu
+     4	torch-env                /home/aturing/.conda/envs/torch-env
+     5	base                  *  /usr/licensed/anaconda3/2019.10
+[aturing@tigergpu ~]$ conac 4
 (torch-env) [aturing@tigergpu ~]$
+(torch-env) [aturing@tigergpu ~]$ conde
+(base) [aturing@tigergpu ~]$ conrm 1
 ```
 
 Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in Slurm scripts.
