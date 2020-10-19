@@ -212,7 +212,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 ```
 
-`mk` is the first shell function that we have encountered. The existence of `$1` in the body of the function corresponds to the input paramter. The `mk` function makes a directory and then cd's into that directory:
+`mk` is the first shell function that we have encountered. The existence of `$1` in the body of the function corresponds to the input paramter. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. The `mk` function makes a directory and then cd's into that directory:
 
 ```
 $ pwd
@@ -295,7 +295,7 @@ Note that aliases do not work in Slurm scripts. You will need to explicitly load
 
 Below are several aliases and shell functions for working with Slurm:
 
-```
+```bash
 SLURMSCRIPT="job.slurm"
 alias sq='squeue -u $USER'
 alias sqs='squeue -u $USER --start'
@@ -356,6 +356,52 @@ This alias submits the job then launches watch:
 ```
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 ```
+
+### eff
+
+If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
+
+```
+eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
+```
+
+Note that the Slurm database is purged every so often so your results may not be available for very old jobs. 
+
+### goto
+
+It is often useful to SSH to the compute node where you job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
+
+```
+goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=9); }
+```
+
+This method will not work when multiple nodes are used to run the job.
+
+### mycancel
+
+Canceling the most recently submitted job:
+
+```
+mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=2); }
+```
+
+### myprio
+
+The following alias combines the output of squeue and sprio to explicitly show your job priority and expected start time for queued jobs:
+
+```
+alias pending='join -j 1 -o 1.1,1.3,1.4,1.5,1.6,1.7,2.3 <(squeue -u $USER --start | sort) <(sprio | sort) | sort -g'
+```
+
+### Getting your fairshare value
+
+Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your group run in a given period of time the lower your fairshare value. The maximum value is 1.
+
+```
+alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
+```
+
+To learn more about job priority see [this post](https://researchcomputing.princeton.edu/priority).
 
 ### salloc
 
@@ -447,7 +493,7 @@ If you are a Python user with many Conda environments then the following can be 
 alias myenvs='module load anaconda3 && conda info --envs | grep . | grep -v "#" | cat -n'
 ```
 
-The above alias uses two commands. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. Can you think of an alias involving the modules you use?
+The above alias uses two commands.  Can you think of an alias involving the modules you use?
 
 To activate an environment by its number:
 
@@ -473,50 +519,6 @@ Below is a shell function to remove an environment by name (e.g., `$ rmenv torch
 ```
 rmenv() { conda remove --name "$1" --all; }
 ```
-
-## CPU and memory efficiency of a completed job
-
-If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
-
-```
-eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
-```
-
-Note that the Slurm database is purged every so often so your results may not be available. 
-
-## Go to compute node where most recent job is running
-
-It is often useful to SSH to the compute node where you job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
-
-```
-goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=9); }
-```
-
-This method will not work when multiple nodes are used to run the job.
-
-## Canceling the most recently submitted job
-
-```
-mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=2); }
-```
-
-## A better squeue for pending jobs: Combining squeue with sprio
-
-The following alias combines the output of squeue and sprio to explicitly show your job priority and expected start time for queued jobs:
-
-```
-alias pending='join -j 1 -o 1.1,1.3,1.4,1.5,1.6,1.7,2.3 <(squeue -u $USER --start | sort) <(sprio | sort) | sort -g'
-```
-
-## Getting your fairshare value
-
-Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your group run in a given period of time the lower your fairshare value. The maximum value is 1.
-
-```
-alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
-```
-
-To learn more about job priority see [this post](https://researchcomputing.princeton.edu/priority).
 
 ## Weather
 
@@ -576,8 +578,6 @@ Follow @igor_chubin for wttr.in updates
 ## Calling applications and better commands
 
 ```
-alias myddt='/usr/licensed/bin/ddt'
-alias mystata='/usr/licensed/bin/stata-15.0'
 alias vi='vim'
 alias top='htop'
 alias cmake='cmake3'
@@ -596,7 +596,7 @@ alias wa='watch -n 1'
 Use it as follows:
 
 ```
-$ wa free
+$ wa ls -l # if downloading a file
 $ wa date
 $ wa squeue -u $USER
 ```
@@ -607,40 +607,10 @@ Add this alias to `~/.bash_profile` on your Mac:
 
 ```
 alias wget='curl -O'
+alias ldd='otool -L'
 ```
 
 This will allow you call `wget` as you would on a Linux machine. The `wget` command can be used to download files from the internet.
-
-## Checking for AVX-512
-
-```
-alias has512='lscpu | grep -E --color=always "avx512"'
-```
-
-## Our minimal recommendation
-
-We suggest that Princeton HPC users use the following aliases and shell functions at a minimum:
-
-```
-# User specific aliases and functions
-export EDITOR=/usr/bin/vim   # or emacs or nano
-SLURMSCRIPT='job.slurm'
-
-alias ll='ls -ltrh'
-alias sq='squeue -u $USER'
-alias wq='watch -n 1 squeue -u $USER'
-alias jj='cat -- "$(ls -t | head -n 1)"'
-alias kk='cat -- "$(ls -t | head -n 2 | tail -n 1)"'
-alias ff='$EDITOR -- "$(ls -t | head -n 1)"'
-alias ..='cd ..'
-alias myos='cat /etc/os-release'
-alias cq='checkquota'
-alias sb='sbatch $SLURMSCRIPT'
-alias top='htop'
-
-mk() { mkdir -p $1 && cd $1 }
-cdl() { cd $1 && ls -ltrh }
-```
 
 ## To see shell functions
 
