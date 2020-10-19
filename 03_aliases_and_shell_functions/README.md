@@ -304,6 +304,7 @@ Loading anaconda3 module ...
 (torch-env) [aturing@tigergpu ~]$
 (torch-env) [aturing@tigergpu ~]$ conde
 (base) [aturing@tigergpu ~]$ conrm 1
+# the py36 environment would be deleted
 ```
 
 Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in Slurm scripts.
