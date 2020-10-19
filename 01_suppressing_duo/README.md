@@ -73,11 +73,12 @@ But do be aware of why Duo is being used in the first place. It is to protect ou
 Step 1: To make this work, on your Linux or macOS machine, edit the file `~/.ssh/config` and add a machine stanza which looks like this:
 
 ```
-Host della
-        HostName della.princeton.edu
-        ControlPath ~/.ssh/controlmasters/%r@%h:%p
-        ControlMaster auto
-        ControlPersist 10m
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  ControlPath ~/.ssh/controlmasters/%r@%h:%p
+  ControlMaster auto
+  ControlPersist 10m
 ```        
 
 Step 2: Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
@@ -88,7 +89,7 @@ The very first login to `della` (from on-campus since no VPN) would start the mu
 $ ssh della
 ```
 
-If your username on your local machine differs from your NetID then use `ssh <YourNetID>@della`. The command above will Duo authenticate but subsequent sessions will use that connection and not require Duo. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, for the time limit once the last ssh session has terminated.
+The command above will Duo authenticate but subsequent sessions will use that connection and not require Duo. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, for the time limit once the last ssh session has terminated.
 
 Some handy commands from your local machine (laptop/desktop):
 
@@ -112,18 +113,22 @@ $ chmod 700 ~/.ssh/sockets
 Step 2: Modify your `.ssh/config` file as follows (**replace aturing with your NetID**):
 
 ```
-Host tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
-         LocalForward 5908 della.princeton.edu:5908
-         LocalForward 5909 della.princeton.edu:5909
+Host tigressgateway.princeton.edu tigressgateway
+  HostName tigressgateway.princeton.edu
+  User aturing
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+  LocalForward 5908 della.princeton.edu:5908
+  LocalForward 5909 della.princeton.edu:5909
 
-Host della.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
 You can then connect from your local machine (laptop/desktop) using the following command:
@@ -132,73 +137,92 @@ You can then connect from your local machine (laptop/desktop) using the followin
 $ ssh della
 ```
 
-If your username on your local machine differs from your NetID then use `ssh <YourNetID>@della`. The above command will use the proxyjump server `tigressgateway`. The connection first goes to `tigressgateway` where it Duo authenticates before hopping to della. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through. See `man ssh_config` in the section for ProxyJump.
+The above command will use the proxyjump server `tigressgateway`. The connection first goes to `tigressgateway` where it Duo authenticates before hopping to della. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through. See `man ssh_config` in the section for ProxyJump.
 
-You should be able to `scp localfile aturing@della:` without incurring extra Duo authentications since the connection is established and multiplexed.
+You should be able to `scp localfile della:` without incurring extra Duo authentications since the connection is established and multiplexed.
 
 Below is a sample file of `.ssh/config` for multiple clusters (**replace aturing with your NetID**):
 
 ```
-Host tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
-         LocalForward 5908 traverse.princeton.edu:5908
-         LocalForward 5909 traverse.princeton.edu:5909
-         LocalForward 5910 tigergpu.princeton.edu:5910
-         LocalForward 5911 tigergpu.princeton.edu:5911
-         LocalForward 5912 tigercpu.princeton.edu:5912
-         LocalForward 5913 tigercpu.princeton.edu:5913
-         LocalForward 5914 della.princeton.edu:5914
-         LocalForward 5915 della.princeton.edu:5915
-         LocalForward 5916 perseus.princeton.edu:5916
-         LocalForward 5917 perseus.princeton.edu:5917
-         LocalForward 5918 adroit.princeton.edu:5918
-         LocalForward 5919 adroit.princeton.edu:5919
-         LocalForward 5920 tigressdata.princeton.edu:5920
-         LocalForward 5921 tigressdata.princeton.edu:5921
+Host tigressgateway.princeton.edu tigressgateway
+  HostName tigressgateway.princeton.edu
+  User aturing
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+  ServerAliveInterval 300
+  LocalForward 5908 traverse.princeton.edu:5908
+  LocalForward 5909 traverse.princeton.edu:5909
+  LocalForward 5910 tigergpu.princeton.edu:5910
+  LocalForward 5911 tigergpu.princeton.edu:5911
+  LocalForward 5912 tigercpu.princeton.edu:5912
+  LocalForward 5913 tigercpu.princeton.edu:5913
+  LocalForward 5914 della.princeton.edu:5914
+  LocalForward 5915 della.princeton.edu:5915
+  LocalForward 5916 perseus.princeton.edu:5916
+  LocalForward 5917 perseus.princeton.edu:5917
+  LocalForward 5918 adroit.princeton.edu:5918
+  LocalForward 5919 adroit.princeton.edu:5919
+  LocalForward 5920 nobel.princeton.edu:5920
+  LocalForward 5921 nobel.princeton.edu:5921
+  LocalForward 5922 tigressdata.princeton.edu:5922
+  LocalForward 5923 tigressdata.princeton.edu:5923
 
-Host traverse.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
+Host traverse.princeton.edu traverse
+  User aturing
+  HostName traverse.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host tigergpu.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
+Host tigergpu.princeton.edu tigergpu
+  User aturing
+  HostName tigergpu.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host tigercpu.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
+Host tigercpu.princeton.edu tigercpu tiger
+  User aturing
+  HostName tigercpu.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host della.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host perseus.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
+Host perseus.princeton.edu perseus
+  User aturing
+  HostName perseus.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host adroit.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
+Host adroit.princeton.edu adroit
+  User aturing
+  HostName adroit.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host tigressdata.princeton.edu
-         ProxyJump aturing@tigressgateway.princeton.edu
-         ControlMaster auto
-         ControlPersist yes
-         ControlPath ~/.ssh/sockets/%p-%h-%r
+Host tigressdata.princeton.edu tigressdata
+  User aturing
+  HostName tigressdata.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
 To check if the multiplexed connection is alive (remember everything is going through tigressgateway):
