@@ -273,6 +273,19 @@ conrm() {
 }
 ```
 
+#### conen
+Displayed your enumerated conda environments (and load the anaconda3 module if necessary). This is similar to `conda env list` which can also be used.
+
+#### conac
+Activate an environment by number. This is similar to `conda activate <name>` which can also be used.
+
+#### conde
+Deactivate the current environment.
+
+#### conrm
+Remove an environment by number. This is similar to the by name command of `conda remove --name <name> --all`.
+
+
 conen - displays your conda environments (and load anaconda3 if necessary)  
 conac - activates an environment by number  
 conde - deactivates the current environment  
