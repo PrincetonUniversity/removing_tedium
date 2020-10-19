@@ -504,6 +504,9 @@ if [ ! -z "$PS1" ]; then
 fi
 ```
 
+To learn about interactive shells and `$PS1` see [this page](https://www.gnu.org/software/bash/manual/html_node/Is-this-Shell-Interactive_003f.html). Learn about `.bashrc` and `.bash_profile` [here](https://linuxize.com/post/bashrc-vs-bash-profile/).
+
+
 To list the size of each directory to know which files to delete to free space:
 
 ```
