@@ -379,7 +379,7 @@ For more on salloc see [this page](https://researchcomputing.princeton.edu/slurm
 
 ### ssh to the compute node where your last job is running
 
-It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, whether threads are performing properly and examine GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
+It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, thread performance and GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
 
 ```
 goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
