@@ -106,6 +106,7 @@ Step 1: On your local machine make these directories:
 ```
 $ mkdir -p ~/.ssh/sockets
 $ mkdir -p ~/.ssh/controlmasters
+$ chmod 700 ~/.ssh/sockets
 ```
 
 Step 2: Modify your `.ssh/config` file as follows (**replace aturing with your NetID**):
@@ -198,4 +199,16 @@ Host tigressdata.princeton.edu
          ControlMaster auto
          ControlPersist yes
          ControlPath ~/.ssh/sockets/%p-%h-%r
+```
+
+To check if the multiplexed connection is alive (remember everything is going through tigressgateway):
+
+```
+$ ssh -O check tigressgateway.princeton.edu
+```
+
+Your connection will be killed typically every few hours. To end the connection manually:
+
+```
+$ ssh -O stop tigressgateway.princeton.edu
 ```
