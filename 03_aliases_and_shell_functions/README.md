@@ -292,6 +292,7 @@ A session using the two of the functions above might look like this:
 
 ```
 [aturing@tigergpu ~]$ conen
+Loading anaconda3 module ...
      1  py36                     /home/aturing/.conda/envs/py36
      2	pytools-env              /home/aturing/.conda/envs/pytools-env
      3	tf2-gpu                  /home/aturing/.conda/envs/tf2-gpu
