@@ -88,10 +88,11 @@ with open('job.slurm', 'w') as f:
   f.write("#SBATCH --mail-type=end          # send email when job ends\n")
   f.write("#SBATCH --mail-user=<YourNetID>@princeton.edu\n")
   f.write("\n")
+  f.write("module purge\n")
   f.write("module load anaconda3\n")
-  f.write("conda activate tf-gpu\n")
+  f.write("conda activate myenv\n")
   f.write("\n")
-  f.write("srun python my-tf-script.py\n")
+  f.write("python myscript.py\n")
 ```
 
 Use `wget` to get a copy of `slr` in `my-utilities`:
@@ -126,6 +127,7 @@ $ slr -j myjob -t 72
 $ jj   # jj is an alias defined previously
 $ slr -g 4
 $ jj
+# customize the slr source code using a text editor
 ```
 
 If you encounter a `Permission denied` error then you probably failed to add execute permission to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
@@ -170,7 +172,8 @@ cat("#SBATCH --mail-type=begin        # send mail when process begins\n")
 cat("#SBATCH --mail-type=end          # send email when job ends\n")
 cat("#SBATCH --mail-user=<YourNetID>@princeton.edu\n")
 cat("\n")
-cat("srun Rscript myscript.R\n")
+cat("module purge\n")
+cat("Rscript myscript.R\n")
 sink()
 ```
 
@@ -200,6 +203,7 @@ $ slr
 $ jj   # jj is an alias defined previously
 $ slr -t 72 -n 4 -g
 $ jj
+# customize the slr source code using a text editor 
 ```
 
 If you encounter a `Permission denied` error then you probably failed to add execute permission to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
