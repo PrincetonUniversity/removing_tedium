@@ -340,7 +340,7 @@ alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 
 ### Enhancements to squeue
 
-Show the state of you running and pending jobs:
+Show the state of your running and pending jobs:
 
 ```
 alias sq='squeue -u $USER'
