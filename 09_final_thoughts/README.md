@@ -18,6 +18,6 @@
    Strengthen your abilities and knowledge of scripting by learning more about Python, R or Bash.
 
    Don't get caught up in the technical challenges. Start by thinking about the inputs and outputs. **Imagination plays a
-   far more important role in coming up with things to automate than having lots of technical knowledge.**
+   far more important role in identifying tasks to automate than having lots of technical knowledge.**
    
 + When you reduce the number of monotonous tasks, you will have more time to concentrate on the real work.
