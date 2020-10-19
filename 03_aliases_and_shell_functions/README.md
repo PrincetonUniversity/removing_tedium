@@ -237,7 +237,7 @@ alias mlc='module load cudatoolkit'
 alias rh8='module load rh/devtoolset/8'
 ```
 
-Another approach would be define:
+Another approach would be to define:
 
 ```
 alias modl='module load'
@@ -253,7 +253,7 @@ $ modl anaconda3
 
 The shell functions and alias below can be used to work with conda environments:
 
-```
+```bash
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
@@ -285,15 +285,48 @@ A session using the two of the functions above might look like this:
      1	tf2-gpu                  /home/jdh4/.conda/envs/tf2-gpu
      2	torch-env                /home/jdh4/.conda/envs/torch-env
      3	base                  *  /usr/licensed/anaconda3/2019.10
-[aturing@tigergpu ~]$ actenv 2
+[aturing@tigergpu ~]$ conac 2
 (torch-env) [aturing@tigergpu ~]$
 ```
 
-Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in these scripts.
+Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in Slurm scripts.
 
 ## Slurm
 
-## Watching your jobs in the queue
+Below are several aliases and shell functions for working with Slurm:
+
+```
+SLURMSCRIPT="job.slurm"
+alias sq='squeue -u $USER'
+alias sqs='squeue -u $USER --start'
+alias wq='watch -n 1 squeue -u $USER'
+alias sb='sbatch $SLURMSCRIPT'
+alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
+alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
+alias st='slurmtop'
+alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
+FRMT="1.1,1.3,1.4,1.5,1.6,1.7,2.3"
+alias myprio='join -j 1 -o ${FRMT} <(sqs | sort) <(sprio | sort) | sort -g'
+mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
+maxmem() { snodes | tr -s [:blank:] | cut -d' ' -f7 | sort -g | uniq; }
+eff() { seff $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
+goto() { ssh $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f9); }
+alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
+```
+
+There are advantages to naming all your Slurm scripts the same.
+
+Most of the shortcuts above are self-evident. Here are some of the nonobvious ones:
+
+sqs - show the expected start times of queued jobs  
+wq - watch your queued jobs (use Ctrl + c to exit)  
+mycancel - run scancel on your most recently submitted job  
+maxmem - list the amount of memory of the different nodes on the cluster  
+eff - run seff using the job id from the newest slurm-xxxxxx.out file in the current directory  
+goto - ssh to the compute node where your most recently submitted job is running  
+sw - "submit" and "watch" the queue  
+
+### wq
 
 Watch the list of jobs:
 
@@ -303,7 +336,7 @@ alias wq='watch -n 1 squeue -u <YourNetID>'
 
 This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To end the command hold down [Ctrl] and press [c].
 
-## sbatch
+### sb and sw
 
 If you submit a lot of jobs with commands like `sbatch job.slurm` or `sbatch submit.sh`. You may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
 
@@ -324,7 +357,7 @@ This alias submits the job then launches watch:
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 ```
 
-## salloc
+### salloc
 
 For a 5-minute interactive allocation on a CPU or GPU node:
 
@@ -332,6 +365,43 @@ For a 5-minute interactive allocation on a CPU or GPU node:
 alias cpu5='salloc -N 1 -n 1 -t 5'
 alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:1'
 ```
+
+## GPU aliases
+
+```
+alias smi='nvidia-smi'
+alias wsmi='watch -n 1 nvidia-smi'
+```
+
+After submitting a GPU job it is common to run `goto` followed by `wsmi` on the compute node.
+
+
+## Specific to Adroit
+
+```
+if [[ $(hostname) == adroit* ]]; then
+  alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:tesla_v100:1'
+  alias v100='ssh adroit-h11g1'
+fi
+```
+
+There is one node on Adroit with V100 GPUs. The aliases are concerned with this node.
+
+## Specific to Della
+
+To get the run time limits for the different job partitions (qos) on Della:
+
+```
+if [[ $(hostname) == della* ]]; then
+    alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '"'"'/_MINS/ \
+                  {print "  "$1,"<=",$3" mins ("$3/60 " hrs)"}'"'"''
+fi
+```
+
+## TurboVNC
+
+While X11 forwarding (via `ssh -X`) is usually sufficient to work with graphics on the HPC clusters, TurboVNC is a faster alternative. See the bottom of [this page](https://researchcomputing.princeton.edu/faq/how-do-i-use-vnc-on-tigre) for shells function to ease the setup.
+
 
 ## checkquota
 
@@ -361,16 +431,6 @@ On your laptop:
 
 ```
 alias jn='jupyter notebook'
-```
-
-## Environment modules
-
-Here are three aliases for purging, showing and listing modules:
-
-```
-alias mp='module purge'
-alias ma='module avail'
-alias ml='module list'
 ```
 
 ## Listing, activating and removing Conda environments
