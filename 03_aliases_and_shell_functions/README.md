@@ -154,65 +154,26 @@ We see that `cq` is not in use so this could be used as an alias for the `checkq
 alias cq='checkquota'
 ```
 
-## Connecting to a cluster
-
-On your **local machine** (e.g., laptop), add the aliases below for the clusters that you have access to. For Linux see `~/.bashrc` for Mac see `~/.bash_profile`.
-
-```
-myid=<YourNetID>
-alias nobel='ssh $myid@nobel.princeton.edu'
-alias adroit='ssh $myid@adroit.princeton.edu'
-alias perseus='ssh $myid@perseus.princeton.edu'
-alias della='ssh $myid@della.princeton.edu'
-alias tcpu='ssh $myid@tigercpu.princeton.edu'
-alias tgpu='ssh $myid@tigergpu.princeton.edu'
-alias tra='ssh $myid@traverse.princeton.edu'
-
-# enable X11 forwarding to use graphics
-alias nobelX='ssh -X $myid@nobel.princeton.edu'
-alias adroitX='ssh -X $myid@adroit.princeton.edu'
-alias perseusX='ssh -X $myid@perseus.princeton.edu'
-alias dellaX='ssh -X $myid@della.princeton.edu'
-alias tcpuX='ssh -X $myid@tigercpu.princeton.edu'
-alias tgpuX='ssh -X $myid@tigergpu.princeton.edu'
-alias traX='ssh -X $myid@traverse.princeton.edu'
-```
-
-## Watching your jobs in the queue
-
-Watch the list of jobs:
-
-```
-alias wq='watch -n 1 squeue -u <YourNetID>'
-```
-
-This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To end the command hold down [Ctrl] and press [c].
-
 ## The home keys system: Working with recent files
 
 On a QWERTY keyboard the home keys are A, S, D, F, J, K, L and the semicolon. Since your fingers typically rest on these keys they make great alias names.
 
 ![home_keys](https://upload.wikimedia.org/wikipedia/commons/0/0d/QWERTY-home-keys-position.svg)
 
-Most supercomputing sites will provide a default alias for `ll`:
-
-```
-alias ll='ls -ltrh'
-```
-
-This alias lists the files in the current directory in long format and sorts them by modification time with the newest at the bottom.
-
 Consider the system below based on the home keys:
 
 ```
 export EDITOR=/usr/bin/vim   # or emacs or nano
+alias ll='ls -ltrh'
 alias jj='cat -- "$(ls -t | head -n 1)"'
 alias kk='cat -- "$(ls -t | head -n 2 | tail -n 1)"'
 alias ff='$EDITOR -- "$(ls -t | head -n 1)"'
 alias dd='$EDITOR -- "$(ls -t | head -n 2 | tail -n 1)"'
 ```
 
-Let's break down each one. The `jj` command prints the contents of the newest file in the current working directory to the terminal while `kk` prints out the second newest file. `jj` **is arguably the most useful alias on this entire page. Start using it**! The `ff` command loads the newest file in your specified text editor while `dd` loads the second newest file. The routine use of `ll`, `jj` and `ff` can save you lots of time. Note that `dd` overwrites an existing command. Because the original `dd` is obscure, this can be overlooked. If you are left-handed then you may consider transposing the aliases.
+The `ll` alias lists the files in the current directory in long format and sorts them by modification time with the newest at the bottom.
+
+The `jj` command prints the contents of the newest file in the current working directory to the terminal while `kk` prints out the second newest file. `jj` **is arguably the most useful alias on this entire page. Start using it**! The `ff` command loads the newest file in your specified text editor while `dd` loads the second newest file. The routine use of `ll`, `jj` and `ff` can save you lots of time. Note that `dd` overwrites an existing command. Because the original `dd` is obscure, this can be overlooked. If you are left-handed then you may consider transposing the aliases.
 
 Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing command, it is obscure and can be overwritten. `gg` and `hh` are also available.
 
@@ -273,6 +234,18 @@ $ \<alias>
 ```
 
 Return to the **Word of caution** section above and try running `\icc` at the very end.
+
+## Slurm
+
+## Watching your jobs in the queue
+
+Watch the list of jobs:
+
+```
+alias wq='watch -n 1 squeue -u <YourNetID>'
+```
+
+This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To end the command hold down [Ctrl] and press [c].
 
 ## sbatch
 
