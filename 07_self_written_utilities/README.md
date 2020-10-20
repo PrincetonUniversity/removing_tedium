@@ -231,10 +231,10 @@ lines = output.stdout.decode("utf-8").split('\n')
 if len(lines) == 2:
   print("There are no running or pending jobs.")
 else:
-  max_id = max([int(line.split()[0]) for line in lines[1:-1]])
-  cmd = f"scancel {max_id}"
+  jobid = max([int(line.split()[0]) for line in lines[1:-1]])
+  cmd = f"scancel {jobid}"
   _ = subprocess.run(cmd, shell=True, timeout=5)
-  print(f"Canceled job {max_id}")
+  print(f"Canceled job {jobid}")
 ```
 
 Copy the source code above and paste it into a file called `pycancel` in the directory `/tigress/<YourNetID>/my-utilities`. Then give it execute permissions:
