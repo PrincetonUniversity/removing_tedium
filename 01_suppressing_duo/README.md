@@ -45,7 +45,7 @@ startctui
 
 ### Preventing VPN disconnects
 
-If your VPN is disconnecting too frequently (minutes instead of hours) then try adding these lines to your `~/.ssh/config` file:
+If your VPN is disconnecting too frequently then try adding these lines to your `~/.ssh/config` file:
 
 ```
 Host *
