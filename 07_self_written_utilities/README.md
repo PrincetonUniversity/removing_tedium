@@ -208,7 +208,7 @@ $ jj
 
 If you encounter a `Permission denied` error then you probably failed to add execute permission to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
 
-## pycancel as a replacement for mycancel
+## pycancel is a Python implementation of mycancel
 
 Earlier we learned how to cancel the most recently submitted job using `mycancel`:
 
