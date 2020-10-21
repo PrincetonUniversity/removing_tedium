@@ -213,7 +213,7 @@ If you encounter a `Permission denied` error then you probably failed to add exe
 Earlier we learned how to cancel the most recently submitted job using `mycancel`:
 
 ```bash
-mycancel() { scancel $(squeue -u $USER -o "%i" -h | sort | tail -n 1); }
+mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 ```
 
 The shell function above is written in Bash. Below is `pycancel` which performs the same function as `mycancel` except it is written in Python which is a language that most people prefer over Bash:
