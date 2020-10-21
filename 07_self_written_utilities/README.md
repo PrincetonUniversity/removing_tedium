@@ -21,8 +21,8 @@ Some users will write a data analysis script and place a copy in each directory 
 To get our own utilities to work like the standard Linux commands, we need to do the following:
 
 + create a directory to store them
-+ give each utility owner permissions to be executed
-+ update the PATH so that our utilities will be found
++ give each utility the permissions to be executed
++ update the PATH so that the utilities will be found
 
 ### Create a my-utilities directory
 
@@ -36,7 +36,7 @@ Once you have some scripts stored in this directory, you should put the director
 
 ### Update PATH
 
-Add this line to `~/.bashrc`:
+Recall that the `PATH` environment variable specifies a list of directories to search for executables when a command is ran on the command line. To make your utilities callable on the command line add this line to `~/.bashrc`:
 
 ```
 export PATH=$PATH:/tigress/<NetID>/my-utilities   # Tiger, Della, Perseus, Traverse
