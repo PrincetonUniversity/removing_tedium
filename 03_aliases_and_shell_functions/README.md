@@ -390,7 +390,7 @@ For more on salloc see [this page](https://researchcomputing.princeton.edu/slurm
 It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, thread performance and GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
 
 ```bash
-goto() { ssh $(sq -u $USER -o "%i %R" -S i -h | cut -d' ' -f2 | tail -n 1); }
+goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | cut -d' ' -f2 | tail -n 1); }
 ```
 
 This method will not work when multiple nodes are used to run the job.
