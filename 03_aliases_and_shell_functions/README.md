@@ -48,7 +48,7 @@ The last line above indicates where to store aliases and shell functions, but ex
 
 ### If you only have an account on Adroit ...
 
-You make your aliases and shell functions permanent by adding them to your `.bashrc` file and then sourcing the file. For instance, use a text editor like vim or emacs to add the `sq` alias:
+You make your aliases and shell functions permanent by adding them to your `~/.bashrc` file and then sourcing the file. For instance, use a text editor like vim or emacs to add the `sq` alias:
 
 ```
 $ nano ~/.bashrc  # or vim, emacs, MyAdroit, etc.
@@ -61,7 +61,7 @@ Add this line:
 alias sq='squeue -u <YourNetID>'
 ```
 
-Save the changes and then return to the command line. Make the new alias available in the current shell by "sourcing" your `.bashrc` file:
+Save the changes and then return to the command line. Make the new alias available in the current shell by "sourcing" your `~/.bashrc` file:
 
 ```bash
 $ source ~/.bashrc
@@ -75,7 +75,7 @@ $ sq
 
 You only need to source your `~/.bashrc` file when you add an alias in the current session. When you first log in all aliases will be available.
 
-Once you have built up your `.bashrc` file it will contain aliases and shell functions like those in the example [myshortcuts.sh](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) file in this repo. If you wish to use all the shortcuts in that file then run these commands:
+Once you have built up your `~/.bashrc` file it will contain aliases and shell functions like those in the example [myshortcuts.sh](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) file in this repo. If you wish to use all the shortcuts in that file then run these commands:
 
 ```bash
 $ wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/03_aliases_and_shell_functions/myshortcuts.sh
@@ -85,12 +85,12 @@ $ source ~/.bashrc
 
 ### If you have an account on Della, Perseus, Tiger or Tigressdata ...
 
-Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `.bashrc` file for each account. Here is the three-step procedure for this:
+Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `~/.bashrc` file for each account. Here is the three-step procedure for this:
 
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
 <br/><br/>
 
-That is, make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add the following line to each of your `.bashrc` files:
+That is, make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add the following line to each of your `~/.bashrc` files:
 
 ```bash
 # User specific aliases and functions
