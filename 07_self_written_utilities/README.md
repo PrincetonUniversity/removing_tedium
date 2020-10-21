@@ -52,7 +52,7 @@ $ echo $PATH
 
 ## Your first utility: Generate a custom Slurm script
 
-Here we will write our own utility called `slr` which will generate a custom Slurm script in the current working directory.
+Below is a utility called `slr` which will generate a custom Slurm script in the current working directory. Follow the directions for either the Python or R version.
 
 ### Python source code
 
