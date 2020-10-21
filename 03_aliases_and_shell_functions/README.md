@@ -602,7 +602,7 @@ $ wa squeue -u $USER
 
 ## Make Mac more like Linux
 
-Add this alias to `~/.bash_profile` on your Mac:
+Add these aliases to `~/.bash_profile` on your Mac:
 
 ```bash
 alias wget='curl -O'
