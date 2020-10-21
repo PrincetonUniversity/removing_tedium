@@ -400,7 +400,7 @@ This method will not work when multiple nodes are used to run the job.
 Running `mycancel` will automatically find the job id of your most recent job and cancel it:
 
 ```bash
-mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' --fields=2); }
+mycancel() { scancel $(squeue -u $USER -o "%i" -h | sort | tail -n 1); }
 ```
 
 ### Efficiency reports without the job id
