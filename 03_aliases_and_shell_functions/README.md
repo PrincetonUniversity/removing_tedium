@@ -403,7 +403,7 @@ Running `mycancel` will automatically find the job id of your most recent job an
 mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 ```
 
-The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`.
+The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo a Python implementation of `mycancel` is presented. The implementation above is of course in Bash.
 
 ### View the Slurm efficiency report without specifying the job id
 
