@@ -216,7 +216,7 @@ Earlier we learned how to cancel the most recently submitted job using `mycancel
 mycancel() { scancel $(squeue -u $USER | tail -1 | tr -s [:blank:] | cut -d' ' -f2); }
 ```
 
-The shell function above is written in Bash. Below is `pycancel` which does exactly the same thing as `mycancel` except it is written in Python which is a language that most people prefer writing:
+The shell function above is written in Bash. Below is `pycancel` which performs the same function as `mycancel` except it is written in Python which is a language that most people prefer over Bash:
 
 ```python
 #!/usr/licensed/anaconda3/2020.7/bin/python
