@@ -582,7 +582,7 @@ alias R='R --vanilla --quiet'
 alias ccat='/usr/licensed/anaconda3/2020.7/bin/pygmentize'
 ```
 
-The `ccat` alias can be used to do syntax highlighting of Python files and more (e.g., `$ ccat myscript.py`).
+The `ccat` alias is like the `cat` command but with syntax highlighting of Python files and more (e.g., `$ ccat myscript.py`).
 
 ## Watch anything
 
