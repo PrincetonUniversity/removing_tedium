@@ -92,7 +92,7 @@ alias myprio='join -j 1 -o ${FRMT} <(sqs | sort) <(sprio | sort) | sort -g'
 mycancel() { scancel $(squeue -u $USER -o "%i" -h | sort | tail -n 1); }
 maxmem() { snodes | tr -s [:blank:] | cut -d' ' -f7 | sort -g | uniq; }
 eff() { seff $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
-goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | cut -d' ' -f2 | tail -n 1); }
+goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 lastweek() {
   days=7
