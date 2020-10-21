@@ -405,7 +405,7 @@ mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 
 The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo a Python implementation of `mycancel` is presented. The implementation above is of course in Bash.
 
-### View the Slurm efficiency report without specifying the job id
+### View Slurm efficiency reports without specifying the job id
 
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
