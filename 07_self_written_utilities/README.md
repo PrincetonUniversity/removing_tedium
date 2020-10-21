@@ -237,7 +237,7 @@ else:
   print(f"Canceled job {jobid}")
 ```
 
-Copy the source code above and paste it into a file called `pycancel` in the directory `/tigress/<YourNetID>/my-utilities`. Then give it execute permissions:
+Copy the source code above and paste it into a file called `pycancel` in the directory `<path/to>/my-utilities`. Then give it execute permissions:
 
 ```
 $ chmod 744 pycancel
