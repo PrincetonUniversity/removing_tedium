@@ -411,7 +411,7 @@ If you set `#SBATCH --mail-user` in your Slurm script then you will receive an e
 eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
 ```
 
-The `eff` shortcuts automatically figures out the job id and runs `seff` on that.
+The `eff` function figures out the job id and runs `seff` on that.
 
 ### Get your fairshare value
 
