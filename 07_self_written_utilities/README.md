@@ -231,7 +231,7 @@ lines = output.stdout.decode("utf-8").split('\n')
 if len(lines) == 2:
   print("There are no running or pending jobs.")
 else:
-  # modifications needed for job arrays
+  # assuming no job arrays
   jobid = max([int(line.split()[0]) for line in lines[1:-1]])
   cmd = f"scancel {jobid}"
   _ = subprocess.run(cmd, shell=True, timeout=5)
