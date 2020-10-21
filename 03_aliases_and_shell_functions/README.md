@@ -393,7 +393,7 @@ It is often useful to SSH to the compute node where your job is running. From th
 goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
 ```
 
-This method will not work when multiple nodes are used to run the job.
+The function above uses `squeue` to list all your job id's in ascending order along with the corresponding node where the job is running. It then takes the last row, extracts the node and calls `ssh` on that. This method will not work when multiple nodes are used to run the job.
 
 ### Cancel your most recently submitted job without specifying the job id
 
@@ -402,6 +402,8 @@ Running `mycancel` will automatically find the job id of your most recent job an
 ```bash
 mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 ```
+
+The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`.
 
 ### View the Slurm efficiency report without specifying the job id
 
