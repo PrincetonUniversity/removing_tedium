@@ -225,14 +225,13 @@ import os
 import subprocess
 
 netid = os.environ["USER"]
-cmd = f"squeue -u {netid}"
+cmd = f"squeue -u {netid} -o \"%i\" -S i -h | tail -n 1"
 output = subprocess.run(cmd, capture_output=True, shell=True, timeout=5)
-lines = output.stdout.decode("utf-8").split('\n')
-if len(lines) == 2:
+line = output.stdout.decode("utf-8").split('\n')
+if line == ['']:
   print("There are no running or pending jobs.")
 else:
-  # assuming no job arrays
-  jobid = max([int(line.split()[0]) for line in lines[1:-1]])
+  jobid = line[0]
   cmd = f"scancel {jobid}"
   _ = subprocess.run(cmd, shell=True, timeout=5)
   print(f"Canceled job {jobid}")
