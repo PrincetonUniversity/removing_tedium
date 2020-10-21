@@ -572,14 +572,17 @@ Follow @igor_chubin for wttr.in updates
 
 ## Enhanced commands
 
+Shadowing is the remapping of a command with different parameters:
+
 ```bash
 alias vi='vim'
 alias top='htop'
 alias cmake='cmake3'
 alias R='R --vanilla --quiet'
+alias ccat='/usr/licensed/anaconda3/2020.7/bin/pygmentize'
 ```
 
-Shadowing is the remapping of a command with different parameters.
+The `ccat` alias can be used to do syntax highlighting of Python files and more (e.g., `$ ccat myscript.py`).
 
 ## Watch anything
 
