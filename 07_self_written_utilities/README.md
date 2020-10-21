@@ -103,7 +103,7 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/mas
 $ chmod u+x slr
 ```
 
-The last command above makes the script executable by changing the permissions. Now try it out:
+The `chmod` command above makes the script executable by changing the permissions. Now try it out:
 
 ```
 $ cd ~
@@ -185,7 +185,7 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/mas
 $ chmod u+x slr
 ```
 
-The last command above makes the script executable by changing the permissions. Next install the `argparse` package:
+The `chmod` command above makes the script executable by changing the permissions. Next install the `argparse` package:
 
 ```
 $ module load rh/devtoolset/8
