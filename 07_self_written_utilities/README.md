@@ -21,7 +21,7 @@ Some users will write a data analysis script and place a copy in each directory 
 To get our own utilities to work like the standard Linux commands, we need to do the following:
 
 + create a directory to store them
-+ give each utility the permissions to be executed
++ give each utility execute permissions
 + update the PATH so that the utilities will be found
 
 ### Create a my-utilities directory
