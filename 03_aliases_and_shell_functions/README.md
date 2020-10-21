@@ -390,7 +390,7 @@ For more on salloc see [this page](https://researchcomputing.princeton.edu/slurm
 It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, thread performance and GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
 
 ```bash
-goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | cut -d' ' -f2 | tail -n 1); }
+goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
 ```
 
 This method will not work when multiple nodes are used to run the job.
@@ -400,7 +400,7 @@ This method will not work when multiple nodes are used to run the job.
 Running `mycancel` will automatically find the job id of your most recent job and cancel it:
 
 ```bash
-mycancel() { scancel $(squeue -u $USER -o "%i" -h | sort | tail -n 1); }
+mycancel() { scancel $(squeue -u mingyus -o "%i" -S i -h | tail -n 1); }
 ```
 
 ### Efficiency reports without the job id
