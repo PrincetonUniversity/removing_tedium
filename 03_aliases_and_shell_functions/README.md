@@ -101,7 +101,7 @@ This approach ensures that your shortcuts remain in sync across all of you accou
 
 Once the setup is complete, begin adding aliases and shell functions to `myshortcuts.sh`. See an [example file](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) which is in this repo. 
 
-You can make new additions to `myshortcuts.sh` activate in the current shell by sourcing your `.bashrc` file which will in turn source `myshortcuts.sh`:
+If you make new additions to `myshortcuts.sh` then activate them in the current shell by sourcing your `.bashrc` file which will in turn source `myshortcuts.sh`:
 
 ```bash
 $ source ~/.bashrc
