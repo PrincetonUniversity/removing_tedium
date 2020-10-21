@@ -127,7 +127,7 @@ $ slr -j test -t 72
 $ jj   # jj is an alias defined previously
 $ slr -g 4
 $ jj
-# customize the slr source code using a text editor
+# customize the slr source code for your work using a text editor
 ```
 
 If you encounter a `Permission denied` error then you probably failed to add execute permission to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
@@ -203,7 +203,7 @@ $ slr
 $ jj   # jj is an alias defined previously
 $ slr -t 72 -n 4 -g
 $ jj
-# customize the slr source code using a text editor 
+# customize the slr source code for your work using a text editor 
 ```
 
 If you encounter a `Permission denied` error then you probably failed to add execute permission to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
