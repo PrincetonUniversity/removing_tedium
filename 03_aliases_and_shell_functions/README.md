@@ -124,7 +124,7 @@ alias vi='vim'
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 ```
 
-Note that some aliases are automatically created. The above is saying that if with run the `l.` command, for example, the shell is really running `ls -d .* --color=auto`.
+Note that some aliases are automatically created. The above is saying that if we run the `l.` command, for example, the shell is really running `ls -d .* --color=auto`.
 
 ## A word of caution
 
