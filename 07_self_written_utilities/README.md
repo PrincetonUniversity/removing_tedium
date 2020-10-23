@@ -22,7 +22,7 @@ To get your own utilities to work like the standard Linux commands, you need to 
 
 + create a directory to store them
 + give each utility execute permissions
-+ update the PATH so that the utilities will be found
++ update your PATH environment variable so that the utilities will be found
 
 ### Create a my-utilities directory
 
