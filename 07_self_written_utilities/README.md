@@ -254,7 +254,7 @@ $ sq
 
 ## cppcancel is a C++ implementation of mycancel
 
-```
+```c++
 #include <cstdio>
 #include <iostream>
 #include <memory>
