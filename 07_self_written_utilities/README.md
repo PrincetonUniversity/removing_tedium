@@ -18,7 +18,7 @@ Some users will write a data analysis script and place a copy in each directory 
 
 ## Setup for self-written utilities
 
-To get our own utilities to work like the standard Linux commands, we need to do the following:
+To get your own utilities to work like the standard Linux commands, you need to do the following:
 
 + create a directory to store them
 + give each utility execute permissions
@@ -49,6 +49,8 @@ Be sure to run `source ~/.bashrc` so that the changes to `PATH` take effect. Mak
 ```
 $ echo $PATH
 ```
+
+You should see the path to your `my-utilities` directory as the last path in the in the output.
 
 ## Your first utility: Generate a custom Slurm script
 
