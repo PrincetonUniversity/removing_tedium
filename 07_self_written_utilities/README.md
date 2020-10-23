@@ -295,7 +295,7 @@ int main() {
 
 After saving the code in a file called `cppcancel.cpp` in the directory `<path/to>/my-utilities`, compile it with this command:
 
-```c++
+```
 $ g++ -std=c++11 -o cppcancel cppcancel.cpp
 ```
 
