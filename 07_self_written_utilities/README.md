@@ -251,3 +251,50 @@ $ sq
 $ pycancel
 $ sq
 ```
+
+## cppcancel is a C++ implementation of mycancel
+
+```
+#include <cstdio>
+#include <iostream>
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <array>
+
+std::string exec(const char* cmd) {
+  std::array<char, 128> buffer;
+  std::string result;
+  std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
+  if (!pipe) {
+    throw std::runtime_error("popen() failed!");
+  }
+  while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+    result += buffer.data();
+  }
+  return result;
+}
+
+int main() {
+  const char* user = std::getenv("USER");
+  std::string netid(user);
+  std::string cmd = "squeue -u " + netid + " -o \"%i\" -S i -h | tail -n 1";
+
+  std::string sq = exec(&(cmd[0]));
+  if (sq == "")
+    std::cout << "There are no running or pending jobs." << std::endl;
+  else {
+    cmd = "scancel " + sq;
+    std::string error = exec(&(cmd[0]));
+    std::cout << "Canceled job " + sq;
+  }
+}
+```
+
+After saving the code in a file called `cppcancel.cpp` in the directory `<path/to>/my-utilities`, compile it with this command:
+
+```
+$ g++ -std=c++11 -o cppcancel cppcancel.cpp
+```
+
+Then you can call `cppcancel` on the command line.
