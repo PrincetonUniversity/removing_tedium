@@ -265,7 +265,7 @@ $ sq
 #include <array>
 
 std::string exec(const char* cmd) {
-  // this function is taken https://bit.ly/3jrKs4K
+  // this function is taken from https://bit.ly/3jrKs4K
   std::array<char, 128> buffer;
   std::string result;
   std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
