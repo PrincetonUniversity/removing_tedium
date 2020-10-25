@@ -32,7 +32,7 @@ $ mkdir /tigress/<NetID>/my-utilities   # Tiger, Della, Perseus, Traverse
 $ mkdir /home/<NetID>/my-utilities      # if only have account on Adroit
 ```
 
-Once you have some scripts stored in this directory, you should put the directory under version control using git, for example.
+Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`.
 
 ### Update PATH
 
