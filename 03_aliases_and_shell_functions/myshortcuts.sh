@@ -161,6 +161,7 @@ alias R='R --vanilla --quiet'
 alias has512='lscpu | grep -E --color=always "avx512"'
 alias dirsize='du -h --max-depth=1 | sort -h'
 alias mypath='readlink -f'
+alias ccat='/usr/licensed/anaconda3/2020.7/bin/pygmentize'
 
 ###########
 # history #
