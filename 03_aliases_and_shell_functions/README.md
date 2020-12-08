@@ -257,6 +257,44 @@ Then use it as follows:
 $ modl anaconda3
 ```
 
+## Tensorboard
+
+This function can be added to the shell configuration file (`~/.bashrc` on Linux and `~/.bash_profile` on macOS) on your local machine to create an SSH tunnel for using Tensorboard:
+
+```
+board() {
+  case "$#" in
+    0)
+      echo "Missing port. Tunnel not created."
+      ;;
+    1)
+      ssh -N -f -L "$1":127.0.0.1:"$1" ${USER}@tigergpu.princeton.edu
+      echo "Created SSH tunnel using port $1"
+      ;;
+    2)
+      ssh -N -f -L "$1":"$2":"$1" ${USER}@tigergpu.princeton.edu
+      echo "Created SSH tunnel using port $1 and host $2"
+      ;;
+    *)
+      echo "Too many command-line arguments ("$#"). Tunnel not created."
+  esac
+}
+```
+
+If running Tensorboard on the head node then use:
+
+```
+$ board 6006
+```
+
+If running on a compute node then use:
+
+```
+$ board 6006 tiger-h12g10
+```
+
+Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
+
 ## Conda environments
 
 The shell functions and alias below can be used to list your enumerated conda environments (conen), activate an environment by number (conac), deactivate the current environment (conde) and remove or delete an environment (conrm):
