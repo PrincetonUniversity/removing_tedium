@@ -259,7 +259,7 @@ $ modl anaconda3
 
 ## Tensorboard
 
-This function can be added to the shell configuration file (`~/.bashrc` on Linux and `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions](https://researchcomputing.princeton.edu/tensorflow)):
+This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions](https://researchcomputing.princeton.edu/tensorflow)):
 
 ```
 board() {
