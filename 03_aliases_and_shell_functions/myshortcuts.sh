@@ -11,7 +11,7 @@
 #    \  \:\       \__\/      \  \::/        /__/:/       \  \::/        \__\/      \  \::/   
 #     \__\/                   \__\/         \__\/         \__\/                     \__\/    
 #
-# (c) 2020 Princeton Institute for Computational Science and Engineering
+# (c) 2021 Princeton Institute for Computational Science and Engineering
  
 # This file contains useful aliases and shell functions for researchers using high-performance
 # computing clusters. For details see https://github.com/PrincetonUniversity/removing_tedium
