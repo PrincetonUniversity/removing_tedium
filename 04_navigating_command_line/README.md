@@ -87,3 +87,7 @@ Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Type a letter -
 
 A programmable keyboard provides extras keys that can be mapped to various custom functions. There are also pseudo-versions
 that try to enhance standard keyboards via software and provide lots of additional features. For Windows see [AutoHotKey](https://www.autohotkey.com/) and for Mac see [Keyboard Maestro](https://www.keyboardmaestro.com/main/).
+
+## Useful Links
+
+[Linux Productivity Tools at ORNL](https://www.olcf.ornl.gov/wp-content/uploads/2019/12/LPT_OLCF.pdf)
