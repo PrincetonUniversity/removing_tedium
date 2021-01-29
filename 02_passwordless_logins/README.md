@@ -140,3 +140,12 @@ test
 ```
 
 Note that whatever you place in your `public_html` directory will be on the internet. Also, the contents of that directory are backed-up so don't put thousands of files in it or large files unless you need to. More on this later.
+
+## Notes
+
+`ssh` has options to force password authentication. For instance:
+
+```
+$ ssh -o PasswordAuthentication=yes -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no <rest-of-your-usual-ssh-command-here>
+```
+The above will force password authentication, from the keyboard, and disable lookup of the public keys on the remote end.
