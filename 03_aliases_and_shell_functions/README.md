@@ -443,6 +443,48 @@ mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 
 The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo a Python implementation of `mycancel` is presented. The implementation above is of course in Bash.
 
+### See information about all your jobs
+
+The `lastweek` function will list details about your jobs over the last 7 days:
+
+```bash
+lastweek() 
+{
+    days=7;
+    if [ "$#" -gt 0 ]; then
+        days=$1;
+    fi;
+    seconds=$(($days * 24 * 60 * 60));
+    now=$(date +%s);
+    minusdays=$((now - $seconds));
+    startdate=$(date --date=@$minusdays +'%m/%d');
+    FMT=jobid%12,state,start,elapsed,timelimit,ncpus%5,nnodes%6,reqmem%10,alloctres%50,partition,jobname%8;
+    if [ "$#" -gt 1 ]; then
+        sacct -u $USER -S $startdate -o $FMT;
+    else
+        sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9].e|[0-9].b|[0-9]\.[0-9] ';
+    fi
+}
+```
+
+Run the command without arguments to get your job history over the last 7 days:
+
+```
+$ lastweek
+```
+
+To change the number of days the report is created for add an argument. For instance, to see all jobs over the last 12 days (instead of the default of 7):
+
+```
+$ lastweek 12
+```
+
+Lastly, to see the individual job steps, add the number of days and `s` as a second parameter:
+
+```
+$ lastweek 3 a
+```
+
 ### View Slurm efficiency reports without specifying the job id
 
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
