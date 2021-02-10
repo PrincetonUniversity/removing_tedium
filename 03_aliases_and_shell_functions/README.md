@@ -443,7 +443,7 @@ mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 
 The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo a Python implementation of `mycancel` is presented. The implementation above is of course in Bash.
 
-### See information about all your jobs
+### Generate a report on your recent job history
 
 The `lastweek` function will list details about your jobs over the last 7 days:
 
@@ -473,13 +473,13 @@ Run the command without arguments to get your job history over the last 7 days:
 $ lastweek
 ```
 
-To change the number of days the report is created for add an argument. For instance, to see all jobs over the last 12 days (instead of the default of 7):
+To change the number of days the report is created for, add the days argument. For instance, to see all jobs over the last 12 days (instead of the default of 7):
 
 ```
 $ lastweek 12
 ```
 
-Lastly, to see the individual job steps, add the number of days and `s` as a second parameter:
+Lastly, to see all of the individual job steps, add the number of days and any second parameter such as `a` for "all":
 
 ```
 $ lastweek 3 a
