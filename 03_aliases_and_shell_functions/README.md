@@ -462,7 +462,7 @@ lastweek()
     if [ "$#" -gt 1 ]; then
         sacct -u $USER -S $startdate -o $FMT;
     else
-        sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9].e|[0-9].b|[0-9]\.[0-9] ';
+        sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9].e|[0-9].b|[0-9].i|[0-9]\.[0-9] ';
     fi
 }
 ```
