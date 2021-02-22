@@ -485,6 +485,8 @@ Lastly, to see all of the individual job steps, add the number of days and any s
 $ lastweek 3 a
 ```
 
+If you do not use GPUs then you should remove ",alloctres%50" from FMT to shorten the output.
+
 ### View Slurm efficiency reports without specifying the job id
 
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
