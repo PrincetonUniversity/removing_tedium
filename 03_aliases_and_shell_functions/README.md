@@ -485,7 +485,19 @@ Lastly, to see all of the individual job steps, add the number of days and any s
 $ lastweek 3 a
 ```
 
-If you do not use GPUs then you should remove ",alloctres%50" from FMT to shorten the output.
+If you do not use GPUs then you should remove `,alloctres%50` from FMT to shorten the output. The number of characters per column can be adjusted by changing the number after the `%` symbol. Below is sample output:
+
+```
+ JobID      State               Start    Elapsed  Timelimit NCPUS NNodes ReqMem  Partition  JobName 
+------ ---------- ------------------- ---------- ---------- ----- ------ ------ ---------- -------- 
+128233     FAILED 2021-02-19T10:15:22   00:00:01   01:00:00     4      1  200Gn        all   run.sh 
+128234     FAILED 2021-02-19T10:15:46   00:15:03   01:00:00     4      1  200Gn        all   run.sh 
+128235    TIMEOUT 2021-02-19T11:30:17   01:05:03   01:00:00     4      1  200Gn        all   run.sh 
+128240     FAILED 2021-02-19T14:11:37   00:09:25   01:00:00     4      1  200Gn        all   run.sh 
+128246 CANCELLED+ 2021-02-19T16:24:45   00:30:11   01:00:00     4      1  200Gn        all   run.sh 
+128247 CANCELLED+ 2021-02-19T16:55:16   00:09:15   01:00:00     4      1  200Gn        all   run.sh 
+128396    RUNNING 2021-02-22T10:16:08   01:02:26   01:00:00    32      1  200Gn        all   run.sh 
+```
 
 ### View Slurm efficiency reports without specifying the job id
 
