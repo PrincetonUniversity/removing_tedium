@@ -485,9 +485,10 @@ Lastly, to see all of the individual job steps, add the number of days and any s
 $ lastweek 3 a
 ```
 
-If you do not use GPUs then you should remove `,alloctres%50` from FMT to shorten the output. The number of characters per column can be adjusted by changing the number after the `%` symbol. Below is sample output:
+The number of characters per column can be adjusted by changing the number after the `%` symbol in FMT. If you do not use GPUs then you should remove `,alloctres%50` from FMT to shorten the output. An example is below:
 
 ```
+$ lastweek
  JobID      State               Start    Elapsed  Timelimit NCPUS NNodes ReqMem  Partition  JobName 
 ------ ---------- ------------------- ---------- ---------- ----- ------ ------ ---------- -------- 
 128233     FAILED 2021-02-19T10:15:22   00:00:01   01:00:00     4      1  200Gn        all   run.sh 
