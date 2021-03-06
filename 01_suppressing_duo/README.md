@@ -54,7 +54,7 @@ Host *
   ServerAliveCountMax 10
 ```
 
-This will cause a "ping" every 30 seconds and hopefully prevent disconnections. OIT manages the VPN. Please [contact](https://princeton.service-now.com/service) them for assistance.
+This will cause a "ping" every 30 seconds and hopefully prevent disconnections. OIT manages the VPN so please [contact](https://princeton.service-now.com/service) them for assistance.
 
 
 
