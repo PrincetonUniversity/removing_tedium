@@ -132,7 +132,7 @@ Install [PuTTY gen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.ht
 
 ## Looking ahead
 
-Once you have setup passwordless logins, you can run commands on a cluster without formally connecting. The command below will create an empty file in your `/home` directory on Della:
+Once you have setup passwordless logins, you can run commands on a cluster without formally connecting. For example, the command below will create an empty file in your `/home` directory on Della:
 
 ```
 # on your laptop
