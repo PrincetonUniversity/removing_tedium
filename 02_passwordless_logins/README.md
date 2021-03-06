@@ -86,8 +86,7 @@ and check to make sure that only the key(s) you wanted were added.
 Try to ssh to the cluster. You should no longer need to enter a password:
 
 ```
-$ ssh aturing@della.princeton.edu
-$ 
+$ ssh aturing@adroit.princeton.edu
 ```
 
 If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
