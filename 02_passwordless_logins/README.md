@@ -95,9 +95,9 @@ $ ssh aturing@adroit.princeton.edu
 
 If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
 
-### Step 4: Return to step 2 for additional HPC clusters
+### Step 4: Return to Step 2 for additional HPC clusters
 
-Return to step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test.
+Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test.
 
 ### Trouble with tigressdata
 
