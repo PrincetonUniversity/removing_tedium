@@ -106,7 +106,7 @@ The line `Host della.princeton.edu della` allows one to create aliases which exp
 
 ### Off-Campus
 
-When off-campus and not using a VPN, one can use `tigressgateway` as a proxyjump server.
+When off-campus and not using a VPN, **if you have an account on one of the large clusters** (not Adroit, not Nobel) then one can use `tigressgateway` as a proxyjump server.
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/multiplexed_connection.png" align="center"></p>
 
