@@ -64,7 +64,7 @@ The following solution is from Bill Wichser of Research Computing.
 
 Q: *How do I avoid having to authenticate with Duo every time?*
 
-A: Yes this is painful! But there are a few things one can do. I will explain one approach using ssh multiplexing which uses a single ssh connection and channels all communication over that channel. This means that only once will you need to Duo authenticate.
+A: Yes this is painful! But there are a few things one can do. I will explain one approach using ssh multiplexing which uses a single ssh connection and sends all communication over that channel. This means that you will only need to Duo authenticate once.
 
 But do be aware of why Duo is being used in the first place. It is to protect our systems. As a member or affiliate of Princeton University, you are a part of that "our systems" group. The reason I mention this is because you do have options with the method I am going to provide with respect to time limits on how long the multiplexed functionality remains operational. Set too low and the next ssh/scp will require Duo authentication again. But set too high, protection could be bypassed which makes us all vulnerable.
 
