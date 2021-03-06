@@ -70,7 +70,7 @@ But do be aware of why Duo is being used in the first place. It is to protect ou
 
 ### On-Campus
 
-Step 1: To make this work, on your Linux or macOS **local machine** (laptop/desktop), edit the file `~/.ssh/config` and add a machine stanza which looks like this (replace aturing with your NetID):
+Step 1: To make this work, on your Linux or macOS **local machine** (laptop/desktop), edit the file `~/.ssh/config` by adding a machine stanza which looks like this (replace `aturing` with your NetID):
 
 ```
 Host della.princeton.edu della
@@ -83,7 +83,7 @@ Host della.princeton.edu della
 
 Step 2: Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
 
-The very first login to `della` (from on-campus since no VPN) would start the multiplexing option.
+The very first login to `della` (from on-campus since no VPN) would start the multiplexing option:
 
 ```
 $ ssh della
@@ -97,6 +97,8 @@ Some handy commands from your local machine (laptop/desktop):
 $ ssh -O check della    -- this checks whether a multiplexed session is already open
 $ ssh -O stop della     -- kills the multiplexed session
 ```
+
+The line `Host della.princeton.edu della` allows one to create aliases which explains why we can use `della` or `della.princeton.edu` in the commands above.
 
 ### Off-Campus
 
