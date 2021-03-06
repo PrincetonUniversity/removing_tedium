@@ -139,7 +139,7 @@ Once you have setup passwordless logins, you can run commands on a cluster witho
 $ ssh aturing@della.princeton.edu "touch myfile"
 ```
 
-Note that you can also use the approach above to run scripts on an HPC cluster. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script to run. If the script generates figures and webpages as the output then those pages could be viewed on `https://tigress-web.princeton.edu/~<YourNetID>/` (learn more about [tigress-web](https://researchcomputing.princeton.edu/support/knowledge-base/tigress-web)).
+Note that you can also use the approach above to run scripts on an HPC cluster. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script to run. If the script generates figures and webpages as the output then that content could be viewed on `https://tigress-web.princeton.edu/~<YourNetID>/` (learn more about [tigress-web](https://researchcomputing.princeton.edu/support/knowledge-base/tigress-web)).
 
 If you have access to the `/tigress` filesystem then you can share webpages:
 
