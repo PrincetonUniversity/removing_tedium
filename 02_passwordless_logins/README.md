@@ -159,6 +159,6 @@ Note that whatever you place in your `public_html` directory will be on the inte
 `ssh` has options to force password authentication. For instance:
 
 ```
-$ ssh -o PasswordAuthentication=yes -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no <rest-of-your-usual-ssh-command-here>
+$ ssh -o PasswordAuthentication=yes -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no aturing@adroit.princeton.edu
 ```
-The above will force password authentication, from the keyboard, and disable lookup of the public keys on the remote end.
+The above will force password authentication and disable lookup of the public keys on the remote end.
