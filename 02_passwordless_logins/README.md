@@ -49,7 +49,7 @@ The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identific
 
 ### Step 2: Copy the public key to the HPC cluster
 
-Use the `ssh-copy-id` command to copy the public key to the `authorized_keys` file of the desired cluster (enter your password for the **HPC cluster** when prompted):
+Use the `ssh-copy-id` command to copy the public key to the desired cluster (enter your password for the **HPC cluster** when prompted):
 
 ```
 $ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
