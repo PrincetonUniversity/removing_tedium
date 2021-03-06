@@ -57,7 +57,7 @@ $ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
 # enter password and DUO authenticate
 ```
 
-Note that the `ssh-copy-id` command will only transfer your public key. It will do nothing with your private key.
+Note that the `ssh-copy-id` command will only transfer your public key. Your private key will safely remain on your local machine in `~/.ssh/id_rsa`.
 
 Here is an example session:
 
