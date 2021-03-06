@@ -108,6 +108,9 @@ The line `Host della.princeton.edu della` allows one to create aliases which exp
 
 When off-campus and not using a VPN, one can use `tigressgateway` as a proxyjump server.
 
+<p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/multiplexed_connection.png" align="center"></p>
+
+
 Step 1: On your **local machine** (laptop/desktop) make these directories and set the permissions:
 
 ```
