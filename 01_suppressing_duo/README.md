@@ -177,8 +177,8 @@ Host tigressgateway.princeton.edu tigressgateway
   LocalForward 5921 nobel.princeton.edu:5921
   LocalForward 5922 tigressdata.princeton.edu:5922
   LocalForward 5923 tigressdata.princeton.edu:5923
-  LocalForward 5924 tigressdata.princeton.edu:5924
-  LocalForward 5925 tigressdata.princeton.edu:5925
+  LocalForward 5924 stellar.princeton.edu:5924
+  LocalForward 5925 stellar.princeton.edu:5925
 
 Host traverse.princeton.edu traverse
   User aturing
