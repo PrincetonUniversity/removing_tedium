@@ -2,7 +2,7 @@
 
 When connecting to an HPC cluster via `ssh` or transferring a file via `scp`, one needs to enter a password. This page explains how to use SSH keys to handle the authentication step so that logins and file transfers can happen without entering a password.
 
-As indicated in the figure below, the first step is to create private and public "keys" on your **local machine** (e.g., laptop). These keys are nothing more than files. The public key is then appended to `~/.ssh/authorized_keys` on the desired cluster while the private key remains on your local machine. When you try to connect to that cluster if the public and private keys match then you will be granted access without needing to type your password. **The private key is equivalent to your password so you should never share it.**
+As indicated in the figure below, the first step is to create private and public "keys" on your **local machine** (e.g., laptop). These keys are nothing more than files. The public key is then appended to `~/.ssh/authorized_keys` on the desired cluster while the private key remains on your local machine. When you try to connect to that cluster if the public and private keys match then you will be granted access without needing to type your password.
 
  <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/ssh_keys_princeton_research_computing.png" align="center"></p>
 
@@ -45,7 +45,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. **Keep your private key private. Do not share it**. However, you can share your public key and we will do that next.
+The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. **The private key is equivalent to your password so you should never share it.** However, you can share your public key and we will do that next.
 
 ### Step 2: Copy the public key to the HPC cluster
 
