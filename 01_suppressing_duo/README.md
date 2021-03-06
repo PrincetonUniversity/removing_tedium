@@ -14,16 +14,16 @@ OIT is responsible for the VPN so please direct any questions or problems to [th
 
 ### What if the VPN is too slow?
 
-The use of a VPN will decrease your internet connection speed. The table below was generated on 10/18/2020 at an off-campus location in Princeton with a FIOS connection using [speedtest.net](https://www.speedtest.net):
+The use of a VPN will decrease your internet connection speed. The table below was generated on 3/6/2021 at an off-campus location in Princeton with a FIOS connection using [speedtest.net](https://www.speedtest.net):
 
 | VPN           | Download (Mbps)| Upload (Mbps)  |
 | ------------- |:-------------:|:-----:|
-| None          | 901           |   712 |
-| None          | 912           |   660 |
-| GlobalProtect | 473           |   342 |
-| GlobalProtect | 511           |   290 |
-| SonicWall     | 38            |    52 |
-| SonicWall     | 38            |    54 |
+| None          | 865           |   635 |
+| None          | 888           |   598 |
+| GlobalProtect | 593           |   213 |
+| GlobalProtect | 688           |   220 |
+| SonicWall     | 57            |    60 |
+| SonicWall     | 57            |    62 |
 
 The SonicWall VPN severely decreases transfer rates and should be avoided. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below.
 
