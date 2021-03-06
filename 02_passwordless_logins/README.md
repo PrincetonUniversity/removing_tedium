@@ -53,8 +53,8 @@ Use the `ssh-copy-id` command to copy the public key to the `authorized_keys` fi
 
 ```
 $ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
-# answer "yes"
-# enter password and DUO authenticate
+# answer "yes" when asked "Are you sure you want to continue connecting (yes/no)?"
+# enter your password and DUO authenticate
 ```
 
 Note that the `ssh-copy-id` command will only transfer your public key. Your private key will remain on your local machine in `~/.ssh/id_rsa`.
