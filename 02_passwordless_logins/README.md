@@ -10,7 +10,7 @@ As indicated in the figure below, the first step is to create private and public
 
 ### Step 1: Create the private/public key pair
 
-On your **local machine** (e.g., laptop), first create the RSA key pair. This is done with the following command (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
+On your **local machine** (e.g., laptop), first create the RSA key pair. This is done by running the following command in a terminal (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
 
 ```
 $ ssh-keygen -t rsa
@@ -22,15 +22,15 @@ $ ssh-keygen -t rsa
 Here is an example:
 
 ```
-[jdh4@notexa ~]$ ssh-keygen -t rsa
+[aturing@mylaptop ~]$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/jdh4/.ssh/id_rsa): 
+Enter file in which to save the key (/home/aturing/.ssh/id_rsa): 
 Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
-Your identification has been saved in /home/jdh4/.ssh/id_rsa.
-Your public key has been saved in /home/jdh4/.ssh/id_rsa.pub.
+Your identification has been saved in /home/aturing/.ssh/id_rsa.
+Your public key has been saved in /home/aturing/.ssh/id_rsa.pub.
 The key fingerprint is:
-SHA256:WAmli4zRUQGWhIHkT4oXi1CjwNJd3KYKNe5OK8DpcZY jdh4@notexa.princeton.edu
+SHA256:WAmli4zRUQGWhIHkT4oXi1CjwNJd3KYKNe5OK8DpcZY aturing@mylaptop
 The key's randomart image is:
 +---[RSA 2048]----+
 |+++==*=+.        |
@@ -45,7 +45,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. Keep your private key private. **Do not share it**. However, you can share your public key and we will do that next.
+The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. **Keep your private key private. Do not share it**. However, you can share your public key and we will do that next.
 
 ### Step 2: Copy the public key to the HPC cluster
 
