@@ -226,6 +226,10 @@ Host tigressdata.princeton.edu tigressdata
   ControlMaster auto
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
+  
+Host nobel.princeton.edu nobel
+  User aturing
+  HostName nobel.princeton.edu
 ```
 
 To check if the multiplexed connection is alive (remember everything is going through tigressgateway):
