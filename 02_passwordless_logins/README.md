@@ -2,7 +2,7 @@
 
 When connecting to an HPC cluster via `ssh` or transferring a file via `scp`, one needs to enter a password. This page explains how to use SSH keys to handle the anthentication step automatically allowing for passwordless logins and file transfers.
 
-To login to an HPC cluster without entering a password, you will first create public and private "keys" on your **local machine** (e.g., laptop). These keys are nothing more than files. The public key will then be appended to `~/.ssh/authorized_keys` on the desired cluster while the private key remains on your local machine. When you try to connect to that cluster if the public and private keys match then you will be granted access without needing to type your password. The private key is equivalent to your password so you should never share it.
+As indicated in the figure below, the first step is to create private and public "keys" on your **local machine** (e.g., laptop). These keys are nothing more than files. The public key is then appended to `~/.ssh/authorized_keys` on the desired cluster while the private key remains on your local machine. When you try to connect to that cluster if the public and private keys match then you will be granted access without needing to type your password. **The private key is equivalent to your password so you should never share it.**
 
  <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/ssh_keys_princeton_research_computing.png" align="center"></p>
 
