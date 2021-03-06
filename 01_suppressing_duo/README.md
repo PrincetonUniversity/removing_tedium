@@ -243,3 +243,14 @@ Your connection will be killed typically every few hours. To end the connection 
 ```
 $ ssh -O stop tigressgateway.princeton.edu
 ```
+
+### X11 Forwarding
+
+If you are on a Mac and you experience problems with X11 forwarding then add the following lines to the bottom of `~/.ssh/config`:
+
+```
+Host *
+  ForwardAgent yes
+  ForwardX11 yes
+  XAuthLocation /opt/X11/bin/xauth
+```
