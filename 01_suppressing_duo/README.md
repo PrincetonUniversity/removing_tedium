@@ -246,7 +246,7 @@ $ ssh -O stop tigressgateway.princeton.edu
 
 ### X11 Forwarding
 
-If you are on a Mac and you experience problems with X11 forwarding then add the following lines to the bottom of `~/.ssh/config`:
+If you are on a Mac and you experience problems with X11 forwarding then try adding the following lines to the bottom of `~/.ssh/config`:
 
 ```
 Host *
