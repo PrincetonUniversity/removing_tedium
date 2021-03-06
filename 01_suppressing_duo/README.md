@@ -4,9 +4,9 @@ Duo enhances security. It can also be disruptive and annoying. This page present
 
 ## I. VPN Approach
 
-Install a VPN client. Connect via the VPN client. Start you work. You will only need to DUO authenticate once per session (which typically lasts a few hours).
+Install a VPN client. Connect via the VPN client. Start your work. You will only need to DUO authenticate once per session (which typically lasts a few hours).
 
-To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn).
+To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn). GlobalProtect is recommended.
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
 
