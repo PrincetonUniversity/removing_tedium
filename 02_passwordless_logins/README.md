@@ -49,10 +49,10 @@ The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identific
 
 ### Step 2: Copy the public key to the HPC cluster
 
-Copy the public key to the server's `authorized_keys` file (enter your password for the **HPC cluster** when prompted):
+Use the `ssh-copy-id` command to copy the public key to the `authorized_keys` file of the desired cluster (enter your password for the **HPC cluster** when prompted):
 
 ```
-$ ssh-copy-id <YourNetID>@<hpc_cluster>.princeton.edu
+$ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
 # answer "yes"
 # enter password and DUO authenticate
 ```
@@ -60,7 +60,7 @@ $ ssh-copy-id <YourNetID>@<hpc_cluster>.princeton.edu
 Here is an example session:
 
 ```
-[jdh4@notexa ~]$ ssh-copy-id jdh4@tiger.princeton.edu
+[aturing@mylaptop ~]$ ssh-copy-id aturing@adroit.princeton.edu
 The authenticity of host 'tiger.princeton.edu (128.112.172.210)' can't be established.
 ECDSA key fingerprint is SHA256:Hc3x7Tfs3ULz49U2jmpxzOGNwm2p8mkUnZVs8X1X7g8.
 ECDSA key fingerprint is MD5:15:47:21:af:6c:ac:5e:e7:88:d5:de:73:d5:ea:c4:9f.
@@ -68,7 +68,7 @@ Are you sure you want to continue connecting (yes/no)? yes
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are ...
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to ...
 Password: 
-Duo two-factor login for jdh4
+Duo two-factor login for aturing
 
 Enter a passcode or select one of the following options:
 
@@ -79,13 +79,13 @@ Passcode or option (1-2): 1
 
 Number of key(s) added: 1
 
-Now try logging into the machine, with:   "ssh 'jdh4@tiger.princeton.edu'"
+Now try logging into the machine, with:   "ssh 'aturing@adroit.princeton.edu'"
 and check to make sure that only the key(s) you wanted were added.
 ```
 
 ### Step 3: Connect to the HPC cluster
 
-Try to ssh to the cluster. You should no longer need to enter a password:
+Try to `ssh` to the cluster (you should no longer need to enter a password):
 
 ```
 $ ssh aturing@adroit.princeton.edu
