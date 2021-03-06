@@ -68,6 +68,8 @@ A: Yes this is painful! But there are a few things one can do. I will explain on
 
 But do be aware of why Duo is being used in the first place. It is to protect our systems. The reason I mention this is because you do have options with the method I am going to provide with respect to time limits on how long the multiplexed functionality remains operational. Set too low and your very next ssh/scp will require Duo authentication again. But set too high, the protection could be bypassed which makes us all vulnerable.
 
+Note that a VPN is required to using MyAdroit and MyDella as well as use various library services.
+
 ### On-Campus
 
 Step 1: To make this work, on your Linux or macOS **local machine** (laptop/desktop), edit the file `~/.ssh/config` by adding a machine stanza which looks like this (**replace aturing with your NetID**):
@@ -170,6 +172,8 @@ Host tigressgateway.princeton.edu tigressgateway
   LocalForward 5921 nobel.princeton.edu:5921
   LocalForward 5922 tigressdata.princeton.edu:5922
   LocalForward 5923 tigressdata.princeton.edu:5923
+  LocalForward 5924 tigressdata.princeton.edu:5924
+  LocalForward 5925 tigressdata.princeton.edu:5925
 
 Host traverse.princeton.edu traverse
   User aturing
@@ -222,6 +226,14 @@ Host adroit.princeton.edu adroit
 Host tigressdata.princeton.edu tigressdata
   User aturing
   HostName tigressdata.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+  
+Host stellar.princeton.edu stellar
+  User aturing
+  HostName stellar.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
   ControlPersist yes
