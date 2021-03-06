@@ -2,7 +2,7 @@
 
 To login to an HPC cluster without entering a password, you will first create public and private "keys" on your **local machine** (e.g., laptop). These keys are nothing more than files. The public key will then be appended to `~/.ssh/authorized_keys` on the desired cluster while the private key remains on your local machine. When you try to connect to that cluster if the public and private keys match then you will be granted access without needing to type your password. The private key is equivalent to your password so you should never share it.
 
- <p align="center"><img src="http://itdoc.hitachi.co.jp/manuals/3021/3021335010e/GRAPHICS/ZU020130.GIF" align="center"></p>
+ <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/ssh_keys_princeton_research_computing.png" align="center"></p>
 
 ## Linux and Mac
 
