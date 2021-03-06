@@ -60,8 +60,7 @@ This will cause a "ping" every 30 seconds and hopefully prevent disconnections. 
 
 ## II. Multiplexing Approach (VPN free)
 
-> Multiplexing is a system or signal involving simultaneous transmission of several messages along a single channel of communication.
-
+> Multiplexing involves the simultaneous transmission of several messages along a single channel of communication.
 
 The following solution is from Bill Wichser of Research Computing.
 
