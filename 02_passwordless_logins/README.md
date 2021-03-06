@@ -61,7 +61,7 @@ Here is an example session:
 
 ```
 [aturing@mylaptop ~]$ ssh-copy-id aturing@adroit.princeton.edu
-The authenticity of host 'tiger.princeton.edu (128.112.172.210)' can't be established.
+The authenticity of host 'adroit.princeton.edu (128.112.172.210)' can't be established.
 ECDSA key fingerprint is SHA256:Hc3x7Tfs3ULz49U2jmpxzOGNwm2p8mkUnZVs8X1X7g8.
 ECDSA key fingerprint is MD5:15:47:21:af:6c:ac:5e:e7:88:d5:de:73:d5:ea:c4:9f.
 Are you sure you want to continue connecting (yes/no)? yes
