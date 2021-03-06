@@ -27,7 +27,7 @@ The use of a VPN will decrease your internet connection speed. The table below w
 
 The SonicWall VPN severely decreases transfer rates and should be avoided. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below.
 
-[Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della). You must have an account on one of the large clusters to do this (not Adroit). If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
+[Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della). You must have an account on one of the large clusters to do this. Use `nobel.princeton.edu` as the hop-through if you only have an account on Adroit and you want to connect to Adroit without using a VPN. If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
 
 ### If the Linux VPN is not working
 
