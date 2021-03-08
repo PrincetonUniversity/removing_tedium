@@ -10,7 +10,7 @@ To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBas
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
 
-OIT is responsible for the VPN so please direct any questions or problems to [them](https://princeton.service-now.com/service).
+OIT is responsible for the VPN so please [contact them](https://princeton.service-now.com/service) with any questions or problems.
 
 ### What if the VPN is too slow?
 
