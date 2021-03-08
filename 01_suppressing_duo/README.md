@@ -254,13 +254,13 @@ Host nobel.princeton.edu nobel
 To check if the multiplexed connection is alive (remember everything is going through tigressgateway):
 
 ```
-$ ssh -O check tigressgateway.princeton.edu
+$ ssh -O check tigressgateway
 ```
 
 Your connection will be killed typically every few hours. To end the connection manually:
 
 ```
-$ ssh -O stop tigressgateway.princeton.edu
+$ ssh -O stop tigressgateway
 ```
 
 ### X11 Forwarding
