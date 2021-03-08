@@ -29,7 +29,7 @@ The SonicWall VPN severely decreases transfer rates and should be avoided. If yo
 
 [Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della). You must have an account on one of the large clusters to do this. Use `nobel.princeton.edu` as the hop-through if you only have an account on Adroit and you want to connect to Adroit without using a VPN. If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
 
-<p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/hop_through_no_vpn_needed.png" align="center"></p>
+<p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/hop_through_no_vpn_needed.png" align="center" width=70%></p>
 
 ### If the Linux VPN is not working
 
