@@ -4,7 +4,7 @@ Duo enhances security. It can also be disruptive and annoying. This page present
 
 ## I. VPN Approach
 
-Install a VPN client. Connect via the VPN client. Start your work. You will only need to DUO authenticate once per session (which typically lasts a few hours).
+Install a [VPN client](https://www.princeton.edu/vpn). Connect via the VPN client. Start your work. You will only need to DUO authenticate once per session (which typically lasts a few hours).
 
 To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn). GlobalProtect is recommended.
 
