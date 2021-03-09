@@ -202,6 +202,7 @@ mk() { mkdir -p "$1" && cd "$1"; }
 cl() { cd "$1" && ll; } # uses alias defined above
 alias ..='cd .. && ll'
 alias ...='cd ../.. && ll'
+alias pwd='pwd -P'
 ```
 
 `mk` is the first shell function that we have encountered. The existence of `$1` in the body of the function corresponds to the input paramter. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. The `mk` function makes a directory and then cd's into that directory:
