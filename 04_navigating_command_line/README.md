@@ -90,5 +90,5 @@ that try to enhance standard keyboards via software and provide lots of addition
 
 ## Useful Links
 
-[Linux Productivity Tools at ORNL](https://www.olcf.ornl.gov/wp-content/uploads/2019/12/LPT_OLCF.pdf)
-[Advanced UNIX & Shell Computing](https://www.olcf.ornl.gov/wp-content/uploads/2018/07/Intro_to_Unix_2018.pdf)
+[Linux Productivity Tools](https://www.olcf.ornl.gov/wp-content/uploads/2019/12/LPT_OLCF.pdf) by ORNL  
+[Advanced UNIX & Shell Computing](https://www.olcf.ornl.gov/wp-content/uploads/2018/07/Intro_to_Unix_2018.pdf) by ORNL
