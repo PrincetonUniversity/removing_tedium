@@ -1,13 +1,13 @@
 # Symbolic Links
 
-Symbolic links are shortcuts that allow you to quickly reference various paths and move throughout the filesystem.
+Symbolic links allow you to quickly reference various paths and move throughout the filesystem.
 
 ## Remote scratch
 
 From your home directory you could `cd` to your `/scratch/gpfs` directory with:
 
 ```
-$ cd /scratch/gpfs/<NetID>
+$ cd /scratch/gpfs/<YourNetID>
 ```
 
 However, with a symbolic link called `scr` you would just type:
@@ -22,8 +22,8 @@ Here is how to create the link in your home directory:
 
 ```
 $ cd
-$ ln --symbolic /scratch/gpfs/<NetID> scr       # Tiger, Della, Perseus, Traverse
-$ ln --symbolic /scratch/network/<NetID> scr    # Adroit
+$ ln --symbolic /scratch/gpfs/<YourNetID> scr       # Tiger, Della, Perseus, Traverse
+$ ln --symbolic /scratch/network/<YourNetID> scr    # Adroit
 ```
 
 You can use a different name instead of `scr`. Choose something concise, representative and original (so that it doesn't conflict with an existing command).
