@@ -2,7 +2,7 @@
 
 + Suppress Duo by using either a VPN or the multiplexing approach. 
 
-+ Use SSH keys to login without entering your password.
++ Use SSH keys to log in without entering your password.
 
 + Use aliases and shell functions to save time. Be conscious of the commands you are running and create new aliases and shell functions when appropriate.
 
