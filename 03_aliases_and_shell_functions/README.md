@@ -125,7 +125,7 @@ Be sure not to name an alias after an existing command. If your shell is not beh
 Aliases take precedence over commands loaded via modules. This is illustrated below with the `intel` module:
 
 ```bash
-$ module load intel
+$ module load intel/19.1/64/19.1.1.217
 $ icc
 $ module purge
 $ alias icc='ps -u $USER'
