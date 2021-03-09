@@ -73,9 +73,7 @@ Now try out the alias:
 $ sq
 ```
 
-You only need to source your `~/.bashrc` file when you add an alias in the current session. When you first log in all aliases will be available.
-
-Once you have built up your `~/.bashrc` file it will contain aliases and shell functions like those in the example [myshortcuts.sh](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) file in this repo.
+You only need to source your `~/.bashrc` file when you add an alias in the current session. When you first log in all aliases will be available. Once you have built up your `~/.bashrc` file it will contain aliases and shell functions like those in the example [myshortcuts.sh](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) file in this repo.
 
 ### If you have an account on Della, Perseus, Stellar, Tiger, Tigressdata and maybe Traverse ...
 
