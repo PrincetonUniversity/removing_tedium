@@ -24,7 +24,7 @@ Be sure to replace `<YourNetID>` with your actual NetID (e.g., aturing). After d
 $ sq
 ```
 
-Note that aliases defined on the command line will only be available in the current shell. To make them permanent see the next section.
+**Note that aliases defined on the command line will only be available in the current shell.** To make them permanent see the next section.
 
 ## Store your aliases and shell functions in .bashrc
 
