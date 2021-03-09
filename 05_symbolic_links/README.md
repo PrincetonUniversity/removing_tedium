@@ -2,7 +2,7 @@
 
 Symbolic links allow you to quickly reference various paths and move throughout the filesystem.
 
-## Remote scratch
+## /scratch/gpfs and /scratch/network
 
 From your home directory you could `cd` to your `/scratch/gpfs` directory with:
 
