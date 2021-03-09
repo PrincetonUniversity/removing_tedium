@@ -77,7 +77,7 @@ You only need to source your `~/.bashrc` file when you add an alias in the curre
 
 ### If you have an account on Della, Perseus, Stellar, Tiger, Tigressdata and maybe Traverse ...
 
-The large clusters and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `~/.bashrc` file for each account. Here is the three-step procedure for this:
+The large clusters and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `~/.bashrc` file for each account. This approach ensures that your shortcuts remain in sync across all of your accounts. Here is the three-step procedure for this:
 
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
 <br/><br/>
@@ -89,7 +89,7 @@ That is, make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliase
 source /tigress/<YourNetID>/myshortcuts.sh
 ```
 
-This approach ensures that your shortcuts remain in sync across all of you accounts. Unfortunately, this will not work for Adroit or Nobel since those clusters do not mount `/tigress`. You will have to manually update the `~/.bashrc` files for those systems.  One way to do this is to scp `myshortcuts.sh` from `/tigress` to those machines.
+Unfortunately, this will not work for Adroit or Nobel since those clusters do not mount `/tigress`. You will have to manually update the `~/.bashrc` files for those systems.  One way to do this is to scp `myshortcuts.sh` from `/tigress` to those machines.
 
 Once the setup is complete, begin adding aliases and shell functions to `myshortcuts.sh`. See an [example file](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) which is in this repo. 
 
