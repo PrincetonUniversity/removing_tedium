@@ -82,7 +82,7 @@ The large clusters and Tigressdata all mount the `/tigress` filesystem. If you h
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
 <br/><br/>
 
-That is, make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add the following line to each of your `~/.bashrc` files:
+As explained above, the idea is to make the file `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add the following line to each of your `~/.bashrc` files:
 
 ```bash
 # User specific aliases and functions
