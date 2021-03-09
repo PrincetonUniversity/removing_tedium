@@ -193,15 +193,15 @@ Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing 
 
 The meaning of `--` in the commands above is explained [here](https://unix.stackexchange.com/questions/510857/what-is-meaning-of-double-hyphen-in-ls-command).
 
-## Navigation
+## Navigation (and first shell function)
 
 Here are some shell functions and aliases for creating directories and moving around the filesystem:
 
 ```bash
 mk() { mkdir -p "$1" && cd "$1"; }
 cl() { cd "$1" && ll; } # uses alias defined above
-alias ..='cd ..'
-alias ...='cd ../..'
+alias ..='cd .. && ll'
+alias ...='cd ../.. && ll'
 ```
 
 `mk` is the first shell function that we have encountered. The existence of `$1` in the body of the function corresponds to the input paramter. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. The `mk` function makes a directory and then cd's into that directory:
@@ -214,7 +214,7 @@ $ pwd
 /home/aturing/myproj
 ```
 
-The `cl` function cd's into a specified directory and runs the `ll` alias. The `..` alias above allows us to type 2 keys instead of 5 to go up a level.
+The `cl` function cd's into a specified directory and runs the `ll` alias. The `..` alias above allows us to type 2 keys to go up a level and list the directory contents.
 
 ## To see your shell functions
 
@@ -232,8 +232,8 @@ Here are some aliases for quickly working with modules:
 alias ma='module avail'
 alias mp='module purge'
 alias ml='module list'
-alias mla='module load anaconda3'
-alias mlc='module load cudatoolkit'
+alias mla='module load anaconda3/2020.11'
+alias mlc='module load cudatoolkit/11.2'
 alias rh8='module load rh/devtoolset/8'
 ```
 
@@ -246,12 +246,12 @@ alias modl='module load'
 Then use it as follows:
 
 ```bash
-$ modl anaconda3
+$ modl anaconda3/2020.11
 ```
 
 ## Tensorboard
 
-This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions](https://researchcomputing.princeton.edu/tensorflow)):
+This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions for Tensorboard](https://researchcomputing.princeton.edu/tensorflow)):
 
 ```
 board() {
@@ -279,7 +279,7 @@ If running Tensorboard on the head node then use:
 $ board 6006
 ```
 
-If running on a compute node then use:
+If running on a compute node then use, for example:
 
 ```
 $ board 6006 tiger-h12g10
@@ -289,13 +289,13 @@ Be sure to specify the correct port and host in the commands above for your case
 
 ## Conda environments
 
-The shell functions and alias below can be used to list your enumerated conda environments (conen), activate an environment by number (conac), deactivate the current environment (conde) and remove or delete an environment (conrm):
+The shell functions and alias below can be used to list your enumerated Conda environments (conen), activate an environment by number (conac), deactivate the current environment (conde) and remove or delete an environment (conrm):
 
 ```bash
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3
+    module load anaconda3/2020.11
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
@@ -315,7 +315,7 @@ conrm() {
 ```
 
 ### conen
-Display your enumerated conda environments (and load the anaconda3 module if necessary). This is similar to `conda env list` which can also be used.
+Display your enumerated Conda environments (and load the anaconda3 module if necessary). This is similar to `conda env list` which can also be used.
 
 ### conac
 Activate an environment by number. The `conen` command enumerates your environments. This command is similar to `conda activate <name>`, which can also be used, but it takes a number instead of a name.
