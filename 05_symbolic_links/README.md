@@ -60,7 +60,7 @@ $ cd ~
 $ ln --symbolic /tigress/<YourNetID> grs   # Tiger, Della, Perseus and (for some) Traverse
 ```
 
-Can you think of another symbolic link that could be used to speed-up your workflow?
+Can you think of another symbolic link that could be used to speed-up your workflow? Maybe `prj -> /projects/ATURING`?
 
 ## How to remove a symbolic link
 
