@@ -148,7 +148,7 @@ alias cq='checkquota'
 
 ## Viewing your aliases and selectively turning them off
 
-To see the aliases that you are using run this command:
+To see the aliases that you are using, run this command:
 
 ```
 $ alias
@@ -160,7 +160,7 @@ To turn off a specific alias for the current shell session:
 $ unalias <alias>
 ```
 
-Or for a single command:
+To turn off for a single command:
 
 ```
 $ \<alias>
@@ -187,7 +187,7 @@ alias dd='$EDITOR -- "$(ls -t | head -n 2 | tail -n 1)"'
 
 The `ll` alias lists the files in the current directory in long format and sorts them by modification time with the newest at the bottom.
 
-The `jj` command prints the contents of the newest file in the current working directory to the terminal while `kk` prints out the second newest file. `jj` **is arguably the most useful alias on this entire page. Start using it**! The `ff` command loads the newest file in your specified text editor while `dd` loads the second newest file. The routine use of `ll`, `jj` and `ff` can save you lots of time. Note that `dd` overwrites an existing command. Because the original `dd` is obscure, this can be overlooked. If you are left-handed then you may consider transposing the aliases.
+The `jj` command prints the contents of the newest file in the current working directory to the terminal while `kk` prints out the second newest file. `jj` **is arguably the most useful alias on this entire page. Start using it**! The `ff` command loads the newest file in your specified text editor while `dd` loads the second newest file. The routine use of `ll`, `jj` and `ff` can save you lots of time. Note that `dd` overwrites an existing command but because the original `dd` is obscure, this can be overlooked. If you are left-handed then you may consider transposing the aliases (e.g., interchange `jj` with `ff`).
 
 Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing command, it is obscure and can be overwritten. `gg` and `hh` are also available.
 
