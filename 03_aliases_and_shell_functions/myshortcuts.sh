@@ -42,6 +42,7 @@ mk() { mkdir -p "$1" && cd "$1"; }
 cl() { cd "$1" && ll; } # uses alias defined above
 alias ..='cd .. && ll'
 alias ...='cd ../.. && ll'
+alias pwd='pwd -P'
 
 #######################
 # environment modules #
