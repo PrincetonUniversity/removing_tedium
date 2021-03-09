@@ -129,7 +129,7 @@ $ module load intel/19.1/64/19.1.1.217
 $ icc
 $ module purge
 $ alias icc='ps -u $USER'
-$ module load intel
+$ module load intel/19.1/64/19.1.1.217
 $ icc
 ```
 
