@@ -21,7 +21,7 @@ With `shopt -s autocd` in your `.bashrc` file the `cd` could be omitted: `$ scr`
 Here is how to create the link in your home directory:
 
 ```
-$ cd
+$ cd ~
 $ ln --symbolic /scratch/gpfs/<YourNetID> scr       # Tiger, Della, Perseus, Traverse
 $ ln --symbolic /scratch/network/<YourNetID> scr    # Adroit
 ```
@@ -56,8 +56,8 @@ alias pwd='pwd -P'
 Make a second symbolic link from your home directory to tigress:
 
 ```
-$ cd
-$ ln --symbolic /tigress/<NetID> grs   # Tiger, Della, Perseus and (for some) Traverse
+$ cd ~
+$ ln --symbolic /tigress/<YourNetID> grs   # Tiger, Della, Perseus and (for some) Traverse
 ```
 
 Can you think of another symbolic link that could be used to speed-up your workflow?
