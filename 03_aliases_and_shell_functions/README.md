@@ -376,6 +376,8 @@ The alias below submits the job and then launches `watch`. This allows one to kn
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 ```
 
+To exit from `watch` hold down [Ctrl] and press [c].
+
 ### Enhancements to squeue
 
 Show the state of your running and pending jobs:
@@ -504,7 +506,7 @@ The `eff` function figures out the job id and runs `seff` on that.
 
 ### Get your fairshare value
 
-Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your group run in a given period of time the lower your fairshare value. The maximum value is 1.
+Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your Unix group run over the last 30 days, the lower your fairshare value. Fairshare vaires between 0 and 1 with 1 corresponding to the largest job priority.
 
 ```bash
 alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
@@ -519,22 +521,21 @@ alias smi='nvidia-smi'
 alias wsmi='watch -n 1 nvidia-smi'
 ```
 
-After submitting a GPU job it is common to run `goto` followed by `wsmi` on the compute node.
+After submitting a GPU job it is common to run `goto` followed by `wsmi` on the compute node. This allows one to examine GPU utilization. To exit from `watch` hold down [Ctrl] and press [c].
 
 ## Specific to Adroit
 
 ```bash
 if [[ $(hostname) == adroit* ]]; then
-  alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:tesla_v100:1'
   alias v100='ssh adroit-h11g1'
 fi
 ```
 
-There is one node on Adroit with V100 GPUs. The aliases are concerned with this node.
+There is one node on Adroit with four V100 GPUs. The alias above allows one to quickly connect to this node.
 
 ## Specific to Della
 
-To get the run time limits for the different job partitions (qos) on Della:
+To get the runtime limits for the different job partitions (QOS) on Della:
 
 ```bash
 if [[ $(hostname) == della* ]]; then
@@ -547,16 +548,15 @@ fi
 
 While X11 forwarding (via `ssh -X`) is usually sufficient to work with graphics on the HPC clusters, TurboVNC is a faster alternative. See the bottom of [this page](https://researchcomputing.princeton.edu/faq/how-do-i-use-vnc-on-tigre) for shells function to ease the setup.
 
-
 ## checkquota
 
-The `checkquota` command provides information about available storage space and number of files. While it's only 10 characters, given its frequent use you may consider reducing it to 2:
+The `checkquota` command provides information about available storage space and number of files. While it's only 10 characters you may consider reducing it to 2 since it is used a lot:
 
 ```bash
 alias cq='checkquota'
 ```
 
-Another tip is to put the following in your `~/.bashrc` file to see your remaining space each time you login:
+Another tip is to put the following in your `~/.bashrc` or `myshortcuts.sh` file to see your remaining space each time you log in:
 
 ```bash
 if [ ! -z "$PS1" ]; then
@@ -570,6 +570,10 @@ if [ ! -z "$PS1" ]; then
       timeout 5 checkquota | head -n 3
       echo ;;
     perseus)
+      echo 
+      timeout 5 checkquota | head -n 3
+      echo ;;
+    stellar-intel*)
       echo 
       timeout 5 checkquota | head -n 3
       echo ;;
@@ -666,7 +670,7 @@ alias vi='vim'
 alias top='htop'
 alias cmake='cmake3'
 alias R='R --vanilla --quiet'
-alias ccat='/usr/licensed/anaconda3/2020.7/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2020.11/bin/pygmentize'
 ```
 
 The `ccat` alias is like the `cat` command but with syntax highlighting of Python files and more (e.g., `$ ccat myscript.py`).
@@ -685,6 +689,7 @@ Use it as follows:
 $ wa ls -l # if downloading a file
 $ wa date
 $ wa squeue -u $USER
+$ wa free
 ```
 
 ## Make Mac more like Linux
