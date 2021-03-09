@@ -396,11 +396,11 @@ Watch your jobs in the queue (useful for knowing when test jobs run):
 alias wq='watch -n 1 squeue -u $USER'
 ```
 
-This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To end the command hold down [Ctrl] and press [c].
+This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To exit from `watch` hold down [Ctrl] and press [c].
 
 ### Interactive allocations
 
-Use the aliases below to work interactively on a compute nodes (with and without a GPU) for 5 minutes:
+Use the aliases below to work interactively on a compute node (with and without a GPU) for 5 minutes:
 
 ```bash
 alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
@@ -413,7 +413,7 @@ Note that you can modify the values of the parameters. For instance, for a 20-mi
 $ cpu5 -t 20
 ```
 
-For more on salloc see [this page](https://researchcomputing.princeton.edu/slurm).
+For more on `salloc` see [this page](https://researchcomputing.princeton.edu/slurm).
 
 ### ssh to the compute node where your last job is running without specifying the job id
 
@@ -427,13 +427,13 @@ The function above uses `squeue` to list all your job id's in ascending order al
 
 ### Cancel your most recently submitted job without specifying the job id
 
-Running `mycancel` will automatically find the job id of your most recent job and cancel it:
+Running `mycancel` will automatically find the job id of your most recent job and cancel the job:
 
 ```bash
 mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 ```
 
-The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo a Python implementation of `mycancel` is presented. The implementation above is of course in Bash.
+The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo we present implementations of `mycancel` in Python and C++. The implementation above is of course in Bash.
 
 ### Generate a report on your recent job history
 
