@@ -93,16 +93,20 @@ eff() { seff $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
 goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 lastweek() {
-  days=7
-  if [ "$#" -eq 1 ]; then
-    days=$1
-  fi
-  seconds=$(($days * 24 * 60 * 60))
-  now=$(date +%s)
-  minusdays=$((now - $seconds))
-  startdate=$(date --date=@$minusdays +'%m/%d')
-  FMT=jobid%20,start,end,state,jobname%20,reqtres%40
-  sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9].ext|[0-9].bat|[0-9]\.[0-9] '
+    days=7;
+    if [ "$#" -gt 0 ]; then
+        days=$1;
+    fi;
+    seconds=$(($days * 24 * 60 * 60));
+    now=$(date +%s);
+    minusdays=$((now - $seconds));
+    startdate=$(date --date=@$minusdays +'%m/%d');
+    FMT=jobid%12,state,start,elapsed,timelimit,ncpus%5,nnodes%6,reqmem%10,alloctres%50,partition,jobname%8;
+    if [ "$#" -gt 1 ]; then
+        sacct -u $USER -S $startdate -o $FMT;
+    else
+        sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9]{4}\.(ex|ba|in)|[0-9]{4}\.[0-9]{1,} ';
+    fi
 }
 
 #######
