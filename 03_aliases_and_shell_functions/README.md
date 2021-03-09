@@ -91,7 +91,7 @@ source /tigress/<YourNetID>/myshortcuts.sh
 
 Unfortunately, this will not work for Adroit or Nobel since those clusters do not mount `/tigress`. You will have to manually update the `~/.bashrc` files for those systems.  One way to do this is to scp `myshortcuts.sh` from `/tigress` to those machines.
 
-Once the setup is complete, begin adding aliases and shell functions to `myshortcuts.sh`. See an [example file](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) which is in this repo. 
+Once the setup is complete, begin adding aliases and shell functions to `myshortcuts.sh` (see the examples below as well as an [example myshortcuts.sh file](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh)).
 
 If you make new additions to `myshortcuts.sh` then activate them in the current shell by sourcing your `~/.bashrc` file which will in turn source `myshortcuts.sh`:
 
