@@ -351,7 +351,7 @@ Note that aliases do not work in Slurm scripts. You will need to explicitly load
 
 ### Submitting batch jobs
 
-If you submit a lot of jobs with commands like `sbatch job.slurm` or `sbatch submit.sh`. You may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
+If you submit a lot of jobs with commands like `sbatch job.slurm` or `sbatch submit.sh` then you may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
 
 ```bash
 SLURMSCRIPT='job.slurm'
@@ -367,7 +367,7 @@ $ sb
 You can distinguish different jobs by setting the job name in the Slurm script:
 
 ```bash
-#SBATCH --job-name=multivar      # create a short name for your job
+#SBATCH --job-name=low-temp      # create a short name for your job
 ```
 
 The alias below submits the job and then launches `watch`. This allows one to know when short test jobs start running:
