@@ -28,7 +28,7 @@ Modify the Slurm script by adding this line: `--dependency=singleton`
 #SBATCH --time=72:00:00          # total run time limit (HH:MM:SS)
 #SBATCH --dependency=singleton   # job dependency
 
-srun myprogram <arg1> <arg2>
+myprogram <args>
 ```
 
 The second and additional job steps can then be submitted. The `--job-name` value must be the same for each submission. Each step will wait for the one before it since each is waiting for `MyLongJob` to finish. This is how `singleton` works. The following will produce a total of 5 jobs steps.
