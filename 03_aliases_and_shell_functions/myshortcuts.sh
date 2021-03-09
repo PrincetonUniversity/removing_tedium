@@ -24,7 +24,6 @@ shopt -s checkjobs   # check if background jobs are running on exit
 shopt -s cdspell     # guess misspelled cd commands
 shopt -s autocd      # change directory w/o cd if entry is invalid
 shopt -s extglob     # enable extended glob patterns
-#shopt -s expand_aliases
 
 ####################
 # home keys system #
@@ -41,8 +40,8 @@ alias dd='$EDITOR -- "$(ls -t | head -n 2 | tail -n 1)"'  # edit 2nd newest file
 ##############
 mk() { mkdir -p "$1" && cd "$1"; }
 cl() { cd "$1" && ll; } # uses alias defined above
-alias ..='cd ..'
-alias ...='cd ../..'
+alias ..='cd .. && ll'
+alias ...='cd ../.. && ll'
 
 #######################
 # environment modules #
@@ -50,8 +49,8 @@ alias ...='cd ../..'
 alias ma='module avail'
 alias mp='module purge'
 alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
-alias mla='module load anaconda3'
-alias mlc='module load cudatoolkit'
+alias mla='module load anaconda3/2020.11'
+alias mlc='module load cudatoolkit/11.2'
 alias rh8='module load rh/devtoolset/8'
 
 #########
@@ -60,7 +59,7 @@ alias rh8='module load rh/devtoolset/8'
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3
+    module load anaconda3/2020.11
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
@@ -85,7 +84,6 @@ alias wq='watch -n 1 squeue -u $USER'
 alias sb='sbatch $SLURMSCRIPT'
 alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
 alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
-alias st='slurmtop'
 alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
 FRMT="1.1,1.3,1.4,1.5,1.6,1.7,2.3"
 alias myprio='join -j 1 -o ${FRMT} <(sqs | sort) <(sprio | sort) | sort -g'
@@ -117,7 +115,6 @@ alias wsmi='watch -n 1 nvidia-smi'
 # specific to adroit #
 ######################
 if [[ $(hostname) == adroit* ]]; then
-  alias gpu5='salloc -N 1 -n 1 -t 5 --gres=gpu:tesla_v100:1'
   alias v100='ssh adroit-h11g1'
 fi
 
@@ -133,7 +130,7 @@ fi
 # turbovnc #
 ############
 turbostart() {
-  module load turbovnc
+  module load turbovnc/2.2.1
   if [ $(vncserver -list | wc -l) -eq 4 ]; then
     vncserver
   else
@@ -141,7 +138,7 @@ turbostart() {
   fi
 }
 turbostopall() {
-  module load turbovnc
+  module load turbovnc/2.2.1
   for x in $(vncserver -list); do
     if [[ $x =~ ^: ]]; then
       vncserver -kill $x
@@ -161,7 +158,7 @@ alias R='R --vanilla --quiet'
 alias has512='lscpu | grep -E --color=always "avx512"'
 alias dirsize='du -h --max-depth=1 | sort -h'
 alias mypath='readlink -f'
-alias ccat='/usr/licensed/anaconda3/2020.7/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2020.11/bin/pygmentize'
 
 ###########
 # history #
@@ -185,7 +182,7 @@ if [ ! -z "$PS1" ]; then
       echo 
       timeout 5 checkquota | head -n 3
       echo ;;
-    perseus)
+    stellar-intel*)
       echo 
       timeout 5 checkquota | head -n 3
       echo ;;
