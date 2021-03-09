@@ -28,7 +28,7 @@ $ sq
 
 ## Store your aliases and shell functions in .bashrc
 
-To make your aliases and shell functions available each time you log in, store them in your `.bashrc` file. Here is the contents of `.bashrc` for a new account:
+To make your aliases and shell functions available each time you log in, store them in your `~/.bashrc` file. Here is the contents of `~/.bashrc` for a new account:
 
 ```bash
 $ cat ~/.bashrc
@@ -44,7 +44,7 @@ fi
 # User specific aliases and functions
 ```
 
-The last line above indicates where to store aliases and shell functions, but exactly how to do this depends on where you have accounts.
+The last line above indicates where to store aliases and shell functions, but exactly how to do this depends on where you have accounts so keep reading.
 
 ### If you only have an account on Adroit ...
 
@@ -83,9 +83,9 @@ $ wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/mas
 $ source ~/.bashrc
 ```
 
-### If you have an account on Della, Perseus, Tiger or Tigressdata ...
+### If you have an account on Della, Perseus, Stellar, Tiger, Tigressdata and maybe Traverse ...
 
-Della, Perseus, Tiger and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `~/.bashrc` file for each account. Here is the three-step procedure for this:
+The large clusters and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `~/.bashrc` file for each account. Here is the three-step procedure for this:
 
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
 <br/><br/>
