@@ -16,11 +16,13 @@ If you only have an account on Adroit then the procedure described on this page 
 
 **Step 1: Create an alias your local machine**
 
-The first step is to create an alias on your local machine (e.g., laptop) which will use `ssh` to run a script on tigressdata. To do this, on a Mac edit `~/.bash_profile` while on Linux modify `~/.bashrc`. Add this alias:
+The first step is to create an alias on your local machine (e.g., laptop) which will use `ssh` to run a script on tigressdata. To do this, on a Mac edit `~/.bash_profile` while on Linux modify `~/.bashrc`:
 
 ```bash
 alias myplots='ssh aturing@tigressdata "/scratch/gpfs/aturing/autoscripts/main.sh"'
 ```
+
+It is assumed that you are suppressing Duo and using SSH keys as described earlier.
 
 **Step 2: Create the main.sh script on tigressdata**
 
@@ -115,16 +117,13 @@ The contents of the Bash script `auto_single.sh` are shown below:
 
 ```bash
 #!/bin/bash
-NETID=aturing
+NETID=jdh4
 JOBNAME=myjob
-JOBPATH=/home/$NETID/$JOBNAME
-TGR=/tigress/$NETID/public_html/$JOBNAME
-PATH=$HOME/software/my-utilities:$PATH
+JOBPATH=/della/scratch/gpfs/$NETID/$JOBNAME
+WEB=/tigress/$NETID/public_html/$JOBNAME
 
-scp $NETID@tiger.princeton.edu:$JOBPATH/fluid.dat .
-calc -f fluid.dat --plot   # generates pressure.jpg, temperature.jpg and index.html
-scp pressure.jpg temperature.jpg index.html $NETID@tiger.princeton.edu:$JOBPATH
-ssh $NETID@tiger.princeton.edu "cd $JOBPATH; mkdir -p $TGR; mv *.jpg index.html $TGR;"
+./plot_temperature $JOBPATH  # make plot and generate HTML page
+mv temperature.jpg index.html $WEB
 
 echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
 ```
