@@ -4,6 +4,8 @@ Most researchers who use HPC clusters start their day by downloading data from t
 
 Note that the techniques presented here only work if one has followed the previous steps to suppress Duo and enable password-less logins.
 
+<center><img src="https://tigress-web.princeton.edu/~jdh4/automatic_data_analysis_tigressweb.png"></center>
+
 <center><img src="https://tigress-web.princeton.edu/~jdh4/laptop_clock.png"></center>
 
 ## Running scripts just before you start the day using cron
