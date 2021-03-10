@@ -33,16 +33,13 @@ $ ssh tigressdata
 $ chmod u+x /scratch/gpfs/aturing/autoscripts/main.sh  # make the script executable
 $ cat /scratch/gpfs/aturing/autoscripts/main.sh
 #!/bin/bash
-NETID=aturing
+NETID=jdh4
 JOBNAME=myjob
-JOBPATH=/home/$NETID/$JOBNAME
-TGR=/tigress/$NETID/public_html/$JOBNAME
-PATH=$HOME/software/my-utilities:$PATH
+JOBPATH=/della/scratch/gpfs/$NETID/$JOBNAME
+WEB=/tigress/$NETID/public_html/$JOBNAME
 
-scp $NETID@tiger.princeton.edu:$JOBPATH/fluid.dat .
-calc -f fluid.dat --plot   # generates pressure.jpg, temperature.jpg and index.html
-scp pressure.jpg temperature.jpg index.html $NETID@tiger.princeton.edu:$JOBPATH
-ssh $NETID@tiger.princeton.edu "cd $JOBPATH; mkdir -p $TGR; mv *.jpg index.html $TGR;"
+./plot_temperature $JOBPATH  # make plot and generate HTML page
+mv temperature.jpg index.html $WEB
 
 echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
 ```
