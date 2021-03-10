@@ -76,7 +76,7 @@ In the example the path to the job is hardcoded but you can pass that path as an
 
 Do not abuse tigress-web.
 
-
+Another approach is to pull down recent data from tigressdata and then run the processing scripts locally on your laptop or workstation.
 
 
 
