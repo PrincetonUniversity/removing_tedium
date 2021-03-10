@@ -1,14 +1,66 @@
-# Automated Data Analysis and Presentation
+# Automated Data Analysis
 
-Most researchers who use HPC clusters start their day by downloading data from the clusters, running analysis scripts and then examining the resulting figures. This page shows you how to automate the first two of these operations so that when you arrive in the morning the figures will have been generated just a few minutes earlier.
+Many Research Computing users start their day by (1) downloading data from the clusters to their local machine (e.g., laptop), (2) running analysis scripts and then (3) examining the resulting output and figures. This page shows you how to automate the first two of these operations.
 
-Note that the techniques presented here only work if one has followed the previous steps to suppress Duo and enable password-less logins.
+## Overview
+
+The idea is to create an alias on your local machine called, e.g., `myplots` which uses ssh to run a script on `tigressdata`:
 
 <center><img src="https://tigress-web.princeton.edu/~jdh4/automatic_data_analysis_tigressweb.png"></center>
+
+Note that the techniques presented here only work if one has followed the previous steps in this workshop to suppress Duo and enable password-less logins.
+
+If you only have an account on Adroit then the procedure described on this page will still work but you will need to run your scripts on Adroit and download the resulting output to your local machine instead of moving it to [tigress-web](https://researchcomputing.princeton.edu/support/knowledge-base/tigress-web).
+
+## Implementation
+
+The first step is to create an alias on your local machine (e.g., laptop) which will use ssh to run a script on tigressdata. On a Mac edit `~/.bash_profile` while on Linux use `~/.bashrc`. Make this alias:
+
+```
+alias myplots='ssh aturing@tigressdata "/scratch/gpfs/aturing/scripts/myplots.sh"'
+```
+
+Next we create the script on `tigressdata`.
+
+```
+$ ssh tigressdata
+$ cat /scratch/gpfs/aturing/scripts/myplots.sh
+#!/bin/bash
+NETID=aturing
+JOBNAME=myjob
+JOBPATH=/home/$NETID/$JOBNAME
+TGR=/tigress/$NETID/public_html/$JOBNAME
+PATH=$HOME/software/my-utilities:$PATH
+
+scp $NETID@tiger.princeton.edu:$JOBPATH/fluid.dat .
+calc -f fluid.dat --plot   # generates pressure.jpg, temperature.jpg and index.html
+scp pressure.jpg temperature.jpg index.html $NETID@tiger.princeton.edu:$JOBPATH
+ssh $NETID@tiger.princeton.edu "cd $JOBPATH; mkdir -p $TGR; mv *.jpg index.html $TGR;"
+
+echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
+```
+
+Step 3: Point your browser at the webpage
+
+## More details
+
+In this case we will hardcode a specific job directory but you could read in one or more job directories from file or devise a why to generate the job directories of actively running and recently completed jobs. For instance:
+
+```
+$ sacct -u aturing -S 12/21 -o jobid,start,workdir%75
+```
+
+
+
+
+
 
 <center><img src="https://tigress-web.princeton.edu/~jdh4/laptop_clock.png"></center>
 
 ## Running scripts just before you start the day using cron
+
+so that when you arrive in the morning the figures will have been generated just a few minutes earlier.
+
 
 `cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, we can use it on our **local machine**. Below shows the format of an entry in `crontab`:
 
