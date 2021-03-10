@@ -47,12 +47,22 @@ echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
 
 Below are the contents of `calc`:
 
+```python
+#!/usr/licensed/anaconda3/2020.11/bin/python
+
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import datetime
 ```
 
+
+**Step 3: Point your browser at the webpage*
+
+You should be able to see the figure at:
+
 ```
-
-
-Step 3: Point your browser at the webpage
+https://tigress-web.princeton.edu/~aturing/myjob
+```
 
 ## More details
 
@@ -62,6 +72,9 @@ In this case we will hardcode a specific job directory but you could read in one
 $ sacct -u aturing -S 11/23 -o jobid,start,workdir%75
 ```
 
+In the example the path to the job is hardcoded but you can pass that path as an argument to myplots which would then pass that to main.sh.
+
+Do not abuse tigress-web.
 
 
 
