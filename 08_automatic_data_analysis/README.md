@@ -14,17 +14,22 @@ If you only have an account on Adroit then the procedure described on this page 
 
 ## Implementation
 
-The first step is to create an alias on your local machine (e.g., laptop) which will use ssh to run a script on tigressdata. On a Mac edit `~/.bash_profile` while on Linux use `~/.bashrc`. Make this alias:
+**Step 1: Create an alias your local machine**
 
-```
-alias myplots='ssh aturing@tigressdata "/scratch/gpfs/aturing/scripts/myplots.sh"'
+The first step is to create an alias on your local machine (e.g., laptop) which will use `ssh` to run a script on tigressdata. To do this, on a Mac edit `~/.bash_profile` while on Linux modify `~/.bashrc`. Add this alias:
+
+```bash
+alias myplots='ssh aturing@tigressdata "/scratch/gpfs/aturing/autoscripts/main.sh"'
 ```
 
-Next we create the script on `tigressdata`.
+**Step 2: Create the main.sh script on tigressdata**
 
-```
+The `main.sh` script is called from your local machine. It calls at least one other script to carry out the analysis of the data. Below is an example:
+
+```bash
 $ ssh tigressdata
-$ cat /scratch/gpfs/aturing/scripts/myplots.sh
+$ chmod u+x /scratch/gpfs/aturing/autoscripts/main.sh  # make the script executable
+$ cat /scratch/gpfs/aturing/autoscripts/main.sh
 #!/bin/bash
 NETID=aturing
 JOBNAME=myjob
@@ -40,6 +45,13 @@ ssh $NETID@tiger.princeton.edu "cd $JOBPATH; mkdir -p $TGR; mv *.jpg index.html 
 echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
 ```
 
+Below are the contents of `calc`:
+
+```
+
+```
+
+
 Step 3: Point your browser at the webpage
 
 ## More details
@@ -47,7 +59,7 @@ Step 3: Point your browser at the webpage
 In this case we will hardcode a specific job directory but you could read in one or more job directories from file or devise a why to generate the job directories of actively running and recently completed jobs. For instance:
 
 ```
-$ sacct -u aturing -S 12/21 -o jobid,start,workdir%75
+$ sacct -u aturing -S 11/23 -o jobid,start,workdir%75
 ```
 
 
