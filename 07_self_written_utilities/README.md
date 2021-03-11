@@ -306,7 +306,7 @@ Then you can call `cppcancel` on the command line.
 
 We encounter the `lastweek` shell function previously. Here present the same function but in the form of a Bash script with named command-line parameters:
 
-```
+```bash
 #!/bin/bash
 #
 # This script prints your job history using sacct. One can specify the
