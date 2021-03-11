@@ -16,7 +16,7 @@ If you only have an account on Adroit then the procedure described on this page 
 
 **Step 1: Create an alias your local machine**
 
-The first step is to create an alias on your local machine (e.g., laptop) which will use `ssh` to run a script on tigressdata. To do this, on a Mac edit `~/.bash_profile` while on Linux modify `~/.bashrc`:
+The first step is to create an alias on your local machine (e.g., laptop) which will use `ssh` to run a script on [tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata). To do this, on a Mac edit `~/.bash_profile` while on Linux modify `~/.bashrc`:
 
 ```bash
 alias myplots='ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh"'
