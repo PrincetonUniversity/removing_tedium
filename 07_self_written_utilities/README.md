@@ -1,4 +1,4 @@
-# Self-Written Utilities
+# Self-Written Utilities and Pipelines
 
 A utility is a standalone code that performs some operation. A pipeline is set of utilities where the output of one serves as the input to another. In constructing a pipeline to automate your research workflow, you can combine common Linux utilities with self-written ones.
 
@@ -301,3 +301,50 @@ $ g++ -std=c++11 -o cppcancel cppcancel.cpp
 ```
 
 Then you can call `cppcancel` on the command line.
+
+## Pipelines
+
+Here we demostrate how to using pipes with standard Linux utilities and your own codes.
+
+The goal here is to identify the number of lines in a data file where where the sine of the value is greather than zero. Below are the contents of data.txt:
+
+```
+1.0
+2.0
+3.0
+4.0
+5.0
+6.0
+```
+
+Ultimately we want to run this pipeline:
+
+```
+$ cat data.txt | myfilter | wc -l
+```
+
+Below is the Python utility called myfilter:
+
+```python
+#!/usr/licensed/anaconda3/2020.11/bin/python
+import sys
+from math import sin
+for line in sys.stdin:
+    x = float(line.rstrip())
+    if sin(x) > 0: print(x)
+```
+
+The code above reads from `stdin`, applies the filter and outputs to `stdout`. This is precisely how Linux pipes are work.
+
+Place myfilter in `<path/to>/my-utilities` and make it executable:
+
+```
+$ chmod u+x myfilter
+```
+
+Then run the pipeline:
+
+```
+$ cat data.txt | myfilter | wc -l
+3
+```
