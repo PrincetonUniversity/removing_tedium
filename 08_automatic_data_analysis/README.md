@@ -16,7 +16,7 @@ If you only have an account on Adroit then the procedure described on this page 
 
 **Step 1: Create an alias your local machine**
 
-The first step is to create an alias on your local machine (e.g., laptop) which will use `ssh` to run a script on [tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata). To do this, on a Mac edit `~/.bash_profile` while on Linux modify `~/.bashrc`:
+The first step is to create an alias on your local machine (e.g., laptop) which will use `ssh` to run a script on [Tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata). To do this, on a Mac edit `~/.bash_profile` while on Linux modify `~/.bashrc`:
 
 ```bash
 alias myplots='ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh"'
@@ -103,9 +103,9 @@ In the example above, myplots operated on a single job that was hardcoded. Howev
 $ sacct -u aturing -S 11/23 -o jobid,start,workdir%75
 ```
 
-Furthermore, in addition to generating figures, the scripts on Tigressdata could also take actions based on the new data like launching new jobs or canceling queued jobs.
+Furthermore, in addition to generating figures, the scripts on [Tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata) could also take actions based on the new data like launching new jobs or canceling queued jobs.
 
-Another approach is to pull down recent data from Tigressdata and then run the analysis scripts locally on your laptop or workstation. For those with only an account on Adroit this is the only choice.
+Another approach is to pull down recent data from [Tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata) and then run the analysis scripts locally on your laptop or workstation. For those with only an account on Adroit this is the only choice.
 
 ## Running myplots on a schedule using cron
 
@@ -129,7 +129,7 @@ $ crontab -l
 0 9 * * 1-5 ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh" &> /dev/null
 ```
 
-The entry above will run `main.sh` on Tigressdata Monday thru Friday at 9 am. If `cron` is not available on your machine then consider using the `at` command. One can also simply run the script manually when needed as was done above.
+The entry above will run `main.sh` on [Tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata) Monday thru Friday at 9 am. If `cron` is not available on your machine then consider using the `at` command. One can also simply run the script manually when needed as was done above.
 
 Mac users can use the following command to load the webpage automatically in Safari if `JOBIDR` is known in advance:
 
