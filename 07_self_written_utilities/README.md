@@ -221,7 +221,7 @@ mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 The shell function above is written in Bash. Below is `pycancel` which performs the same function as `mycancel` except it is written in Python which is a language that most people prefer over Bash:
 
 ```python
-#!/usr/licensed/anaconda3/2020.7/bin/python
+#!/usr/licensed/anaconda3/2020.11/bin/python
 
 import os
 import subprocess
