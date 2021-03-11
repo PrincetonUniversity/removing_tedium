@@ -27,9 +27,9 @@ To get your own utilities to work like the standard Linux commands, you need to 
 ### Create a my-utilities directory
 
 ```
-$ mkdir /tigress/<NetID>/my-utilities   # Tiger, Della, Perseus, Traverse
+$ mkdir /tigress/<YourNetID>/my-utilities   # Tiger, Della, Perseus, Traverse
   or
-$ mkdir /home/<NetID>/my-utilities      # if only have account on Adroit
+$ mkdir /home/<YourNetID>/my-utilities      # if only have account on Adroit
 ```
 
 Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`.
@@ -39,9 +39,9 @@ Once you have some scripts stored in this directory, you should put the director
 Recall that the `PATH` environment variable specifies a list of directories to search for executables when a command is ran on the command line. To make your utilities callable on the command line add this line to `~/.bashrc`:
 
 ```
-export PATH=$PATH:/tigress/<NetID>/my-utilities   # Tiger, Della, Perseus, Traverse
+export PATH=$PATH:/tigress/<YourNetID>/my-utilities   # Tiger, Della, Perseus, Traverse
   or
-export PATH=$PATH:/home/<NetID>/my-utilities      # if only gave account on Adroit
+export PATH=$PATH:/home/<YourNetID>/my-utilities      # if only gave account on Adroit
 ```
 
 Be sure to run `source ~/.bashrc` so that the changes to `PATH` take effect. Make sure that it worked with:
