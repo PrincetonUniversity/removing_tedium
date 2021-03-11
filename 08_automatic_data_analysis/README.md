@@ -109,7 +109,7 @@ Another approach is to pull down recent data from [Tigressdata](https://research
 
 ## Running myplots on a schedule using cron
 
-`cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, you can use it on your local machine. Below shows the format of an entry in `crontab`:
+`cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, you can use it on your **local machine** (e.g., laptop/workstation). Below shows the format of an entry in `crontab`:
 
 ```
 * * * * * command
