@@ -107,7 +107,7 @@ Furthermore, in addition to generating figures, the scripts on Tigressdata could
 
 Another approach is to pull down recent data from Tigressdata and then run the analysis scripts locally on your laptop or workstation. For those with only an account on Adroit this is the only choice.
 
-## Running myplots on a schedule using cron
+## Running `myplots` on a schedule using `cron`
 
 `cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, you can use it on your local machine. Below shows the format of an entry in `crontab`:
 
@@ -129,11 +129,9 @@ $ crontab -l
 0 9 * * 1-5 ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh" &> /dev/null
 ```
 
-The entry above will run `main.sh` Monday thru Friday at 9 am. If `cron` is not available then consider using the `at` command. One can also simply run the script manually when needed as is done above.
+The entry above will run `main.sh` on Tigressdata Monday thru Friday at 9 am. If `cron` is not available on your machine then consider using the `at` command. One can also simply run the script manually when needed as was done above.
 
-If you only have an account on Adroit then you will not be able to use `tigress-web`. In this case simply view the generated plots on your local machine.
-
-Mac users can add the following command to `myplots` to load the web page automatically in Safari:
+Mac users can use the following command to load the webpage automatically in Safari if `JOBIDR` is known in advance:
 
 ```
 open -a Safari https://tigress-web.princeton.edu/~$NETID/$JOBDIR
