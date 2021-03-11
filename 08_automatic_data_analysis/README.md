@@ -30,8 +30,8 @@ The `main.sh` script is called from your local machine. It calls at least one ot
 
 ```bash
 $ ssh tigressdata
-$ chmod u+x /scratch/gpfs/aturing/autoscripts/main.sh  # make the script executable
-$ cat /scratch/gpfs/aturing/autoscripts/main.sh
+$ chmod u+x /home/aturing/autoscripts/main.sh  # make the script executable
+$ cat /home/aturing/autoscripts/main.sh
 #!/bin/bash
 NETID=aturing
 JOBNAME=myjob
