@@ -1,4 +1,4 @@
-# Automated Data Analysis
+# Automatic Data Analysis
 
 Many Research Computing users start their day by (1) downloading data from the clusters to their local machine (e.g., laptop/workstation), (2) running analysis scripts and then (3) examining the resulting output and figures. This page shows you how to automate the first two of these operations.
 
