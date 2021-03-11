@@ -304,7 +304,7 @@ Then you can call `cppcancel` on the command line.
 
 ## Bash scripts
 
-We encounter the `lastweek` shell function previously. Here present the same function but in the form of a Bash script with named command-line parameters:
+We encountered the `lastweek` shell function previously. Here we present the same function but in the form of a Bash script that takes named command-line parameters:
 
 ```bash
 #!/bin/bash
