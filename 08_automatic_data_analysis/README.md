@@ -66,7 +66,7 @@ jobpath = sys.argv[-1]
 mytitle = timestamp.strftime("%m/%d/%Y %H:%M:%S") + ' ' + jobpath
 
 array = np.loadtxt(jobpath + "/data.txt")
-plt.scatter(array[:, 0], array[:, 1], marker='o', c='b', s=15)
+plt.scatter(array[:, 0], array[:, 1], marker='o', c='b', s=50)
 plt.xlim(0, 10)
 plt.ylim(0, 10)
 plt.xlabel('Time')
