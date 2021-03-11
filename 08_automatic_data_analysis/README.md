@@ -97,28 +97,19 @@ https://tigress-web.princeton.edu/~aturing/myjob
 
 ## More details
 
-In this case we will hardcode a specific job directory but you could read in one or more job directories from file or devise a why to generate the job directories of actively running and recently completed jobs. For instance:
+In the example above, myplots operated on a single job that was hardcoded. However, you could read in one or more job directories from file or devise a way to generate the job directories of actively running and recently completed jobs. For the later one might base their approach on the output of the following command:
 
 ```
 $ sacct -u aturing -S 11/23 -o jobid,start,workdir%75
 ```
 
-In the example the path to the job is hardcoded but you can pass that path as an argument to myplots which would then pass that to main.sh.
+Furthermore, in addition to generating figures, the scripts on Tigressdata could also take actions based on the new data like launching new jobs or canceling queued jobs.
 
-Do not abuse tigress-web.
+Another approach is to pull down recent data from Tigressdata and then run the analysis scripts locally on your laptop or workstation. For those with only an account on Adroit this is the only choice.
 
-Another approach is to pull down recent data from tigressdata and then run the processing scripts locally on your laptop or workstation.
+## Running myplots on a schedule using cron
 
-
-
-<center><img src="https://tigress-web.princeton.edu/~jdh4/laptop_clock.png"></center>
-
-## Running scripts just before you start the day using cron
-
-so that when you arrive in the morning the figures will have been generated just a few minutes earlier.
-
-
-`cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, we can use it on our **local machine**. Below shows the format of an entry in `crontab`:
+`cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, you can use it on your local machine. Below shows the format of an entry in `crontab`:
 
 ```
 * * * * * command
@@ -135,45 +126,19 @@ Make an entry with `crontab -e`. To view the entries:
 
 ```
 $ crontab -l
-0 9 * * 1-5 cd ~/research/automate && ./auto_single.sh > /dev/null
+0 9 * * 1-5 /Users/aturing/bin/myplots.sh > /dev/null
 ```
 
 The entry above will run `auto_single.sh` Monday thru Friday at 9 am. If `cron` is not available then consider `at`. One can also simply run the script manually when arriving.
 
-## Pipeline example script
-
-The contents of the Bash script `auto_single.sh` are shown below:
-
-```bash
-#!/bin/bash
-NETID=jdh4
-JOBNAME=myjob
-JOBPATH=/della/scratch/gpfs/$NETID/$JOBNAME
-WEB=/tigress/$NETID/public_html/$JOBNAME
-
-./plot_temperature $JOBPATH  # make plot and generate HTML page
-mv temperature.jpg index.html $WEB
-
-echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
-```
-
 After defining some variables the script downloads data from Tiger. It then runs a self-written utility called `calc` on that data to generate two figures and an HTML page. The figures and HTML page are then uploaded to Tiger where they are moved onto `tigress-web` ([learn more](https://researchcomputing.princeton.edu/tigress-web)). One can then view the figures in a web browser. Keep in mind that `cron`, `auto_single.sh` and `calc` all exist on your local machine (i.e., laptop or workstation).
 
-In this example we focused on a single job but this approach can be extended to multiple jobs. Furthermore, in addition to generating figures, the script could also take actions based on the new data like launching new jobs or canceling queued jobs. And all this would occur before you arrive in the morning.
-
-The `index.html` file is simply this:
-
-```html
-<html><head></head><body>
-<img src="pressure.jpg"><p>
-<img src="temperature.jpg">
-</body></html>
-```
+In this example we focused on a single job but this approach can be extended to multiple jobs. 
 
 If you only have an account on Adroit then you will not be able to use `tigress-web`. In this case simply view the generated plots on your local machine.
 
 Mac users can add the following line to `auto_single.sh` to load the web page automatically in Safari:
 
 ```
-open -a Safari https://tigress-web.princeton.edu/~$NETID/$JOBNAME
+open -a Safari https://tigress-web.princeton.edu/~$NETID/$JOBDIR
 ```
