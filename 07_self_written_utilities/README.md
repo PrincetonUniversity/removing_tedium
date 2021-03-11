@@ -304,7 +304,13 @@ Then you can call `cppcancel` on the command line.
 
 ## Pipelines
 
-Here we demostrate how to using pipes with standard Linux utilities and your own codes.
+In Linux, the pipe command lets you sends the output of one command to another as in this example:
+
+```
+$ sort records.txt | uniq
+```
+
+Piping, as the term suggests, can redirect the standard output, input, or error of one process to another for further processing. Here we demostrate how to using pipes with standard Linux utilities and your own codes.
 
 The goal here is to identify the number of lines in a data file where where the sine of the value is greather than zero. Below are the contents of data.txt:
 
@@ -349,4 +355,6 @@ $ cat data.txt | myfilter | wc -l
 3
 ```
 
-Note that `myfilter` was written in Python for demonstration purposes here. The filter in the above would be best written using `awk`.
+Note that `myfilter` was written in Python for demonstration purposes here. In practice it would probably be best done in using `awk`.
+
+The example above is quite simple. One can also create pipelines where a stage corresponds to is one or more batch jobs submitted to the Slurm scheduler.
