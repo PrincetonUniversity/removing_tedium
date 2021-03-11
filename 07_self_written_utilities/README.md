@@ -349,4 +349,4 @@ $ cat data.txt | myfilter | wc -l
 3
 ```
 
-Note that `myfilter` could be written in `awk`.
+Note that `myfilter` was written in Python for demonstration purposes here. The filter in the above would be best written using `awk`.
