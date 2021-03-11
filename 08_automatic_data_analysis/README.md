@@ -131,7 +131,7 @@ $ crontab -l
 
 The entry above will run `main.sh` on [Tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata) Monday thru Friday at 9 am. If `cron` is not available on your machine then consider using the `at` command. One can also simply run the script manually when needed as was done above.
 
-Mac users can use the following command to load the webpage automatically in Safari if `JOBIDR` is known in advance:
+Mac users can use the following command to load the webpage automatically in Safari if `JOBDIR` is known in advance:
 
 ```
 open -a Safari https://tigress-web.princeton.edu/~$NETID/$JOBDIR
