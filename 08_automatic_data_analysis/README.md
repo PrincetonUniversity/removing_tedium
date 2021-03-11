@@ -34,14 +34,14 @@ $ chmod u+x /home/aturing/autoscripts/main.sh  # make the script executable
 $ cat /home/aturing/autoscripts/main.sh
 #!/bin/bash
 NETID=aturing
-JOBNAME=myjob
-JOBPATH=/della/scratch/gpfs/$NETID/$JOBNAME
-WEB=/tigress/$NETID/public_html/$JOBNAME
+JOBDIR=myjob
+JOBPATH=/della/scratch/gpfs/$NETID/$JOBDIR
+WEB=/tigress/$NETID/public_html/$JOBDIR
 
 $HOME/autoscripts/plot_temperature.py $JOBPATH  # make plot and generate HTML page
 mv temperature.jpg index.html $WEB
 
-echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
+echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBDIR"
 ```
 
 Below are the contents of `plot_temperature.py`:
@@ -87,7 +87,7 @@ Be sure to make the script executable:
 $ chmod u+x plot_temperature.py
 ```
 
-**Step 3: Point your browser at the webpage*
+**Step 3: Point your browser at the webpage**
 
 You should be able to see the figure at:
 
