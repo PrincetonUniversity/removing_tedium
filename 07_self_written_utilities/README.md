@@ -1,4 +1,4 @@
-# Self-Written Utilities and Pipelines
+# Self-Written Utilities
 
 A utility is a standalone code that performs some operation. A pipeline is set of utilities where the output of one serves as the input to another. In constructing a pipeline to automate your research workflow, you can combine common Linux utilities with self-written ones.
 
