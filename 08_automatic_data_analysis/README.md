@@ -52,19 +52,26 @@ Below are the contents of `plot_temperature.py`:
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 import datetime
+
+mpl.rcParams["figure.figsize"] = (10, 7)
+mpl.rcParams["axes.titlesize"] = 20
+mpl.rcParams["axes.labelsize"] = 30
+mpl.rcParams["xtick.labelsize"] = 24
+mpl.rcParams["ytick.labelsize"] = 24
 
 timestamp = datetime.datetime.now()
 jobpath = sys.argv[-1]
 mytitle = timestamp.strftime("%m/%d/%Y %H:%M:%S") + ' ' + jobpath
 
 array = np.loadtxt(jobpath + "/data.txt")
-plt.scatter(array[:, 0], array[:, 1])
+plt.scatter(array[:, 0], array[:, 1], marker='o', c='b', s=15)
 plt.xlim(0, 10)
 plt.ylim(0, 10)
 plt.xlabel('Time')
 plt.ylabel('Temperature')
-plt.title(mytitle, fontsize=20)
+plt.title(mytitle)
 plt.tight_layout()
 plt.savefig('temperature.jpg', dpi=96)
 
