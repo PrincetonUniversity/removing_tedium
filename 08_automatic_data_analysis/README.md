@@ -126,7 +126,7 @@ Make an entry with `crontab -e`. To view the entries:
 
 ```
 $ crontab -l
-0 9 * * 1-5 ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh" &> /dev/null
+0 9 * * 1-5 ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh" > /dev/null 2>&1
 ```
 
 The entry above will run `main.sh` on [Tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata) Monday thru Friday at 9 am. If `cron` is not available on your machine then consider using the `at` command. One can also simply run the script manually when needed as was done above.
