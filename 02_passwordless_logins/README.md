@@ -54,7 +54,7 @@ Use the `ssh-copy-id` command to copy the public key to the desired cluster (ent
 ```
 $ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
 # answer "yes" when asked "Are you sure you want to continue connecting (yes/no)?"
-# enter your password and DUO authenticate
+# enter your password and DUO authenticate (you may not need to Duo authenticate if you established a multiplexed session in the previous section
 ```
 
 Note that the `ssh-copy-id` command will only transfer your public key. Your private key will remain on your local machine in `~/.ssh/id_rsa`.
