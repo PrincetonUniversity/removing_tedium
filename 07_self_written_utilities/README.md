@@ -393,13 +393,13 @@ The goal here is to identify the number of lines in a data file where the sine o
 6.0
 ```
 
-Ultimately we want to run this pipeline where myfilter is a command that you wrote:
+Ultimately we want to run this pipeline where `myfilter` is a command that you wrote:
 
 ```
 $ cat data.txt | myfilter | wc -l
 ```
 
-Below is the Python code called myfilter:
+Below is the Python code called `myfilter`:
 
 ```python
 #!/usr/licensed/anaconda3/2020.11/bin/python
@@ -412,7 +412,7 @@ for line in sys.stdin:
 
 The code above reads from `stdin`, applies the filter and outputs to `stdout`. This is precisely how Linux pipes are work.
 
-Place myfilter in `<path/to>/my-utilities` and make it executable:
+Place `myfilter` in `<path/to>/my-utilities` and make it executable:
 
 ```
 $ chmod u+x myfilter
