@@ -126,18 +126,14 @@ Make an entry with `crontab -e`. To view the entries:
 
 ```
 $ crontab -l
-0 9 * * 1-5 /Users/aturing/bin/myplots.sh > /dev/null
+0 9 * * 1-5 ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh" &> /dev/null
 ```
 
-The entry above will run `auto_single.sh` Monday thru Friday at 9 am. If `cron` is not available then consider `at`. One can also simply run the script manually when arriving.
-
-After defining some variables the script downloads data from Tiger. It then runs a self-written utility called `calc` on that data to generate two figures and an HTML page. The figures and HTML page are then uploaded to Tiger where they are moved onto `tigress-web` ([learn more](https://researchcomputing.princeton.edu/tigress-web)). One can then view the figures in a web browser. Keep in mind that `cron`, `auto_single.sh` and `calc` all exist on your local machine (i.e., laptop or workstation).
-
-In this example we focused on a single job but this approach can be extended to multiple jobs. 
+The entry above will run `main.sh` Monday thru Friday at 9 am. If `cron` is not available then consider using the `at` command. One can also simply run the script manually when needed as is done above.
 
 If you only have an account on Adroit then you will not be able to use `tigress-web`. In this case simply view the generated plots on your local machine.
 
-Mac users can add the following line to `auto_single.sh` to load the web page automatically in Safari:
+Mac users can add the following command to `myplots` to load the web page automatically in Safari:
 
 ```
 open -a Safari https://tigress-web.princeton.edu/~$NETID/$JOBDIR
