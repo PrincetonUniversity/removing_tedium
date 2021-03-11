@@ -33,12 +33,12 @@ $ ssh tigressdata
 $ chmod u+x /scratch/gpfs/aturing/autoscripts/main.sh  # make the script executable
 $ cat /scratch/gpfs/aturing/autoscripts/main.sh
 #!/bin/bash
-NETID=jdh4
+NETID=aturing
 JOBNAME=myjob
 JOBPATH=/della/scratch/gpfs/$NETID/$JOBNAME
 WEB=/tigress/$NETID/public_html/$JOBNAME
 
-./plot_temperature $JOBPATH  # make plot and generate HTML page
+$HOME/autoscripts/plot_temperature.py $JOBPATH  # make plot and generate HTML page
 mv temperature.jpg index.html $WEB
 
 echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
