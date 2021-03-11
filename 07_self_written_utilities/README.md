@@ -302,6 +302,76 @@ $ g++ -std=c++11 -o cppcancel cppcancel.cpp
 
 Then you can call `cppcancel` on the command line.
 
+## Bash scripts
+
+We encounter the `lastweek` shell function previously. Here present the same function but in the form of a Bash script with named command-line parameters:
+
+```
+#!/bin/bash
+#
+# This script prints your job history using sacct. One can specify the
+# number of days to go back in time and whether or not to show the
+# individual job steps.
+#
+# Example usage:
+#
+#   $ myjobs
+#   $ myjobs -d 14
+#   $ myjobs -d 2 -a
+#   $ myjobs --days 10 --all
+
+# defaults
+days=7
+show_all_steps=false
+
+# parse command-line arguments
+while [[ "$#" -gt 0 ]]
+do
+  echo $1
+  case $1 in
+    -d|--days)
+      days="$2";
+      shift;
+      ;;
+    -a|--all)
+      show_all_steps=true;
+      ;;
+  esac
+  shift
+done
+
+seconds=$(($days * 24 * 60 * 60));
+now=$(date +%s);
+minusdays=$((now - $seconds));
+startdate=$(date --date=@$minusdays +'%m/%d');
+# remove alloctres in next line if you do not use GPUs
+FMT=jobid%12,state,start,elapsed,timelimit,ncpus%5,nnodes%6,reqmem%10,alloctres%50,partition,jobname%8;
+if $show_all_steps; then
+    sacct -u $USER -S $startdate -o $FMT;
+else
+    sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9]{4}\.(ex|ba|in)|[0-9]{4}\.[0-9]{1,} ';
+fi
+```
+
+To use the Bash script above as a program, run these commands:
+
+```
+$ cd <path/to>/my-utilities/
+$ wget https://raw.githubusercontent.com/PrincetonUniversity/removing_tedium/master/07_self_written_utilities/bash/myjobs
+$ chmod u+x myjobs
+```
+
+The `myjobs` command can then be used as:
+
+```
+$ myjobs
+$ myjobs -d 14
+$ myjobs -d 2 -a
+$ myjobs --days 10 --all
+```
+
+For more on using named command-line arguments with Bash scripts see [this post](https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash) on StackOverflow.
+
 ## Pipelines
 
 In Linux, the pipe operator lets you send the output of one command as the input to another as in this example:
