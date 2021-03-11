@@ -304,15 +304,15 @@ Then you can call `cppcancel` on the command line.
 
 ## Pipelines
 
-In Linux, the pipe command lets you sends the output of one command to another as in this example:
+In Linux, the pipe operator lets you send the output of one command as the input to another as in this example:
 
 ```
 $ sort records.txt | uniq
 ```
 
-Piping, as the term suggests, can redirect the standard output, input, or error of one process to another for further processing. Here we demostrate how to using pipes with standard Linux utilities and your own codes.
+Piping, as the term suggests, can redirect the standard output, input or error of one command to another for further processing. Here we demostrate how to use pipes with standard Linux commands and your own self-written commands.
 
-The goal here is to identify the number of lines in a data file where where the sine of the value is greather than zero. Below are the contents of data.txt:
+The goal here is to identify the number of lines in a data file where the sine of the value is greater than zero. Below are the contents of data.txt:
 
 ```
 1.0
@@ -323,13 +323,13 @@ The goal here is to identify the number of lines in a data file where where the 
 6.0
 ```
 
-Ultimately we want to run this pipeline:
+Ultimately we want to run this pipeline where myfilter is a command that you wrote:
 
 ```
 $ cat data.txt | myfilter | wc -l
 ```
 
-Below is the Python utility called myfilter:
+Below is the Python code called myfilter:
 
 ```python
 #!/usr/licensed/anaconda3/2020.11/bin/python
@@ -355,6 +355,6 @@ $ cat data.txt | myfilter | wc -l
 3
 ```
 
-Note that `myfilter` was written in Python for demonstration purposes here. In practice it would probably be best done in using `awk`.
+Note that `myfilter` was written in Python for demonstration purposes here. In practice it would probably be best done in `awk`.
 
-The example above is quite simple. One can also create pipelines where a stage corresponds to is one or more batch jobs submitted to the Slurm scheduler.
+The example above is quite simple. One can also create pipelines where a stage corresponds to a batch job submitted to the Slurm scheduler.
