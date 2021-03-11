@@ -59,7 +59,7 @@ Below is a utility called `slr` which will generate a custom Slurm script in the
 ### Python source code
 
 ```python
-#!/usr/licensed/anaconda3/2020.7/bin/python
+#!/usr/licensed/anaconda3/2020.11/bin/python
 
 import argparse
 
