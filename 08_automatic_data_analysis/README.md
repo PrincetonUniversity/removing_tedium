@@ -19,7 +19,7 @@ If you only have an account on Adroit then the procedure described on this page 
 The first step is to create an alias on your local machine (e.g., laptop) which will use `ssh` to run a script on tigressdata. To do this, on a Mac edit `~/.bash_profile` while on Linux modify `~/.bashrc`:
 
 ```bash
-alias myplots='ssh aturing@tigressdata "/scratch/gpfs/aturing/autoscripts/main.sh"'
+alias myplots='ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh"'
 ```
 
 It is assumed that you are suppressing Duo and using SSH keys as described earlier.
