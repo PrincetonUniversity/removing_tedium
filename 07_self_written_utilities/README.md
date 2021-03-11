@@ -348,3 +348,5 @@ Then run the pipeline:
 $ cat data.txt | myfilter | wc -l
 3
 ```
+
+Note that `myfilter` could be written in `awk`.
