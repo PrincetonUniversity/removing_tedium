@@ -44,16 +44,41 @@ mv temperature.jpg index.html $WEB
 echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBNAME"
 ```
 
-Below are the contents of `calc`:
+Below are the contents of `plot_temperature.py`:
 
 ```python
 #!/usr/licensed/anaconda3/2020.11/bin/python
 
+import sys
+import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib as mpl
 import datetime
+
+timestamp = datetime.datetime.now()
+jobpath = sys.argv[-1]
+mytitle = timestamp.strftime("%m/%d/%Y %H:%M:%S") + ' ' + jobpath
+
+array = np.loadtxt(jobpath + "/data.txt")
+plt.scatter(array[:, 0], array[:, 1])
+plt.xlim(0, 10)
+plt.ylim(0, 10)
+plt.xlabel('Time')
+plt.ylabel('Temperature')
+plt.title(mytitle, fontsize=20)
+plt.tight_layout()
+plt.savefig('temperature.jpg', dpi=96)
+
+with open('index.html', 'w') as f:
+  f.write("<html><head></head><body>\n")
+  f.write('<img src="temperature.jpg">\n')
+  f.write("</body></html>\n")
 ```
 
+Be sure to make the script executable:
+
+```
+$ chmod u+x plot_temperature.py
+```
 
 **Step 3: Point your browser at the webpage*
 
