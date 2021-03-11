@@ -107,7 +107,7 @@ Furthermore, in addition to generating figures, the scripts on Tigressdata could
 
 Another approach is to pull down recent data from Tigressdata and then run the analysis scripts locally on your laptop or workstation. For those with only an account on Adroit this is the only choice.
 
-## Running `myplots` on a schedule using `cron`
+## Running myplots on a schedule using cron
 
 `cron` is a scheduler used to run commands at specific times. It is not available on the cluster head nodes. However, you can use it on your local machine. Below shows the format of an entry in `crontab`:
 
