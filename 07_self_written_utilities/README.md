@@ -10,7 +10,7 @@ Earlier we created an alias for checkquota. Now let's take a look at the source 
 $ cat $(which checkquota)
 ```
 
-`checkquota` and the standard Linux commands are nothing more than software. You can write your own commands from scratch to accelerate your research workflow.
+`checkquota` and the standard Linux commands are nothing more than programs. You can write your own commands from scratch to accelerate your research workflow.
 
 ## An example of worst practices
 
