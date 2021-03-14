@@ -63,6 +63,18 @@ Host tigressdata.princeton.edu tigressdata data
 
 The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line. The third line in each stanza should remain unchanged. You can add additional stanzas for the other clusters.
 
+### Preventing VPN disconnects
+
+If your VPN is disconnecting too frequently then try adding these lines to your `~/.ssh/config` file (make the file if necessary):
+
+```
+Host *
+  Compression yes
+  ServerAliveInterval 30
+  ServerAliveCountMax 10
+```
+
+This will cause a "ping" every 30 seconds and hopefully prevent disconnections. OIT manages the VPN so please [contact them](https://princeton.service-now.com/service) for assistance.
 
 ### If the Linux VPN is not working
 
@@ -77,20 +89,6 @@ sudo ./install.sh
 sudo apt-get install openjdk-8-jre
 startctui
 ```
-
-### Preventing VPN disconnects
-
-If your VPN is disconnecting too frequently then try adding these lines to your `~/.ssh/config` file (make the file if necessary):
-
-```
-Host *
-  Compression yes
-  ServerAliveInterval 30
-  ServerAliveCountMax 10
-```
-
-This will cause a "ping" every 30 seconds and hopefully prevent disconnections. OIT manages the VPN so please [contact them](https://princeton.service-now.com/service) for assistance.
-
 
 
 ## II. Multiplexing Approach (VPN free)
