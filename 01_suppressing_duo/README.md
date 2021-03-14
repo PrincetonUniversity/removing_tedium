@@ -31,6 +31,39 @@ The SonicWall VPN severely decreases transfer rates and should be avoided. If yo
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/hop_through_no_vpn_needed.png" align="center" width=70%></p>
 
+### Hostname aliases
+
+You can connect to a cluster like Della from your local machine (e.g., laptop) using the following command:
+
+```
+$ ssh <YourNetID>@della.princeton.edu
+```
+
+However, by modifying your `~/.ssh/config` file (or creating the file if necessary) you can just do:
+
+```
+$ ssh della
+```
+
+Here is a sample `~/.ssh/config` file:
+
+```
+Host adroit.princeton.edu adroit
+  User aturing
+  HostName adroit.princeton.edu
+  
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+
+Host tigressdata.princeton.edu tigressdata data
+  User aturing
+  HostName tigressdata.princeton.edu
+```
+
+The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line.
+
+
 ### If the Linux VPN is not working
 
 Try the procedure below from T. Jones of the Tech Clinic if your VPN client on Linux is not working:
