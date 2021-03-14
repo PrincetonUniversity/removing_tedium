@@ -4,7 +4,7 @@ A utility is a standalone code that performs some operation. A pipeline is set o
 
 ## checkquota revisited
 
-Earlier we created an alias for checkquota. Now lets take a look at the source code:
+Earlier we created an alias for checkquota. Now let's take a look at the source code:
 
 ```
 $ cat $(which checkquota)
