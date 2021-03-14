@@ -31,7 +31,7 @@ The SonicWall VPN severely decreases transfer rates and should be avoided. If yo
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/hop_through_no_vpn_needed.png" align="center" width=70%></p>
 
-### Hostname aliases
+### Host Nicknames or Abbreviations
 
 You can connect to a cluster like Della from your local machine (e.g., laptop) using the following command:
 
