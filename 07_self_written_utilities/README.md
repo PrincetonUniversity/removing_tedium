@@ -7,7 +7,7 @@ A utility is a standalone code that performs some operation. A pipeline is set o
 Earlier we created an alias for checkquota. Now lets take a look at the source code:
 
 ```
-$ cat $(whereis checkquota)
+$ cat $(which checkquota)
 ```
 
 `checkquota` and the standard Linux commands are nothing more than software. You can write your own commands from scratch to accelerate your research workflow.
