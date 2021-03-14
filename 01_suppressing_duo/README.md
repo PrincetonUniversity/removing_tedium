@@ -2,7 +2,7 @@
 
 Duo enhances security. It can also be disruptive and annoying. This page presents two approaches to suppressing Duo. We recommend using the first approach below due to its simplicity. Note that by "suppressing" we mean minimizing as opposed to eliminating. That is, you will still need to Duo authenticate but much less so.
 
-## I. VPN Approach
+# I. VPN Approach
 
 Install a [VPN client](https://www.princeton.edu/vpn). Connect via the VPN client. Start your work. You will only need to DUO authenticate once per session (which typically lasts a few hours).
 
@@ -91,7 +91,7 @@ startctui
 ```
 
 
-## II. Multiplexing Approach (VPN free)
+# II. Multiplexing Approach (VPN free)
 
 > Multiplexing involves the simultaneous transmission of several messages along a single channel of communication.
 
