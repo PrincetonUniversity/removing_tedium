@@ -45,7 +45,7 @@ However, by modifying your `~/.ssh/config` file (or creating the file if necessa
 $ ssh della
 ```
 
-Here is a sample `~/.ssh/config` file:
+Here is a sample `~/.ssh/config` file that allows one to do this:
 
 ```
 Host adroit.princeton.edu adroit
@@ -61,7 +61,7 @@ Host tigressdata.princeton.edu tigressdata data
   HostName tigressdata.princeton.edu
 ```
 
-The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line.
+The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line. The third lines should remain unchanged. You can add additional clusters.
 
 
 ### If the Linux VPN is not working
