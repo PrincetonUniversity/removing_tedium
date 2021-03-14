@@ -61,7 +61,7 @@ Host tigressdata.princeton.edu tigressdata data
   HostName tigressdata.princeton.edu
 ```
 
-The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line. The third lines should remain unchanged. You can add additional clusters.
+The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line. The third lines should remain unchanged. You can add additional stanzas for the other clusters.
 
 
 ### If the Linux VPN is not working
