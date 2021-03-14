@@ -327,7 +327,6 @@ show_all_steps=false
 # parse command-line arguments
 while [[ "$#" -gt 0 ]]
 do
-  echo $1
   case $1 in
     -d|--days)
       days="$2";
