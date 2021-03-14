@@ -213,6 +213,8 @@ Host tigressgateway.princeton.edu tigressgateway
   LocalForward 5923 tigressdata.princeton.edu:5923
   LocalForward 5924 stellar.princeton.edu:5924
   LocalForward 5925 stellar.princeton.edu:5925
+  LocalForward 5926 stellar-vis1.princeton.edu:5926
+  LocalForward 5927 stellar-vis1.princeton.edu:5927
 
 Host traverse.princeton.edu traverse
   User aturing
@@ -273,6 +275,14 @@ Host tigressdata.princeton.edu tigressdata
 Host stellar.princeton.edu stellar
   User aturing
   HostName stellar.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host stellar-vis1.princeton.edu stellarvis
+  User aturing
+  HostName stellar-vis1.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
   ControlPersist yes
