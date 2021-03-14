@@ -143,6 +143,8 @@ When off-campus and not using a VPN, one cannot `ssh` to the head node of a Rese
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/multiplexed_connection.png" align="center"></p>
 
+The procedure for doing this is shown below:
+
 Step 1: On your **local machine** (laptop/desktop) make these directories and set the permissions:
 
 ```
