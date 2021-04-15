@@ -299,7 +299,7 @@ To check if the multiplexed connection is alive (remember everything is going th
 $ ssh -O check tigressgateway
 ```
 
-Your connection will be killed typically every few hours. To end the connection manually:
+To end the connection manually:
 
 ```
 $ ssh -O stop tigressgateway
