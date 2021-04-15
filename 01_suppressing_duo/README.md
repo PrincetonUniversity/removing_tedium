@@ -131,8 +131,8 @@ The command above will Duo authenticate but subsequent sessions will use that co
 Some handy commands from your local machine (laptop/desktop):
 
 ```
-$ ssh -O check della    -- this checks whether a multiplexed session is already open
-$ ssh -O stop della     -- kills the multiplexed session
+$ ssh -O check della    # this checks whether a multiplexed session is already open
+$ ssh -O stop della     # kills the multiplexed session
 ```
 
 The line `Host della.princeton.edu della` allows one to create aliases which explains why we can use `della` or `della.princeton.edu` in the commands above.
