@@ -31,6 +31,8 @@ The SonicWall VPN severely decreases transfer rates and should be avoided. If yo
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/hop_through_no_vpn_needed.png" align="center" width=70%></p>
 
+On campus, you can measure the speed of your network connection at [https://tigerspeed.princeton.edu](https://tigerspeed.princeton.edu).
+
 ### Host nicknames or abbreviations
 
 You can connect to a cluster like Della from your local machine (e.g., laptop) using the following command:
