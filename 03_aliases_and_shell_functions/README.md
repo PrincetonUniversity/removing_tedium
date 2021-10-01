@@ -440,14 +440,14 @@ The function above uses `squeue` to list all your job id's in ascending order an
 
 ### Who's hogging all the resources?
 
-Your job priority is in part determined by how much other members of your Slurm group have been using the cluster over the past 30 days. The command below can be used to list each user in your group and their usage (replace `chem` with your group):
+Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. The command below can be used to see usage by user (replace `chem` with your group):
 
 ```
 # replace chem in next line with your Slurm group
 alias hog='sreport user top start=`date -d"30 days ago" +%D` end=now TopCount=100 accounts=chem -t hourper --tres=cpu'
 ```
 
-You can find you Slurm group by running the command below:
+You can find your Slurm group by running the command below:
 
 ```
 $ sshare | grep $USER | awk '{print $1}'
