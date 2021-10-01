@@ -438,6 +438,21 @@ mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 
 The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo we present implementations of `mycancel` in Python and C++. The implementation above is of course in Bash.
 
+### Who's hogging all the resources?
+
+Your job priority is in part determined by how much other members of your Slurm group have been using the cluster over the past 30 days. The command below can be used to list each user in your group and their usage (replace `chem` with your group):
+
+```
+# replace chem in next line with your Slurm group
+alias hog='sreport user top start=`date -d"30 days ago" +%D` end=now TopCount=100 accounts=chem -t hourper --tres=cpu'
+```
+
+You can find you Slurm group by running the command below:
+
+```
+$ sshare | grep $USER | awk '{print $1}'
+```
+
 ### Generate a report on your recent job history
 
 The `lastweek` function will list details about your jobs over the last 7 days:
