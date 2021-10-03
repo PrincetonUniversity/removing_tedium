@@ -63,9 +63,9 @@ $
 
 `!p` finds the first command in your history that begins with the letter 'p' and runs it. One could have also used `!python`. See the next section for a modern alternative to `!<command>`.
 
-## Search and running a previous command
+## Search and run (or modify) a previous command
 
-Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Type a letter - like s - and you'll get a match for the most recent command in your history that starts with s. Keep typing to narrow your search. When you find the desired command, press `[Enter]` to execute.
+Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Type a letter like 'p' and you will get a match for the most recent command in your history that starts with 'p'. Keep typing the previous command to narrow your search. When you find the desired command, press `[Enter]` to execute.
 
 ## A general note on text editors
 
@@ -90,7 +90,7 @@ export EDITOR=/usr/bin/vim   # or emacs or nano
 A programmable keyboard provides extras keys that can be mapped to various custom functions. There are also pseudo-versions
 that try to enhance standard keyboards via software and provide lots of additional features. For Windows see [AutoHotKey](https://www.autohotkey.com/) and for Mac see [Keyboard Maestro](https://www.keyboardmaestro.com/main/).
 
-## Useful Links
+## Useful links
 
 [Linux Productivity Tools](https://www.olcf.ornl.gov/wp-content/uploads/2019/12/LPT_OLCF.pdf) by ORNL  
 [Advanced UNIX & Shell Computing](https://www.olcf.ornl.gov/wp-content/uploads/2018/07/Intro_to_Unix_2018.pdf) by ORNL
