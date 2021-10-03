@@ -53,13 +53,15 @@ See `pushd` and `popd` for a more general approach for returning to previous loc
 Rerun the most recent `<command>` in your history with `!<command>`. Here is an example:
 
 ```
-$ ssh <YourNetID>@adroit.princeton.edu
+$ python myscripty.py
 $ ll
 $ date
-$ !ssh
+$ !p
+python myscript.py
+$
 ```
 
-See the next section for a modern alternative.
+'!p' finds the first command in your history that begins with the letter 'p' and runs it. One could have also used `!python`. See the next section for a modern alternative to `!<command>`.
 
 ## Search and running a previous command
 
