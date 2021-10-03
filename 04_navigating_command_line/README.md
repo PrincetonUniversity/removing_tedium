@@ -23,21 +23,7 @@ How do you move the cursor to the middle of the line? On Mac with Terminal, hold
 
 ## Tab completion
 
-The [tab] key can be used to autocomplete the command. Most everyone is aware of this but not everyone uses it. Train yourself to use tab completion whenever possible.
-
-## A general note on text editors
-
-Be sure to explore the shortcuts offered by your text editor. Editors like vim and emacs cannot be mastered in only a few hours. Make sure that you are taking advantage of these tools. To test your vim knowledge, run this command: `vimtutor`
-
-## Fix command (fc)
-
-This command is useful when you enter a long command that has a mistake. Run `fc` and that command will be loaded in a text editor where you can make corrections. The command is executed upon exiting the editor. Note that you can also intentionally enter a wrong command so that you can use a text editor to make changes to the command and use the search functionality of the editor to advance to the middle of the line.
-
-To set your text editor of choice, set the following in your `~/.bashrc` file:
-
-```
-export EDITOR=/usr/bin/vim   # or emacs or nano
-```
+The `[tab]` key can be used to autocomplete the command. Most everyone is aware of this but not everyone uses it. Train yourself to use tab completion whenever possible.
 
 ## Changing to the previous working directory
 
@@ -62,10 +48,6 @@ $ pwd
 
 See `pushd` and `popd` for a more general approach for returning to previous locations.
 
-## Keyboard remappings
-
-Consider having the `[Caps Lock]` key remapped to the `[Ctrl]` or `[Esc]` key. What other remappings can you make to improve productivity?
-
 ## Running a previous command
 
 Rerun the most recent `<command>` in your history with `!<command>`. Here is an example:
@@ -82,6 +64,24 @@ See the next section for a modern alternative.
 ## Search and running a previous command
 
 Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Type a letter - like s - and you'll get a match for the most recent command in your history that starts with s. Keep typing to narrow your search. When you find the desired command, press `[Enter]` to execute.
+
+## A general note on text editors
+
+Be sure to explore the shortcuts offered by your text editor. Editors like vim and emacs cannot be mastered in only a few hours. Make sure that you are taking advantage of these tools. To test your vim knowledge, run this command: `vimtutor`
+
+## Keyboard remappings
+
+Consider having the `[Caps Lock]` key remapped to the `[Ctrl]` or `[Esc]` key. What other remappings can you make to improve productivity?
+
+## Fix command (fc)
+
+This command is useful when you enter a long command that has a mistake. Run `fc` and that command will be loaded in a text editor where you can make corrections. The command is executed upon exiting the editor. Note that you can also intentionally enter a wrong command so that you can use a text editor to make changes to the command and use the search functionality of the editor to advance to the middle of the line.
+
+To set your text editor of choice, set the following in your `~/.bashrc` file:
+
+```
+export EDITOR=/usr/bin/vim   # or emacs or nano
+```
 
 ## Programmable keyboards
 
