@@ -6,7 +6,7 @@ On this page we present the essential keyboard shortcuts and concepts for workin
 
 ```
 [Ctrl] + [a]   # move cursor to beginning of line (think: the beginning letter of the alphabet is 'a')
-[Ctrl] + [e]   # move cursor to end of line (think: 'end' is represented by 'e')
+[Ctrl] + [e]   # move cursor to end of line (think: 'e' stands for 'end')
 [Ctrl] + [u]   # delete from cursor to beginning of line
 [Ctrl] + [k]   # delete from cursor to end of line
 Up arrow       # cycle backward through your history
