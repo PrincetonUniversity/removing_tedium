@@ -19,7 +19,7 @@ Exercise: Paste the line below on to the command line and try out the sequences 
 squeue --start --format="%.7i %.7Q %.14q %6P %.15j %.12u %.10a %.20S %.6D %.5C %R" --sort=S --states=PENDING | egrep -v "N/A" | head -20
 ```
 
-How do you move the cursor to the middle of the line? On Mac with Terminal, hold down the `[option]` key and click with the mouse where you want the cursor to go. On other systems you may be able to use `[meta] + [f]` and `[meta] + [b]` to advance forward and backward by words, respectively. What is the `[meta]` key for your system? On Mac is it the `[option]` key.
+How do you move the cursor to the middle of the line? You may be able to use `[meta] + [f]` and `[meta] + [b]` to advance forward and backward by words, respectively. What is the `[meta]` key for your system? On Mac is it the `[option]` key. On Mac with Terminal, try holding down the `[option]` key and click with the mouse where you want the cursor to go on the command line.
 
 ## Tab completion
 
