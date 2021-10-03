@@ -61,7 +61,7 @@ python myscript.py
 $
 ```
 
-'!p' finds the first command in your history that begins with the letter 'p' and runs it. One could have also used `!python`. See the next section for a modern alternative to `!<command>`.
+`!p` finds the first command in your history that begins with the letter 'p' and runs it. One could have also used `!python`. See the next section for a modern alternative to `!<command>`.
 
 ## Search and running a previous command
 
