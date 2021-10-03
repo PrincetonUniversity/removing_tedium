@@ -5,8 +5,8 @@ On this page we present the essential keyboard shortcuts and concepts for workin
 ## Keyboard shortcuts
 
 ```
-[Ctrl] + [a]   # move cursor to beginning of line (think 'a' is the beginning letter of the alphabet)
-[Ctrl] + [e]   # move cursor to end of line (think 'e' stands for 'end')
+[Ctrl] + [a]   # move cursor to beginning of line (think: the beginning letter of the alphabet is 'a')
+[Ctrl] + [e]   # move cursor to end of line (think: 'end' is represented by 'e')
 [Ctrl] + [u]   # delete from cursor to beginning of line
 [Ctrl] + [k]   # delete from cursor to end of line
 Up arrow       # cycle backward through your history
@@ -19,11 +19,11 @@ Exercise: Paste the line below on to the command line and try out the sequences 
 squeue --start --format="%.7i %.7Q %.14q %6P %.15j %.12u %.10a %.20S %.6D %.5C %R" --sort=S --states=PENDING | egrep -v "N/A" | head -20
 ```
 
-How do you move the cursor to the middle of the line? On Mac with Terminal, hold down the `[option]` key and click with the mouse where you want the cursor to go. On other systems you can use `[meta] + [f]` and `[meta] + [b]` to advance forward and backward by words, respectively. What is the `[meta]` key for your system?
+How do you move the cursor to the middle of the line? On Mac with Terminal, hold down the `[option]` key and click with the mouse where you want the cursor to go. On other systems you may be able to use `[meta] + [f]` and `[meta] + [b]` to advance forward and backward by words, respectively. What is the `[meta]` key for your system? On Mac is it the [option] key.
 
 ## Tab completion
 
-The tab key can be used to autocomplete the command. Most everyone is aware of this but not everyone uses it. Train yourself to use tab completion whenever possible.
+The [tab] key can be used to autocomplete the command. Most everyone is aware of this but not everyone uses it. Train yourself to use tab completion whenever possible.
 
 ## A general note on text editors
 
