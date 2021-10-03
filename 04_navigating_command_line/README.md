@@ -30,7 +30,7 @@ The `[tab]` key can be used to autocomplete the command. Most everyone is aware 
 Use the following command to return to the previous working directory:
 
 ```
-cd -
+$ cd -
 ```
 
 Here is a sample session:
