@@ -65,7 +65,7 @@ $
 
 ## Search and run (or modify) a previous command
 
-Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Then type a letter like 'p' and you will get a match for the most recent command in your history that contains 'p'. Keep typing to narrow your search. When you find the desired command, press `[Enter]` to execute. Or hit one of the side arrow keys to modify the command before running it.
+Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Then type a letter like 'p' and you will get a match for the most recent command in your history that contains 'p'. Keep typing to narrow your search. When you find the desired command, press `[Enter]` to execute. Or hit one of the side arrow keys to modify the command before running it. Or press `[Ctrl]+[r]` to advance to the next match. You can cancel by running either `[Ctrl]+[g]` or `[Ctrl]+[c]`.
 
 ## A general note on text editors
 
