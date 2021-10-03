@@ -12,6 +12,7 @@
 
 + Clone this repo to your local machine: `git clone https://github.com/PrincetonUniversity/removing_tedium`
 
-+ SSH to a Princeton HPC cluster (prefer Della, Tiger, Stellar or Traverse over Adroit) [click [here](https://researchcomputing.princeton.edu/faq/why-cant-i-login-to-a-clu) for help]
++ SSH to a Princeton HPC cluster (prefer Della, Tiger, Stellar or Traverse over Adroit) [click [here](https://researchcomputing.princeton.edu/faq/why-cant-i-login-to-a-clu) for help]. If you need an account on an RC cluster then request one on [Adroit](https://forms.rc.princeton.edu/registration/?q=adroit).
+
 
 + Go to the main page by [clicking here](https://github.com/PrincetonUniversity/removing_tedium).
