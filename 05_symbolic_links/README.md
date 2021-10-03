@@ -53,11 +53,11 @@ alias pwd='pwd -P'
 
 ## Tigress
 
-Make a second symbolic link from your home directory to tigress:
+Make a second symbolic link from your home directory to `/tigress`:
 
 ```
 $ cd ~
-$ ln --symbolic /tigress/<YourNetID> grs   # Tiger, Della, Perseus and (for some) Traverse
+$ ln --symbolic /tigress/<YourNetID> grs   # Della, Stellar, Tiger, Traverse
 ```
 
 Can you think of another symbolic link that could be used to speed-up your workflow? Maybe `prj -> /projects/ATURING`?
