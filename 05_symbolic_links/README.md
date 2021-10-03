@@ -43,7 +43,7 @@ $ ll
 -rw-r--r--.  1 aturing math  226 Oct  5 23:50 file1.txt
 ```
 
-One could use an alias for `scr` instead of a symbolic link but the symbolic link is in general the better choice. For instance, it allows for tab completion so you can easily `cd` into a subdirectory (e.g., `cd /scr/data`).
+One could use an alias for `scr` instead of a symbolic link but the symbolic link is in general the better choice. For instance, it allows for tab completion so you can easily `cd` into a subdirectory (e.g., `cd /scr/data`). One advantage of the alias is that is could be ran from any working directory. 
 
 Consider adding the alias below so that symbolic links are always resolved (i.e., `pwd` gives `/scratch/gpfs/aturing` instead of `/home/aturing/scr` in the example above):
 
