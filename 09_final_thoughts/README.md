@@ -6,7 +6,7 @@
 
 + Use aliases and shell functions to save time. Be conscious of the commands you are running and create new aliases and shell functions when appropriate.
 
-+ Navigate the command line using keyboard shortcuts such as [Ctrl]+[a] and [Ctrl]+[e].
++ Navigate the command line using keyboard shortcuts such as `[Ctrl]+[a]` and `[Ctrl]+[e]`.
 
 + The more proficient you are with vim or emacs, the faster you will be able to work.
 
