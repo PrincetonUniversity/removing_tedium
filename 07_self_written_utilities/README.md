@@ -304,7 +304,7 @@ After saving the code above in a file called `cppcancel.cpp` in the directory `<
 $ g++ -std=c++11 -o cppcancel cppcancel.cpp
 ```
 
-Then you can call `cppcancel` on the command line. We see that the C++ implementation requires much more coding than what is required by Bash or Python. This example exists to illustrate how compiled codes can be used to make a custom command.
+Then you can call `cppcancel` on the command line. We see that the C++ implementation requires much more coding than what was required by Bash or Python. This example exists to illustrate how compiled codes can be used to make a custom command.
 
 ## Bash scripts
 
