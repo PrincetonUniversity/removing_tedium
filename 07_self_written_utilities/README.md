@@ -413,7 +413,7 @@ for line in sys.stdin:
     if sin(x) > 0: print(x)
 ```
 
-The code above reads from `stdin`, applies the filter and outputs to `stdout`. This is precisely how Linux pipes are work.
+The code above reads from `stdin`, applies the filter and outputs to `stdout`. This is precisely how Linux pipes work.
 
 Place `myfilter` in `<path/to>/my-utilities` and make it executable:
 
@@ -430,4 +430,4 @@ $ cat data.txt | myfilter | wc -l
 
 Note that `myfilter` was written in Python for demonstration purposes here. In practice it would probably be best done in `awk`.
 
-The example above is quite simple. One can also create pipelines where a stage corresponds to a batch job submitted to the Slurm scheduler.
+The example above is quite simple but much more can be done. For instance, one could create a pipeline where a stage corresponds to a batch job submitted to the Slurm scheduler.
