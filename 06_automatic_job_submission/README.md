@@ -3,7 +3,7 @@
 Each cluster imposes a wall clock limit on the running time of a job (e.g., on Tiger it is 6 days). If you need to run a job
 for much longer than this time then you should consider using the job dependency technique described below.
 
-To use job dependencies your application must have a way of writing a checkpoint file at the end of each job step and it must be able to figure out which checkpoint file to read at the start of each job step. If your application doesn't meet these two requirements then one can typically write scripts to deal with it.
+To use job dependencies in this way your application must be capable of writing a checkpoint file at the end of each job step and it must be able to figure out which checkpoint file to read at the start of each job step. If your application does not meet these two requirements then one can typically write scripts to deal with it.
 
 ## Job Dependencies
 
@@ -40,7 +40,7 @@ $ sbatch job.slurm   # step 4
 $ sbatch job.slurm   # step 5
 ```
 
-Of course, with our previous alias for `sbatch job.slurm` one could equivalently enter `sb` four times. Read more about job dependencies on the [Slurm](https://slurm.schedmd.com/sbatch.html) website.
+Of course, with our previous alias for `sbatch job.slurm` one could equivalently enter `sb` four times. Read more about job dependencies on the [Slurm](https://slurm.schedmd.com/sbatch.html) website. Note that you could also include the `singleton` job dependency for the first submission.
 
 ## Specific example
 
