@@ -7,7 +7,7 @@ To use job dependencies your application must have a way of writing a checkpoint
 
 ## Job Dependencies
 
-For the first step, run your job as usual: `sbatch job.slurm`. Make sure it finishes before the time limit and make
+For the first step, run your job as usual: `$ sbatch job.slurm`. Make sure it finishes before the time limit and make
 sure you write a checkpoint file. Then modify your application script to automatically read the checkpoint file at the start of each job step, for example, in pseudocode:
 
 ```
@@ -34,10 +34,10 @@ myprogram <args>
 The second and additional job steps can then be submitted. The `--job-name` value must be the same for each submission. Each step will wait for the one before it since each is waiting for `MyLongJob` to finish. This is how `singleton` works. The following will produce a total of 5 jobs steps.
 
 ```
-sbatch job.slurm   # step 2
-sbatch job.slurm   # step 3
-sbatch job.slurm   # step 4
-sbatch job.slurm   # step 5
+$ sbatch job.slurm   # step 2
+$ sbatch job.slurm   # step 3
+$ sbatch job.slurm   # step 4
+$ sbatch job.slurm   # step 5
 ```
 
 Of course, with our previous alias for `sbatch job.slurm` one could equivalently enter `sb` four times. Read more about job dependencies on the [Slurm](https://slurm.schedmd.com/sbatch.html) website.
