@@ -22,15 +22,27 @@ The first step is to create an alias on your local machine (e.g., laptop) which 
 alias myplots='ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh"'
 ```
 
-It is assumed that you are suppressing Duo and using SSH keys as described earlier.
+
+Be sure to replace `aturing` with your NetID in the line above. Also, it is assumed that you are suppressing Duo and using SSH keys as described earlier.
 
 **Step 2: Create the main.sh script on tigressdata**
 
-The `main.sh` script is called from your local machine. It calls at least one other script to carry out the analysis of the data. Below is an example:
+The `main.sh` script is called from your local machine. It calls at least one other script to carry out the analysis of the data. Before proceeding make a `public_html` directory on `/tigress` as described on the tigress-web page:
+
+```
+$ mkdir -p /tigress/$NETID/public_html
+```
+
+
+Below is an example:
 
 ```bash
 $ ssh tigressdata
-$ chmod u+x /home/aturing/autoscripts/main.sh  # make the script executable
+$ mkdir -p autoscripts
+
+Below is a sample of `main.sh`:
+
+```
 $ cat /home/aturing/autoscripts/main.sh
 #!/bin/bash
 NETID=aturing
@@ -43,6 +55,13 @@ mv temperature.jpg index.html $WEB
 
 echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBDIR"
 ```
+
+Make the script executable:
+
+```
+$ chmod u+x /home/aturing/autoscripts/main.sh
+```
+
 
 Below are the contents of `plot_temperature.py`:
 
