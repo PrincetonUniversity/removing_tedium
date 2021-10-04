@@ -119,14 +119,16 @@ The `chmod` command above makes the script executable by changing the permission
 $ cd ~
 $ mk test   # mk is a shell function defined previously
 $ slr -h
-usage: slr [-h] [-j JOBNAME] [-t WALLTIME] [-g GPU]
+usage: slr [-h] [-j JOBNAME] [-n NTASKS] [-t WALLTIME] [-g GPU]
 
 optional arguments:
   -h, --help            show this help message and exit
   -j JOBNAME, --job-name JOBNAME
                         Job name
+  -n NTASKS, --ntasks NTASKS
+                        Total number of tasks
   -t WALLTIME, --time WALLTIME
-                        Required time
+                        Required time (in hours)
   -g GPU, --gpu GPU     GPUs per node
 ```
 
