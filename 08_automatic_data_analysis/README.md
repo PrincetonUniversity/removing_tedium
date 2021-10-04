@@ -38,6 +38,7 @@ Below is an example:
 ```bash
 $ ssh tigressdata
 $ mkdir -p autoscripts
+```
 
 Below is a sample of `main.sh`:
 
