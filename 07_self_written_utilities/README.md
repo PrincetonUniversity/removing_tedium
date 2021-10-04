@@ -14,7 +14,7 @@ $ cat $(which checkquota)
 
 ## An example of worst practices
 
-Some users will write a data analysis script and place a copy in each directory where it is needed. This leads to unnecessary duplication. That is, if the script needs to be changed then all copies must be modified. The correct approach is to store the script in a single location and call it from the different directories while using command-line input parameters to customize the analysis for each directory. This is how the standard Linux commands work. For instance, the `ls` command is stored in `/usr/bin` and it can be called from anywhere. When you want the long listing you include the option `-l` as in `ls -l`. Next, we show how to write your own commands.
+Some users will write a data analysis script and place a copy in each directory where it is needed. This leads to unnecessary and problematic duplication. For instance, if the script needs to be changed then all copies must be modified. The correct approach is to store the script in a single location and call it from the different directories while using command-line input parameters to customize the analysis for each directory. This is how the standard Linux commands work. For instance, the `ls` command is stored in `/usr/bin` and it can be called from anywhere. When you want the long listing you include the option `-l` as in `ls -l`. Next, we show how to write your own commands.
 
 ## Setup for self-written utilities
 
