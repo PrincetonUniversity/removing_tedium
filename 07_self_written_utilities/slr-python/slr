@@ -1,36 +1,44 @@
-#!/usr/licensed/anaconda3/2020.7/bin/python
+#!/usr/licensed/anaconda3/2020.11/bin/python
 
 import argparse
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-j', '--job-name', type=str, action='store', dest='jobname',
                     default='myjob', help='Job name')
+parser.add_argument('-n', '--ntasks', type=str, action='store', dest='ntasks',
+                    default='1', help='Total number of tasks')
 parser.add_argument('-t', '--time', type=str, action='store', dest='walltime',
-                    default='48', help='Required time')
-parser.add_argument('-g', '--gpu', type=int, action='store', dest='gpu',
+                    default='1', help='Required time (in hours)')
+parser.add_argument('-g', '--gpu', type=str, action='store', dest='gpu',
                     default=None, help='GPUs per node')
 args = parser.parse_args()
-name = args.jobname
-time = args.walltime
-gpu = args.gpu
+
+def fmt(directive, value, comment):
+  comment_start_col = 34
+  spaces = " " * abs(comment_start_col - (len(directive) + len(value) + 12))
+  comment = f"# {comment}" if comment else ""
+  s = f"#SBATCH --{directive}={value}{spaces}{comment}\n" 
+  return s
 
 with open('job.slurm', 'w') as f:
   f.write("#!/bin/bash\n")
-  spaces = ''.join([' ' for _ in range(abs(14 - len(name)))])
-  f.write("#SBATCH --job-name=" + name + spaces + "# create a short name for your job\n")
-  f.write("#SBATCH --nodes=1                # node count\n")
-  f.write("#SBATCH --ntasks=1               # total number of tasks across all nodes\n")
-  f.write("#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multi-threaded tasks)\n")
-  f.write("#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)\n")
-  if (gpu):
-    f.write("#SBATCH --gres=gpu:" + str(gpu) + "             # number of gpus per node\n")
-  f.write("#SBATCH --time=" + time + ":00:00          # total run time limit (HH:MM:SS)\n")
-  f.write("#SBATCH --mail-type=begin        # send mail when process begins\n")
-  f.write("#SBATCH --mail-type=end          # send email when job ends\n")
-  f.write("#SBATCH --mail-user=<YourNetID>@princeton.edu\n")
+  f.write(fmt("job-name", args.jobname, "create a short name for your job"))
+  f.write(fmt("nodes", "1", "node count"))
+  f.write(fmt("ntasks", args.ntasks, "total number of tasks across all nodes"))
+  f.write(fmt("cpus-per-task", "1", "cpu-cores per task (>1 if multi-threaded tasks)"))
+  f.write(fmt("mem-per-cpu", "4G", "memory per cpu-core (4G per cpu-core is default)"))
+  f.write(fmt("time", f"{args.walltime}:00:00", "total run time limit (HH:MM:SS)"))
+  if (args.gpu):
+    f.write(fmt("gres", "gpu:" + args.gpu, "number of gpus per node"))
+  f.write(fmt("mail-type", "begin", "send email when job begins"))
+  f.write(fmt("mail-type", "end", "send email when job ends"))
+  f.write(fmt("mail-user", f"{os.environ['USER']}@princeton.edu", ""))
   f.write("\n")
   f.write("module purge\n")
-  f.write("module load anaconda3\n")
+  f.write("module load anaconda3/2020.11\n")
   f.write("conda activate myenv\n")
   f.write("\n")
   f.write("python myscript.py\n")
+
+print("Wrote job.slurm")
