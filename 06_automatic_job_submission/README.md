@@ -40,7 +40,7 @@ $ sbatch job.slurm   # step 4
 $ sbatch job.slurm   # step 5
 ```
 
-Of course, with our previous alias for `sbatch job.slurm` one could equivalently enter `sb` four times. Read more about job dependencies on the [Slurm](https://slurm.schedmd.com/sbatch.html) website. Note that you could also include the `singleton` job dependency for the very first submission.
+Of course, with our previous alias for `sbatch job.slurm` one could equivalently enter `sb` four times. Read more about job dependencies on the [Slurm](https://slurm.schedmd.com/sbatch.html) website. Note that you could also include the `singleton` job dependency for the very first submission (i.e., step 1).
 
 ## Specific example
 
