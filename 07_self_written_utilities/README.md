@@ -254,7 +254,11 @@ $ pycancel
 $ sq
 ```
 
+We see that the Bash implementation is more concise and maintainable than than the Python one.
+
 ## cppcancel is a C++ implementation of mycancel
+
+This is kind of a joke but it illustrates a few principles.
 
 ```c++
 #include <cstdio>
@@ -294,13 +298,13 @@ int main() {
 }
 ```
 
-After saving the code in a file called `cppcancel.cpp` in the directory `<path/to>/my-utilities`, compile it with this command:
+After saving the code above in a file called `cppcancel.cpp` in the directory `<path/to>/my-utilities`, compile it with this command:
 
 ```
 $ g++ -std=c++11 -o cppcancel cppcancel.cpp
 ```
 
-Then you can call `cppcancel` on the command line.
+Then you can call `cppcancel` on the command line. We see that the C++ implementation requires much more coding than what is required by Bash or Python. This example exists to illustrate how compiled codes can be used to make a custom command.
 
 ## Bash scripts
 
