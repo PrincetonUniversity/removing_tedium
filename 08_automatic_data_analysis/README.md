@@ -161,5 +161,5 @@ The entry above will run `main.sh` on [Tigressdata](https://researchcomputing.pr
 Mac users can use the following command to load the webpage automatically in Safari if `JOBDIR` is known in advance:
 
 ```
-open -a Safari https://tigress-web.princeton.edu/~$NETID/$JOBDIR
+$ open -a Safari https://tigress-web.princeton.edu/~$NETID/$JOBDIR
 ```
