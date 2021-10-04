@@ -107,14 +107,14 @@ $ chmod u+x plot_temperature.py
 
 **Step 3: Point your browser at the webpage**
 
-Call myplots from your local machine:
+Call `myplots` from your local machine:
 
 ```
 $ myplots
 $
 ```
 
-You should be able to see the figure at:
+You should be able to see the figure in a web browser at:
 
 ```
 https://tigress-web.princeton.edu/~aturing/myjob
