@@ -27,6 +27,9 @@ Modify the Slurm script by adding this line: `--dependency=singleton`
 #SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)
 #SBATCH --time=72:00:00          # total run time limit (HH:MM:SS)
 #SBATCH --dependency=singleton   # job dependency
+#SBATCH --mail-type=begin        # send email when job begins
+#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-user=<YourNetID>@princeton.edu
 
 myprogram <args>
 ```
