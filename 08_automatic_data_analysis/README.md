@@ -27,12 +27,11 @@ Be sure to replace `aturing` with your NetID in the line above. Also, it is assu
 
 **Step 2: Create the main.sh script on tigressdata**
 
-The `main.sh` script is called from your local machine. It calls at least one other script to carry out the analysis of the data. Before proceeding make a `public_html` directory on `/tigress` as described on the tigress-web page:
+The `main.sh` script is called from your local machine. It calls at least one other script to carry out the analysis of the data. Before proceeding make a `public_html` directory on `/tigress` as described on the [tigress-web](https://researchcomputing.princeton.edu/support/knowledge-base/tigress-web) page:
 
 ```
 $ mkdir -p /tigress/$NETID/public_html
 ```
-
 
 Below is an example:
 
@@ -62,8 +61,7 @@ Make the script executable:
 $ chmod u+x /home/aturing/autoscripts/main.sh
 ```
 
-
-Below are the contents of `plot_temperature.py`:
+Below are the contents of `plot_temperature.py` which is called by `main.sh`:
 
 ```python
 #!/usr/licensed/anaconda3/2020.11/bin/python
