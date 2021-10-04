@@ -156,7 +156,7 @@ $ crontab -l
 0 9 * * 1-5 ssh aturing@tigressdata "/home/aturing/autoscripts/main.sh" > /dev/null 2>&1
 ```
 
-The entry above will run `main.sh` on [Tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata) Monday thru Friday at 9 am. If `cron` is not available on your machine then consider using the `at` command. One can also simply run the script manually when needed as was done above.
+The entry above will run `main.sh` on [Tigressdata](https://researchcomputing.princeton.edu/systems/tigressdata) Monday thru Friday at 9 am. If `cron` is not available on your machine then consider using the `at` command. One can also simply run the script manually when needed as was done above. You will need to have Duo suppressed for the above to work. That is, you may need to Duo authenticate before the call from `cron` can be made.
 
 Mac users can use the following command to load the webpage automatically in Safari if `JOBDIR` is known in advance:
 
