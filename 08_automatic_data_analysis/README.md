@@ -37,13 +37,13 @@ Below is an example:
 
 ```bash
 $ ssh tigressdata
-$ mkdir -p autoscripts
+$ mkdir autoscripts && cd autoscripts
+# write main.sh
 ```
 
-Below is a sample of `main.sh`:
+Below is an example of `main.sh`:
 
-```
-$ cat /home/aturing/autoscripts/main.sh
+```bash
 #!/bin/bash
 NETID=aturing
 JOBDIR=myjob
@@ -59,7 +59,7 @@ echo "Point your browser to https://tigress-web.princeton.edu/~$NETID/$JOBDIR"
 Make the script executable:
 
 ```
-$ chmod u+x /home/aturing/autoscripts/main.sh
+$ chmod u+x main.sh
 ```
 
 Below are the contents of `plot_temperature.py` which is called by `main.sh`:
