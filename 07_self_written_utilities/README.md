@@ -22,29 +22,29 @@ To get your own utilities to work like the standard Linux commands, you need to 
 
 + create a directory to store them
 + give each utility execute permissions
-+ update your PATH environment variable so that the utilities will be found
++ update your PATH environment variable so that the utilities are found
 
 ### Create a my-utilities directory
 
 ```
-$ mkdir /tigress/<YourNetID>/my-utilities   # Tiger, Della, Perseus, Traverse
+$ mkdir /tigress/<YourNetID>/my-utilities   # Della, Stellar, Tiger, Traverse
   or
 $ mkdir /home/<YourNetID>/my-utilities      # if only have account on Adroit
 ```
 
-Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`.
+Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`. We suggest using `/tigress` since it can be reached from multiple clusters.
 
 ### Update PATH
 
 Recall that the `PATH` environment variable specifies a list of directories to search for executables when a command is ran on the command line. To make your utilities callable on the command line add this line to `~/.bashrc`:
 
 ```
-export PATH=$PATH:/tigress/<YourNetID>/my-utilities   # Tiger, Della, Perseus, Traverse
+export PATH=$PATH:/tigress/<YourNetID>/my-utilities   # Della, Stellar, Tiger, Traverse
   or
 export PATH=$PATH:/home/<YourNetID>/my-utilities      # if only gave account on Adroit
 ```
 
-Be sure to run `source ~/.bashrc` so that the changes to `PATH` take effect. Make sure that it worked with:
+Be sure to run `$ source ~/.bashrc` so that the changes to `PATH` take effect (only needed once). Make sure that it worked with:
 
 ```
 $ echo $PATH
@@ -190,7 +190,7 @@ $ chmod u+x slr
 The `chmod` command above makes the script executable by changing the permissions. Next install the `argparse` package:
 
 ```
-$ module load rh/devtoolset/8
+$ module load rh/devtoolset/8  # della or tiger only
 $ R
 > install.packages("argparse")
 > q()
