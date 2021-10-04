@@ -44,4 +44,4 @@ Of course, with our previous alias for `sbatch job.slurm` one could equivalently
 
 ## Specific example
 
-There is a specific example for LAMMPS [here](https://github.com/jdh4/install_lammps/tree/master/job_chaining).
+There is a specific example for LAMMPS [here](https://github.com/PrincetonUniversity/install_lammps/tree/master/03_job_chaining).
