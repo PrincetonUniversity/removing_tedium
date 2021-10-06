@@ -4,7 +4,7 @@ While working on the HPC clusters you will probably find yourself entering the s
 
 Commonly repeated commands should be replaced by an alias, which is a short name for the command. An alias can also combine multiple commands into one. Shell functions are like aliases but they are more flexible because they accept command-line parameters.
 
-This page illustrates how to use aliases and shell functions to improve productivity. While numerous examples are given, for greatest productivity improvements you should create new ones based on your own work.
+This page illustrates how to use aliases and shell functions to improve productivity. While numerous examples are given, for the greatest impact you should create new ones based on your own work.
 
 ## First Alias
 
