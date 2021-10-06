@@ -576,7 +576,7 @@ alias dirsize='du -h --max-depth=1 | sort -hr'
 
 ## Weather
 
-Get a weather report for Princeton, NJ:
+Get a weather report for Princeton, NJ (UPDATE: this is sometimes not available due to overuse):
 
 ```bash
 alias wthr='/usr/bin/clear && date && curl -s wttr.in/princeton'
