@@ -212,9 +212,17 @@ Host stellar-intel.princeton.edu stellar.princeton.edu stellar
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host stellar-vis1.princeton.edu stellar-vis
+Host stellar-vis1.princeton.edu stellar-vis1
   User aturing
   HostName stellar-vis1.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host stellar-vis2.princeton.edu stellar-vis2
+  User aturing
+  HostName stellar-vis2.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
   ControlPersist yes
