@@ -219,12 +219,6 @@ $ pwd
 
 The `cl` function cd's into a specified directory and runs the `ll` alias. The `..` alias above allows us to type 2 keys to go up a level and list the directory contents.
 
-## To see your shell functions
-
-```bash
-$ set | less
-```
-
 Note that there are many pre-defined functions.
 
 ## Environment modules
@@ -289,6 +283,12 @@ $ board 6006 tiger-h12g10
 ```
 
 Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
+
+## To see your shell functions
+
+```bash
+$ set | less
+```
 
 ## Conda environments
 
