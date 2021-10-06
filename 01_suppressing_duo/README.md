@@ -107,7 +107,7 @@ But do be aware of why Duo is being used in the first place. It is to protect ou
 
 Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to use the OnDemand web portals of [MyAdroit](https://myadroit.princeton.edu/) and [MyDella](https://mydella.princeton.edu/) as well as for various library services such as downloading journal articles.
 
-### On-Campus
+### On-Campus Only
 
 Step 1: To make this work, on your Linux or macOS **local machine** (laptop/desktop), edit the file `~/.ssh/config` by adding a machine stanza which looks like this (**replace aturing with your NetID**):
 
@@ -139,7 +139,7 @@ $ ssh -O stop della     # kills the multiplexed session
 
 The line `Host della.princeton.edu della` allows one to create aliases which explains why we can use `della` or `della.princeton.edu` in the commands above.
 
-### Off-Campus
+### On-Campus and Off-Campus (Recommended)
 
 When off-campus and not using a VPN, one cannot `ssh` to the head node of a Research Computing cluster. Because of this, we must modify the on-campus procedure described above. **For users with an account on one of the large clusters** (not Adroit, not Nobel) one can use `tigressgateway` as a proxyjump server:
 
