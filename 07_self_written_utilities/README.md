@@ -336,9 +336,9 @@ The script below is a reduced version of the `shistory` command. You should use 
 
 print_help() {
   echo -e "\nNAME"
-  echo -e "\tlastweek - show Slurm job history\n"
+  echo -e "\tmyjobs - show Slurm job history\n"
   echo -e "USAGE"
-  echo -e "\tlastweek [-d days | -a] [-h]\n"
+  echo -e "\tmyjobs [-d days | -a] [-h]\n"
   echo -e "OPTIONS"
   echo -e "\t-a,--all"
   echo -e "\t\tShow all intermediate job steps"
