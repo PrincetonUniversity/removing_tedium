@@ -221,6 +221,12 @@ The `cl` function cd's into a specified directory and runs the `ll` alias. The `
 
 Note that there are many pre-defined functions.
 
+## To see your shell functions
+
+```bash
+$ set | less
+```
+
 ## Environment modules
 
 Here are some aliases for quickly working with modules:
@@ -244,12 +250,6 @@ Then use it as follows:
 
 ```bash
 $ modl anaconda3/2020.11
-```
-
-## To see your shell functions
-
-```bash
-$ set | less
 ```
 
 ## Tensorboard
