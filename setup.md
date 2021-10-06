@@ -10,8 +10,6 @@
 
 + Open a terminal (e.g., Terminal, PowerShell, PuTTY) [<a href="https://researchcomputing.princeton.edu/education/training/hardware-and-software-requirements-picscie-workshops" target="_blank">click here</a> for help]
 
-+ Clone this repo to your local machine: `git clone https://github.com/PrincetonUniversity/removing_tedium`
-
 + SSH to a Princeton HPC cluster (prefer Della, Tiger, Stellar or Traverse over Adroit). Click [here](https://researchcomputing.princeton.edu/faq/why-cant-i-login-to-a-clu) for help. If you need an account then request one on [Adroit](https://forms.rc.princeton.edu/registration/?q=adroit).
 
 + Go to the main page by [clicking here](https://github.com/PrincetonUniversity/removing_tedium).
