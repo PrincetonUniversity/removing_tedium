@@ -362,7 +362,7 @@ FMT=jobid%12,state,start,elapsed,timelimit,ncpus%5,nnodes%6,reqmem%10,alloctres%
 if $show_all_steps; then
     sacct -u $USER -S $startdate -o $FMT;
 else
-    sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9]{4}\.(ex|ba|in)|[0-9]{4}\.[0-9]{1,} ';
+    sacct -u $USER -S $startdate -o $FMT -X;
 fi
 ```
 
