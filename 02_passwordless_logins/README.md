@@ -57,7 +57,7 @@ $ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
 # enter your password and Duo authenticate (you may not need to Duo authenticate if you established a multiplexed session previously)
 ```
 
-Note that the `ssh-copy-id` command will only transfer your public key. Your private key will remain on your local machine in `~/.ssh/id_rsa`.
+Note that the `ssh-copy-id` command will only transfer your public key. Your private key will remain safe on your local machine in `~/.ssh/id_rsa`.
 
 Here is an example session:
 
