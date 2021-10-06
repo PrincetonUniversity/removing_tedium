@@ -77,7 +77,7 @@ $ sq
 
 You only need to source your `~/.bashrc` file when you add an alias in the current session. When you first log in all aliases will be available. Once you have built up your `~/.bashrc` file it will contain aliases and shell functions like those in the example [myshortcuts.sh](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh) file in this repo.
 
-### If you have an account on Della, Perseus, Stellar, Tiger, Tigressdata and maybe Traverse ...
+### If you have an account on Della, Stellar, Tiger, Tigressdata and maybe Traverse ...
 
 The large clusters and Tigressdata all mount the `/tigress` filesystem. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/tigress` and `source` this from each `~/.bashrc` file for each account. This approach ensures that your shortcuts remain in sync across all of your accounts. Here is the three-step procedure for this:
 
