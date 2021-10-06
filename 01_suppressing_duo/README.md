@@ -149,7 +149,7 @@ You can then connect from your local machine (laptop/desktop) using the followin
 $ ssh della
 ```
 
-The above command will use the proxyjump server `tigressgateway`. The connection first goes to `tigressgateway` where it Duo authenticates before hopping to della. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through (most users can ignore this). See the section for `ProxyJump` in `man ssh_config` for more. **You should choose new ports between 5900 and 9999** but most users will not need port forwarding so you may choose to omit lines beginning with `LocalForward`.
+The command above will Duo authenticate but subsequent sessions will use that connection and not require Duo. The proxyjump server `tigressgateway` will be used. That is, the connection first goes to `tigressgateway` where it Duo authenticates before hopping to della. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through (most users can ignore this). See the section for `ProxyJump` in `man ssh_config` for more. **You should choose new ports between 5900 and 9999** but most users will not need port forwarding so you may choose to omit lines beginning with `LocalForward`.
 
 You should be able to `scp <localfile> della:` without additional Duo authentications since the connection is established and multiplexed.
 
