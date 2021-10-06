@@ -457,13 +457,13 @@ $ sshare | grep $USER | awk '{print $1}'
 
 ### Generate a report on your recent job history
 
-Previoulsy we used a lengthy shell function for this. That function has now been replaced with the following command:
+Previoulsy we used a lengthy shell function for this. That function helped many users so now it has been promoted to a system command:
 
 ```
 $ shistory
 ```
 
-Give the command above a try. To see the help menu: `$ shistory -h`
+Give the command above a try. To see the help menu: `$ shistory -h`.
 
 ### View Slurm efficiency reports without specifying the job id
 
