@@ -334,6 +334,18 @@ The script below is a reduced version of the `shistory` command. You should use 
 #   $ myjobs -d 2 -a
 #   $ myjobs --days 10 --all
 
+print_help() {
+  echo -e "\nNAME"
+  echo -e "\tlastweek - show Slurm job history\n"
+  echo -e "USAGE"
+  echo -e "\tlastweek [-d days | -a] [-h]\n"
+  echo -e "OPTIONS"
+  echo -e "\t-a,--all"
+  echo -e "\t\tShow all intermediate job steps"
+  echo -e "\t-d,--days"
+  echo -e "\t\tShow jobs over this many previous days from now (default: 7)"
+}
+
 # defaults
 days=7
 show_all_steps=false
@@ -342,6 +354,10 @@ show_all_steps=false
 while [[ "$#" -gt 0 ]]
 do
   case $1 in
+    -h|--help)
+      print_help
+      exit
+      ;;
     -d|--days)
       days="$2";
       shift;
@@ -353,11 +369,7 @@ do
   shift
 done
 
-seconds=$(($days * 24 * 60 * 60));
-now=$(date +%s);
-minusdays=$((now - $seconds));
-startdate=$(date --date=@$minusdays +'%m/%d');
-# remove alloctres in next line if you do not use GPUs
+startdate=$(date -d"${days} days ago" +%D);
 FMT=jobid%12,state,start,elapsed,timelimit,ncpus%5,nnodes%6,reqmem%10,alloctres%50,partition,jobname%8;
 if $show_all_steps; then
     sacct -u $USER -S $startdate -o $FMT;
