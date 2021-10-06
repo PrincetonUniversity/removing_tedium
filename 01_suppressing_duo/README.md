@@ -283,7 +283,7 @@ $ ssh -O stop tigressgateway
 
 ### On-Campus Only
 
-If for some reason you only want to enable multiplexing when you are on-campus then follow this procedure.
+Almost all users should follow the directions for On-Campus and Off-Campus above but if for some reason you only want to enable multiplexing when you are on-campus then follow this procedure.
 
 Step 1: To make this work, on your Linux or macOS **local machine** (laptop/desktop), edit the file `~/.ssh/config` by adding a machine stanza which looks like this (**replace aturing with your NetID**):
 
