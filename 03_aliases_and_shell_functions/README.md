@@ -457,60 +457,13 @@ $ sshare | grep $USER | awk '{print $1}'
 
 ### Generate a report on your recent job history
 
-The `lastweek` function will list details about your jobs over the last 7 days:
-
-```bash
-lastweek() 
-{
-    days=7;
-    if [ "$#" -gt 0 ]; then
-        days=$1;
-    fi;
-    seconds=$(($days * 24 * 60 * 60));
-    now=$(date +%s);
-    minusdays=$((now - $seconds));
-    startdate=$(date --date=@$minusdays +'%m/%d');
-    FMT=jobid%12,state,start,elapsed,timelimit,ncpus%5,nnodes%6,reqmem%10,alloctres%50,partition,jobname%8;
-    if [ "$#" -gt 1 ]; then
-        sacct -u $USER -S $startdate -o $FMT;
-    else
-        sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9]{4}\.(ex|ba|in)|[0-9]{4}\.[0-9]{1,} ';
-    fi
-}
-```
-
-Run the command without arguments to get your job history over the last 7 days:
+Previoulsy we used a lengthy shell function for this. That function has now been replaced with the following command:
 
 ```
-$ lastweek
+$ shistory
 ```
 
-To change the number of days the report is created for, add the days argument. For instance, to see all jobs over the last 12 days (instead of the default of 7):
-
-```
-$ lastweek 12
-```
-
-Lastly, to see all of the individual job steps, add the number of days and any second parameter such as `a` for "all":
-
-```
-$ lastweek 3 a
-```
-
-The number of characters per column can be adjusted by changing the number after the `%` symbol in FMT. If you do not use GPUs then you should remove `,alloctres%50` from FMT to shorten the output. An example is below:
-
-```
-$ lastweek
- JobID      State               Start    Elapsed  Timelimit NCPUS NNodes ReqMem  Partition  JobName 
------- ---------- ------------------- ---------- ---------- ----- ------ ------ ---------- -------- 
-128233     FAILED 2021-02-19T10:15:22   00:00:01   01:00:00     4      1  200Gn        all   run.sh 
-128234     FAILED 2021-02-19T10:15:46   00:15:03   01:00:00     4      1  200Gn        all   run.sh 
-128235    TIMEOUT 2021-02-19T11:30:17   01:05:03   01:00:00     4      1  200Gn        all   run.sh 
-128240     FAILED 2021-02-19T14:11:37   00:09:25   01:00:00     4      1  200Gn        all   run.sh 
-128246 CANCELLED+ 2021-02-19T16:24:45   00:30:11   01:00:00     4      1  200Gn        all   run.sh 
-128247 CANCELLED+ 2021-02-19T16:55:16   00:09:15   01:00:00     4      1  200Gn        all   run.sh 
-128396    RUNNING 2021-02-22T10:16:08   01:02:26   01:00:00    32      1  200Gn        all   run.sh 
-```
+Give the command above a try. To see the help menu: `$ shistory -h`
 
 ### View Slurm efficiency reports without specifying the job id
 
