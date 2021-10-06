@@ -499,6 +499,7 @@ After submitting a GPU job it is common to run `goto` followed by `wsmi` on the 
 ```bash
 if [[ $(hostname) == adroit* ]]; then
   alias v100='ssh adroit-h11g1'
+  alias a100='ssh adroit-h11g2'
 fi
 ```
 
@@ -537,10 +538,6 @@ if [ ! -z "$PS1" ]; then
       timeout 5 checkquota | head -n 3
       echo ;;
     della*.*)
-      echo 
-      timeout 5 checkquota | head -n 3
-      echo ;;
-    perseus)
       echo 
       timeout 5 checkquota | head -n 3
       echo ;;
