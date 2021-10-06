@@ -318,7 +318,7 @@ Then you can call `cppcancel` on the command line. We see that the C++ implement
 
 ## Bash scripts
 
-The script below is a reduced version of the `shistory` command. You should use the `shistory` command but the script below nicely illustrates how to write a Bash command. Here we present the same function but in the form of a Bash script that takes named command-line parameters:
+The script below is a reduced version of the `shistory` command. You should use `shistory` but the script below nicely illustrates how to write a Bash command:
 
 ```bash
 #!/bin/bash
