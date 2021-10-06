@@ -195,10 +195,18 @@ Host della.princeton.edu della
 Host nobel.princeton.edu nobel
   User aturing
   HostName nobel.princeton.edu
-  
-Host stellar.princeton.edu stellar
+
+Host stellar-amd.princeton.edu stellar-amd
   User aturing
-  HostName stellar.princeton.edu
+  HostName stellar-amd.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host stellar-intel.princeton.edu stellar.princeton.edu stellar
+  User aturing
+  HostName stellar-intel.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
   ControlPersist yes
