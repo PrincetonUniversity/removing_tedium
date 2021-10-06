@@ -165,44 +165,22 @@ Host tigressgateway.princeton.edu tigressgateway
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
   ServerAliveInterval 300
-  LocalForward 5908 traverse.princeton.edu:5908
-  LocalForward 5909 traverse.princeton.edu:5909
-  LocalForward 5910 tigergpu.princeton.edu:5910
-  LocalForward 5911 tigergpu.princeton.edu:5911
-  LocalForward 5912 tigercpu.princeton.edu:5912
-  LocalForward 5913 tigercpu.princeton.edu:5913
-  LocalForward 5914 della.princeton.edu:5914
-  LocalForward 5915 della.princeton.edu:5915
-  LocalForward 5918 adroit.princeton.edu:5918
-  LocalForward 5919 adroit.princeton.edu:5919
-  LocalForward 5920 nobel.princeton.edu:5920
-  LocalForward 5921 nobel.princeton.edu:5921
-  LocalForward 5922 tigressdata.princeton.edu:5922
-  LocalForward 5923 tigressdata.princeton.edu:5923
-  LocalForward 5924 stellar.princeton.edu:5924
-  LocalForward 5925 stellar.princeton.edu:5925
-  LocalForward 5926 stellar-vis1.princeton.edu:5926
-  LocalForward 5927 stellar-vis1.princeton.edu:5927
+  LocalForward 5901 adroit-vis.princeton.edu:5901
+  LocalForward 5902 stellar-vis1.princeton.edu:5902
+  LocalForward 5903 stellar-vis2.princeton.edu:5903
+  LocalForward 5904 tigressdata.princeton.edu:5904
 
-Host traverse.princeton.edu traverse
+Host adroit.princeton.edu adroit
   User aturing
-  HostName traverse.princeton.edu
+  HostName adroit.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host tigergpu.princeton.edu tigergpu
+Host adroit-vis.princeton.edu adroit-vis
   User aturing
-  HostName tigergpu.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-  ControlMaster auto
-  ControlPersist yes
-  ControlPath ~/.ssh/sockets/%p-%h-%r
-
-Host tigercpu.princeton.edu tigercpu tiger
-  User aturing
-  HostName tigercpu.princeton.edu
+  HostName adroit-vis.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
   ControlPersist yes
@@ -216,21 +194,9 @@ Host della.princeton.edu della
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host adroit.princeton.edu adroit
+Host nobel.princeton.edu nobel
   User aturing
-  HostName adroit.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-  ControlMaster auto
-  ControlPersist yes
-  ControlPath ~/.ssh/sockets/%p-%h-%r
-
-Host tigressdata.princeton.edu tigressdata
-  User aturing
-  HostName tigressdata.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-  ControlMaster auto
-  ControlPersist yes
-  ControlPath ~/.ssh/sockets/%p-%h-%r
+  HostName nobel.princeton.edu
   
 Host stellar.princeton.edu stellar
   User aturing
@@ -247,10 +213,38 @@ Host stellar-vis1.princeton.edu stellar-vis
   ControlMaster auto
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
-  
-Host nobel.princeton.edu nobel
+
+Host tigercpu.princeton.edu tigercpu tiger
   User aturing
-  HostName nobel.princeton.edu
+  HostName tigercpu.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+  
+Host tigergpu.princeton.edu tigergpu
+  User aturing
+  HostName tigergpu.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+  
+Host tigressdata.princeton.edu tigressdata
+  User aturing
+  HostName tigressdata.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host traverse.princeton.edu traverse
+  User aturing
+  HostName traverse.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
 To check if the multiplexed connection is alive (remember everything is going through tigressgateway):
