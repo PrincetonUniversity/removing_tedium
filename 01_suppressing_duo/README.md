@@ -173,8 +173,6 @@ Host tigressgateway.princeton.edu tigressgateway
   LocalForward 5913 tigercpu.princeton.edu:5913
   LocalForward 5914 della.princeton.edu:5914
   LocalForward 5915 della.princeton.edu:5915
-  LocalForward 5916 perseus.princeton.edu:5916
-  LocalForward 5917 perseus.princeton.edu:5917
   LocalForward 5918 adroit.princeton.edu:5918
   LocalForward 5919 adroit.princeton.edu:5919
   LocalForward 5920 nobel.princeton.edu:5920
