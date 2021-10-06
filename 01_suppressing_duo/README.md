@@ -288,7 +288,7 @@ Host della.princeton.edu della
   ControlPersist 10m
 ```        
 
-Step 2: Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
+Step 2: Then do a `mkdir -p ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
 
 The very first login to `della` (from on-campus since no VPN) would start the multiplexing option:
 
