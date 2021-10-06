@@ -105,7 +105,7 @@ A: Yes this is painful! But there are a few things one can do. I will explain on
 
 But do be aware of why Duo is being used in the first place. It is to protect our systems. The reason I mention this is because you do have options with the method I am going to provide with respect to time limits on how long the multiplexed functionality remains operational. Set too low and your very next ssh/scp will require Duo authentication again. But set too high, the protection could be bypassed which makes us all vulnerable.
 
-Note that a [VPN](https://www.princeton.edu/vpn) is required to use the OnDemand web portals of MyAdroit and MyDella as well as for various library services such as downloading journal articles.
+Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to use the OnDemand web portals of [MyAdroit](https://myadroit.princeton.edu/) and [MyDella](https://mydella.princeton.edu/) as well as for various library services such as downloading journal articles.
 
 ### On-Campus
 
