@@ -41,7 +41,7 @@ You can connect to a cluster like Della from your local machine (e.g., laptop) u
 $ ssh <YourNetID>@della.princeton.edu
 ```
 
-However, by modifying the `~/.ssh/config` file (or creating the file if necessary) on your local machine you can just do:
+However, by modifying the `~/.ssh/config` file (or creating the file if necessary) on your local machine you can just do following even if off-campus:
 
 ```
 $ ssh della
