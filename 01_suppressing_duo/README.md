@@ -192,6 +192,14 @@ Host della.princeton.edu della
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
+Host della-gpu.princeton.edu della-gpu
+  User aturing
+  HostName della-gpu.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+
 Host nobel.princeton.edu nobel
   User aturing
   HostName nobel.princeton.edu
