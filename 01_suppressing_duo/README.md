@@ -107,41 +107,9 @@ But do be aware of why Duo is being used in the first place. It is to protect ou
 
 Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to use the OnDemand web portals of [MyAdroit](https://myadroit.princeton.edu/) and [MyDella](https://mydella.princeton.edu/) as well as for various library services such as downloading journal articles.
 
-### On-Campus Only
-
-Step 1: To make this work, on your Linux or macOS **local machine** (laptop/desktop), edit the file `~/.ssh/config` by adding a machine stanza which looks like this (**replace aturing with your NetID**):
-
-```
-Host della.princeton.edu della
-  User aturing
-  HostName della.princeton.edu
-  ControlPath ~/.ssh/controlmasters/%r@%h:%p
-  ControlMaster auto
-  ControlPersist 10m
-```        
-
-Step 2: Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
-
-The very first login to `della` (from on-campus since no VPN) would start the multiplexing option:
-
-```
-$ ssh della
-```
-
-The command above will Duo authenticate but subsequent sessions will use that connection and not require Duo. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, once the last ssh session has terminated.
-
-Some handy commands from your local machine (laptop/desktop):
-
-```
-$ ssh -O check della    # this checks whether a multiplexed session is already open
-$ ssh -O stop della     # kills the multiplexed session
-```
-
-The line `Host della.princeton.edu della` allows one to create aliases which explains why we can use `della` or `della.princeton.edu` in the commands above.
-
 ### On-Campus and Off-Campus (Recommended)
 
-When off-campus and not using a VPN, one cannot `ssh` to the head node of a Research Computing cluster. Because of this, we must modify the on-campus procedure described above. **For users with an account on one of the large clusters** (not Adroit, not Nobel) one can use `tigressgateway` as a proxyjump server:
+When off-campus and not using a VPN, one cannot `ssh` to the head node of a Research Computing cluster. **However, for users with an account on one of the large clusters** (not Adroit, not Nobel) one can use `tigressgateway` as a proxyjump server:
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/multiplexed_connection.png" align="center"></p>
 
@@ -177,7 +145,7 @@ Host della.princeton.edu della
   ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
-You can then connect from your local machine (laptop/desktop) using the following command:
+You can then connect from your local machine (laptop/desktop) using the following command, for example:
 
 ```
 $ ssh della
@@ -185,7 +153,7 @@ $ ssh della
 
 The above command will use the proxyjump server `tigressgateway`. The connection first goes to `tigressgateway` where it Duo authenticates before hopping to della. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through. See `man ssh_config` in the section for ProxyJump. **You should choose new ports between 5900 and 9999.**
 
-You should be able to `scp localfile della:` without incurring extra Duo authentications since the connection is established and multiplexed.
+You should be able to `scp <localfile> della:` without doing extra Duo authentications since the connection is established and multiplexed.
 
 Below is a sample file of `.ssh/config` for multiple clusters (**replace aturing with your NetID**):
 
@@ -250,14 +218,6 @@ Host della.princeton.edu della
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host perseus.princeton.edu perseus
-  User aturing
-  HostName perseus.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-  ControlMaster auto
-  ControlPersist yes
-  ControlPath ~/.ssh/sockets/%p-%h-%r
-
 Host adroit.princeton.edu adroit
   User aturing
   HostName adroit.princeton.edu
@@ -282,7 +242,7 @@ Host stellar.princeton.edu stellar
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host stellar-vis1.princeton.edu stellarvis
+Host stellar-vis1.princeton.edu stellar-vis
   User aturing
   HostName stellar-vis1.princeton.edu
   ProxyJump tigressgateway.princeton.edu
@@ -306,6 +266,40 @@ To end the connection manually:
 ```
 $ ssh -O stop tigressgateway
 ```
+
+### On-Campus Only
+
+If for some reason you only want to enable multiplexing when you are on-campus then follow this procedure.
+
+Step 1: To make this work, on your Linux or macOS **local machine** (laptop/desktop), edit the file `~/.ssh/config` by adding a machine stanza which looks like this (**replace aturing with your NetID**):
+
+```
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  ControlPath ~/.ssh/controlmasters/%r@%h:%p
+  ControlMaster auto
+  ControlPersist 10m
+```        
+
+Step 2: Then do a `mkdir ~/.ssh/controlmasters` to create the directory for telling ssh how to use this multiplexed session.
+
+The very first login to `della` (from on-campus since no VPN) would start the multiplexing option:
+
+```
+$ ssh della
+```
+
+The command above will Duo authenticate but subsequent sessions will use that connection and not require Duo. The multiplexer remains active for ControlPersist time, as defined in your `~/.ssh/config` file, once the last ssh session has terminated.
+
+Some handy commands from your local machine (laptop/desktop):
+
+```
+$ ssh -O check della    # this checks whether a multiplexed session is already open
+$ ssh -O stop della     # kills the multiplexed session
+```
+
+The line `Host della.princeton.edu della` allows one to create aliases which explains why we can use `della` or `della.princeton.edu` in the commands above.
 
 ### X11 Forwarding
 
