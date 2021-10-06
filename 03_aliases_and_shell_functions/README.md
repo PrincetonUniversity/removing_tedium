@@ -246,6 +246,12 @@ Then use it as follows:
 $ modl anaconda3/2020.11
 ```
 
+## To see your shell functions
+
+```bash
+$ set | less
+```
+
 ## Tensorboard
 
 This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions for Tensorboard](https://researchcomputing.princeton.edu/tensorflow)):
@@ -283,12 +289,6 @@ $ board 6006 tiger-h12g10
 ```
 
 Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
-
-## To see your shell functions
-
-```bash
-$ set | less
-```
 
 ## Conda environments
 
