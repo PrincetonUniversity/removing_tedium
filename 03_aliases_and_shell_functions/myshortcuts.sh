@@ -93,22 +93,6 @@ maxmem() { snodes | tr -s [:blank:] | cut -d' ' -f7 | sort -g | uniq; }
 eff() { seff $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
 goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
 alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
-lastweek() {
-    days=7;
-    if [ "$#" -gt 0 ]; then
-        days=$1;
-    fi;
-    seconds=$(($days * 24 * 60 * 60));
-    now=$(date +%s);
-    minusdays=$((now - $seconds));
-    startdate=$(date --date=@$minusdays +'%m/%d');
-    FMT=jobid%12,state,start,elapsed,timelimit,ncpus%5,nnodes%6,reqmem%10,alloctres%50,partition,jobname%8;
-    if [ "$#" -gt 1 ]; then
-        sacct -u $USER -S $startdate -o $FMT;
-    else
-        sacct -u $USER -S $startdate -o $FMT | egrep -v '[0-9]{4}\.(ex|ba|in)|[0-9]{4}\.[0-9]{1,} ';
-    fi
-}
 
 #######
 # gpu #
@@ -121,6 +105,7 @@ alias wsmi='watch -n 1 nvidia-smi'
 ######################
 if [[ $(hostname) == adroit* ]]; then
   alias v100='ssh adroit-h11g1'
+  alias a100='ssh adroit-h11g2'
 fi
 
 #####################
@@ -170,9 +155,8 @@ alias ccat='/usr/licensed/anaconda3/2020.11/bin/pygmentize'
 ###########
 export HISTSIZE=50000                # lines of history to keep
 export HISTFILESIZE=50000            # keep extended history file
-export HISTTIMEFORMAT='%F %T '       # show date and time of past commands
+#export HISTTIMEFORMAT='%F %T '       # show date and time of past commands
 PROMPT_COMMAND='history -a'          # append current session to history
-alias h8='history 150 | cut -c 28-'  # ignore index and timestamp
 
 ######################################
 # run checkquota at start of session #
