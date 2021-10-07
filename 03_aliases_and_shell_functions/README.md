@@ -444,7 +444,7 @@ The function above uses `squeue` to list all your job id's in ascending order an
 
 Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. The command below can be used to see usage by user:
 
-```
+```bash
 hog() {
   start_date=$(date -d"30 days ago" +%D);
   account=$(sshare | grep $USER | awk '{print $1}' | head -n 1);
