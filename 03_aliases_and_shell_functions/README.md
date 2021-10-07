@@ -477,10 +477,11 @@ The `eff` function figures out the job id and runs `seff` on that.
 
 ### Get your fairshare value
 
-Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your Unix group run over the last 30 days, the lower your fairshare value. Fairshare vaires between 0 and 1 with 1 corresponding to the largest job priority.
+Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your Unix group run over the last 30 days, the lower your fairshare value. Fairshare varies between 0 and 1 with 1 corresponding to the largest job priority.
 
 ```bash
-alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
+alias fair='echo "Fairshare: " && sshare | grep $USER | awk '"'"'{print $(NF)}'"'"''
+'"'"'
 ```
 
 To learn more about job priority see [this page](https://researchcomputing.princeton.edu/priority).
