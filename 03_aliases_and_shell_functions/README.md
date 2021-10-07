@@ -696,7 +696,6 @@ export HISTSIZE=50000                # lines of history to keep
 export HISTFILESIZE=50000            # keep extended history file
 #export HISTTIMEFORMAT='%F %T '       # show date and time of past commands
 PROMPT_COMMAND='history -a'          # append current session to history
-alias h8='history 150 | cut -c 28-'  # ignore index and timestamp
 ```
 
 # Shell options
