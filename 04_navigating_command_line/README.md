@@ -46,7 +46,7 @@ $ pwd
 /home/aturing/work
 ```
 
-See `pushd` and `popd` for a more general approach for returning to previous locations.
+See `pushd`, `popd` and `dirs` for a more general approach for returning to previous locations.
 
 ## Running a previous command
 
