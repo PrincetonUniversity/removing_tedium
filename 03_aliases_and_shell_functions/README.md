@@ -481,7 +481,6 @@ Your fairshare value plays a key role in determining your job priority. The more
 
 ```bash
 alias fair='echo "Fairshare: " && sshare | grep $USER | awk '"'"'{print $(NF)}'"'"''
-'"'"'
 ```
 
 To learn more about job priority see [this page](https://researchcomputing.princeton.edu/priority).
