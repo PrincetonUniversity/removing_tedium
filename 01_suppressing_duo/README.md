@@ -4,7 +4,13 @@ Duo enhances security. It can also be disruptive and annoying. This page present
 
 # I. VPN Approach
 
-Install the Global Protect [VPN client](https://www.princeton.edu/vpn). Connect via the VPN client (even if you are on-campus) and then SSH to a cluster. You will only need to Duo authenticate once per session (which typically lasts a few hours). That's it. If you would prefer not to use a VPN then see the [multiplexing approach](#ii-multiplexing-approach-vpn-free) below.
+Here is the procedure:
+
+1. Install the Global Protect [VPN client](https://www.princeton.edu/vpn).
+2. Connect via the VPN client (**even if you are on-campus**).
+3. SSH to a cluster. You will only need to Duo authenticate once per session (which typically lasts a few hours).
+
+If you would prefer not to use a VPN then see the [multiplexing approach](#ii-multiplexing-approach-vpn-free) below.
 
 To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn). GlobalProtect is recommended.
 
