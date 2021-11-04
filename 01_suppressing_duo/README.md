@@ -98,6 +98,10 @@ sudo apt-get install openjdk-8-jre
 startctui
 ```
 
+### PPPL VPN
+
+The approach described above does not work the PPPL Pulse Secure VPN. You will be required to Duo authenticate each time you use `ssh` or `scp`.
+
 # II. Multiplexing Approach (VPN free)
 
 > Multiplexing involves the simultaneous transmission of several messages along a single channel of communication.
