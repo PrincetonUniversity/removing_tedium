@@ -323,13 +323,15 @@ The line `Host della.princeton.edu della` allows one to create aliases which exp
 
 ### Troubleshooting
 
-Note that you can always rename your `~/.ssh/config` file to remove all the settings:
+Note that you can always rename your `~/.ssh/config` file to turn off all the settings:
 
 ```
 $ mv ~/.ssh/config ~/.ssh/orig.config
 ```
 
-In some cases it may be necessary to close active ssh sessions on your local machine. First, find the open sessions:
+To restore the file, simply rename it from `orig.config` to `config`.
+
+In some cases it may be necessary to close active `ssh` sessions on your local machine. First, find the open sessions:
 
 ```
 $ ps aux | grep -E 'PID|ssh'
