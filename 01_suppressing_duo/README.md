@@ -332,10 +332,10 @@ $ mv ~/.ssh/config ~/.ssh/orig.config
 In some cases it may be necessary to close active ssh sessions on your local machine. First, find the open sessions:
 
 ```
-$ ps aux | grep ssh
+$ ps aux | grep -E 'PID|ssh'
 ```
 
-Then kill specific processes:
+Then kill specific processes (see the PID column to get the process id):
 
 ```
 $ kill -9 <process-id>
