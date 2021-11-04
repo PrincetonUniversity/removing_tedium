@@ -321,6 +321,26 @@ $ ssh -O stop della     # kills the multiplexed session
 
 The line `Host della.princeton.edu della` allows one to create aliases which explains why we can use `della` or `della.princeton.edu` in the commands above.
 
+### Troubleshooting
+
+Note that you can always rename your `~/.ssh/config` file to remove all the settings:
+
+```
+$ mv ~/.ssh/config ~/.ssh/orig.config
+```
+
+In some cases it may be necessary to close active ssh sessions on your local machine. First, find the open sessions:
+
+```
+$ ps aux | grep ssh
+```
+
+Then kill specific processes:
+
+```
+$ kill -9 <process-id>
+```
+
 ### X11 Forwarding
 
 If you are on a Mac and you experience problems with X11 forwarding then try adding the following lines to the bottom of `~/.ssh/config`:
