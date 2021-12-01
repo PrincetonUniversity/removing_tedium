@@ -442,7 +442,7 @@ The function above uses `squeue` to list all your job id's in ascending order an
 
 ### Who's hogging all the resources?
 
-Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. The command below can be used to see usage by user:
+Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. The function below can be used to see usage by user:
 
 ```bash
 hog() {
@@ -451,6 +451,8 @@ hog() {
   sreport user topusage start=${start_date} end=now TopCount=100 accounts=${account} -t hourper --tres=cpu;
 }
 ```
+
+A small number of users have multiple Slurm accounts. Modifications to the above function may be needed for these users.
 
 ### Generate a report on your recent job history
 
