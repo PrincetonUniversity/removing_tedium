@@ -448,7 +448,7 @@ Your job priority is in part determined by the cluster usage of other members of
 hog() {
   start_date=$(date -d"30 days ago" +%D);
   account=$(sshare | grep $USER | awk '{print $1}' | head -n 1);
-  sreport user top start=${start_date} end=now TopCount=100 accounts=${account} -t hourper --tres=cpu;
+  sreport user topusage start=${start_date} end=now TopCount=100 accounts=${account} -t hourper --tres=cpu;
 }
 ```
 
