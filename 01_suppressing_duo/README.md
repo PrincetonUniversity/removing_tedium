@@ -358,4 +358,4 @@ Host *
   XAuthLocation /opt/X11/bin/xauth
 ```
 
-Make sure that you have an X server running (e.g., [https://www.xquartz.org/](XQuartz)) when using this approach.
+Make sure that you have an X server running (e.g., [XQuartz](https://www.xquartz.org)) when using this approach.
