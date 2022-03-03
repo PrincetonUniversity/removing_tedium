@@ -93,7 +93,13 @@ Try to `ssh` to the cluster (you should no longer need to enter a password):
 $ ssh aturing@adroit.princeton.edu
 ```
 
-If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`. If you worked through Section 1 of this repo then you should be able to use simply `$ ssh adroit`.
+Or if you worked through Section 1 of this repo then you should be able to use the much shorter:
+
+```
+$ ssh adroit
+```
+
+If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
 
 ### Step 4: Return to Step 2 for additional HPC clusters
 
