@@ -124,12 +124,10 @@ When off-campus and not using a VPN, one cannot `ssh` to the head node of a Rese
 
 The procedure for doing this is shown below:
 
-Step 1: On your **local machine** (laptop/desktop) make these directories and set the permissions:
+Step 1: On your **local machine** (laptop/desktop) run the command below to make two directories and set the permissions:
 
 ```
-$ mkdir -p ~/.ssh/controlmasters
-$ mkdir -p ~/.ssh/sockets
-$ chmod 700 ~/.ssh/sockets
+$ mkdir -p ~/.ssh/controlmasters && mkdir -p ~/.ssh/sockets && chmod 700 ~/.ssh/sockets
 ```
 
 Step 2: Modify your `.ssh/config` file as follows (**replace aturing with your NetID**):
