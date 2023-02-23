@@ -127,7 +127,7 @@ $ cat C:\Users\aturing\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton
 
 ### Windows with MobaXterm
 
-This [set of directions](https://ubccr.freshdesk.com/support/solutions/articles/13000034093-using-ssh-keys-with-mobaxterm-windows-) may be useful.
+This [set of directions](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/generating_keys_with_mobaxterm.html) may be useful.
 
 
 ### Windows for PuTTY users
