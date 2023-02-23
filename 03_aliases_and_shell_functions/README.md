@@ -645,7 +645,7 @@ alias vi='vim'
 alias top='htop'
 alias cmake='cmake3'
 alias R='R --vanilla --quiet'
-alias ccat='/usr/licensed/anaconda3/2020.11/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2022.10/bin/pygmentize'
 ```
 
 The `ccat` alias is like the `cat` command but with syntax highlighting of Python files and more (e.g., `$ ccat myscript.py`).
