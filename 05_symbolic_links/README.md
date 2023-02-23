@@ -51,7 +51,7 @@ Consider adding the alias below so that symbolic links are always resolved (i.e.
 alias pwd='pwd -P'
 ```
 
-## Tigress
+## /projects and /tigress
 
 Make a second symbolic link from your home directory to `/tigress`:
 
@@ -60,7 +60,7 @@ $ cd ~
 $ ln --symbolic /tigress/<YourNetID> grs   # Della, Stellar, Tiger, Traverse
 ```
 
-Can you think of another symbolic link that could be used to speed-up your workflow? Maybe `prj -> /projects/ATURING`?
+Can you think of another symbolic link that could be used to speed-up your workflow? Maybe something like `prj -> /projects/ACHURCH/aturing`?
 
 ## How to remove a symbolic link
 
