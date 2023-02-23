@@ -135,11 +135,11 @@ Be sure not to name an alias after an existing command. If your shell is not beh
 Aliases take precedence over commands loaded via modules. This is illustrated below with the `intel` module:
 
 ```bash
-$ module load intel/19.1/64/19.1.1.217
+$ module load intel/19.1.1.217
 $ icc
 $ module purge
 $ alias icc='ps -u $USER'
-$ module load intel/19.1/64/19.1.1.217
+$ module load intel/19.1.1.217
 $ icc
 ```
 
@@ -243,9 +243,8 @@ Here are some aliases for quickly working with modules:
 alias ma='module avail'
 alias mp='module purge'
 alias ml='module list'
-alias mla='module load anaconda3/2020.11'
-alias mlc='module load cudatoolkit/11.2'
-alias rh8='module load rh/devtoolset/8'
+alias mla='module load anaconda3/2022.10'
+alias mlc='module load cudatoolkit/11.7'
 ```
 
 Another approach would be to define an alias like this:
@@ -257,7 +256,7 @@ alias modl='module load'
 Then use it as follows:
 
 ```bash
-$ modl anaconda3/2020.11
+$ modl anaconda3/2022.10
 ```
 
 ## Tensorboard
@@ -306,7 +305,7 @@ The shell functions and alias below can be used to list your enumerated Conda en
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3/2020.11
+    module load anaconda3/2022.10
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
