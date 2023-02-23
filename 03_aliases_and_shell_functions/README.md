@@ -477,7 +477,7 @@ Give the command above a try. To see the help menu: `$ shistory -h`.
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
 ```bash
-eff() { seff $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
+eff() { jobstats $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
 ```
 
 The `eff` function figures out the job id and runs `seff` on that.
