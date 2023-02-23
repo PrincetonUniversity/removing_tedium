@@ -50,9 +50,8 @@ alias pwd='pwd -P'
 alias ma='module avail'
 alias mp='module purge'
 alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
-alias mla='module load anaconda3/2020.11'
-alias mlc='module load cudatoolkit/11.2'
-alias rh8='module load rh/devtoolset/8'
+alias mla='module load anaconda3/2022.10'
+alias mlc='module load cudatoolkit/11.7'
 
 #########
 # conda #
@@ -148,7 +147,7 @@ alias R='R --vanilla --quiet'
 alias has512='lscpu | grep -E --color=always "avx512"'
 alias dirsize='du -h --max-depth=1 | sort -h'
 alias mypath='readlink -f'
-alias ccat='/usr/licensed/anaconda3/2020.11/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2022.10/bin/pygmentize'
 
 ###########
 # history #
