@@ -9,6 +9,7 @@ On this page we present the essential keyboard shortcuts and concepts for workin
 [Ctrl] + [e]   # move cursor to end of line (think: 'e' stands for 'end')
 [Ctrl] + [u]   # delete from cursor to beginning of line
 [Ctrl] + [k]   # delete from cursor to end of line
+[Ctrl] + [w]   # delete the last word
 Up arrow       # cycle backward through your history
 Down arrow     # cycle forward through your history
 ```
