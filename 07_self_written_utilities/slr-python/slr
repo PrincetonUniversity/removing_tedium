@@ -1,4 +1,4 @@
-#!/usr/licensed/anaconda3/2020.11/bin/python
+#!/usr/licensed/anaconda3/2022.10/bin/python
 
 import argparse
 import os
