@@ -20,7 +20,7 @@ OIT is responsible for the VPN so please [contact them](https://princeton.servic
 
 ### What if the VPN is too slow?
 
-The use of a VPN will decrease your internet connection speed. The table below was generated on 3/6/2021 at an off-campus location in Princeton with a FIOS connection using [speedtest.net](https://www.speedtest.net):
+The use of a VPN will decrease your internet connection speed. The table below was generated at an off-campus location in Princeton with a FIOS connection using [speedtest.net](https://www.speedtest.net):
 
 | VPN           | Download (Mbps)| Upload (Mbps)  |
 | ------------- |:-------------:|:-----:|
