@@ -34,7 +34,7 @@ $ mkdir /tigress/<YourNetID>/my-utilities   # Della, Stellar, Tiger, Traverse
 $ mkdir /home/<YourNetID>/my-utilities      # if only have account on Adroit
 ```
 
-Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`. We suggest using `/projects` or `/tigress` since it can be reached from multiple clusters.
+Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`. We suggest using `/projects` or `/tigress` since those storage systems can be reached from multiple clusters.
 
 ### Update PATH
 
