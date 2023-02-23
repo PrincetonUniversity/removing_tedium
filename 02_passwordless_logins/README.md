@@ -125,6 +125,12 @@ Follow [these directions](https://www.techrepublic.com/blog/10-things/how-to-gen
 $ cat C:\Users\aturing\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
+Below is specific example:
+
+```
+$ cat C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+```
+
 ### Windows with MobaXterm
 
 This [set of directions](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/generating_keys_with_mobaxterm.html) may be useful.
