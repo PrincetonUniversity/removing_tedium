@@ -59,7 +59,7 @@ alias mlc='module load cudatoolkit/11.7'
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3/2020.11
+    module load anaconda3/2022.10
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
