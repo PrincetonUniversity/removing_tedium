@@ -93,6 +93,6 @@ that try to enhance standard keyboards via software and provide lots of addition
 
 ## Useful links
 
-[Level Up Your Command Line](https://github.com/PrincetonUniversity/advanced-command-line) by T. Comi of Princeton
+[Level Up Your Command Line](https://github.com/PrincetonUniversity/advanced-command-line) by T. Comi of Princeton  
 [Linux Productivity Tools](https://www.olcf.ornl.gov/wp-content/uploads/2019/12/LPT_OLCF.pdf) by ORNL  
 [Advanced UNIX & Shell Computing](https://www.olcf.ornl.gov/wp-content/uploads/2018/07/Intro_to_Unix_2018.pdf) by ORNL
