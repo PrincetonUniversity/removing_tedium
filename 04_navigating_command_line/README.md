@@ -70,7 +70,7 @@ Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Then type a let
 
 ## A general note on text editors
 
-Be sure to explore the shortcuts offered by your text editor. Editors like `vim` and `emacs` cannot be mastered in only a few hours. Make sure that you are taking advantage of these tools. To test your `vim` knowledge, run this command: `vimtutor`. To improve your `vim` skills see [Intermediate Vim](https://github.com/troycomi/intermediate-vim) by T. Comi of Princeton.
+Be sure to explore the shortcuts offered by your text editor. Editors like `vim` and `emacs` cannot be mastered in only a few hours. Make sure that you are taking advantage of these tools. To test your `vim` knowledge, run this command: `vimtutor`. To improve your `vim` skills see [Intermediate vim](https://github.com/troycomi/intermediate-vim) by T. Comi of Princeton.
 
 ## Keyboard remappings
 
