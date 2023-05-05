@@ -90,14 +90,23 @@ If you have access to `/tigress`:
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
 <br/><br/>
 
-As explained above, the idea is to make the file `/projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh` or `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add the following line to each of your `~/.bashrc` files:
+As explained above, the idea is to make the file `/projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh` or `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add one of the following snippets to each of your `~/.bashrc` files:
 
 ```bash
 # User specific aliases and functions
-source /projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh
-# or
-source /tigress/<YourNetID>/myshortcuts.sh
+if [ -f /projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh ] && [ ! -z "$PS1" ]; then
+  source /projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh
+fi
+
+# OR
+
+# User specific aliases and functions
+if [ -f /tigress/<YourNetID>/myshortcuts.sh ] && [ ! -z "$PS1" ]; then
+  source /tigress/<YourNetID>/myshortcuts.sh
+fi
 ```
+
+The condition of `[ ! -z "$PS1" ]` disables the shortcuts for non-interactive shells. For instance, if you are using `scp` then you do not want the shortcuts applied so they are turned off.
 
 Unfortunately, this will not work for Adroit or Nobel since those clusters do not mount `/tigress`. You will have to manually update the `~/.bashrc` files for those systems. One way to do this is to scp `myshortcuts.sh` from `/projects` or `/tigress` to those machines.
 
