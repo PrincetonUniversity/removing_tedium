@@ -345,6 +345,15 @@ Then kill specific processes (see the PID column to get the process id):
 $ kill -9 <process-id>
 ```
 
+### X11 Forwarding with SSH Multiplexing
+
+If you are using ssh multiplexing AND the first connection you made did
+not use X11 forwarding then none that follow will do so either and
+attempting to add -Y/-X is useless. In this case you have to close all
+ssh connections to the machine (ALL is very important - it has to ask
+you for password/username/duo again) and then reconnect making sure that
+the first connection uses -Y/-X flag.
+
 ### X11 Forwarding
 
 If you are on a Mac and you experience problems with X11 forwarding then try adding the following lines to the bottom of `~/.ssh/config`:
