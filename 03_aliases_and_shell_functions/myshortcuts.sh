@@ -22,7 +22,7 @@
 shopt -s histappend  # all shells write to same history
 shopt -s checkjobs   # check if background jobs are running on exit
 shopt -s cdspell     # guess misspelled cd commands
-shopt -s autocd      # change directory w/o cd if entry is invalid
+shopt -s autocd      # change directory w/o cd if entry is a valid directory
 shopt -s extglob     # enable extended glob patterns
 
 ####################
