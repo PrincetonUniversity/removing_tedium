@@ -295,13 +295,13 @@ board() {
 If running Tensorboard on the head node then use:
 
 ```
-$ board 6006
+$ board 9100
 ```
 
 If running on a compute node then use, for example:
 
 ```
-$ board 6006 della-l09g6
+$ board 9100 della-l09g6
 ```
 
 Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
