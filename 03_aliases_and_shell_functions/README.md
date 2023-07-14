@@ -270,7 +270,7 @@ $ modl anaconda3/2022.10
 
 ## Tensorboard
 
-This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions for Tensorboard](https://researchcomputing.princeton.edu/support/knowledge-base/tensorflow#tensorboard)) on tigergpu:
+This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions for Tensorboard](https://researchcomputing.princeton.edu/support/knowledge-base/tensorflow#tensorboard)) on della-gpu:
 
 ```
 board() {
@@ -279,11 +279,11 @@ board() {
       echo "Missing port. Tunnel not created."
       ;;
     1)
-      ssh -N -f -L "$1":127.0.0.1:"$1" ${USER}@tigergpu.princeton.edu
+      ssh -N -f -L "$1":127.0.0.1:"$1" ${USER}@della-gpu.princeton.edu
       echo "Created SSH tunnel using port $1"
       ;;
     2)
-      ssh -N -f -L "$1":"$2":"$1" ${USER}@tigergpu.princeton.edu
+      ssh -N -f -L "$1":"$2":"$1" ${USER}@della-gpu.princeton.edu
       echo "Created SSH tunnel using port $1 and host $2"
       ;;
     *)
@@ -301,7 +301,7 @@ $ board 6006
 If running on a compute node then use, for example:
 
 ```
-$ board 6006 tiger-h12g10
+$ board 6006 della-l09g6
 ```
 
 Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
