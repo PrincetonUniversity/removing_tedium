@@ -100,7 +100,7 @@ startctui
 
 ### PPPL VPN
 
-The approach described above does not work the PPPL Pulse Secure VPN. You will be required to Duo authenticate each time you use `ssh` or `scp`.
+The approach described above does not work with the PPPL Pulse Secure VPN. You will be required to Duo authenticate each time you use `ssh` or `scp`.
 
 # II. Multiplexing Approach (VPN free)
 
