@@ -37,7 +37,7 @@ The SonicWall VPN severely decreases transfer rates and should be avoided. If yo
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/hop_through_no_vpn_needed.png" align="center" width=70%></p>
 
-On campus, you can measure the speed of your network connection at [https://tigerspeed.princeton.edu](https://tigerspeed.princeton.edu).
+On campus, you can measure the speed of your network connection at [https://tigerspeed.princeton.edu](https://tigerspeed.princeton.edu). If you are having trouble connecting to the Research Computing systems using SSH then [see this page](https://researchcomputing.princeton.edu/ssh) and in particular [https://myip.rc.princeton.edu/](https://myip.rc.princeton.edu/).
 
 ### Host nicknames or abbreviations
 
