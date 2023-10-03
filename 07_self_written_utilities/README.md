@@ -63,7 +63,7 @@ Below is a utility called `slr` which will generate a custom Slurm script in the
 ### Python source code
 
 ```python
-#!/usr/licensed/anaconda3/2022.10/bin/python
+#!/usr/licensed/anaconda3/2023.3/bin/python
 
 import argparse
 import os
@@ -235,7 +235,7 @@ mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 The shell function above is written in Bash. Below is `pycancel` which performs the same function as `mycancel` except it is written in Python which is a language that most people prefer over Bash:
 
 ```python
-#!/usr/licensed/anaconda3/2022.10/bin/python
+#!/usr/licensed/anaconda3/2023.3/bin/python
 
 import os
 import subprocess
@@ -431,7 +431,7 @@ $ cat data.txt | myfilter | wc -l
 Below is the Python code called `myfilter`:
 
 ```python
-#!/usr/licensed/anaconda3/2020.11/bin/python
+#!/usr/licensed/anaconda3/2023.3/bin/python
 import sys
 from math import sin
 for line in sys.stdin:
