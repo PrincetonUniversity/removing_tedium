@@ -246,14 +246,16 @@ $ set | less
 
 ## Environment modules
 
+Do not load environment modules in your `.bashrc` file. We make this recommendation because users forget that they have added these commands. Use aliases instead.
+
 Here are some aliases for quickly working with modules:
 
 ```bash
 alias ma='module avail'
 alias mp='module purge'
 alias ml='module list'
-alias mla='module load anaconda3/2022.10'
-alias mlc='module load cudatoolkit/11.7'
+alias mla='module load anaconda3/2023.3'
+alias mlc='module load cudatoolkit/12.2'
 ```
 
 Another approach would be to define an alias like this:
@@ -265,7 +267,7 @@ alias modl='module load'
 Then use it as follows:
 
 ```bash
-$ modl anaconda3/2022.10
+$ modl anaconda3/2023.3
 ```
 
 ## Tensorboard
@@ -314,7 +316,7 @@ The shell functions and alias below can be used to list your enumerated Conda en
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3/2022.10
+    module load anaconda3/2023.3
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
@@ -356,7 +358,7 @@ Loading anaconda3 module ...
      2	pytools-env              /home/aturing/.conda/envs/pytools-env
      3	tf2-gpu                  /home/aturing/.conda/envs/tf2-gpu
      4	torch-env                /home/aturing/.conda/envs/torch-env
-     5	base                  *  /usr/licensed/anaconda3/2019.10
+     5	base                  *  /usr/licensed/anaconda3/2023.3
 (base) [aturing@tigergpu ~]$ conac 4
 (torch-env) [aturing@tigergpu ~]$
 (torch-env) [aturing@tigergpu ~]$ conde
@@ -513,12 +515,11 @@ After submitting a GPU job it is common to run `goto` followed by `wsmi` on the 
 
 ```bash
 if [[ $(hostname) == adroit* ]]; then
-  alias v100='ssh adroit-h11g1'
-  alias a100='ssh adroit-h11g2'
+  alias a100='ssh adroit-h11g1'
 fi
 ```
 
-There is one node on Adroit with four V100 GPUs. The alias above allows one to quickly connect to this node.
+If you have a job running on `adroit-h11g1` then with the alias above you can quickly connect.
 
 ## Specific to Della
 
@@ -601,43 +602,43 @@ This alias was contributed by T. Comi.
 
 ```
 $ wthr
-Thu Feb 23 15:28:51 EST 2023
+Tue Oct  3 14:14:37 EDT 2023
 Weather report: princeton
 
       \   /     Sunny
-       .-.      +53(51) °F     
-    ― (   ) ―   → 2 mph        
-       `-’      8 mi           
-      /   \     0.0 in         
-                                                       ┌─────────────┐                                                       
-┌──────────────────────────────┬───────────────────────┤  Thu 23 Feb ├───────────────────────┬──────────────────────────────┐
+       .-.      +77(80) °F
+    ― (   ) ―   ↘ 2 mph
+       `-’      9 mi
+      /   \     0.0 in
+                                                       ┌─────────────┐
+┌──────────────────────────────┬───────────────────────┤  Tue 03 Oct ├───────────────────────┬──────────────────────────────┐
 │            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
 ├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
-│               Fog            │               Overcast       │               Overcast       │               Overcast       │
-│  _ - _ - _ -  +41(39) °F     │      .--.     +44(42) °F     │      .--.     +44(41) °F     │      .--.     +41(35) °F     │
-│   _ - _ - _   ↙ 3-4 mph      │   .-(    ).   ↓ 1 mph        │   .-(    ).   ↙ 3-4 mph      │   .-(    ).   ← 8-11 mph     │
-│  _ - _ - _ -  1 mi           │  (___.__)__)  6 mi           │  (___.__)__)  6 mi           │  (___.__)__)  6 mi           │
-│               0.0 in | 0%    │               0.0 in | 0%    │               0.0 in | 0%    │               0.0 in | 0%    │
+│               Mist           │               Mist           │     \   /     Sunny          │     \   /     Clear          │
+│  _ - _ - _ -  55 °F          │  _ - _ - _ -  62 °F          │      .-.      +78(82) °F     │      .-.      68 °F          │
+│   _ - _ - _   ↘ 2-3 mph      │   _ - _ - _   ↘ 3 mph        │   ― (   ) ―   ↑ 1-3 mph      │   ― (   ) ―   ↑ 3-6 mph      │
+│  _ - _ - _ -  6 mi           │  _ - _ - _ -  6 mi           │      `-’      6 mi           │      `-’      6 mi           │
+│               0.0 in | 0%    │               0.0 in | 0%    │     /   \     0.0 in | 0%    │     /   \     0.0 in | 0%    │
 └──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
-                                                       ┌─────────────┐                                                       
-┌──────────────────────────────┬───────────────────────┤  Fri 24 Feb ├───────────────────────┬──────────────────────────────┐
+                                                       ┌─────────────┐
+┌──────────────────────────────┬───────────────────────┤  Wed 04 Oct ├───────────────────────┬──────────────────────────────┐
 │            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
 ├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
-│     \   /     Sunny          │               Cloudy         │     \   /     Clear          │     \   /     Clear          │
-│      .-.      +41(33) °F     │      .--.     +42(35) °F     │      .-.      +39(32) °F     │      .-.      28(17) °F      │
-│   ― (   ) ―   → 14-17 mph    │   .-(    ).   ↘ 16-18 mph    │   ― (   ) ―   ↘ 14-16 mph    │   ― (   ) ―   ↘ 11-13 mph    │
-│      `-’      6 mi           │  (___.__)__)  6 mi           │      `-’      6 mi           │      `-’      6 mi           │
-│     /   \     0.0 in | 0%    │               0.0 in | 0%    │     /   \     0.0 in | 0%    │     /   \     0.0 in | 0%    │
+│               Mist           │     \   /     Sunny          │     \   /     Sunny          │     \   /     Clear          │
+│  _ - _ - _ -  57 °F          │      .-.      +78(84) °F     │      .-.      +75(77) °F     │      .-.      64 °F          │
+│   _ - _ - _   ↗ 1 mph        │   ― (   ) ―   ↑ 3 mph        │   ― (   ) ―   ↖ 3-8 mph      │   ― (   ) ―   ↖ 6-12 mph     │
+│  _ - _ - _ -  6 mi           │      `-’      6 mi           │      `-’      6 mi           │      `-’      6 mi           │
+│               0.0 in | 0%    │     /   \     0.0 in | 0%    │     /   \     0.0 in | 0%    │     /   \     0.0 in | 0%    │
 └──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
-                                                       ┌─────────────┐                                                       
-┌──────────────────────────────┬───────────────────────┤  Sat 25 Feb ├───────────────────────┬──────────────────────────────┐
+                                                       ┌─────────────┐
+┌──────────────────────────────┬───────────────────────┤  Thu 05 Oct ├───────────────────────┬──────────────────────────────┐
 │            Morning           │             Noon      └──────┬──────┘     Evening           │             Night            │
 ├──────────────────────────────┼──────────────────────────────┼──────────────────────────────┼──────────────────────────────┤
-│    \  /       Partly cloudy  │    \  /       Partly cloudy  │               Overcast       │    \  /       Partly cloudy  │
-│  _ /"".-.     24(21) °F      │  _ /"".-.     30 °F          │      .--.     +35(30) °F     │  _ /"".-.     32(26) °F      │
-│    \_(   ).   ↙ 3 mph        │    \_(   ).   ↑ 1 mph        │   .-(    ).   ↑ 6-8 mph      │    \_(   ).   ↑ 5-8 mph      │
-│    /(___(__)  6 mi           │    /(___(__)  6 mi           │  (___.__)__)  6 mi           │    /(___(__)  6 mi           │
-│               0.0 in | 0%    │               0.0 in | 0%    │               0.0 in | 0%    │               0.0 in | 0%    │
+│     \   /     Sunny          │     \   /     Sunny          │     \   /     Sunny          │     \   /     Clear          │
+│      .-.      62 °F          │      .-.      +73(77) °F     │      .-.      69 °F          │      .-.      60 °F          │
+│   ― (   ) ―   ↖ 2-3 mph      │   ― (   ) ―   ↖ 4 mph        │   ― (   ) ―   ↖ 7-14 mph     │   ― (   ) ―   ↖ 5-11 mph     │
+│      `-’      6 mi           │      `-’      6 mi           │      `-’      6 mi           │      `-’      6 mi           │
+│     /   \     0.0 in | 0%    │     /   \     0.0 in | 0%    │     /   \     0.0 in | 0%    │     /   \     0.0 in | 0%    │
 └──────────────────────────────┴──────────────────────────────┴──────────────────────────────┴──────────────────────────────┘
 Location: Princeton, Mercer County, New Jersey, United States of America [40.3492744,-74.6592957]
 
@@ -653,7 +654,7 @@ alias vi='vim'
 alias top='htop'
 alias cmake='cmake3'
 alias R='R --vanilla --quiet'
-alias ccat='/usr/licensed/anaconda3/2022.10/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2023.3/bin/pygmentize'
 ```
 
 The `ccat` alias is like the `cat` command but with syntax highlighting of Python files and more (e.g., `$ ccat myscript.py`).
