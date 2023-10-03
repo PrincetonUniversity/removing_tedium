@@ -65,7 +65,7 @@ $ chmod u+x main.sh
 Below are the contents of `plot_temperature.py` which is called by `main.sh`:
 
 ```python
-#!/usr/licensed/anaconda3/2020.11/bin/python
+#!/usr/licensed/anaconda3/2023.3/bin/python
 
 import sys
 import numpy as np
