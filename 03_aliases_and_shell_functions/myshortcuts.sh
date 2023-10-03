@@ -50,8 +50,8 @@ alias pwd='pwd -P'
 alias ma='module avail'
 alias mp='module purge'
 alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
-alias mla='module load anaconda3/2022.10'
-alias mlc='module load cudatoolkit/11.7'
+alias mla='module load anaconda3/2023.3'
+alias mlc='module load cudatoolkit/12.2'
 
 #########
 # conda #
@@ -59,7 +59,7 @@ alias mlc='module load cudatoolkit/11.7'
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3/2022.10
+    module load anaconda3/2023.3
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
@@ -103,8 +103,7 @@ alias wsmi='watch -n 1 nvidia-smi'
 # specific to adroit #
 ######################
 if [[ $(hostname) == adroit* ]]; then
-  alias v100='ssh adroit-h11g1'
-  alias a100='ssh adroit-h11g2'
+  alias a100='ssh adroit-h11g1'
 fi
 
 #####################
@@ -144,10 +143,9 @@ alias wa='watch -n 1'
 alias cq='checkquota'
 alias htop='htop -u $USER'
 alias R='R --vanilla --quiet'
-alias has512='lscpu | grep -E --color=always "avx512"'
 alias dirsize='du -h --max-depth=1 | sort -h'
 alias mypath='readlink -f'
-alias ccat='/usr/licensed/anaconda3/2022.10/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2023.3/bin/pygmentize'
 
 ###########
 # history #
