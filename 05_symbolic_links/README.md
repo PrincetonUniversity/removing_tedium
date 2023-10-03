@@ -22,7 +22,7 @@ Here is how to create the link in your home directory:
 
 ```
 $ cd ~
-$ ln --symbolic /scratch/gpfs/<YourNetID> scr       # Tiger, Della, Perseus, Traverse
+$ ln --symbolic /scratch/gpfs/<YourNetID> scr       # Tiger, Della, Stellar, Traverse
 $ ln --symbolic /scratch/network/<YourNetID> scr    # Adroit
 ```
 
