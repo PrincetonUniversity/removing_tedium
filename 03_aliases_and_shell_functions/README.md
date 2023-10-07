@@ -270,6 +270,38 @@ Then use it as follows:
 $ modl anaconda3/2023.3
 ```
 
+## Finding Files
+
+When searching for files, one often wants to do a case-insensitive search while suppressing error messages. The shell function below does this. If only one command-line parameter is specified then it begins the search in the current directory. One can also explicitly specify the path.
+
+```bash
+myfind() {
+  if [ "$#" -eq 1 ]; then
+    find . -iname \*"$1"\* 2>/dev/null
+  else
+    [ -d "$1" ] && find "$1" -iname \*"$2"\* 2>/dev/null
+  fi
+}
+```
+
+Here is the example usage:
+
+```
+$ ssh <YourNetID>@della.princeton.edu
+$ myfind /usr/local cublas
+```
+
+The above says "find all files in `/usr/local` and its sub-directories that contain the pattern 'cublas' (case insensitive) while suppressing error messages (typically related to file permissions)".
+
+
+Or equivalently:
+
+```
+$ ssh <YourNetID>@della.princeton.edu
+$ cd /usr/local
+$ myfind libcublas
+```
+
 ## Tensorboard
 
 This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions for Tensorboard](https://researchcomputing.princeton.edu/support/knowledge-base/tensorflow#tensorboard)) on della-gpu:
