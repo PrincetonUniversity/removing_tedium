@@ -299,7 +299,7 @@ Or equivalently:
 ```
 $ ssh <YourNetID>@della.princeton.edu
 $ cd /usr/local
-$ myfind libcublas
+$ myfind cublas
 ```
 
 ## Tensorboard
