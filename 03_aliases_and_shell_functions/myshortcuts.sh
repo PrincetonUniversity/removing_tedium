@@ -11,9 +11,9 @@
 #    \  \:\       \__\/      \  \::/        /__/:/       \  \::/        \__\/      \  \::/   
 #     \__\/                   \__\/         \__\/         \__\/                     \__\/    
 #
-# (c) 2023 Princeton Institute for Computational Science and Engineering
+# (c) 2024 Princeton Institute for Computational Science and Engineering
  
-# This file contains useful aliases and shell functions for researchers using high-performance
+# This file contains aliases and shell functions for researchers using high-performance
 # computing clusters. For details see https://github.com/PrincetonUniversity/removing_tedium
 
 #################
@@ -50,7 +50,7 @@ alias pwd='pwd -P'
 alias ma='module avail'
 alias mp='module purge'
 alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
-alias mla='module load anaconda3/2023.3'
+mla() { module load $(module avail -l anaconda3 2>&1 | grep anaconda3/202 | tail -n 1 | awk '{print $1}'); ml; }
 alias mlc='module load cudatoolkit/12.2'
 
 #########
@@ -59,7 +59,7 @@ alias mlc='module load cudatoolkit/12.2'
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3/2023.3
+    module load anaconda3/2023.9
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
@@ -145,7 +145,7 @@ alias htop='htop -u $USER'
 alias R='R --vanilla --quiet'
 alias dirsize='du -h --max-depth=1 | sort -h'
 alias mypath='readlink -f'
-alias ccat='/usr/licensed/anaconda3/2023.3/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2023.9/bin/pygmentize'
 
 ###########
 # history #
