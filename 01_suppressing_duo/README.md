@@ -148,6 +148,8 @@ Host della.princeton.edu della
   ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
+If the file `~/.ssh/config` does not exist then make it.
+
 You can then connect from your local machine (laptop/desktop) using the following command, for example:
 
 ```
