@@ -117,6 +117,8 @@ Exit from tigressdata, and the next time you connect you should not need your pa
 
 ## Windows
 
+The general recommendation for interfacing a Windows machine with the Research Computing systems is to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about).
+
 ### Windows with PowerShell
 
 Follow [these directions](https://www.techrepublic.com/blog/10-things/how-to-generate-ssh-keys-in-openssh-for-windows-10/) to create the keys but don't follow the "Copying the public key securely" procedure. If your public key is on your laptop in `C:\Users\aturing\.ssh\id_rsa.pub` then the following can be used to copy it to the desired HPC cluster:
