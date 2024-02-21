@@ -334,7 +334,7 @@ $ ssh -F /dev/null <YourNetID>@della.princeton.edu
 To use an alternate `config` file:
 
 ```
-$ ssh -F /path/to/alternate/config
+$ ssh -F /path/to/alternate/config <hostname>
 ```
 
 In some cases it may be necessary to close active `ssh` sessions on your local machine. First, find the open sessions:
