@@ -47,7 +47,7 @@ You can connect to a cluster like Della from your local machine (e.g., laptop) u
 $ ssh <YourNetID>@della.princeton.edu
 ```
 
-However, by modifying the `~/.ssh/config` file (or creating the file if necessary) on your local machine you can just do following even if off-campus:
+However, by modifying the `~/.ssh/config` file (or creating the file if necessary) on your local machine you can just do the following even if off-campus:
 
 ```
 $ ssh della
@@ -63,13 +63,9 @@ Host adroit.princeton.edu adroit
 Host della.princeton.edu della
   User aturing
   HostName della.princeton.edu
-
-Host tigressdata.princeton.edu tigressdata data
-  User aturing
-  HostName tigressdata.princeton.edu
 ```
 
-The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line (i.e., replace `aturing`). The third line in each stanza should remain unchanged. You can add additional stanzas for the other clusters.
+The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line (i.e., replace `aturing`). The third line in each stanza should remain unchanged. You can add additional stanzas for other clusters or machines.
 
 ### Preventing VPN disconnects
 
@@ -82,11 +78,11 @@ Host *
   ServerAliveCountMax 10
 ```
 
-This will cause a "ping" every 30 seconds and hopefully prevent disconnections. OIT manages the VPN so please [contact them](https://princeton.service-now.com/service) for assistance.
+This will cause a "ping" every 30 seconds and hopefully prevent disconnections. OIT manages the VPN so please [contact them](https://princeton.service-now.com/service) for assistance. Consider using [tmux](https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh) to help deal with disconnects.
 
 ### If the Linux VPN is not working
 
-Try the procedure below from T. Jones of the Tech Clinic if your VPN client on Linux is not working:
+Try the procedure below from Tim Jones of the Tech Clinic if your VPN client on Linux is not working:
 
 ```
 echo "Enter your netid"
