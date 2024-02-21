@@ -98,9 +98,11 @@ startctui
 
 The approach described above does not work with the PPPL Pulse Secure VPN. You will be required to Duo authenticate each time you use `ssh` or `scp`.
 
-# II. Multiplexing Approach (VPN free)
+# II. Multiplexing Approach (VPN free, Large Clusters Only)
 
 > Multiplexing involves the simultaneous transmission of several messages along a single channel of communication.
+
+To use this approach, you must have an account on one of the large clusters: Della, Stellar, Tiger or Traverse.
 
 The following solution is from Bill Wichser of Research Computing.
 
@@ -114,7 +116,7 @@ Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to 
 
 ### On-Campus and Off-Campus (Recommended)
 
-When off-campus and not using a VPN, one cannot `ssh` to the head node of a Research Computing cluster. **However, for users with an account on one of the large clusters** (not Adroit, not Nobel) one can use `tigressgateway` as a proxyjump server:
+When off-campus and not using a VPN, one cannot `ssh` to the login node of a Research Computing cluster. **However, for users with an account on one of the large clusters** (not Adroit, not Nobel) one can use `tigressgateway` as a proxyjump server:
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/multiplexed_connection.png" align="center"></p>
 
@@ -136,7 +138,6 @@ Host tigressgateway.princeton.edu tigressgateway
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
   ServerAliveInterval 300
-  LocalForward 5901 della.princeton.edu:5901
 
 Host della.princeton.edu della
   User aturing
@@ -153,9 +154,20 @@ You can then connect from your local machine (laptop/desktop) using the followin
 $ ssh della
 ```
 
-The command above will Duo authenticate but subsequent sessions will use that connection and not require Duo. The proxyjump server `tigressgateway` will be used. That is, the connection first goes to `tigressgateway` where it Duo authenticates before hopping to della. In the process it sets up some port forwarding for the given ports in case you require VNC access or other processes to tunnel through (most users can ignore this). See the section for `ProxyJump` in `man ssh_config` for more. **You should choose new ports between 5900 and 9999** but most users will not need port forwarding so you may choose to omit lines beginning with `LocalForward`.
+The command above will Duo authenticate but subsequent sessions will use that connection and not require Duo. The proxyjump server `tigressgateway` will be used. That is, the connection first goes to `tigressgateway` where it Duo authenticates before hopping to della.
 
-You should be able to `scp <localfile> della:` without additional Duo authentications since the connection is established and multiplexed.
+If you need to forward local ports then add a `LocalForward` line after `ServerAliveInterval` for tigressgateway:
+
+```
+Host tigressgateway.princeton.edu tigressgateway
+  ...
+  ServerAliveInterval 300
+  LocalForward 5901 della.princeton.edu:5901
+```
+
+This will enable port forwarding for the given ports in case you require VNC access or other processes to tunnel through (most users can ignore this). See the section for `ProxyJump` in `man ssh_config` for more. **You should choose new ports between 5900 and 9999** but most users will not need port forwarding so you may choose to omit lines beginning with `LocalForward`.
+
+After completing the steps above, you should be able to `scp <localfile> della:` without additional Duo authentications since the connection is established and multiplexed.
 
 Below is a sample file of `.ssh/config` for multiple clusters (**replace aturing with your NetID**). You should only enter stanzas for the clusters and machines that you have acces to.
 
@@ -167,10 +179,6 @@ Host tigressgateway.princeton.edu tigressgateway
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
   ServerAliveInterval 300
-  LocalForward 5901 adroit-vis.princeton.edu:5901
-  LocalForward 5902 stellar-vis1.princeton.edu:5902
-  LocalForward 5903 stellar-vis2.princeton.edu:5903
-  LocalForward 5904 tigressdata.princeton.edu:5904
 
 Host adroit.princeton.edu adroit
   User aturing
@@ -247,22 +255,6 @@ Host tigercpu.princeton.edu tigercpu tiger
   ControlMaster auto
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
-  
-Host tigergpu.princeton.edu tigergpu
-  User aturing
-  HostName tigergpu.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-  ControlMaster auto
-  ControlPersist yes
-  ControlPath ~/.ssh/sockets/%p-%h-%r
-  
-Host tigressdata.princeton.edu tigressdata
-  User aturing
-  HostName tigressdata.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-  ControlMaster auto
-  ControlPersist yes
-  ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host traverse.princeton.edu traverse
   User aturing
@@ -273,7 +265,7 @@ Host traverse.princeton.edu traverse
   ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
-To check if the multiplexed connection is alive (remember everything is going through tigressgateway):
+On your local machine, to check if the multiplexed connection is alive (remember everything is going through tigressgateway):
 
 ```
 $ ssh -O check tigressgateway
