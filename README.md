@@ -2,7 +2,7 @@
 
 ## About
 
-Are you tired of Duo? Do you waste time entering your password every time you log in or do a file transfer? Do you want to automate repetitive tasks? This workshop shows participants how to remove much of the tedium that arises while performing computational research on the Research Computing clusters. Learn about suppressing Duo, password-less logins, aliases and shell functions, symbolic links, writing custom commands, running a job for months without manually resubmitting, and automating your data analysis.
+Are you tired of Duo? Do you waste time entering your password every time you log in or do a file transfer? Do you want to automate repetitive tasks? This workshop shows participants how to remove much of the tedium that arises while performing computational research on the Research Computing systems. Learn about suppressing Duo, password-less logins, aliases and shell functions, symbolic links, writing custom commands, running a job for months without manually resubmitting, and automating your data analysis.
 
 <!--## Workshop Survey
 
