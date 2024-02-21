@@ -117,7 +117,7 @@ Exit from tigressdata, and the next time you connect you should not need your pa
 
 ## Windows
 
-The general recommendation for interfacing a Windows machine with the Research Computing systems is to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about).
+The general recommendation for interfacing a Windows machine with the Research Computing systems is to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about). This would provide a Linux system on your Windows machine. You could then follow the directions above for Mac/Linux. The same is true for SSH multiplexing as discussed in the first section of this repo (i.e., `01_suppressing_duo`).
 
 ### Windows with PowerShell
 
