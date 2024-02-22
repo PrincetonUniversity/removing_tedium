@@ -45,7 +45,7 @@ export PATH=$PATH:/projects/<ResearchGroup>/<YourNetID>/my-utilities   # Della, 
   or
 export PATH=$PATH:/tigress/<YourNetID>/my-utilities   # Della, Stellar, Tiger, Traverse
   or
-export PATH=$PATH:/home/<YourNetID>/my-utilities      # if only gave account on Adroit
+export PATH=$PATH:/home/<YourNetID>/my-utilities      # if only have account on Adroit
 ```
 
 Be sure to run `$ source ~/.bashrc` so that the changes to `PATH` take effect (only needed once). Make sure that it worked with:
