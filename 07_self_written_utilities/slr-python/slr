@@ -36,7 +36,7 @@ with open('job.slurm', 'w') as f:
     f.write(fmt("mail-user", f"{os.environ['USER']}@princeton.edu", ""))
     f.write("\n")
     f.write("module purge\n")
-    f.write("module load anaconda3/2020.11\n")
+    f.write("module load anaconda3/2023.9\n")
     f.write("conda activate myenv\n")
     f.write("\n")
     f.write("python myscript.py\n")
