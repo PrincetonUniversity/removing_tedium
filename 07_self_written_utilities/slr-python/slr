@@ -1,4 +1,4 @@
-#!/usr/licensed/anaconda3/2023.3/bin/python
+#!/usr/licensed/anaconda3/2023.9/bin/python
 
 import argparse
 import os
@@ -15,30 +15,30 @@ parser.add_argument('-g', '--gpu', type=str, action='store', dest='gpu',
 args = parser.parse_args()
 
 def fmt(directive, value, comment):
-  comment_start_col = 34
-  spaces = " " * abs(comment_start_col - (len(directive) + len(value) + 12))
-  comment = f"# {comment}" if comment else ""
-  s = f"#SBATCH --{directive}={value}{spaces}{comment}\n" 
-  return s
+    comment_start_col = 34
+    spaces = " " * abs(comment_start_col - (len(directive) + len(value) + 12))
+    comment = f"# {comment}" if comment else ""
+    s = f"#SBATCH --{directive}={value}{spaces}{comment}\n" 
+    return s
 
 with open('job.slurm', 'w') as f:
-  f.write("#!/bin/bash\n")
-  f.write(fmt("job-name", args.jobname, "create a short name for your job"))
-  f.write(fmt("nodes", "1", "node count"))
-  f.write(fmt("ntasks", args.ntasks, "total number of tasks across all nodes"))
-  f.write(fmt("cpus-per-task", "1", "cpu-cores per task (>1 if multi-threaded tasks)"))
-  f.write(fmt("mem-per-cpu", "4G", "memory per cpu-core (4G per cpu-core is default)"))
-  f.write(fmt("time", f"{args.walltime}:00:00", "total run time limit (HH:MM:SS)"))
-  if (args.gpu):
-    f.write(fmt("gres", "gpu:" + args.gpu, "number of gpus per node"))
-  f.write(fmt("mail-type", "begin", "send email when job begins"))
-  f.write(fmt("mail-type", "end", "send email when job ends"))
-  f.write(fmt("mail-user", f"{os.environ['USER']}@princeton.edu", ""))
-  f.write("\n")
-  f.write("module purge\n")
-  f.write("module load anaconda3/2020.11\n")
-  f.write("conda activate myenv\n")
-  f.write("\n")
-  f.write("python myscript.py\n")
+    f.write("#!/bin/bash\n")
+    f.write(fmt("job-name", args.jobname, "create a short name for your job"))
+    f.write(fmt("nodes", "1", "node count"))
+    f.write(fmt("ntasks", args.ntasks, "total number of tasks across all nodes"))
+    f.write(fmt("cpus-per-task", "1", "cpu-cores per task (>1 if multi-threaded tasks)"))
+    f.write(fmt("mem-per-cpu", "4G", "memory per cpu-core (4G per cpu-core is default)"))
+    f.write(fmt("time", f"{args.walltime}:00:00", "total run time limit (HH:MM:SS)"))
+    if (args.gpu):
+        f.write(fmt("gres", "gpu:" + args.gpu, "number of gpus per node"))
+    f.write(fmt("mail-type", "begin", "send email when job begins"))
+    f.write(fmt("mail-type", "end", "send email when job ends"))
+    f.write(fmt("mail-user", f"{os.environ['USER']}@princeton.edu", ""))
+    f.write("\n")
+    f.write("module purge\n")
+    f.write("module load anaconda3/2020.11\n")
+    f.write("conda activate myenv\n")
+    f.write("\n")
+    f.write("python myscript.py\n")
 
 print("Wrote job.slurm")
