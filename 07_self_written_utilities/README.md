@@ -63,7 +63,7 @@ Below is a utility called `slr` which will generate a custom Slurm script in the
 ### Python source code
 
 ```python
-#!/usr/licensed/anaconda3/2023.3/bin/python
+#!/usr/licensed/anaconda3/2023.9/bin/python
 
 import argparse
 import os
@@ -80,31 +80,31 @@ parser.add_argument('-g', '--gpu', type=str, action='store', dest='gpu',
 args = parser.parse_args()
 
 def fmt(directive, value, comment):
-  comment_start_col = 34
-  spaces = " " * abs(comment_start_col - (len(directive) + len(value) + 12))
-  comment = f"# {comment}" if comment else ""
-  s = f"#SBATCH --{directive}={value}{spaces}{comment}\n" 
-  return s
+    comment_start_col = 34
+    spaces = " " * abs(comment_start_col - (len(directive) + len(value) + 12))
+    comment = f"# {comment}" if comment else ""
+    s = f"#SBATCH --{directive}={value}{spaces}{comment}\n" 
+    return s
 
 with open('job.slurm', 'w') as f:
-  f.write("#!/bin/bash\n")
-  f.write(fmt("job-name", args.jobname, "create a short name for your job"))
-  f.write(fmt("nodes", "1", "node count"))
-  f.write(fmt("ntasks", args.ntasks, "total number of tasks across all nodes"))
-  f.write(fmt("cpus-per-task", "1", "cpu-cores per task (>1 if multi-threaded tasks)"))
-  f.write(fmt("mem-per-cpu", "4G", "memory per cpu-core (4G per cpu-core is default)"))
-  f.write(fmt("time", f"{args.walltime}:00:00", "total run time limit (HH:MM:SS)"))
-  if (args.gpu):
-    f.write(fmt("gres", "gpu:" + args.gpu, "number of gpus per node"))
-  f.write(fmt("mail-type", "begin", "send email when job begins"))
-  f.write(fmt("mail-type", "end", "send email when job ends"))
-  f.write(fmt("mail-user", f"{os.environ['USER']}@princeton.edu", ""))
-  f.write("\n")
-  f.write("module purge\n")
-  f.write("module load anaconda3/2020.11\n")
-  f.write("conda activate myenv\n")
-  f.write("\n")
-  f.write("python myscript.py\n")
+    f.write("#!/bin/bash\n")
+    f.write(fmt("job-name", args.jobname, "create a short name for your job"))
+    f.write(fmt("nodes", "1", "node count"))
+    f.write(fmt("ntasks", args.ntasks, "total number of tasks across all nodes"))
+    f.write(fmt("cpus-per-task", "1", "cpu-cores per task (>1 if multi-threaded tasks)"))
+    f.write(fmt("mem-per-cpu", "4G", "memory per cpu-core (4G per cpu-core is default)"))
+    f.write(fmt("time", f"{args.walltime}:00:00", "total run time limit (HH:MM:SS)"))
+    if (args.gpu):
+        f.write(fmt("gres", "gpu:" + args.gpu, "number of gpus per node"))
+    f.write(fmt("mail-type", "begin", "send email when job begins"))
+    f.write(fmt("mail-type", "end", "send email when job ends"))
+    f.write(fmt("mail-user", f"{os.environ['USER']}@princeton.edu", ""))
+    f.write("\n")
+    f.write("module purge\n")
+    f.write("module load anaconda3/2020.11\n")
+    f.write("conda activate myenv\n")
+    f.write("\n")
+    f.write("python myscript.py\n")
 
 print("Wrote job.slurm")
 ```
@@ -121,7 +121,7 @@ The `chmod` command above makes the script executable by changing the permission
 
 ```
 $ cd ~
-$ mk test   # mk is a shell function defined previously
+$ mkdir test && cd test   # or use mk as defined in 03_aliases_and_shell_functions
 $ slr -h
 usage: slr [-h] [-j JOBNAME] [-n NTASKS] [-t WALLTIME] [-g GPU]
 
@@ -140,9 +140,9 @@ Try these options:
 
 ```
 $ slr -j test -t 72
-$ jj   # jj is an alias defined previously
+$ cat job.slurm   # or use jj as defined in 03_aliases_and_shell_functions
 $ slr -g 4
-$ jj
+$ cat job.slurm
 # customize the slr source code for your work using a text editor
 ```
 
@@ -204,7 +204,6 @@ $ chmod u+x slr
 The `chmod` command above makes the script executable by changing the permissions. Next install the `argparse` package:
 
 ```
-$ module load rh/devtoolset/8  # della or tiger only
 $ R
 > install.packages("argparse")
 > q()
@@ -214,12 +213,12 @@ Now try it out:
 
 ```
 $ cd ~
-$ mk test   # mk is a shell function defined previously
+$ mkdir test && cd test   # or use mk as defined in 03_aliases_and_shell_functions
 $ slr
-$ jj   # jj is an alias defined previously
+$ cat job.slurm   # or use jj as defined in 03_aliases_and_shell_functions
 $ slr -t 72 -n 4 -g
-$ jj
-# customize the slr source code for your work using a text editor 
+$ cat job.slurm
+# customize the slr source code for your work using a text editor like vim or nano
 ```
 
 If you encounter a `Permission denied` error then you probably failed to add execute permission to `slr`. A `command not found` error suggests that the `PATH` was not set correctly.
@@ -235,7 +234,7 @@ mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 The shell function above is written in Bash. Below is `pycancel` which performs the same function as `mycancel` except it is written in Python which is a language that most people prefer over Bash:
 
 ```python
-#!/usr/licensed/anaconda3/2023.3/bin/python
+#!/usr/licensed/anaconda3/2023.9/bin/python
 
 import os
 import subprocess
@@ -245,12 +244,12 @@ cmd = f"squeue -u {netid} -o \"%i\" -S i -h | tail -n 1"
 output = subprocess.run(cmd, capture_output=True, shell=True, timeout=5)
 line = output.stdout.decode("utf-8").split('\n')
 if line == ['']:
-  print("There are no running or pending jobs.")
+    print("There are no running or pending jobs.")
 else:
-  jobid = line[0]
-  cmd = f"scancel {jobid}"
-  _ = subprocess.run(cmd, shell=True, timeout=5)
-  print(f"Canceled job {jobid}")
+    jobid = line[0]
+    cmd = f"scancel {jobid}"
+    _ = subprocess.run(cmd, shell=True, timeout=5)
+    print(f"Canceled job {jobid}")
 ```
 
 Copy the source code above and paste it into a file called `pycancel` in the directory `<path/to>/my-utilities`. Then give it execute permissions:
@@ -262,13 +261,13 @@ $ chmod 744 pycancel
 Try it out by submitting a test job:
 
 ```
-$ sbatch job.slurm  # or the alias sb
-$ sq
+$ sbatch job.slurm   # or the alias sb as defined in 03_aliases_and_shell_functions
+$ squeue -u <YourNetID>   # or use sq as defined in 03_aliases_and_shell_functions
 $ pycancel
-$ sq
+$ squeue -u <YourNetID>
 ```
 
-We see that the Bash implementation is more concise and maintainable than than the Python one.
+We see that the Bash implementation is more concise and maintainable than the Python one.
 
 ## cppcancel is a C++ implementation of mycancel
 
@@ -318,7 +317,7 @@ After saving the code above in a file called `cppcancel.cpp` in the directory `<
 $ g++ -std=c++11 -o cppcancel cppcancel.cpp
 ```
 
-Then you can call `cppcancel` on the command line. We see that the C++ implementation requires much more coding than what was required by Bash or Python. This example exists to illustrate how compiled codes can be used to make a custom command.
+Then you can call `cppcancel` on the command line. We see that the C++ implementation requires much more coding than what was required by Bash or Python. This example exists to illustrate how compiled codes can be used to make a custom command. In some cases it the extra work of writing a C++ command is worth the effort given the much performance of C++ over Python. Common Linux commands like `ls`, `cd` and `grep` are written in C.
 
 ## Bash scripts
 
@@ -431,7 +430,7 @@ $ cat data.txt | myfilter | wc -l
 Below is the Python code called `myfilter`:
 
 ```python
-#!/usr/licensed/anaconda3/2023.3/bin/python
+#!/usr/licensed/anaconda3/2023.9/bin/python
 import sys
 from math import sin
 for line in sys.stdin:
