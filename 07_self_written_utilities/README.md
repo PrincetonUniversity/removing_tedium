@@ -317,7 +317,7 @@ After saving the code above in a file called `cppcancel.cpp` in the directory `<
 $ g++ -std=c++11 -o cppcancel cppcancel.cpp
 ```
 
-Then you can call `cppcancel` on the command line. We see that the C++ implementation requires much more coding than what was required by Bash or Python. This example exists to illustrate how compiled codes can be used to make a custom command. In some cases it the extra work of writing a C++ command is worth the effort given the much performance of C++ over Python. Common Linux commands like `ls`, `cd` and `grep` are written in C.
+Then you can call `cppcancel` on the command line. We see that the C++ implementation requires much more coding than what was required by Bash or Python. This example exists to illustrate how compiled codes can be used to make a custom command. In some cases the extra work of writing a C++ command is worth the effort given the performance benefits of C++ over Python. Common Linux commands like `ls`, `cd` and `grep` are written in C.
 
 ## Bash scripts
 
@@ -453,6 +453,4 @@ $ cat data.txt | myfilter | wc -l
 3
 ```
 
-Note that `myfilter` was written in Python for demonstration purposes here. In practice it would probably be best done in `awk`.
-
-The example above is quite simple but much more can be done. For instance, one could create a pipeline where a stage corresponds to a batch job submitted to the Slurm scheduler.
+Note that `myfilter` was written in Python for demonstration purposes here. In practice, for this specific case, it would probably be best done in `awk` but Python is an excellent choice in general.
