@@ -81,34 +81,23 @@ You only need to source your `~/.bashrc` file when you add an alias in the curre
 
 The large clusters and Tigressdata all mount the  `/projects` and `/tigress` storage system. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/projects` or `/tigress` and `source` this from each `~/.bashrc` file for each account. This approach ensures that your shortcuts remain in sync across all of your accounts. Here is the three-step procedure for this:
 
-(Recommended) If you have access to `/projects`:
+(Recommended) If you have access to `/projects2`:
 
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram_projects.png)
-
-If you have access to `/tigress`:
-
-![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram.png)
 <br/><br/>
 
 As explained above, the idea is to make the file `/projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh` or `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add one of the following snippets to each of your `~/.bashrc` files:
 
 ```bash
 # User specific aliases and functions
-if [ -f /projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh ] && [ ! -z "$PS1" ]; then
+if [ -f /projects2/<ResearchGroup>/<YourDirectory>/myshortcuts.sh ] && [ ! -z "$PS1" ]; then
   source /projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh
-fi
-
-# OR
-
-# User specific aliases and functions
-if [ -f /tigress/<YourNetID>/myshortcuts.sh ] && [ ! -z "$PS1" ]; then
-  source /tigress/<YourNetID>/myshortcuts.sh
 fi
 ```
 
 The condition of `[ ! -z "$PS1" ]` disables the shortcuts for non-interactive shells. For instance, if you are using `scp` then you do not want the shortcuts applied so they are turned off.
 
-Unfortunately, this will not work for Adroit or Nobel since those clusters do not mount `/tigress`. You will have to manually update the `~/.bashrc` files for those systems. One way to do this is to scp `myshortcuts.sh` from `/projects` or `/tigress` to those machines.
+Unfortunately, this will not work for Adroit or Nobel since those clusters do not mount `/projects2`. You will have to manually update the `~/.bashrc` files for those systems. One way to do this is to scp `myshortcuts.sh` from `/projects2` to those machines.
 
 Once the setup is complete, begin adding aliases and shell functions to `myshortcuts.sh` (see the examples below as well as an [example myshortcuts.sh file](https://github.com/PrincetonUniversity/removing_tedium/blob/master/03_aliases_and_shell_functions/myshortcuts.sh)).
 
