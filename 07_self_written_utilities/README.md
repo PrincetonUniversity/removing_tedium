@@ -27,23 +27,19 @@ To get your own utilities to work like the standard Linux commands, you need to 
 ### Create a my-utilities directory
 
 ```
-$ mkdir /projects/<ResearchGroup>/<YourNetID>/my-utilities   # Della, Stellar, Tiger, Traverse
-  or
-$ mkdir /tigress/<YourNetID>/my-utilities   # Della, Stellar, Tiger, Traverse
+$ mkdir /projects2/<letter>/<YourNetID>/my-utilities      # Della, Stellar, Tiger
   or
 $ mkdir /home/<YourNetID>/my-utilities      # if only have account on Adroit
 ```
 
-Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`. We suggest using `/projects` or `/tigress` since those storage systems can be reached from multiple clusters.
+Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`. We suggest using `/projects2` since that storage system can be reached from multiple clusters.
 
 ### Update PATH
 
 Recall that the `PATH` environment variable specifies a list of directories to search for executables when a command is ran on the command line. To make your utilities callable on the command line add this line to `~/.bashrc`:
 
 ```
-export PATH=$PATH:/projects/<ResearchGroup>/<YourNetID>/my-utilities   # Della, Stellar, Tiger, Traverse
-  or
-export PATH=$PATH:/tigress/<YourNetID>/my-utilities   # Della, Stellar, Tiger, Traverse
+export PATH=$PATH:/projects2/<letter>/<YourNetID>/my-utilities   # Della, Stellar, Tiger
   or
 export PATH=$PATH:/home/<YourNetID>/my-utilities      # if only have account on Adroit
 ```
@@ -63,7 +59,7 @@ Below is a utility called `slr` which will generate a custom Slurm script in the
 ### Python source code
 
 ```python
-#!/usr/licensed/anaconda3/2023.9/bin/python
+#!/usr/licensed/anaconda3/2024.6/bin/python
 
 import argparse
 import os
