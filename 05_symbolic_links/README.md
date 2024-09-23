@@ -22,7 +22,7 @@ Here is how to create the link in your home directory:
 
 ```
 $ cd ~
-$ ln --symbolic /scratch/gpfs/<YourNetID> scr       # Tiger, Della, Stellar, Traverse
+$ ln --symbolic /scratch/gpfs/<YourNetID> scr       # Tiger, Della, Stellar
 $ ln --symbolic /scratch/network/<YourNetID> scr    # Adroit
 ```
 
@@ -51,17 +51,17 @@ Consider adding the alias below so that symbolic links are always resolved (i.e.
 alias pwd='pwd -P'
 ```
 
-## /projects and /tigress
+## /projects2 (large clusters only, i.e., not adroit)
 
-Make a second symbolic link from your home directory to `/tigress`:
+Make a second symbolic link from your home directory to `/projects2`:
 
 ```
 $ cd ~
-$ ln --symbolic /tigress/<YourNetID> grs   # Della, Stellar, Tiger, Traverse
+$ ln --symbolic /projects2/<letter>/<YourNetID> prj   # Della, Stellar, Tiger
 ```
 
-Can you think of another symbolic link that could be used to speed-up your workflow? Maybe something like `prj -> /projects/ACHURCH/aturing`?
+Can you think of another symbolic link that could be used to speed-up your workflow? Maybe a link to the directory containing your current project.
 
 ## How to remove a symbolic link
 
-*IMPORTANT*: To remove a symbolic link use, for example, `$ rm grs`. Do not include a trailing slash after the symbolic link name.
+*IMPORTANT*: To remove a symbolic link use, for example, `$ rm prj`. Do not include a trailing slash after the symbolic link name.
