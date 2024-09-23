@@ -1,6 +1,6 @@
 # Removing the Tedium from Your Research Workflow
 
-## Setup for live workshop (2/21/2024)
+## Setup for live workshop (9/23/2024)
 
 ### Point your browser to `https://bit.ly/2IT3q4W`
 
