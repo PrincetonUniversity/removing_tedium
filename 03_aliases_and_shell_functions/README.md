@@ -86,7 +86,7 @@ The large clusters and Tigressdata all mount the  `/projects2` storage system. I
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram_projects.png)
 <br/><br/>
 
-As explained above, the idea is to make the file `/projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh` and put your aliases and functions there. Then add one of the following snippets to each of your `~/.bashrc` files:
+As explained above, the idea is to make the file `/projects2/<ResearchGroup>/<YourDirectory>/myshortcuts.sh` or `/projects2/<letter>/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add one of the following snippets to each of your `~/.bashrc` files:
 
 ```bash
 # User specific aliases and functions
@@ -94,6 +94,16 @@ if [ -f /projects2/<ResearchGroup>/<YourDirectory>/myshortcuts.sh ] && [ ! -z "$
   source /projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh
 fi
 ```
+
+OR
+
+```bash
+# User specific aliases and functions
+if [ -f /projects2/<letter>/<YourNetID>/myshortcuts.sh ] && [ ! -z "$PS1" ]; then
+  source /projects/<letter>/<YourNetID>/myshortcuts.sh
+fi
+```
+
 
 The condition of `[ ! -z "$PS1" ]` disables the shortcuts for non-interactive shells. For instance, if you are using `scp` then you do not want the shortcuts applied so they are turned off.
 
