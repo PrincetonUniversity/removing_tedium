@@ -79,14 +79,14 @@ You only need to source your `~/.bashrc` file when you add an alias in the curre
 
 ### If you have an account on Della, Stellar, Tiger, Tigressdata and maybe Traverse ...
 
-The large clusters and Tigressdata all mount the  `/projects` and `/tigress` storage system. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/projects` or `/tigress` and `source` this from each `~/.bashrc` file for each account. This approach ensures that your shortcuts remain in sync across all of your accounts. Here is the three-step procedure for this:
+The large clusters and Tigressdata all mount the  `/projects2` storage system. If you have an account on one or more of these clusters it is recommended that you store your aliases and shell functions in a file on `/projects2` and `source` this from each `~/.bashrc` file for each account. This approach ensures that your shortcuts remain in sync across all of your accounts. Here is the three-step procedure for this:
 
 (Recommended) If you have access to `/projects2`:
 
 ![shortcuts](https://tigress-web.princeton.edu/~jdh4/myshortcuts_diagram_projects.png)
 <br/><br/>
 
-As explained above, the idea is to make the file `/projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh` or `/tigress/<YourNetID>/myshortcuts.sh` and put your aliases and functions there. Then add one of the following snippets to each of your `~/.bashrc` files:
+As explained above, the idea is to make the file `/projects/<ResearchGroup>/<YourDirectory>/myshortcuts.sh` and put your aliases and functions there. Then add one of the following snippets to each of your `~/.bashrc` files:
 
 ```bash
 # User specific aliases and functions
