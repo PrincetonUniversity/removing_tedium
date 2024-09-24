@@ -1,5 +1,7 @@
 September 24, 2024  
 
+The directions below were suggested before the tiger3 cluster came into existence in October of 2024. Since the tiger3 compute nodes do not mount `/projects2`, the recommendation was changed.
+
 ### If you only have an account on Adroit ...
 
 On Adroit, make your aliases and shell functions permanent by adding them to your `~/.bashrc` file and then sourcing the file. For instance, use a text editor like vim or emacs to add the `sq` alias:
