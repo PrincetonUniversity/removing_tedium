@@ -30,7 +30,7 @@ To get your own utilities to work like the standard Linux commands, you need to 
 $ mkdir /home/<YourNetID>/my-utilities
 ```
 
-Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`. We suggest using `/projects2` since that storage system can be reached from multiple clusters.
+Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`.
 
 ### Update PATH
 
