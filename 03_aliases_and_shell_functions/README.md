@@ -81,7 +81,7 @@ Consider creating a GitHub repo containing your `.bashrc` file. Make all of your
 alias sync="wget -O .bashrc https://raw.githubusercontent.com/aturing/shell_configs/refs/heads/main/.bashrc"
 ```
 
-One can use the `hostname` command and `if` statements to deal with differences between clusters. For the an example of this, see the [checkquota](#checkquota) section below.
+One can use the `hostname` command and `if` statements to deal with differences between clusters. For an example of this, see the [checkquota](#checkquota) section below.
 
 ## Checking which aliases are defined
 
