@@ -75,11 +75,13 @@ You only need to source your `~/.bashrc` file when you add an alias in the curre
 
 ### How to synchronize your .bashrc file across multiple clusters?
 
-Consider creating a GitHub repo containing a `.bashrc` file. Make all of your changes to that file in the repo and then pull it down to different machines. Consider making an alias for the sync:
+Consider creating a GitHub repo containing your `.bashrc` file. Make all of your changes to that file in the repo and then pull it down to different machines. Consider making an alias for the sync:
 
 ```
 alias sync="wget -O .bashrc https://raw.githubusercontent.com/aturing/shell_configs/refs/heads/main/.bashrc"
 ```
+
+One can use the `hostname` command and `if` statements to deal with differences between clusters. For the an example of this, see the [checkquota](#checkquota) section below.
 
 ## Checking which aliases are defined
 
