@@ -224,8 +224,8 @@ Here are some aliases for quickly working with modules:
 alias ma='module avail'
 alias mp='module purge'
 alias ml='module list'
-alias mla='module load anaconda3/2023.3'
-alias mlc='module load cudatoolkit/12.2'
+alias mla='module load anaconda3/2024.6'
+alias mlc='module load cudatoolkit/12.6'
 ```
 
 Another approach would be to define an alias like this:
