@@ -27,9 +27,7 @@ To get your own utilities to work like the standard Linux commands, you need to 
 ### Create a my-utilities directory
 
 ```
-$ mkdir /projects2/<letter>/<YourNetID>/my-utilities      # Della, Stellar, Tiger
-  or
-$ mkdir /home/<YourNetID>/my-utilities      # if only have account on Adroit
+$ mkdir /home/<YourNetID>/my-utilities
 ```
 
 Once you have some scripts stored in this directory, you should put the directory under version control using git, for example. Note that you can use another name instead of `my-utilities` such as `bin` or `programs`. We suggest using `/projects2` since that storage system can be reached from multiple clusters.
@@ -39,9 +37,7 @@ Once you have some scripts stored in this directory, you should put the director
 Recall that the `PATH` environment variable specifies a list of directories to search for executables when a command is ran on the command line. To make your utilities callable on the command line add this line to `~/.bashrc`:
 
 ```
-export PATH=$PATH:/projects2/<letter>/<YourNetID>/my-utilities   # Della, Stellar, Tiger
-  or
-export PATH=$PATH:/home/<YourNetID>/my-utilities      # if only have account on Adroit
+export PATH=$PATH:/home/<YourNetID>/my-utilities
 ```
 
 Be sure to run `$ source ~/.bashrc` so that the changes to `PATH` take effect (only needed once). Make sure that it worked with:
