@@ -51,13 +51,13 @@ Consider adding the alias below so that symbolic links are always resolved (i.e.
 alias pwd='pwd -P'
 ```
 
-## /projects2 (large clusters only, i.e., not adroit)
+## /projects (large clusters only, i.e., not adroit)
 
-Make a second symbolic link from your home directory to `/projects2`:
+Make a second symbolic link from your home directory to `/projects`:
 
 ```
 $ cd ~
-$ ln --symbolic /projects2/<letter>/<YourNetID> prj   # Della, Stellar, Tiger
+$ ln --symbolic /projects/<letter>/<YourNetID> prj   # Della, Stellar, Tiger
 ```
 
 Can you think of another symbolic link that could be used to speed-up your workflow? Maybe a link to the directory containing your current project.
