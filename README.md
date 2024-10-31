@@ -8,6 +8,10 @@ Are you tired of Duo? Do you waste time entering your password every time you lo
 
 Toward the end of the workshop please complete [this survey](https://forms.gle/rrBLgZYPjyLHYxFR7).-->
 
+## Contents
+
+1. [Suppressing Duo](/01_supresssing_duo/README.md)
+
 ## Getting Help
 
 If you encounter any difficulties with the material in this guide then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a <a href="https://researchcomputing.princeton.edu/education/help-sessions">help session</a>.
