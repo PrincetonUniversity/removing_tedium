@@ -667,10 +667,11 @@ alias wa='watch -n 1'
 Use it as follows:
 
 ```bash
-$ wa ls -l # if downloading a file
-$ wa date
-$ wa squeue -u $USER
-$ wa free
+$ wa nvidia-smi      # monitor GPU utilization  
+$ wa ls -l           # if downloading a file
+$ wa date            # see a running clock
+$ wa squeue --me     # see status of jobs
+$ wa free            # monitor free memory
 ```
 
 ## Make Mac more like Linux
