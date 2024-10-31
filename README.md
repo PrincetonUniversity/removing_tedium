@@ -13,7 +13,7 @@ Toward the end of the workshop please complete [this survey](https://forms.gle/r
 0. [Setup](setup.md)
 1. [Suppressing Duo](01_suppressing_duo/README.md)
 2. [Passwordless Logins](02_passwordless_logins/README.md)
-3. [Aliases_and_Shell_Functions](03_aliases_and_shell_functions/README.md)
+3. [Aliases and Shell Functions](03_aliases_and_shell_functions/README.md)
 4. [Navigating the Command Line](04_navigating_command_line/README.md)
 5. [Symbolic Links](05_symbolic_links/README.md)
 6. [Automatic Job Submission](06_automatic_job_submission/README.md)
