@@ -65,3 +65,13 @@ Can you think of another symbolic link that could be used to speed-up your workf
 ## How to remove a symbolic link
 
 *IMPORTANT*: To remove a symbolic link use, for example, `$ rm prj`. Do not include a trailing slash after the symbolic link name.
+
+## Using an Alias
+
+If you need a way to get to a specific directory from anywhere then it is best to use an alias. For example, to get to "my_project", one could use:
+
+```
+alias myproj='cd /scratch/gpfs/aturing/my_project'
+```
+
+The above works from anywhere. With the symbolic link approach, one must either be in the directory that contains the link or specifiy the path to the link.
