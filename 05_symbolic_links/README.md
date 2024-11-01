@@ -75,3 +75,7 @@ alias myproj='cd /scratch/gpfs/aturing/my_project'
 ```
 
 The above works from anywhere. With the symbolic link approach, one must either be in the directory that contains the link or specifiy the path to the link.
+
+## Dealing with Large Directories in /home
+
+Symbolic links are useful for dealing with `.conda` and `.cache` directories. See [this example](https://researchcomputing.princeton.edu/support/knowledge-base/checkquota#How-should-I-deal-with-large-Conda-environments-) on the Research Computing webpage.
