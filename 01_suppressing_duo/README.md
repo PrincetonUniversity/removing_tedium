@@ -33,7 +33,7 @@ The use of a VPN will decrease your internet connection speed. The table below w
 
 The SonicWall VPN severely decreases transfer rates and should be avoided. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below which is VPN-free.
 
-[Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della) as shown in the figure below. **You must have an account on one of the large clusters to do this.** Use `nobel.princeton.edu` as the hop-through if you only have an account on Adroit and you want to connect to Adroit without using a VPN. If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
+[Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della) as shown in the figure below. **You must have an account on one of the large clusters to do this.** If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
 
 <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/hop_through_no_vpn_needed.png" align="center" width=70%></p>
 
@@ -102,7 +102,7 @@ The approach described above does not work with the PPPL Pulse Secure VPN. You w
 
 > Multiplexing involves the simultaneous transmission of several messages along a single channel of communication.
 
-To use this approach, you must have an account on one of the large clusters: Della, Stellar, Tiger or Traverse.
+To use this approach, you must have an account on one of the large clusters: Della, Stellar or Tiger
 
 The following solution is from Bill Wichser of Research Computing.
 
@@ -112,7 +112,7 @@ A: Yes this is painful! But there are a few things one can do. I will explain on
 
 But do be aware of why Duo is being used in the first place. It is to protect our systems. The reason I mention this is because you do have options with the method I am going to provide with respect to time limits on how long the multiplexed functionality remains operational. Set too low and your very next ssh/scp will require Duo authentication again. But set too high, the protection could be bypassed which makes us all vulnerable.
 
-Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to use the OnDemand web portals of [MyAdroit](https://myadroit.princeton.edu/), [MyDella](https://mydella.princeton.edu/) and [MyStellar](https://mystellar.princeton.edu/) as well as for various library services such as downloading journal articles.
+Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to use the OnDemand web portals of [MyAdroit](https://myadroit.princeton.edu/), [MyDella](https://mydella.princeton.edu/), [MyStellar](https://mystellar.princeton.edu/) and [MyTiger](https://mytiger.princeton.edu/) as well as for various library services such as downloading journal articles.
 
 ### On-Campus and Off-Campus (Recommended)
 
@@ -250,17 +250,9 @@ Host stellar-vis2.princeton.edu stellar-vis2
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host tigercpu.princeton.edu tigercpu tiger
+Host tiger.princeton.edu tiger
   User aturing
-  HostName tigercpu.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-  ControlMaster auto
-  ControlPersist yes
-  ControlPath ~/.ssh/sockets/%p-%h-%r
-
-Host traverse.princeton.edu traverse
-  User aturing
-  HostName traverse.princeton.edu
+  HostName tiger.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
   ControlPersist yes
@@ -359,4 +351,4 @@ Host *
   XAuthLocation /opt/X11/bin/xauth
 ```
 
-Make sure that you have an X server running (e.g., [XQuartz](https://www.xquartz.org)) when using this approach.
+Make sure that you have an X server running (e.g., [XQuartz](https://www.xquartz.org)) when using this approach. There are [better approaches](https://researchcomputing.princeton.edu/support/knowledge-base/gui-applications) to working with graphics on the Research Computing clusters than X11.
