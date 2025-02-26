@@ -489,6 +489,23 @@ eff() { jobstats $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
 
 The `eff` function figures out the job id and runs `jobstats` on that.
 
+### Number of free GPUs
+
+Della ("gpu" partition):
+```
+alias gpu='shownodes -p gpu | grep della- | grep -v -E "drain|down|boot" | awk '\''{print $6}'\'' | awk -F/ '\''{free+=$1; total+=$2} END {print "Free/Total: " free "/" total}'\'''
+```
+
+Della (PLI nodes):
+```
+alias pli='shownodes -p pli-c | grep della- | grep -v -E "drain|down|boot" | awk '\''{print $6}'\'' | awk -F/ '\''{free+=$1; total+=$2} END {print "Free/Total: " free "/" total}'\'''
+```
+
+Tiger:
+```
+alias gpu='shownodes -p gpu | grep tiger- | grep -v -E "drain|down|boot" | awk '\''{print $6}'\'' | awk -F/ '\''{free+=$1; total+=$2} END {print "Free/Total: " free "/" total}'\'''
+```
+
 ### Get your fairshare value
 
 Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your Unix group run over the last 30 days, the lower your fairshare value. Fairshare varies between 0 and 1 with 1 corresponding to the largest job priority.
