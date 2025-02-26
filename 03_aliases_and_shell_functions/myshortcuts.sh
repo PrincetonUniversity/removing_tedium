@@ -11,7 +11,7 @@
 #    \  \:\       \__\/      \  \::/        /__/:/       \  \::/        \__\/      \  \::/   
 #     \__\/                   \__\/         \__\/         \__\/                     \__\/    
 #
-# (c) 2024 Princeton Institute for Computational Science and Engineering
+# (c) 2025 Princeton Institute for Computational Science and Engineering
  
 # This file contains aliases and shell functions for researchers using high-performance
 # computing clusters. For details see https://github.com/PrincetonUniversity/removing_tedium
@@ -51,7 +51,7 @@ alias ma='module avail'
 alias mp='module purge'
 alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
 mla() { module load $(module avail -l anaconda3 2>&1 | grep anaconda3/202 | tail -n 1 | awk '{print $1}'); ml; }
-alias mlc='module load cudatoolkit/12.2'
+mlc() { module load $(module avail -l cudatoolkit/12 2>&1 | grep cudatoolkit | tail -n 1 | awk '{print $1}'); ml; }
 
 #########
 # conda #
@@ -59,7 +59,7 @@ alias mlc='module load cudatoolkit/12.2'
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3/2023.9
+    module load anaconda3/2024.10
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
@@ -99,13 +99,6 @@ alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 alias smi='nvidia-smi'
 alias wsmi='watch -n 1 nvidia-smi'
 
-######################
-# specific to adroit #
-######################
-if [[ $(hostname) == adroit* ]]; then
-  alias a100='ssh adroit-h11g1'
-fi
-
 #####################
 # specific to della #
 #####################
@@ -113,26 +106,6 @@ if [[ $(hostname) == della* ]]; then
     alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '"'"'/_MINS/ \
                   {print "  "$1,"<=",$3" mins ("$3/60 " hrs)"}'"'"''
 fi
-
-############
-# turbovnc #
-############
-turbostart() {
-  module load turbovnc/2.2.1
-  if [ $(vncserver -list | wc -l) -eq 4 ]; then
-    vncserver
-  else
-    echo -e "\n***SESSION ALREADY RUNNING***" && vncserver -list
-  fi
-}
-turbostopall() {
-  module load turbovnc/2.2.1
-  for x in $(vncserver -list); do
-    if [[ $x =~ ^: ]]; then
-      vncserver -kill $x
-    fi
-  done
-}
 
 ########
 # misc #
@@ -145,7 +118,7 @@ alias htop='htop -u $USER'
 alias R='R --vanilla --quiet'
 alias dirsize='du -h --max-depth=1 | sort -h'
 alias mypath='readlink -f'
-alias ccat='/usr/licensed/anaconda3/2023.9/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2024.10/bin/pygmentize'
 
 ###########
 # history #
@@ -172,19 +145,7 @@ if [ ! -z "$PS1" ]; then
       echo 
       timeout 5 checkquota | head -n 3
       echo ;;
-    tigercpu*)
-      echo
-      timeout 5 checkquota | head -n 3
-      echo ;;
-    tigergpu*)
-      echo
-      timeout 5 checkquota | head -n 3
-      echo ;;
-    tigressdata*)
-      echo
-      timeout 5 checkquota | head -n 7
-      echo ;;
-    traverse*.*)
+    tiger*)
       echo
       timeout 5 checkquota | head -n 3
       echo ;;
