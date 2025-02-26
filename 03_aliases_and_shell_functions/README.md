@@ -575,19 +575,7 @@ if [ ! -z "$PS1" ]; then
       echo 
       timeout 5 checkquota | head -n 3
       echo ;;
-    tigercpu*)
-      echo
-      timeout 5 checkquota | head -n 3
-      echo ;;
-    tigergpu*)
-      echo
-      timeout 5 checkquota | head -n 3
-      echo ;;
-    tigressdata*)
-      echo
-      timeout 5 checkquota | head -n 7
-      echo ;;
-    traverse*.*)
+    tiger*)
       echo
       timeout 5 checkquota | head -n 3
       echo ;;
