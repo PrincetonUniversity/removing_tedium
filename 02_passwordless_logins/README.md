@@ -155,11 +155,11 @@ $ ssh aturing@della.princeton.edu "touch myfile"
 
 Note that you can also use the approach above to run scripts on an HPC cluster. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script to run. If the script generates figures and webpages as the output then that content could be viewed on `https://tigress-web.princeton.edu/~<YourNetID>/` (learn more about [tigress-web](https://researchcomputing.princeton.edu/support/knowledge-base/tigress-web)).
 
-If you have access to the `/tigress` storage system then you can share webpages:
+If you have access to the `/projects` storage system then you can share webpages:
 
 ```
-$ mkdir -p /tigress/<YourNetID>/public_html
-$ cd /tigress/<YourNetID>/public_html
+$ mkdir -p /projects/<first-letter-of-NetID>/<YourNetID>/public_html
+$ cd /projects/<first-letter-of-NetID>/<YourNetID>/public_html
 $ cat index.html
 <html><head></head><body>
 test
