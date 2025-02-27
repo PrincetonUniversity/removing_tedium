@@ -105,16 +105,6 @@ If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try 
 
 Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test.
 
-### Trouble with tigressdata
-
-If the procedure above fails on tigressdata (i.e., you still have to enter your password) then ssh to tigressdata and run this command:
-
-```
-$ restorecon -R ~/.ssh
-```
-
-Exit from tigressdata, and the next time you connect you should not need your password.
-
 ## Windows
 
 The general recommendation for interfacing a Windows machine with the Research Computing systems is to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about). This would provide a Linux system on your Windows machine. You could then follow the directions above for Mac/Linux. The same is true for SSH multiplexing as discussed in the first section of this repo (i.e., `01_suppressing_duo`).
