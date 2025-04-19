@@ -457,7 +457,19 @@ The function above uses `squeue` to list all your job id's in ascending order an
 
 ### Who's hogging all the resources?
 
-Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. The function below can be used to see usage by user:
+Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. To see usage, run the command below and look at the `RawUsage` column:
+
+```
+$ sshare -la -A <your-account>
+```
+
+To see the choice(s) for `<your-account>`:
+
+```
+$ sshare | grep $USER | awk '{print $1}'
+```
+
+One can also use `sreport`. The function below can be used to see usage by user:
 
 ```bash
 hog() {
