@@ -11,16 +11,16 @@ This page illustrates how to use aliases and shell functions to improve producti
 Let's illustrate the process of creating an alias using this popular command:
 
 ```bash
-$ squeue -u <YourNetID>
+$ squeue --me
 ```
 
 Instead of typing this every time, we will use the much shorter alias of `sq`:
 
 ```bash
-$ alias sq='squeue -u <YourNetID>'
+$ alias sq='squeue --me'
 ```
 
-Be sure to replace `<YourNetID>` with your actual NetID (e.g., aturing). After defining this alias, one can type `sq` instead of the much longer `squeue -u <YourNetID>`:
+After defining this alias, one can type `sq` instead of the longer `squeue --me`:
 
 ```
 $ sq
@@ -56,7 +56,7 @@ Add this line:
 
 ```bash
 # User specific aliases and functions
-alias sq='squeue -u <YourNetID>'
+alias sq='squeue --me'
 ```
 
 Save the changes and then return to the command line. Make the new alias available in the current shell by "sourcing" your `~/.bashrc` file:
