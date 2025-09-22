@@ -76,6 +76,8 @@ Be sure to explore the shortcuts offered by your text editor. Editors like `vim`
 
 Consider having the `[Caps Lock]` key remapped to the `[Ctrl]` or `[Esc]` key. What other remappings can you make to improve productivity?
 
+For Mac users, look at [Karabiner-Elements](https://karabiner-elements.pqrs.org), which is free and makes it possible to remap every key and introduce a hyper key. There are other choices for Windows and Linux.
+
 ## Fix command (fc)
 
 This command is useful when you enter a long command that has a mistake. Run `fc` and that command will be loaded in a text editor where you can make corrections. The command is executed upon exiting the editor. Note that you can also intentionally enter a wrong command so that you can use a text editor to make changes to the command and use the search functionality of the editor to advance to the middle of the line.
