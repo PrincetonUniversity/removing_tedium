@@ -8,6 +8,29 @@ As indicated in the figure below, the first step is to create private and public
 
 ## Linux and Mac
 
+### Step 0: See you already have keys
+
+This shows a user that already has SSH keys:
+
+```
+$ ls -l ~/.ssh/
+-rw-------  1 aturing  staff  2675 Apr 17  2024 id_rsa
+-rw-r--r--  1 aturing  staff   624 Apr 17  2024 id_rsa.pub
+```
+
+This user does not have SSH keys:
+
+```
+$ ls -l ~/.ssh/
+total 0
+```
+
+Another scenario is the `.ssh` directory does not exist. In this case, make it:
+
+```
+$ mkdir ~/.ssh
+```
+
 ### Step 1: Create the private/public key pair
 
 On your **local machine** (e.g., laptop), first create the RSA key pair. This is done by running the following command in a terminal (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
