@@ -134,7 +134,7 @@ Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster tha
 
 ### Checking for SSH Keys
 
-If your username is `aturing` then look the following directory for existing keys:
+If your username is `aturing` then look in the following directory for existing keys:
 
 ```
 C:\Users\aturing\.ssh
