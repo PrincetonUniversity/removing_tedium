@@ -137,7 +137,7 @@ Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster tha
 If your username is `aturing` then look in the following directory for existing keys:
 
 ```
-C:\Users\aturing\.ssh
+C:\Users\aturing\.ssh>dir
 ```
 
 The general recommendation for interfacing a Windows machine with the Research Computing systems is to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about). This would provide a Linux system on your Windows machine. You could then follow the directions above for Mac/Linux. The same is true for SSH multiplexing as discussed in the first section of this repo (i.e., `01_suppressing_duo`).
