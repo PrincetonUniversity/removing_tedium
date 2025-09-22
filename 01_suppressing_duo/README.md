@@ -171,6 +171,16 @@ This will enable port forwarding for the given ports in case you require VNC acc
 
 After completing the steps above, you should be able to `scp <localfile> della:` without additional Duo authentications since the connection is established and multiplexed.
 
+#### Note for Windows Users
+
+Do not include these lines:
+
+```
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+```
+
 Below is a sample file of `.ssh/config` for multiple clusters (**replace aturing with your NetID**). You should only enter stanzas for the clusters and machines that you have acces to.
 
 ```
