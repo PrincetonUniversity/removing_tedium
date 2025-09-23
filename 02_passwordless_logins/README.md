@@ -34,6 +34,9 @@ total 0
 Another scenario is the `.ssh` directory does not exist. In this case, make it:
 
 ```
+$ ls -l ~/.ssh/
+ls: .ssh: No such file or directory
+
 $ mkdir ~/.ssh
 ```
 
