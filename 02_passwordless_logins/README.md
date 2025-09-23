@@ -81,9 +81,9 @@ The key's randomart image is:
 
 The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. **The private key is equivalent to your password so you should never share it.** However, you can share your public key and we will do that next.
 
-### Step 2: Copy the public key to the HPC cluster
+### Step 2: Copy the public key to the Research Computing cluster
 
-Use the `ssh-copy-id` command to copy the public key to the desired cluster (enter your password for the **HPC cluster** when prompted):
+Use the `ssh-copy-id` command to copy the public key to the desired cluster (enter your password for the **Research Computing cluster** when prompted):
 
 ```
 $ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
@@ -119,7 +119,7 @@ Now try logging into the machine, with:   "ssh 'aturing@adroit.princeton.edu'"
 and check to make sure that only the key(s) you wanted were added.
 ```
 
-### Step 3: Connect to the HPC cluster
+### Step 3: Connect to the Research Computing cluster
 
 Try to `ssh` to the cluster (you should no longer need to enter a password):
 
@@ -135,7 +135,7 @@ $ ssh adroit
 
 If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
 
-### Step 4: Return to Step 2 for additional HPC clusters
+### Step 4: Return to Step 2 for additional Research Computing clusters
 
 Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test.
 
