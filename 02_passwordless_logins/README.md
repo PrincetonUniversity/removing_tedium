@@ -10,12 +10,18 @@ As indicated in the figure below, the first step is to create private and public
 
 ### Step 0: See you already have keys
 
-This shows a user that already has SSH keys:
+This shows a user that already has SSH keys (`id_rsa` and `id_rsa.pub`):
 
 ```
 $ ls -l ~/.ssh/
+total 72
+-rw-r--r--  1 aturing  staff  3965 May 14 10:49 config
+drwxr-xr-x  2 aturing  staff    64 Apr 17  2024 controlmasters
 -rw-------  1 aturing  staff  2675 Apr 17  2024 id_rsa
 -rw-r--r--  1 aturing  staff   624 Apr 17  2024 id_rsa.pub
+-rw-------  1 aturing  staff  9293 Sep  2 10:13 known_hosts
+-rw-------  1 aturing  staff  8711 Jul 21 09:05 known_hosts.old
+drwx------  8 aturing  staff   256 Sep 23 14:12 sockets
 ```
 
 This user does not have SSH keys:
