@@ -83,7 +83,7 @@ The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identific
 
 ### Step 2: Copy the public key to the Research Computing cluster
 
-Use the `ssh-copy-id` command to copy the public key to the desired cluster (enter your password for the **Research Computing cluster** when prompted):
+Use the `ssh-copy-id` command to copy the public key to the login node of the desired cluster (enter your password for the **Research Computing cluster** when prompted):
 
 ```
 $ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
@@ -133,7 +133,7 @@ Or if you worked through Section 1 of this repo then you should be able to use t
 $ ssh adroit
 ```
 
-If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `chmod 600 ~/.ssh/config` and maybe also `chown $USER ~/.ssh/config`.
+If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try doing `$ chmod 600 ~/.ssh/config` and maybe also `$ chown $USER ~/.ssh/config`.
 
 ### Step 4: Return to Step 2 for additional Research Computing clusters
 
