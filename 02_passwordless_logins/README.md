@@ -42,7 +42,7 @@ $ mkdir ~/.ssh
 
 If you do not have SSH keys then continue with Step 1. Otherwise, proceed to Step 2.
 
-### Step 1: Create the private/public key pair
+### Step 1: Create the private/public key pair (if you don't already have keys)
 
 On your **local machine** (e.g., laptop), first create the RSA key pair. This is done by running the following command in a terminal (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
 
