@@ -4,7 +4,7 @@ When connecting to a Research Computing cluster via `ssh` or transferring a file
 
 As indicated in the figure below, the first step is to create private and public "keys" on your **local machine** (e.g., laptop). These keys are nothing more than files. The public key is then appended to `~/.ssh/authorized_keys` on the login node of the desired cluster while the private key remains on your local machine. When you try to connect to that cluster, if the public and private keys match then you will be granted access without needing to provide your password.
 
- <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/ssh_keys_princeton_research_computing.png" align="center"></p>
+![SSH Keys](ssh_keys_princeton_research_computing.png)
 
 # Mac, Linux and WSL
 
