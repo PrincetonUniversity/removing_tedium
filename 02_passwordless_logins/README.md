@@ -6,7 +6,7 @@ As indicated in the figure below, the first step is to create private and public
 
  <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/ssh_keys_princeton_research_computing.png" align="center"></p>
 
-## Linux and Mac
+## Mac, Linux and WSL
 
 ### Step 0: See you already have keys
 
@@ -141,7 +141,19 @@ Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster tha
 
 ## Windows
 
-### Checking for SSH Keys
+The general recommendation for interfacing a Windows machine with the Research Computing systems is to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about). This would provide a Linux system on your Windows machine. You could then follow the directions above for "Mac, Linux and WSL". The same is true for SSH multiplexing as discussed in the first section of this repo (i.e., `01_suppressing_duo`).
+
+If you decide not to use WSL then proceed through the steps below.
+
+### Lanuch a Terminal
+
+This can be accomplished using:
+- VS Code
+- MobaXterm
+- Powershell
+- Windows Terminal
+
+### Step 0: Checking for SSH Keys
 
 If your username is `aturing` then look in the following directory for existing keys:
 
@@ -149,32 +161,63 @@ If your username is `aturing` then look in the following directory for existing 
 C:\Users\aturing\.ssh>dir
 ```
 
-The general recommendation for interfacing a Windows machine with the Research Computing systems is to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about). This would provide a Linux system on your Windows machine. You could then follow the directions above for Mac/Linux. The same is true for SSH multiplexing as discussed in the first section of this repo (i.e., `01_suppressing_duo`).
+Keys will have filenames like `id_rsa` and `id_rsa.pub`. If these files do not exist then you need to make them in Step 1. Otherwise, proceed to Step 2.
 
-### Windows with PowerShell
+### Step 1: Create the private/public key pair (if you don't already have keys)
 
-Follow [these directions](https://www.techrepublic.com/blog/10-things/how-to-generate-ssh-keys-in-openssh-for-windows-10/) to create the keys but don't follow the "Copying the public key securely" procedure. If your public key is on your laptop in `C:\Users\aturing\.ssh\id_rsa.pub` then the following can be used to copy it to the desired HPC cluster:
-
-```
-$ cat C:\Users\aturing\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
-```
-
-Below is a specific example:
+Run this command in the terminal to create new keys:
 
 ```
-$ cat C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+C:\Users\aturing\.ssh>ssh-keygen
 ```
 
-### Windows with MobaXterm
+### Step 2: Copy the public key to the Research Computing cluster
+
+(Option 1) Try to use `ssh-copy-id` while replacing `aturing` with your username:
+
+```
+C:\Users\aturing\.ssh>ssh-copy-id aturing@adroit.princeton.edu
+```
+
+(Option 2) If `ssh-copy-id` is not found then run the following command:
+
+```
+$ type C:\Users\aturing\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+```
+
+Below is a specific example for `aturing` and `adroit`:
+
+```
+$ type C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+```
+
+### Step 3: Connect to the Research Computing cluster
+
+Try to `ssh` to the cluster (you should no longer need to enter a password):
+
+```
+$ ssh aturing@adroit.princeton.edu
+```
+
+Or if you worked through Section 1 of this repo then you should be able to use the much shorter:
+
+```
+$ ssh adroit
+```
+
+### Step 4: Return to Step 2 for additional Research Computing clusters
+
+Return to Step 2 and copy the public key to each cluster that you have an account on (e.g., `adroit-vis`, `della`, `stellar`, `tiger`). Try connecting to that cluster as a test.
+
+### Troubleshooting Windows
+
+#### Windows with PowerShell
+
+Follow [these directions](https://www.techrepublic.com/blog/10-things/how-to-generate-ssh-keys-in-openssh-for-windows-10/) to create the keys but don't follow the "Copying the public key securely" procedure. If your public key is on your laptop in `C:\Users\aturing\.ssh\id_rsa.pub` then the following can be 
+
+#### Windows with MobaXterm
 
 This [set of directions](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/generating_keys_with_mobaxterm.html) may be useful.
-
-
-### Windows for PuTTY users
-
-Install [PuTTY gen](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) (puttygen.exe).
-
-[Watch this video](https://youtu.be/2nkAQ9M6ZF8) but at 2:27 do not enter a passphrase and stop watching the video around 5:22.
 
 ## Looking ahead
 
