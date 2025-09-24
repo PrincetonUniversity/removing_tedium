@@ -24,6 +24,8 @@ drwxr-xr-x  2 aturing  staff    64 Apr 17  2024 controlmasters
 drwx------  8 aturing  staff   256 Sep 23 14:12 sockets
 ```
 
+You may also see keys with names `id_ed25519` and `id_ed25519.pub`.
+
 This user does not have SSH keys:
 
 ```
@@ -162,14 +164,34 @@ PS C:\Users\aturing> cd .ssh
 PS C:\Users\aturing\.ssh> dir
 ```
 
-Keys will have filenames like `id_rsa` and `id_rsa.pub`. If these files do not exist then you need to make them in Step 1. Otherwise, proceed to Step 2.
+Keys will have filenames like `id_rsa` and `id_rsa.pub` or `id_ed25519` and `id_ed25519.pub`. If these files do not exist then you need to make them in Step 1. Otherwise, proceed to Step 2.
 
 ### Step 1: Create the private/public key pair (if you don't already have keys)
 
 Run this command in the terminal to create new keys:
 
 ```
-PS C:\Users\aturing\.ssh> ssh-keygen
+PS C:\Users\aturing\.ssh> ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\aturing/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\aturing/.ssh/id_rsa
+Your public key has been saved in C:\Users\aturing/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:NJas/NpWxce0dsLp5qTDcfAlIJfxvFyIYPE9RojWh2M princeton\jdh4@PVD-SLAB-fabe
+The key's randomart image is:
++---[RSA 3072]----+
+|          ++.=.  |
+|       . o+oE*o. |
+|        *. =oBBo.|
+|     . + .  +oX+o|
+|      o S  . *o= |
+|       .  . . *  |
+|        .. . B   |
+|       o.   + .  |
+|      ...    .   |
++----[SHA256]-----+
 ```
 
 ### Step 2: Copy the public key to the Research Computing cluster
