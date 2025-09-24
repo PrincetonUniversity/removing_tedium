@@ -202,7 +202,9 @@ The key's randomart image is:
 PS C:\Users\aturing\.ssh> ssh-copy-id aturing@adroit.princeton.edu
 ```
 
-(Option 2) If `ssh-copy-id` is not found then run the following command:
+If you encounter `ssh-copy-id : The term 'ssh-copy-id' is not recognized` then use Option 2 below.
+
+(Option 2) If `ssh-copy-id` is not recognized` then run the following command:
 
 ```
 PS C:\Users\<username>\.ssh> type C:\Users\<username>\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
