@@ -164,7 +164,9 @@ Host della.princeton.edu della
   ProxyJump tigressgateway.princeton.edu
 ```
 
-If the file `~/.ssh/config` does not exist then make it.
+If the file `~/.ssh/config` does not exist then make it using a text editor.
+
+Step 3: SSH to a Login Node
 
 You can then connect from your local machine (laptop/desktop) using the following command, for example:
 
