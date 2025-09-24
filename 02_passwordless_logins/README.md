@@ -6,7 +6,7 @@ As indicated in the figure below, the first step is to create private and public
 
  <p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/ssh_keys_princeton_research_computing.png" align="center"></p>
 
-## Mac, Linux and WSL
+# Mac, Linux and WSL
 
 ### Step 0: See you already have keys
 
@@ -139,7 +139,7 @@ If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try 
 
 Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test.
 
-## Windows
+# Windows
 
 The general recommendation for interfacing a Windows machine with the Research Computing systems is to use [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/about). This would provide a Linux system on your Windows machine. You could then follow the directions above for "Mac, Linux and WSL". The same is true for SSH multiplexing as discussed in the first section of this repo (i.e., `01_suppressing_duo`).
 
@@ -182,13 +182,13 @@ C:\Users\aturing\.ssh>ssh-copy-id aturing@adroit.princeton.edu
 (Option 2) If `ssh-copy-id` is not found then run the following command:
 
 ```
-$ type C:\Users\aturing\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+C:\Users\<username>\.ssh>type C:\Users\<username>\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 Below is a specific example for `aturing` and `adroit`:
 
 ```
-$ type C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+C:\Users\aturing\.ssh>type C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 ### Step 3: Connect to the Research Computing cluster
@@ -196,13 +196,13 @@ $ type C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdi
 Try to `ssh` to the cluster (you should no longer need to enter a password):
 
 ```
-$ ssh aturing@adroit.princeton.edu
+C:\Users\aturing\.ssh>ssh aturing@adroit.princeton.edu
 ```
 
 Or if you worked through Section 1 of this repo then you should be able to use the much shorter:
 
 ```
-$ ssh adroit
+C:\Users\aturing\.ssh>ssh adroit
 ```
 
 ### Step 4: Return to Step 2 for additional Research Computing clusters
