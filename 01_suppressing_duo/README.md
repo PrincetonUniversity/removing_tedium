@@ -35,7 +35,7 @@ The SonicWall VPN severely decreases transfer rates and should be avoided. If yo
 
 [Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della) as shown in the figure below. **You must have an account on one of the large clusters to do this.** If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
 
-<p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/hop_through_no_vpn_needed.png" align="center" width=70%></p>
+![Hop Through](hop_through_no_vpn_needed.png)
 
 On campus, you can measure the speed of your network connection at [https://tigerspeed.princeton.edu](https://tigerspeed.princeton.edu). If you are having trouble connecting to the Research Computing systems using SSH then [see this page](https://researchcomputing.princeton.edu/ssh) and in particular [https://myip.rc.princeton.edu/](https://myip.rc.princeton.edu/).
 
@@ -118,7 +118,7 @@ Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to 
 
 When off-campus and not using a VPN, one cannot `ssh` to the login node of a Research Computing cluster. **However, for users with an account on one of the large clusters** (not Adroit, not Nobel) one can use `tigressgateway` as a proxyjump server:
 
-<p align="center"><img src="https://tigress-web.princeton.edu/~jdh4/multiplexed_connection.png" align="center"></p>
+![SSH Multiplexing](multiplexed_connection.png)
 
 The procedure for doing this is shown below:
 
