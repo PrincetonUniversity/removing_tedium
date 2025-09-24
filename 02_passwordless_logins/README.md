@@ -168,7 +168,16 @@ Keys will have filenames like `id_rsa` and `id_rsa.pub` or `id_ed25519` and `id_
 
 ### Step 1: Create the private/public key pair (if you don't already have keys)
 
-Run this command in the terminal to create new keys:
+On your **local machine** (e.g., laptop), first create the RSA key pair. This is done by running the following command in a terminal (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
+
+```
+PS C:\Users\aturing\.ssh> ssh-keygen -t rsa
+ [Enter] 
+ [Enter] 
+ [Enter] 
+```
+
+Here is an example:
 
 ```
 PS C:\Users\aturing\.ssh> ssh-keygen -t rsa
