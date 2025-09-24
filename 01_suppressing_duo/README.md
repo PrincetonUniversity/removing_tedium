@@ -1,22 +1,22 @@
 # Suppressing Duo
 
-[Duo](https://princeton.service-now.com/service?id=kb_article&sys_id=575eff5387064dd012ae43bd0ebb35b0) enhances security with the downside of being disruptive. This page presents two approaches to suppressing Duo while still maintaining security. We recommend using the [VPN Approach](#i-vpn-approach) below due to its simplicity. Note that by "suppressing" we mean minimizing as opposed to eliminating. That is, you will still need to Duo authenticate but much less so.
+[Duo](https://princeton.service-now.com/service?id=kb_article&sys_id=575eff5387064dd012ae43bd0ebb35b0) enhances security with the downside of being disruptive. This page presents two approaches to suppressing Duo while still maintaining security. Note that by "suppressing" we mean minimizing as opposed to eliminating. That is, you will still need to Duo authenticate but much less so.
 
 # I. VPN Approach
 
 Here is the procedure:
 
-1. Install the Global Protect [VPN client](https://www.princeton.edu/vpn).
+1. Download, install, and configure the Global Protect [VPN client](https://www.princeton.edu/vpn).
 2. Connect via the VPN client (**even if you are on-campus**).
-3. SSH to a cluster. You will only need to Duo authenticate once per session (which typically lasts a few hours).
-
-If you would prefer not to use a VPN then see the [multiplexing approach](#ii-multiplexing-approach-vpn-free) below.
+3. SSH to a cluster. You will only need to Duo authenticate once per session.
 
 To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBase article](https://www.princeton.edu/vpn). GlobalProtect is recommended.
 
 > Secure Remote Access (SRA) is a service for Princeton faculty, staff, and students who are off-campus and need to access restricted campus resources through a Virtual Private Network (VPN). After authenticating, remote computers function as if they were on campus, and as long as your SRA connection is active, all Internet activity from your computer is routed through Princeton servers and your computer is giving a Princeton IP address.
 
 OIT is responsible for the VPN so please [contact them](https://princeton.service-now.com/service) with any questions or problems.
+
+There are two disadvantages to using the VPN: (1) it requires launching Global Protect at the start of each session and (2) the VPN has limited network performance (see below). If you would prefer not to use a VPN then see the [multiplexing approach](#ii-multiplexing-approach-vpn-free) below.
 
 ### What if the VPN is too slow?
 
