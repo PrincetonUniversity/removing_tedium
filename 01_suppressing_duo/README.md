@@ -1,6 +1,6 @@
 # Suppressing Duo
 
-[Duo](https://princeton.service-now.com/service?id=kb_article&sys_id=575eff5387064dd012ae43bd0ebb35b0) enhances security with the downside of being disruptive. This page presents two approaches to suppressing Duo while still maintaining security. Note that by "suppressing" we mean minimizing as opposed to eliminating. That is, you will still need to Duo authenticate but much less so.
+[Duo](https://princeton.service-now.com/service?id=kb_article&sys_id=575eff5387064dd012ae43bd0ebb35b0) enhances security with the downside of being disruptive (and even annoying). This page presents two approaches to suppressing Duo while still maintaining security. Note that by "suppressing" we mean minimizing as opposed to eliminating. That is, you will still need to Duo authenticate but much less so.
 
 # I. VPN Approach
 
