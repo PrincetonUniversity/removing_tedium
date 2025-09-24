@@ -114,7 +114,7 @@ But do be aware of why Duo is being used in the first place. It is to protect ou
 
 Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to use the OnDemand web portals of [MyAdroit](https://myadroit.princeton.edu/), [MyDella](https://mydella.princeton.edu/), [MyStellar](https://mystellar.princeton.edu/) and [MyTiger](https://mytiger.princeton.edu/) as well as for various library services such as downloading journal articles.
 
-### On-Campus and Off-Campus (Recommended)
+## On-Campus and Off-Campus (Recommended)
 
 When off-campus and not using a VPN, one cannot `ssh` to the login node of a Research Computing cluster. **However, for users with an account on one of the large clusters** (not Adroit, not Nobel) one can use `tigressgateway` as a proxyjump server:
 
@@ -122,13 +122,13 @@ When off-campus and not using a VPN, one cannot `ssh` to the login node of a Res
 
 The procedure for doing this is shown below:
 
-Step 1: On your **local machine** (laptop/desktop) run the command below to make two directories and set the permissions:
+### Step 1: On your **local machine** (laptop/desktop) run the command below to make two directories and set the permissions:
 
 ```
 $ mkdir -p ~/.ssh/controlmasters && mkdir -p ~/.ssh/sockets && chmod 700 ~/.ssh/sockets
 ```
 
-Step 2: Modify your `.ssh/config` file as follows (replace **aturing** with your NetID):
+### Step 2: Modify your `.ssh/config` file as follows (replace **aturing** with your NetID):
 
 #### Mac, Linux and WSL
 
@@ -166,7 +166,7 @@ Host della.princeton.edu della
 
 If the file `~/.ssh/config` does not exist then make it using a text editor.
 
-Step 3: SSH to a Login Node
+### Step 3: SSH to a Login Node
 
 You can then connect from your local machine (laptop/desktop) using the following command, for example:
 
@@ -199,7 +199,7 @@ Do not include these lines:
   ControlPath ~/.ssh/sockets/%p-%h-%r
 ```
 
-Below is a sample file of `.ssh/config` for multiple clusters (**replace aturing with your NetID**). You should only enter stanzas for the clusters and machines that you have acces to.
+Below is a sample file for Mac and Linux of `.ssh/config` for multiple clusters (**replace aturing with your NetID**). You should only enter stanzas for the clusters and machines that you have acces to.
 
 ```
 Host tigressgateway.princeton.edu tigressgateway
