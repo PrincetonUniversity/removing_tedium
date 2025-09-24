@@ -67,6 +67,10 @@ Host della.princeton.edu della
 
 The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line (i.e., replace `aturing`). The third line in each stanza should remain unchanged. You can add additional stanzas for other clusters or machines.
 
+### (Windows) Corrupted MAC on input
+
+If you encounter `Corrupted MAC on input` or `ssh_dispatch_run_fatal` then see [this solution](https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh#A-Note-for-Windows-Users--Corrupted-MAC-on-input-).
+
 ### Preventing VPN disconnects
 
 If your VPN is disconnecting too frequently then try adding these lines to your `~/.ssh/config` file (make the file if necessary):
