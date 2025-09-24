@@ -53,7 +53,7 @@ However, by modifying the `~/.ssh/config` file (or creating the file if necessar
 $ ssh della
 ```
 
-Here is a sample `~/.ssh/config` file that allows one to do this:
+Here is a sample `~/.ssh/config` file that allows one to do this (replace **aturing** with your NetID):
 
 ```
 Host adroit.princeton.edu adroit
@@ -128,7 +128,9 @@ Step 1: On your **local machine** (laptop/desktop) run the command below to make
 $ mkdir -p ~/.ssh/controlmasters && mkdir -p ~/.ssh/sockets && chmod 700 ~/.ssh/sockets
 ```
 
-Step 2: Modify your `.ssh/config` file as follows (**replace aturing with your NetID**):
+Step 2: Modify your `.ssh/config` file as follows (replace **aturing** with your NetID):
+
+#### Mac, Linux and WSL
 
 ```
 Host tigressgateway.princeton.edu tigressgateway
@@ -146,6 +148,20 @@ Host della.princeton.edu della
   ControlMaster auto
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
+```
+
+#### Windows
+
+```
+Host tigressgateway.princeton.edu tigressgateway
+  HostName tigressgateway.princeton.edu
+  User aturing
+  ControlMaster auto
+
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
 ```
 
 If the file `~/.ssh/config` does not exist then make it.
@@ -224,6 +240,14 @@ Host della-gpu.princeton.edu della-gpu
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
+Host della-vis1 della-vis2
+  User jdh4
+  HostName %h.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+
 Host nobel.princeton.edu nobel
   User aturing
   HostName nobel.princeton.edu
@@ -263,6 +287,14 @@ Host stellar-vis2.princeton.edu stellar-vis2
 Host tiger.princeton.edu tiger
   User aturing
   HostName tiger.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host tiger-vis.princeton.edu tiger-vis
+  User aturing
+  HostName tiger-vis.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
   ControlPersist yes
