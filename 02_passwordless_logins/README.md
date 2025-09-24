@@ -137,7 +137,7 @@ If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try 
 
 ### Step 4: Return to Step 2 for additional Research Computing clusters
 
-Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test.
+Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test. Remember to do the visualization nodes as well (e.g., `adroit-vis`, `della-vis1`, and so on).
 
 # Windows
 
@@ -158,7 +158,8 @@ This can be accomplished using:
 If your username is `aturing` then look in the following directory for existing keys:
 
 ```
-C:\Users\aturing\.ssh>dir
+PS C:\Users\aturing> cd .ssh
+PS C:\Users\aturing\.ssh> dir
 ```
 
 Keys will have filenames like `id_rsa` and `id_rsa.pub`. If these files do not exist then you need to make them in Step 1. Otherwise, proceed to Step 2.
@@ -168,7 +169,7 @@ Keys will have filenames like `id_rsa` and `id_rsa.pub`. If these files do not e
 Run this command in the terminal to create new keys:
 
 ```
-C:\Users\aturing\.ssh>ssh-keygen
+PS C:\Users\aturing\.ssh> ssh-keygen
 ```
 
 ### Step 2: Copy the public key to the Research Computing cluster
@@ -176,19 +177,19 @@ C:\Users\aturing\.ssh>ssh-keygen
 (Option 1) Try to use `ssh-copy-id` while replacing `aturing` with your username:
 
 ```
-C:\Users\aturing\.ssh>ssh-copy-id aturing@adroit.princeton.edu
+PS C:\Users\aturing\.ssh> ssh-copy-id aturing@adroit.princeton.edu
 ```
 
 (Option 2) If `ssh-copy-id` is not found then run the following command:
 
 ```
-C:\Users\<username>\.ssh>type C:\Users\<username>\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+PS C:\Users\<username>\.ssh> type C:\Users\<username>\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 Below is a specific example for `aturing` and `adroit`:
 
 ```
-C:\Users\aturing\.ssh>type C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+PS C:\Users\aturing\.ssh> type C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 ### Step 3: Connect to the Research Computing cluster
@@ -196,13 +197,13 @@ C:\Users\aturing\.ssh>type C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit
 Try to `ssh` to the cluster (you should no longer need to enter a password):
 
 ```
-C:\Users\aturing\.ssh>ssh aturing@adroit.princeton.edu
+PS C:\Users\aturing\.ssh> ssh aturing@adroit.princeton.edu
 ```
 
 Or if you worked through Section 1 of this repo then you should be able to use the much shorter:
 
 ```
-C:\Users\aturing\.ssh>ssh adroit
+PS C:\Users\aturing\.ssh> ssh adroit
 ```
 
 ### Step 4: Return to Step 2 for additional Research Computing clusters
@@ -225,20 +226,7 @@ Once you have setup passwordless logins, you can run commands on a cluster witho
 
 ```
 # on your laptop
-$ ssh aturing@della.princeton.edu "touch myfile"
+$ ssh della "touch myfile"
 ```
 
-Note that you can also use the approach above to run scripts on an HPC cluster. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script to run. If the script generates figures and webpages as the output then that content could be viewed on `https://tigress-web.princeton.edu/~<YourNetID>/` (learn more about [tigress-web](https://researchcomputing.princeton.edu/support/knowledge-base/tigress-web)).
-
-If you have access to the `/projects` storage system then you can share webpages:
-
-```
-$ mkdir -p /projects/<first-letter-of-NetID>/<YourNetID>/public_html
-$ cd /projects/<first-letter-of-NetID>/<YourNetID>/public_html
-$ cat index.html
-<html><head></head><body>
-test
-</body></html>
-```
-
-Note that whatever you place in your `public_html` directory will be on the internet. Also, the contents of that directory are backed-up so don't put thousands of files in it or large files unless you need to. More on this later.
+Note that you can also use the approach above to run scripts on an HPC cluster. For instance, when you start the day, you could run a single command on your laptop that would trigger an analysis script to run.
