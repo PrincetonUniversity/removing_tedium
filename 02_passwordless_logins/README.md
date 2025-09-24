@@ -243,16 +243,6 @@ PS C:\Users\aturing\.ssh> ssh adroit
 
 Return to Step 2 and copy the public key to each cluster that you have an account on (e.g., `adroit-vis`, `della`, `stellar`, `tiger`). Try connecting to that cluster as a test.
 
-### Troubleshooting Windows
-
-#### Windows with PowerShell
-
-Follow [these directions](https://www.techrepublic.com/blog/10-things/how-to-generate-ssh-keys-in-openssh-for-windows-10/) to create the keys but don't follow the "Copying the public key securely" procedure. If your public key is on your laptop in `C:\Users\aturing\.ssh\id_rsa.pub` then the following can be 
-
-#### Windows with MobaXterm
-
-This [set of directions](https://vlaams-supercomputing-centrum-vscdocumentation.readthedocs-hosted.com/en/latest/access/generating_keys_with_mobaxterm.html) may be useful.
-
 ## Looking ahead
 
 Once you have setup passwordless logins, you can run commands on a cluster without formally connecting. For example, the command below will create an empty file with the name `myfile` in your `/home` directory on Della:
