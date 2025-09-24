@@ -16,7 +16,7 @@ To install a VPN client on your laptop/workstation follow this [OIT KnowledgeBas
 
 OIT is responsible for the VPN so please [contact them](https://princeton.service-now.com/service) with any questions or problems.
 
-There are two disadvantages to using the VPN: (1) it requires launching Global Protect at the start of each session and (2) the VPN has limited network performance (see below). If you would prefer not to use a VPN then see the [multiplexing approach](#ii-multiplexing-approach-vpn-free) below.
+There are two disadvantages to using the VPN: (1) it requires launching Global Protect at the start of each session and (2) the VPN has limited network performance (see below). If you would prefer not to use a VPN then see the [multiplexing approach](#ii-multiplexing-approach-vpn-free-large-clusters-only) below.
 
 ### What if the VPN is too slow?
 
