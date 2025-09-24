@@ -55,6 +55,8 @@ $ ssh della
 
 Here is a sample `~/.ssh/config` file that allows one to do this (replace **aturing** with your NetID):
 
+#### Mac, Linux and WSL
+
 ```
 Host adroit.princeton.edu adroit
   User aturing
@@ -63,6 +65,20 @@ Host adroit.princeton.edu adroit
 Host della.princeton.edu della
   User aturing
   HostName della.princeton.edu
+```
+
+#### Windows
+
+```
+Host adroit.princeton.edu adroit
+  User aturing
+  HostName adroit.princeton.edu
+  MACs hmac-sha2-512
+
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  MACs hmac-sha2-512
 ```
 
 The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line (i.e., replace `aturing`). The third line in each stanza should remain unchanged. You can add additional stanzas for other clusters or machines.
@@ -161,10 +177,12 @@ Host tigressgateway.princeton.edu tigressgateway
   HostName tigressgateway.princeton.edu
   User aturing
   ControlMaster auto
+  MACs hmac-sha2-512
 
 Host della.princeton.edu della
   User aturing
   HostName della.princeton.edu
+  MACs hmac-sha2-512
   ProxyJump tigressgateway.princeton.edu
 ```
 
