@@ -218,19 +218,25 @@ Here are some aliases for quickly working with modules:
 ```bash
 alias ma='module avail'
 alias mp='module purge'
-alias ml='module list'
-alias mla='module load anaconda3/2024.10'
-alias mlc='module load cudatoolkit/12.8'
+alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
+alias mla='module load anaconda3/2025.6'
+alias mlc='module load cudatoolkit/13.0'
 ```
 
-One could also use a shell function to load the latest version:
+One could also use a shell function to find and load the latest version:
 
 ```
 mla () 
 { 
     module load $(module avail -l anaconda3 2>&1 | grep anaconda3/202 | tail -n 1 | awk '{print $1}');
-    echo && module -l list 2>&1 | tail -n +3 && echo
+    ml  # defined above
 }
+```
+
+Same for the `cudatoolkit`:
+
+```
+mlc() { module load $(module avail -l cudatoolkit/1 2>&1 | grep cudatoolkit | tail -n 1 | awk '{print $1}'); ml; }
 ```
 
 Another approach would be to define an alias like this:
@@ -242,8 +248,10 @@ alias modl='module load'
 Then use it as follows:
 
 ```bash
-$ modl anaconda3/2023.3
+$ modl openmpi/gcc/4.1.6
 ```
+
+Unfortunately, tab completion cannot be used with `modl`.
 
 ## Finding Files
 
@@ -277,44 +285,6 @@ $ cd /usr/local
 $ myfind cublas
 ```
 
-## Tensorboard
-
-This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions for Tensorboard](https://researchcomputing.princeton.edu/support/knowledge-base/tensorflow#tensorboard)) on della-gpu:
-
-```
-board() {
-  case "$#" in
-    0)
-      echo "Missing port. Tunnel not created."
-      ;;
-    1)
-      ssh -N -f -L "$1":127.0.0.1:"$1" ${USER}@della-gpu.princeton.edu
-      echo "Created SSH tunnel using port $1"
-      ;;
-    2)
-      ssh -N -f -L "$1":"$2":"$1" ${USER}@della-gpu.princeton.edu
-      echo "Created SSH tunnel using port $1 and host $2"
-      ;;
-    *)
-      echo "Too many command-line arguments ("$#"). Tunnel not created."
-  esac
-}
-```
-
-If running Tensorboard on the head node then use:
-
-```
-$ board 9100
-```
-
-If running on a compute node then use, for example:
-
-```
-$ board 9100 della-l09g6
-```
-
-Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
-
 ## Conda environments
 
 The shell functions and alias below can be used to list your enumerated Conda environments (conen), activate an environment by number (conac), deactivate the current environment (conde) and remove or delete an environment (conrm):
@@ -323,20 +293,20 @@ The shell functions and alias below can be used to list your enumerated Conda en
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3/2023.3
+    mla  # defined above
   fi 
   conda info --envs | grep . | grep -v "#" | cat -n
 }
 
 conac() {
-  name=$(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
+  name=$(conda info --envs | grep . | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
   conda activate $name
 }
 
 alias conde='conda deactivate'
 
 conrm() {
-  name=$(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
+  name=$(conda info --envs | grep . | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
   conda remove --name $name --all -y -q
   echo; conen; echo
 }
@@ -401,7 +371,7 @@ You can distinguish different jobs by setting the job name in the Slurm script:
 The alias below submits the job and then launches `watch`. This allows one to know when short test jobs start running:
 
 ```bash
-alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
+alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue --me'
 ```
 
 To exit from `watch` hold down [Ctrl] and press [c].
@@ -411,19 +381,19 @@ To exit from `watch` hold down [Ctrl] and press [c].
 Show the state of your running and pending jobs:
 
 ```bash
-alias sq='squeue -u $USER'
+alias sq='squeue --me'
 ```
 
 See the expected start times of pending jobs:
 
 ```bash
-alias sqs='squeue -u $USER --start'
+alias sqs='squeue --me --start'
 ```
 
 Watch your jobs in the queue (useful for knowing when test jobs run):
 
 ```bash
-alias wq='watch -n 1 squeue -u $USER'
+alias wq='watch -n 1 squeue --me'
 ```
 
 This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To exit from `watch` hold down [Ctrl] and press [c].
@@ -450,7 +420,7 @@ For more on `salloc` see [this page](https://researchcomputing.princeton.edu/slu
 It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, thread performance and GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
 
 ```bash
-goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
+goto() { ssh $(squeue --me -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
 ```
 
 The function above uses `squeue` to list all your job id's in ascending order along with the corresponding node where the job is running. It then takes the last row, extracts the node and calls `ssh` on that. This method will not work when multiple nodes are used to run the job.
@@ -460,10 +430,48 @@ The function above uses `squeue` to list all your job id's in ascending order al
 Running `mycancel` will automatically find the job id of your most recent job and cancel the job:
 
 ```bash
-mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
+mycancel() { scancel $(squeue --me -o "%i" -S i -h | tail -n 1); }
 ```
 
 The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo we present implementations of `mycancel` in Python and C++. The implementation above is of course in Bash.
+
+## Tensorboard
+
+This function can be added to the shell configuration file (`~/.bashrc` on Linux or `~/.bash_profile` on macOS) on your local machine (e.g., laptop) to create an SSH tunnel for using Tensorboard (see [directions for Tensorboard](https://researchcomputing.princeton.edu/support/knowledge-base/tensorflow#tensorboard)) on della-gpu:
+
+```
+board() {
+  case "$#" in
+    0)
+      echo "Missing port. Tunnel not created."
+      ;;
+    1)
+      ssh -N -f -L "$1":127.0.0.1:"$1" ${USER}@della-gpu.princeton.edu
+      echo "Created SSH tunnel using port $1"
+      ;;
+    2)
+      ssh -N -f -L "$1":"$2":"$1" ${USER}@della-gpu.princeton.edu
+      echo "Created SSH tunnel using port $1 and host $2"
+      ;;
+    *)
+      echo "Too many command-line arguments ("$#"). Tunnel not created."
+  esac
+}
+```
+
+If running Tensorboard on the head node then use:
+
+```
+$ board 9100
+```
+
+If running on a compute node then use, for example:
+
+```
+$ board 9100 della-l09g6
+```
+
+Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
 
 ### Who's hogging all the resources?
 
