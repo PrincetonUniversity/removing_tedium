@@ -501,7 +501,7 @@ The `eff` function figures out the jobid and runs `jobstats` on that.
 
 ### Number of free GPUs
 
-Previoulsy we used shell function for this. Those functions helped many users so now they have been promoted to a system command:
+Previously we used shell function for this. Those functions helped many users so now they have been promoted to a system command:
 
 ```
 $ gfree
