@@ -689,8 +689,6 @@ Follow @igor_chubin for wttr.in updates
 
 Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. To see usage, use the shell function command below to see CPU-hours per user:
 
-One can also use `sreport`. The function below can be used to see usage by user:
-
 ```bash
 hog() {
   start_date=$(date -d"30 days ago" +%D);
