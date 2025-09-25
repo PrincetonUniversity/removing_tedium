@@ -64,7 +64,7 @@ Can you think of another symbolic link that could be used to speed-up your workf
 
 ## How to remove a symbolic link
 
-*IMPORTANT*: To remove a symbolic link use, for example, `$ rm prj`. Do not include a trailing slash after the symbolic link name.
+To remove a symbolic link use, for example, `$ unlink prj`.
 
 ## Using an Alias
 
