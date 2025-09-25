@@ -75,9 +75,9 @@ alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
 alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
 FRMT="1.1,1.3,1.4,1.5,1.6,1.7,2.3"
 alias myprio='join -j 1 -o ${FRMT} <(sqs | sort) <(sprio | sort) | sort -g'
-mycancel() { squeue --me -o "%i" -S i -h | tail -n 1); }
-eff() { seff $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
-goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
+mycancel() { scancel $(squeue --me -o "%i" -S i -h | tail -n 1); }
+eff() { jobstats $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
+goto() { ssh $(squeue --me -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
 
 #######
 # gpu #
@@ -104,7 +104,7 @@ alias htop='htop -u $USER'
 alias R='R --vanilla --quiet'
 alias dirsize='du -h --max-depth=1 | sort -h'
 alias mypath='readlink -f'
-alias ccat='/usr/licensed/anaconda3/2024.10/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2025.6/bin/pygmentize'
 
 ###########
 # history #
