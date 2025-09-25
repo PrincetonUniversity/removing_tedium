@@ -109,15 +109,15 @@ Be sure not to name an alias after an existing command. If your shell is not beh
 Aliases take precedence over commands loaded via modules. This is illustrated below with the `intel` module:
 
 ```bash
-$ module load intel/19.1.1.217
-$ icc
+$ module load intel-oneapi/2024.2
+$ icx
 $ module purge
-$ alias icc='ps -u $USER'
-$ module load intel/19.1.1.217
-$ icc
+$ alias icx='ps -u $USER'
+$ module load intel-oneapi/2024.2
+$ icx
 ```
 
-If you run the commands above, `icc` will not be the Intel C compiler as one may expect. Be careful of this and put some effort into choosing alias names. When choosing a name for an alias, always make sure that it is not already in use:
+If you run the commands above, `icx` will not be the Intel C compiler as one may expect. Be careful of this and put some effort into choosing alias names. When choosing a name for an alias, always make sure that it is not already in use:
 
 ```bash
 $ cq
@@ -329,7 +329,7 @@ Remove an environment by the number given by `conen`. This command is similar to
 A session using the shortcuts above might look like this:
 
 ```bash
-[aturing@tigergpu ~]$ conen
+[aturing@della ~]$ conen
 Loading anaconda3 module ...
      1  py36                     /home/aturing/.conda/envs/py36
      2	pytools-env              /home/aturing/.conda/envs/pytools-env
@@ -401,7 +401,7 @@ This will create an alias which will display the result of the squeue command fo
 Display the contents `job.slurm` in the terminal:
 
 ```
-alias js='cat $SLURMSCRIPT'
+js() { if [ -f ./$SLURMSCRIPT ]; then cat $SLURMSCRIPT; else echo "$SLURMSCRIPT not found"; fi }
 ```
 
 ### Interactive allocations
@@ -562,7 +562,7 @@ After submitting a GPU job it is common to run `goto` followed by `wsmi` on the 
 
 ```bash
 if [[ $(hostname) == adroit* ]]; then
-  alias a100='ssh adroit-h11g1'
+  alias gpu80='ssh adroit-h11g1'
 fi
 ```
 
@@ -589,6 +589,12 @@ The `checkquota` command provides information about available storage space and 
 
 ```bash
 alias cq='checkquota'
+```
+
+To list the size of each directory to know which files to delete to free space:
+
+```bash
+alias dirsize='du -h --max-depth=1 | sort -hr'
 ```
 
 Another tip is to put the following in your `~/.bashrc` or `myshortcuts.sh` file to see your remaining space each time you log in:
@@ -618,11 +624,36 @@ fi
 
 To learn about interactive shells and `$PS1` see [this page](https://www.gnu.org/software/bash/manual/html_node/Is-this-Shell-Interactive_003f.html). Learn about `.bashrc` and `.bash_profile` [here](https://linuxize.com/post/bashrc-vs-bash-profile/).
 
+## Find people
 
-To list the size of each directory to know which files to delete to free space:
+Search the university database by name:
 
-```bash
-alias dirsize='du -h --max-depth=1 | sort -hr'
+```
+findperson() {
+  if [ $1 = "-h" ] || [ $1 = "--help" ]; then
+    echo "$ findperson George Jones"
+    echo "$ findperson _ Smith"
+    echo "$ findperson John _"
+    return
+  fi
+  if [ $1 = "_" ]; then
+    ldapsearch -x -LLL "(&(givenName=*)(sn=$2))"
+    return
+  fi
+  if [ $2 = "_" ]; then
+    ldapsearch -x -LLL "(&(givenName=$1)(sn=*))"
+    return
+  fi
+  ldapsearch -x -LLL "(&(givenName=$1)(sn=$2))"
+}
+```
+
+Example usage:
+
+```
+$ findperson _ witherspoon           # only last name is known
+$ findperson rex _                   # only first name is known
+$ findperson christopher eisgruber   # full name is known
 ```
 
 ## Weather
@@ -687,9 +718,10 @@ Shadowing is the remapping of a command with different parameters:
 ```bash
 alias vi='vim'
 alias top='htop'
+alias htop='htop -u $USER'
 alias cmake='cmake3'
 alias R='R --vanilla --quiet'
-alias ccat='/usr/licensed/anaconda3/2023.3/bin/pygmentize'
+alias ccat='/usr/licensed/anaconda3/2025.6/bin/pygmentize'
 ```
 
 The `ccat` alias is like the `cat` command but with syntax highlighting of Python files and more (e.g., `$ ccat myscript.py`).
