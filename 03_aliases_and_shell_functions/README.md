@@ -687,17 +687,7 @@ Follow @igor_chubin for wttr.in updates
 
 ### Who's hogging all the resources?
 
-Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. To see usage, run the command below and look at the `RawUsage` column:
-
-```
-$ sshare -la -A <your-account>
-```
-
-To see the choice(s) for `<your-account>`:
-
-```
-$ sshare | grep $USER | awk '{print $1}'
-```
+Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. To see usage, use the shell function command below to see CPU-hours per user:
 
 One can also use `sreport`. The function below can be used to see usage by user:
 
@@ -710,6 +700,20 @@ hog() {
 ```
 
 A small number of users have multiple Slurm accounts. Modifications to the above function may be needed for these users. One can get GPU-hours by replacing `--tres=cpu` with `--tres=gres/gpu`.
+
+To see the choice(s) for `account`:
+
+```
+$ sshare | grep $USER | awk '{print $1}'
+```
+
+One can also use:
+
+```
+$ sshare -la -A <account> -o User,RawUsage
+```
+
+Replace `<account>` with your Slurm account.
 
 ## Enhanced commands
 
