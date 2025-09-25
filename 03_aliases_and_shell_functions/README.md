@@ -479,32 +479,6 @@ $ board 9100 della-l09g6
 
 Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
 
-### Who's hogging all the resources?
-
-Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. To see usage, run the command below and look at the `RawUsage` column:
-
-```
-$ sshare -la -A <your-account>
-```
-
-To see the choice(s) for `<your-account>`:
-
-```
-$ sshare | grep $USER | awk '{print $1}'
-```
-
-One can also use `sreport`. The function below can be used to see usage by user:
-
-```bash
-hog() {
-  start_date=$(date -d"30 days ago" +%D);
-  account=$(sshare | grep $USER | awk '{print $1}' | head -n 1);
-  sreport user topusage start=${start_date} end=now TopCount=100 accounts=${account} -t hourper --tres=cpu;
-}
-```
-
-A small number of users have multiple Slurm accounts. Modifications to the above function may be needed for these users.
-
 ### Generate a report on your recent job history
 
 Previoulsy we used a lengthy shell function for this. That function helped many users so now it has been promoted to a system command:
@@ -710,6 +684,32 @@ Location: Princeton, Mercer County, New Jersey, United States of America [40.349
 
 Follow @igor_chubin for wttr.in updates
 ```
+
+### Who's hogging all the resources?
+
+Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. To see usage, run the command below and look at the `RawUsage` column:
+
+```
+$ sshare -la -A <your-account>
+```
+
+To see the choice(s) for `<your-account>`:
+
+```
+$ sshare | grep $USER | awk '{print $1}'
+```
+
+One can also use `sreport`. The function below can be used to see usage by user:
+
+```bash
+hog() {
+  start_date=$(date -d"30 days ago" +%D);
+  account=$(sshare | grep $USER | awk '{print $1}' | head -n 1);
+  sreport user topusage start=${start_date} end=now TopCount=100 accounts=${account} -t hourper --tres=cpu;
+}
+```
+
+A small number of users have multiple Slurm accounts. Modifications to the above function may be needed for these users.
 
 ## Enhanced commands
 
