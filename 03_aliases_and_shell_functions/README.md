@@ -709,7 +709,7 @@ hog() {
 }
 ```
 
-A small number of users have multiple Slurm accounts. Modifications to the above function may be needed for these users.
+A small number of users have multiple Slurm accounts. Modifications to the above function may be needed for these users. One can get GPU-hours by replacing `--tres=cpu` with `--tres=gres/gpu`.
 
 ## Enhanced commands
 
