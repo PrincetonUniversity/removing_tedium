@@ -1,17 +1,4 @@
 #!/bin/bash
-#      ___                     ___           ___           ___                       ___     
-#     /  /\      ___          /  /\         /  /\         /  /\        ___          /  /\    
-#    /  /::\    /  /\        /  /:/        /  /:/_       /  /:/       /  /\        /  /:/_   
-#   /  /:/\:\  /  /:/       /  /:/        /  /:/ /\     /  /:/       /  /:/       /  /:/ /\  
-#  /  /:/~/:/ /__/::\      /  /:/  ___   /  /:/ /::\   /  /:/  ___  /__/::\      /  /:/ /:/_ 
-# /__/:/ /:/  \__\/\:\__  /__/:/  /  /\ /__/:/ /:/\:\ /__/:/  /  /\ \__\/\:\__  /__/:/ /:/ /\
-# \  \:\/:/      \  \:\/\ \  \:\ /  /:/ \  \:\/:/~/:/ \  \:\ /  /:/    \  \:\/\ \  \:\/:/ /:/
-#  \  \::/        \__\::/  \  \:\  /:/   \  \::/ /:/   \  \:\  /:/      \__\::/  \  \::/ /:/ 
-#   \  \:\        /__/:/    \  \:\/:/     \__\/ /:/     \  \:\/:/       /__/:/    \  \:\/:/  
-#    \  \:\       \__\/      \  \::/        /__/:/       \  \::/        \__\/      \  \::/   
-#     \__\/                   \__\/         \__\/         \__\/                     \__\/    
-#
-# (c) 2025 Princeton Institute for Computational Science and Engineering
  
 # This file contains aliases and shell functions for researchers using high-performance
 # computing clusters. For details see https://github.com/PrincetonUniversity/removing_tedium
@@ -39,10 +26,10 @@ alias dd='$EDITOR -- "$(ls -t | head -n 2 | tail -n 1)"'  # edit 2nd newest file
 # navigation #
 ##############
 mk() { mkdir -p "$1" && cd "$1"; }
-cl() { cd "$1" && ll; } # uses alias defined above
+cl() { cd "$1" && ll; }  # uses alias defined above
 alias ..='cd .. && ll'
 alias ...='cd ../.. && ll'
-alias pwd='pwd -P'
+alias pwd='pwd -P'  # resolve symlinks
 
 #######################
 # environment modules #
@@ -51,7 +38,7 @@ alias ma='module avail'
 alias mp='module purge'
 alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
 mla() { module load $(module avail -l anaconda3 2>&1 | grep anaconda3/202 | tail -n 1 | awk '{print $1}'); ml; }
-mlc() { module load $(module avail -l cudatoolkit/12 2>&1 | grep cudatoolkit | tail -n 1 | awk '{print $1}'); ml; }
+mlc() { module load $(module avail -l cudatoolkit/1 2>&1 | grep cudatoolkit | tail -n 1 | awk '{print $1}'); ml; }
 
 #########
 # conda #
@@ -59,17 +46,17 @@ mlc() { module load $(module avail -l cudatoolkit/12 2>&1 | grep cudatoolkit | t
 conen() {
   if [ $(module -l list 2>&1 | grep -c anaconda3) -eq 0 ]; then
     echo "Loading anaconda3 module ..."
-    module load anaconda3/2024.10
-  fi 
+    mla
+  fi
   conda info --envs | grep . | grep -v "#" | cat -n
 }
 conac() {
-  name=$(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
+  name=$(conda info --envs | grep . | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
   conda activate $name
 }
 alias conde='conda deactivate'
 conrm() {
-  name=$(conda info --envs | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
+  name=$(conda info --envs | grep . | grep -v "#" | awk 'NR=="'$1'"' | tr -s ' ' | cut -d' ' -f 1)
   conda remove --name $name --all -y -q
   echo; conen; echo
 }
@@ -78,20 +65,19 @@ conrm() {
 # slurm #
 #########
 SLURMSCRIPT="job.slurm"
-alias sq='squeue -u $USER'
-alias sqs='squeue -u $USER --start'
-alias wq='watch -n 1 squeue -u $USER'
+alias sq='squeue --me'
+alias sqs='squeue --me --start'
+alias wq='watch -n 1 squeue --me'
 alias sb='sbatch $SLURMSCRIPT'
+alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue --me'
 alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
 alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
 alias fair='echo "Fairshare: " && sshare | cut -c 84- | sort -g | uniq | tail -1'
 FRMT="1.1,1.3,1.4,1.5,1.6,1.7,2.3"
 alias myprio='join -j 1 -o ${FRMT} <(sqs | sort) <(sprio | sort) | sort -g'
-mycancel() { squeue -u $USER -o "%i" -S i -h | tail -n 1); }
-maxmem() { snodes | tr -s [:blank:] | cut -d' ' -f7 | sort -g | uniq; }
+mycancel() { squeue --me -o "%i" -S i -h | tail -n 1); }
 eff() { seff $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
 goto() { ssh $(squeue -u $USER -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
-alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue -u $USER'
 
 #######
 # gpu #
