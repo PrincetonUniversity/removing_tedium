@@ -171,7 +171,7 @@ alias dd='$EDITOR -- "$(ls -t | head -n 2 | tail -n 1)"'
 
 The `ll` alias lists the files in the current directory in long format and sorts them by modification time with the newest at the bottom.
 
-The `jj` command prints the contents of the newest file in the current working directory to the terminal while `kk` prints out the second newest file. `jj` **is arguably the most useful alias on this entire page. Start using it**! The `ff` command loads the newest file in your specified text editor while `dd` loads the second newest file. The routine use of `ll`, `jj` and `ff` can save you lots of time. Note that `dd` overwrites an existing command but because the original `dd` is obscure, this can be overlooked. If you are left-handed then you may consider transposing the aliases (e.g., interchange `jj` with `ff`).
+The `jj` command prints the contents of the newest file in the current working directory to the terminal while `kk` prints out the second newest file. The `ff` command loads the newest file in your specified text editor while `dd` loads the second newest file. The routine use of `ll`, `jj` and `ff` can save you lots of time. Note that `dd` overwrites an existing command but because the original `dd` is obscure, this can be overlooked. If you are left-handed then you may consider transposing the aliases (e.g., interchange `jj` with `ff`).
 
 Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing command, it is obscure and can be overwritten. `gg` and `hh` are also available.
 
@@ -335,7 +335,7 @@ Loading anaconda3 module ...
      2	pytools-env              /home/aturing/.conda/envs/pytools-env
      3	tf2-gpu                  /home/aturing/.conda/envs/tf2-gpu
      4	torch-env                /home/aturing/.conda/envs/torch-env
-     5	base                  *  /usr/licensed/anaconda3/2023.3
+     5	base                  *  /usr/licensed/anaconda3/2025.6
 (base) [aturing@tigergpu ~]$ conac 4
 (torch-env) [aturing@tigergpu ~]$
 (torch-env) [aturing@tigergpu ~]$ conde
@@ -397,6 +397,12 @@ alias wq='watch -n 1 squeue --me'
 ```
 
 This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To exit from `watch` hold down [Ctrl] and press [c].
+
+Display the contents `job.slurm` in the terminal:
+
+```
+alias js='cat $SLURMSCRIPT'
+```
 
 ### Interactive allocations
 
@@ -514,26 +520,23 @@ Give the command above a try. To see the help menu: `$ shistory -h`.
 If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
 
 ```bash
-eff() { jobstats $(ls -t slurm-*.out | head -n 1 | tr -dc '0-9'); }
+eff() { jobstats $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
 ```
 
-The `eff` function figures out the job id and runs `jobstats` on that.
+The `eff` function figures out the jobid and runs `jobstats` on that.
 
 ### Number of free GPUs
 
-Della ("gpu" partition):
+Previoulsy we used shell function for this. Those functions helped many users so now they have been promoted to a system command:
+
 ```
-alias gpu='shownodes -p gpu | grep della- | grep -v -E "drain|down|boot" | awk '\''{print $6}'\'' | awk -F/ '\''{free+=$1; total+=$2} END {print "Free/Total: " free "/" total}'\'''
+$ gfree
 ```
 
-Della (PLI nodes):
-```
-alias pli='shownodes -p pli-c | grep della- | grep -v -E "drain|down|boot" | awk '\''{print $6}'\'' | awk -F/ '\''{free+=$1; total+=$2} END {print "Free/Total: " free "/" total}'\'''
-```
+To see the source code:
 
-Tiger:
 ```
-alias gpu='shownodes -p gpu | grep tiger- | grep -v -E "drain|down|boot" | awk '\''{print $6}'\'' | awk -F/ '\''{free+=$1; total+=$2} END {print "Free/Total: " free "/" total}'\'''
+$ cat /usr/local/bin/gfree
 ```
 
 ### Get your fairshare value
