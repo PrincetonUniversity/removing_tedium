@@ -411,6 +411,8 @@ You do not need to connect to `tigressgateway` explicitly. Instead, save time by
 
 #### Windows
 
+Use a text editor to add these lines to `C:\Users\<username>\.ssh`:
+
 ```
 Host tigressgateway.princeton.edu tigressgateway
   HostName tigressgateway.princeton.edu
