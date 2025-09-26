@@ -8,7 +8,7 @@ The following three appproaches are described on this page:
 - [VPN-free with SSH multiplexing](#ii-multiplexing-approach-vpn-free-large-clusters-only) (recommended for Mac, Linux, and WSL users)  
 - [VPN-free without SSH multiplexing](#iii-vpn-free-but-without-ssh-multiplexing-for-windows-users-on-the-large-cluster)
 
-# I. VPN Approach ((recommended for Windows users))
+# I. VPN Approach (recommended for Windows users)
 
 Here is the procedure:
 
@@ -41,54 +41,6 @@ The SonicWall VPN severely decreases transfer rates and should be avoided. If yo
 
 On campus, you can measure the speed of your network connection at [https://tigerspeed.princeton.edu](https://tigerspeed.princeton.edu). If you are having trouble connecting to the Research Computing systems using SSH then [see this page](https://researchcomputing.princeton.edu/ssh) and in particular [https://myip.rc.princeton.edu/](https://myip.rc.princeton.edu/).
 
-### Host nicknames or abbreviations
-
-You can connect to a cluster like Della from your local machine (e.g., laptop) using the following command:
-
-```
-$ ssh <YourNetID>@della.princeton.edu
-```
-
-However, by modifying the `~/.ssh/config` file (or creating the file if necessary) on your local machine you can just do the following even if off-campus:
-
-```
-$ ssh della
-```
-
-Here is a sample `~/.ssh/config` file that allows one to do this (replace **aturing** with your NetID):
-
-#### Mac, Linux and WSL
-
-```
-Host adroit.princeton.edu adroit
-  User aturing
-  HostName adroit.princeton.edu
-  
-Host della.princeton.edu della
-  User aturing
-  HostName della.princeton.edu
-```
-
-#### Windows
-
-```
-Host adroit.princeton.edu adroit
-  User aturing
-  HostName adroit.princeton.edu
-  MACs hmac-sha2-512
-
-Host della.princeton.edu della
-  User aturing
-  HostName della.princeton.edu
-  MACs hmac-sha2-512
-```
-
-The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line (i.e., replace `aturing`). The third line in each stanza should remain unchanged. You can add additional stanzas for other clusters or machines.
-
-### (Windows) Corrupted MAC on input
-
-If you encounter `Corrupted MAC on input` or `ssh_dispatch_run_fatal` then see [this solution](https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh#A-Note-for-Windows-Users--Corrupted-MAC-on-input-).
-
 ### Preventing VPN disconnects
 
 If your VPN is disconnecting too frequently then try adding these lines to your `~/.ssh/config` file (make the file if necessary):
@@ -120,7 +72,57 @@ startctui
 
 The approach described above does not work with the PPPL Pulse Secure VPN. You will be required to Duo authenticate each time you use `ssh` or `scp`.
 
-# II. Multiplexing Approach (VPN free, large clusters only, recommended for Mac, Linux, and WSL users)
+# Host Nicknames or Abbreviations
+
+You can connect to a cluster like Della from your local machine (e.g., laptop) using the following command:
+
+```
+$ ssh <YourNetID>@della.princeton.edu
+```
+
+However, by modifying the `~/.ssh/config` file (or creating the file if necessary) on your local machine you can just do the following even if off-campus:
+
+```
+$ ssh della
+```
+
+Here is a sample `~/.ssh/config` file that allows one to do this (replace **aturing** with your NetID):
+
+#### Mac, Linux and WSL
+
+```
+Host adroit.princeton.edu adroit
+  User aturing
+  HostName adroit.princeton.edu
+  
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+```
+
+#### Windows
+
+Use a text editor to add these lines to `C:\Users\<username>\.ssh`:
+
+```
+Host adroit.princeton.edu adroit
+  User aturing
+  HostName adroit.princeton.edu
+  MACs hmac-sha2-512
+
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  MACs hmac-sha2-512
+```
+
+The first line in each stanza above specifies alternative names for the host. Put your Princeton NetID in the second line (i.e., replace `aturing`). The third line in each stanza should remain unchanged. You can add additional stanzas for other clusters or machines.
+
+### (Windows) Corrupted MAC on input
+
+If you encounter `Corrupted MAC on input` or `ssh_dispatch_run_fatal` then see [this solution](https://researchcomputing.princeton.edu/support/knowledge-base/connect-ssh#A-Note-for-Windows-Users--Corrupted-MAC-on-input-).
+
+# II. Multiplexing Approach (VPN free, large clusters only, recommended for Mac and Linux)
 
 > Multiplexing involves the simultaneous transmission of several messages along a single channel of communication.
 
@@ -196,16 +198,6 @@ Host tigressgateway.princeton.edu tigressgateway
 This will enable port forwarding for the given ports in case you require VNC access or other processes to tunnel through (most users can ignore this). See the section for `ProxyJump` in `man ssh_config` for more. **You should choose new ports between 5900 and 9999** but most users will not need port forwarding so you may choose to omit lines beginning with `LocalForward`.
 
 After completing the steps above, you should be able to `scp <localfile> della:` without additional Duo authentications since the connection is established and multiplexed.
-
-#### Note for Windows Users
-
-Do not include these lines:
-
-```
-  ControlMaster auto
-  ControlPersist yes
-  ControlPath ~/.ssh/sockets/%p-%h-%r
-```
 
 Below is a sample file for Mac and Linux of `.ssh/config` for multiple clusters (**replace aturing with your NetID**). You should only enter stanzas for the clusters and machines that you have acces to.
 
