@@ -2,6 +2,12 @@
 
 [Duo](https://princeton.service-now.com/service?id=kb_article&sys_id=575eff5387064dd012ae43bd0ebb35b0) enhances security with the downside of being disruptive (and even annoying). This page presents two approaches to suppressing Duo while still maintaining security. Note that by "suppressing" we mean minimizing as opposed to eliminating. That is, you will still need to Duo authenticate but much less so.
 
+The following three appproaches are described on this page:
+
+I. [Use a VPN](#i-vpn-approach) (recommended for Windows users)
+II. [VPN-free with SSH multiplexing](#ii-multiplexing-approach-vpn-free-large-clusters-only) (recommended for Mac, Linux, and WSL users)
+III. [VPN-free without SSH multiplexing](#ii-multiplexing-approach-vpn-free-large-clusters-only)
+
 # I. VPN Approach
 
 Here is the procedure:
