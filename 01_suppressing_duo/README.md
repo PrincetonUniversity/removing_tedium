@@ -8,7 +8,7 @@ The following three appproaches are described on this page:
 - [VPN-free with SSH multiplexing](#ii-multiplexing-approach-vpn-free-large-clusters-only) (recommended for Mac, Linux, and WSL users)  
 - [VPN-free without SSH multiplexing](#iii-vpn-free-but-without-ssh-multiplexing-for-windows-users-on-the-large-cluster)
 
-# I. VPN Approach
+# I. VPN Approach ((recommended for Windows users))
 
 Here is the procedure:
 
@@ -120,7 +120,7 @@ startctui
 
 The approach described above does not work with the PPPL Pulse Secure VPN. You will be required to Duo authenticate each time you use `ssh` or `scp`.
 
-# II. Multiplexing Approach (VPN free, Large Clusters Only)
+# II. Multiplexing Approach (VPN free, large clusters only, recommended for Mac, Linux, and WSL users)
 
 > Multiplexing involves the simultaneous transmission of several messages along a single channel of communication.
 
@@ -170,22 +170,6 @@ Host della.princeton.edu della
   ControlMaster auto
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
-```
-
-#### Windows
-
-```
-Host tigressgateway.princeton.edu tigressgateway
-  HostName tigressgateway.princeton.edu
-  User aturing
-  ControlMaster auto
-  MACs hmac-sha2-512
-
-Host della.princeton.edu della
-  User aturing
-  HostName della.princeton.edu
-  MACs hmac-sha2-512
-  ProxyJump tigressgateway.princeton.edu
 ```
 
 If the file `~/.ssh/config` does not exist then make it using a text editor.
@@ -421,7 +405,9 @@ Host *
 
 Make sure that you have an X server running (e.g., [XQuartz](https://www.xquartz.org)) when using this approach. There are [better approaches](https://researchcomputing.princeton.edu/support/knowledge-base/gui-applications) to working with graphics on the Research Computing clusters than X11.
 
-# III. VPN free but without SSH Multiplexing (for Windows users on the large clusters)
+# III. VPN Free (but without SSH multiplexing, large clusters only)
+
+This approach is worth knowing about in general. Some **Windows** users may prefer it if using the VPN is an issue. You must have an account on one of the large clusters (e.g., Della).
 
 [Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to `ssh` to `tigressgateway.princeton.edu` and then from there, `ssh` to your desired cluster (e.g., della) as shown in the figure below. **You must have an account on one of the large clusters to do this (e.g., Della).** If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
 
