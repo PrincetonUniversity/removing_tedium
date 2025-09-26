@@ -425,19 +425,6 @@ Make sure that you have an X server running (e.g., [XQuartz](https://www.xquartz
 
 You do not need to connect to `tigressgateway` explicitly. Instead, save time by modifying your `.ssh/config` file as follows (replace **aturing** with your NetID):
 
-#### Mac, Linux or WSL
-
-```
-Host tigressgateway.princeton.edu tigressgateway
-  HostName tigressgateway.princeton.edu
-  User aturing
-
-Host della.princeton.edu della
-  User aturing
-  HostName della.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-```
-
 #### Windows
 
 ```
