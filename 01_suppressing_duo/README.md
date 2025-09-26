@@ -5,7 +5,7 @@
 The following three appproaches are described on this page:
 
 - [Use a VPN](#i-vpn-approach-recommended-for-windows-users) (recommended for Windows users)  
-- [VPN-free with SSH multiplexing](#ii-multiplexing-approach-vpn-free-large-clusters-only) (recommended for Mac, Linux, and WSL users)  
+- [VPN-free with SSH multiplexing](#ii-multiplexing-approach-vpn-free-large-clusters-only-recommended-for-mac-and-linux) (recommended for Mac, Linux, and WSL users)  
 - [VPN-free without SSH multiplexing](#iii-vpn-free-but-without-ssh-multiplexing-for-windows-users-on-the-large-cluster)
 
 # I. VPN Approach (recommended for Windows users)
