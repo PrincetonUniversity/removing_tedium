@@ -6,6 +6,14 @@ Commonly repeated commands should be replaced by an alias, which is a short name
 
 This page illustrates how to use aliases and shell functions to improve productivity. While numerous examples are given, for the greatest impact you should create new ones based on your own work.
 
+## Connect
+
+First connect to a Research computing system such as `adroit` or `della`:
+
+```
+$ ssh adroit
+```
+
 ## First Alias
 
 Let's illustrate the process of creating an alias using this popular command:
