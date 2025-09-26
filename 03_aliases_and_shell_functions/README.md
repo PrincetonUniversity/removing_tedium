@@ -91,7 +91,7 @@ alias sync_config="wget -O .bashrc https://raw.githubusercontent.com/aturing/she
 
 One can use the `hostname` command and `if` statements to deal with differences between clusters. For an example of this, see the [checkquota](#checkquota) section below.
 
-One could also store the shortcuts in `myshortcuts.sh` and then load it in interactive shells in the `.bashrc` file:
+One could also store the shortcuts in `myshortcuts.sh` and then load that file in interactive shells in the `~/.bashrc` file:
 
 ```
 # source local definitions
