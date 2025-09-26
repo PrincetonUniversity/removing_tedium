@@ -33,39 +33,6 @@ The use of a VPN will decrease your internet connection speed. The table below w
 
 The SonicWall VPN severely decreases transfer rates and should be avoided. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below which is VPN-free.
 
-[Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to ssh to `tigressgateway.princeton.edu` and then from there, ssh to your desired cluster (e.g., della) as shown in the figure below. **You must have an account on one of the large clusters to do this.** If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
-
-![Hop Through](hop_through_no_vpn_needed.png)
-
-#### Mac, Linux or WSL
-
-```
-Host tigressgateway.princeton.edu tigressgateway
-  HostName tigressgateway.princeton.edu
-  User aturing
-
-Host della.princeton.edu della
-  User aturing
-  HostName della.princeton.edu
-  ProxyJump tigressgateway.princeton.edu
-```
-
-#### Windows
-
-```
-Host tigressgateway.princeton.edu tigressgateway
-  HostName tigressgateway.princeton.edu
-  User jdh4
-  MACs hmac-sha2-512
-
-Host della.princeton.edu della
-  User jdh4
-  HostName della.princeton.edu
-  MACs hmac-sha2-512
-  ProxyJump tigressgateway.princeton.edu
-```
-
-
 On campus, you can measure the speed of your network connection at [https://tigerspeed.princeton.edu](https://tigerspeed.princeton.edu). If you are having trouble connecting to the Research Computing systems using SSH then [see this page](https://researchcomputing.princeton.edu/ssh) and in particular [https://myip.rc.princeton.edu/](https://myip.rc.princeton.edu/).
 
 ### Host nicknames or abbreviations
@@ -447,3 +414,47 @@ Host *
 ```
 
 Make sure that you have an X server running (e.g., [XQuartz](https://www.xquartz.org)) when using this approach. There are [better approaches](https://researchcomputing.princeton.edu/support/knowledge-base/gui-applications) to working with graphics on the Research Computing clusters than X11.
+
+# VPN free but without SSH Multiplexing (for Windows users on the large clusters)
+
+[Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to `ssh` to `tigressgateway.princeton.edu` and then from there, `ssh` to your desired cluster (e.g., della) as shown in the figure below. **You must have an account on one of the large clusters to do this (e.g., Della).** If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
+
+![Hop Through](hop_through_no_vpn_needed.png)
+
+Modify your `.ssh/config` file as follows (replace **aturing** with your NetID) so that you do not need to explicitly connect to `tigressgateway` first:
+
+#### Mac, Linux or WSL
+
+```
+Host tigressgateway.princeton.edu tigressgateway
+  HostName tigressgateway.princeton.edu
+  User aturing
+
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+```
+
+#### Windows
+
+```
+Host tigressgateway.princeton.edu tigressgateway
+  HostName tigressgateway.princeton.edu
+  User aturing
+  MACs hmac-sha2-512
+
+Host della.princeton.edu della
+  User aturing
+  HostName della.princeton.edu
+  MACs hmac-sha2-512
+  ProxyJump tigressgateway.princeton.edu
+```
+
+Once you have this set up, you can connect to a large cluster like Della directly from your local machine:
+
+```
+$ ssh della
+```
+
+The `ProxyJump` setting causes `tigressgateway` to be used as a silent intermediary. The `tigressgateway` server is open to the world while the login nodes on the large clusters are not.
