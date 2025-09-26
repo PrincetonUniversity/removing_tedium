@@ -409,7 +409,7 @@ Make sure that you have an X server running (e.g., [XQuartz](https://www.xquartz
 
 This approach is worth knowing about in general. Some **Windows** users may prefer it if using the VPN is an issue. You must have an account on one of the large clusters (e.g., Della).
 
-[Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to `ssh` to `tigressgateway.princeton.edu` and then from there, `ssh` to your desired cluster (e.g., della) as shown in the figure below. **You must have an account on one of the large clusters to do this (e.g., Della).** If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
+The procedure is to `ssh` to `tigressgateway.princeton.edu` and then from there, `ssh` to your desired cluster (e.g., della) as shown in the figure below. A VPN is not required since `tigressgateway` is open to the world. **You must have an account on one of the large clusters to do this (e.g., Della).** If you are transferring many files you will want to use one of the approaches above to avoid Duo authentication.
 
 ![Hop Through](hop_through_no_vpn_needed.png)
 
