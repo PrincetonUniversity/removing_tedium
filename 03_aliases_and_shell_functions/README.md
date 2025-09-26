@@ -93,7 +93,7 @@ One can use the `hostname` command and `if` statements to deal with differences 
 
 One could also store the shortcuts in `myshortcuts.sh` and then load that file in interactive shells in the `~/.bashrc` file:
 
-```
+```bash
 # source local definitions
 if [ -f /home/aturing/myshortcuts.sh ] && [ ! -z "$PS1" ]; then
   source /home/aturing/myshortcuts.sh
