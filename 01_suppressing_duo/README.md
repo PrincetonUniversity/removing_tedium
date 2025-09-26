@@ -415,13 +415,15 @@ Host *
 
 Make sure that you have an X server running (e.g., [XQuartz](https://www.xquartz.org)) when using this approach. There are [better approaches](https://researchcomputing.princeton.edu/support/knowledge-base/gui-applications) to working with graphics on the Research Computing clusters than X11.
 
-# VPN free but without SSH Multiplexing (for Windows users on the large clusters)
+# III. VPN free but without SSH Multiplexing (for Windows users on the large clusters)
 
 [Another approach](https://researchcomputing.princeton.edu/ssh) which does not require a VPN is to `ssh` to `tigressgateway.princeton.edu` and then from there, `ssh` to your desired cluster (e.g., della) as shown in the figure below. **You must have an account on one of the large clusters to do this (e.g., Della).** If you are transferring many files you will want to use multiplexing to avoid Duo authentication as described below.
 
 ![Hop Through](hop_through_no_vpn_needed.png)
 
-Modify your `.ssh/config` file as follows (replace **aturing** with your NetID) so that you do not need to explicitly connect to `tigressgateway` first:
+**Time Saver**
+
+You do not need to connect to `tigressgateway` explicitly. Instead, save time by modifying your `.ssh/config` file as follows (replace **aturing** with your NetID):
 
 #### Mac, Linux or WSL
 
@@ -451,7 +453,7 @@ Host della.princeton.edu della
   ProxyJump tigressgateway.princeton.edu
 ```
 
-Once you have this set up, you can connect to a large cluster like Della directly from your local machine:
+Once you have this set up, you can connect to a large cluster like Della directly from your local machine without explicitly first connecting to `tigressgateway`:
 
 ```
 $ ssh della
