@@ -811,6 +811,8 @@ shopt -s checkjobs   # check if background jobs are running on exit
 shopt -s cdspell     # guess misspelled cd commands
 shopt -s autocd      # change directory w/o cd if entry is invalid
 shopt -s extglob     # enable extended glob patterns
+set -o vi            # press ESC to edit command line with vi
+set -o physical      # cd and pwd will follow physical paths
 ```
 
 For all the possible options and their meanings see `man bash`.
