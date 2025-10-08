@@ -11,6 +11,8 @@ shopt -s checkjobs   # check if background jobs are running on exit
 shopt -s cdspell     # guess misspelled cd commands
 shopt -s autocd      # change directory w/o cd if entry is a valid directory
 shopt -s extglob     # enable extended glob patterns
+set -o physical      # cd and pwd will follow physical paths
+set -o vi            # press ESC to edit command line with vi
 
 ####################
 # home keys system #
