@@ -45,10 +45,10 @@ $ ll
 
 One could use an alias for `scr` instead of a symbolic link but the symbolic link is in general the better choice. For instance, it allows for tab completion so you can easily `cd` into a subdirectory (e.g., `cd /scr/data`). Symbolic links can also be used in paths when `scp` is used to transfer files. One advantage of the alias is that is could be ran from any working directory. 
 
-Consider adding the alias below so that symbolic links are always resolved (i.e., `pwd` gives `/scratch/gpfs/ACHURCH/aturing` instead of `/home/aturing/scr` in the example above):
+Consider adding the option below in `.bashrc` so that symbolic links are always resolved (i.e., `pwd` gives `/scratch/gpfs/ACHURCH/aturing` instead of `/home/aturing/scr` in the example above):
 
 ```
-alias pwd='pwd -P'
+set -o physical      # cd and pwd will follow physical paths
 ```
 
 ## /projects (large clusters only, i.e., not adroit)
