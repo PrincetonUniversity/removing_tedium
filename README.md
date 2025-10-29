@@ -10,6 +10,7 @@ Are you tired of Duo? Do you waste time entering your password every time you lo
 - keyboard remapping
 - A.I.-enhanced terminal emulators
 - window management
+- clipboard history
 - writing custom commands and utilities
 - quickly jumping around the filesystems using symbolic links
 - and automating your data analysis.
