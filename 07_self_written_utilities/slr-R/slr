@@ -31,8 +31,7 @@ cat("#SBATCH --cpus-per-task=1        # cpu-cores per task (>1 if multithread ta
 cat("#SBATCH --mem-per-cpu=4G         # memory per cpu-core (4G is default)\n")
 if ( !args$noGPU ) { cat("#SBATCH --gpus=gres:1            # number of gpus per node\n") }
 cat(paste("#SBATCH --time=", hours, ":00:00          # total run time limit (HH:MM:SS)\n", sep=""))
-cat("#SBATCH --mail-type=begin        # send mail when process begins\n")
-cat("#SBATCH --mail-type=end          # send email when job ends\n")
+cat("#SBATCH --mail-type=all          # receive email notifications\n")
 cat("#SBATCH --mail-user=<YourNetID>@princeton.edu\n")
 cat("\n")
 cat("module purge\n")
