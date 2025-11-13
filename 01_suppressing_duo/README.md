@@ -243,7 +243,7 @@ Host della-gpu.princeton.edu della-gpu
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host della-vis1 della-vis2
-  User jdh4
+  User aturing
   HostName %h.princeton.edu
   ProxyJump tigressgateway.princeton.edu
   ControlMaster auto
