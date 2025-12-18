@@ -782,6 +782,12 @@ Try running the following command on your history to look for common commands to
 $ history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
 ```
 
+An alternative is:
+
+```
+$ history | tr -s ' ' | cut -d' ' -f3- | sort | uniq -c | sort -n
+```
+
 ## More ideas
 
 See [this page](https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions) for more aliases and shell functions. To see the aliases used by all users on the cluster, run this command:
