@@ -785,7 +785,7 @@ $ history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]
 An alternative is:
 
 ```
-$ history | tr -s ' ' | cut -d' ' -f3- | sort | uniq -c | sort -n
+$ history | awk '{$1=$1};1' | cut -d' ' -f2- | sort | uniq -c | sort -n
 ```
 
 ## More ideas
