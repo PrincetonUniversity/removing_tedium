@@ -72,11 +72,9 @@ Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Then type a let
 
 Be sure to explore the shortcuts offered by your text editor. Editors like `vim` and `emacs` cannot be mastered in only a few hours. Make sure that you are taking advantage of these tools. To test your `vim` knowledge, run this command: `vimtutor`. To improve your `vim` skills see [Intermediate vim](https://github.com/troycomi/intermediate-vim) by T. Comi of Princeton.
 
-## Keyboard remappings
+## Keyboard customizations
 
-Consider having the `[Caps Lock]` key remapped to the `[Ctrl]` or `[Esc]` key. What other remappings can you make to improve productivity?
-
-For Mac users, look at [Karabiner-Elements](https://karabiner-elements.pqrs.org), which is free and makes it possible to remap every key and introduce a hyper key (see [YouTube video](https://www.youtube.com/watch?v=j4b_uQX3Vu0&pp=0gcJCesJAYcqIYzv)). There are other choices for Windows and Linux.
+See [this workshop](https://github.com/jdh4/mac_productivity) for using Raycast (and maybe for Mac users [Karabiner-Elements](https://karabiner-elements.pqrs.org)).
 
 ## Fix command (fc)
 
