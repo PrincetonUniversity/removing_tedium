@@ -32,6 +32,10 @@ Toward the end of the workshop please complete [this survey](https://forms.gle/r
 8. [Automatic Data Analysis](08_automatic_data_analysis/README.md)
 9. [Final Thoughts](09_final_thoughts/README.md)
 
+## How to Configure Your Local Machine for Productivity
+
+See [this workshop](https://github.com/jdh4/mac_productivity) for installing and configuring Raycast for Mac or Windows (beta).
+
 ## Getting Help
 
 If you encounter any difficulties with the material in this guide then please send an email to <a href="mailto:cses@princeton.edu">cses@princeton.edu</a> or attend a <a href="https://researchcomputing.princeton.edu/education/help-sessions">help session</a>.
