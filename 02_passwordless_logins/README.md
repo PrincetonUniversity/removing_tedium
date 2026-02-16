@@ -245,7 +245,7 @@ Return to Step 2 and copy the public key to each cluster that you have an accoun
 
 ## Looking ahead
 
-Once you have setup passwordless logins, you can run commands on a cluster without formally connecting. For example, the command below will create an empty file with the name `myfile` in your `/home` directory on Della:
+Once you have set up passwordless logins, you can run commands on a cluster without formally connecting. For example, the command below will create an empty file with the name `myfile` in your `/home` directory on Della:
 
 ```
 # on your laptop
