@@ -239,7 +239,7 @@ alias ..='command cd .. && ls -ltrh'
 alias ...='command cd ../.. && ls -ltrh'
 ```
 
-If you use the above then make sure to use `command cd` instead of `cd` in other aliases and shell functions. The `command` command ignores the user definition of the command and instead calls the original version.
+If you use the above then make sure to use `command cd` instead of `cd` in other aliases and shell functions. The `command` command ignores the user definition of the command and instead calls the original version. You will lose `shopt -s autocd` (see below).
 
 ## To see your shell functions
 
