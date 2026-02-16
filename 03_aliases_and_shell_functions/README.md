@@ -220,6 +220,27 @@ The `cl` function cd's into a specified directory and runs the `ll` alias. The `
 
 Note that there are many pre-defined functions.
 
+Instead of `cl` one can automatically call `ll` after `cd`:
+
+```
+mk() { mkdir -p "$1" && command cd "$1"; }
+if [ ! -z "$PS1" ]; then
+    cd() {
+      if [ $# -eq 0 ]; then
+        command cd
+        pwd
+      else
+        # ll is defined above
+        command cd "$1" && ll;
+      fi
+    }
+fi
+alias ..='command cd .. && ls -ltrh'
+alias ...='command cd ../.. && ls -ltrh'
+```
+
+If you use the above then make sure to use `command cd` instead of `cd` in other aliases and shell functions. The `command` command ignores the user definition of the command and instead calls the original version.
+
 ## To see your shell functions
 
 ```bash
