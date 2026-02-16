@@ -640,7 +640,7 @@ To learn about interactive shells and `$PS1` see [this page](https://www.gnu.org
 
 Search the university database by name:
 
-```
+```bash
 findperson() {
   if [ $1 = "-h" ] || [ $1 = "--help" ]; then
     echo "$ findperson George Jones"
