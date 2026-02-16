@@ -222,7 +222,7 @@ Note that there are many pre-defined functions.
 
 Instead of `cl` one can automatically call `ll` after `cd`:
 
-```
+```bash
 mk() { mkdir -p "$1" && command cd "$1"; }
 if [ ! -z "$PS1" ]; then
     cd() {
