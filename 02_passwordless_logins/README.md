@@ -10,21 +10,21 @@ As indicated in the figure below, the first step is to create private and public
 
 ### Step 0: See you already have keys
 
-This shows a user that already has SSH keys (`id_rsa` and `id_rsa.pub`):
+This shows a user that already has SSH keys (`id_ed25519` and `id_ed25519.pub`):
 
 ```
 $ ls -l ~/.ssh/
 total 72
 -rw-r--r--  1 aturing  staff  3965 May 14 10:49 config
 drwxr-xr-x  2 aturing  staff    64 Apr 17  2024 controlmasters
--rw-------  1 aturing  staff  2675 Apr 17  2024 id_rsa
--rw-r--r--  1 aturing  staff   624 Apr 17  2024 id_rsa.pub
+-rw-------  1 aturing  staff  2675 Apr 17  2024 id_ed25519
+-rw-r--r--  1 aturing  staff   624 Apr 17  2024 id_ed25519.pub
 -rw-------  1 aturing  staff  9293 Sep  2 10:13 known_hosts
 -rw-------  1 aturing  staff  8711 Jul 21 09:05 known_hosts.old
 drwx------  8 aturing  staff   256 Sep 23 14:12 sockets
 ```
 
-You may also see keys with names `id_ed25519` and `id_ed25519.pub`.
+You may also see keys with names `id_rsa` and `id_rsa.pub`.
 
 This user does not have SSH keys:
 
@@ -46,10 +46,10 @@ If you do not have SSH keys then continue with Step 1. Otherwise, proceed to Ste
 
 ### Step 1: Create the private/public key pair (if you don't already have keys)
 
-On your **local machine** (e.g., laptop), first create the RSA key pair. This is done by running the following command in a terminal (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
+On your **local machine** (e.g., laptop), first create the key pair. This is done by running the following command in a terminal (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
 
 ```
-$ ssh-keygen -t rsa
+$ ssh-keygen -t ed25519
  [Enter] 
  [Enter] 
  [Enter] 
@@ -58,17 +58,17 @@ $ ssh-keygen -t rsa
 Here is an example:
 
 ```
-[aturing@mylaptop ~]$ ssh-keygen -t rsa
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/aturing/.ssh/id_rsa): 
+[aturing@mylaptop ~]$ ssh-keygen -t ed25519
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/aturing/.ssh/id_ed25519): 
 Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: 
-Your identification has been saved in /home/aturing/.ssh/id_rsa.
-Your public key has been saved in /home/aturing/.ssh/id_rsa.pub.
+Your identification has been saved in /home/aturing/.ssh/id_ed25519.
+Your public key has been saved in /home/aturing/.ssh/id_ed25519.pub.
 The key fingerprint is:
 SHA256:WAmli4zRUQGWhIHkT4oXi1CjwNJd3KYKNe5OK8DpcZY aturing@mylaptop
 The key's randomart image is:
-+---[RSA 2048]----+
++-[ed25519 2048]--+
 |+++==*=+.        |
 |=+o+=..oo.       |
 |+.o+...oo        |
@@ -81,7 +81,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-The public key is now located in `~/.ssh/id_rsa.pub`. The private key (identification) is located in `~/.ssh/id_rsa`. **The private key is equivalent to your password so you should never share it.** However, you can share your public key and we will do that next.
+The public key is now located in `~/.ssh/id_ed25519.pub`. The private key (identification) is located in `~/.ssh/id_ed25519`. **The private key is equivalent to your password so you should never share it.** However, you can share your public key and we will do that next.
 
 ### Step 2: Copy the public key to the Research Computing cluster
 
@@ -93,7 +93,7 @@ $ ssh-copy-id <YourNetID>@<cluster-name>.princeton.edu
 # enter your password and Duo authenticate (you may not need to Duo authenticate if you established a multiplexed session previously)
 ```
 
-Note that the `ssh-copy-id` command will only transfer your public key. Your private key will remain safe on your local machine in `~/.ssh/id_rsa`.
+Note that the `ssh-copy-id` command will only transfer your public key. Your private key will remain safe on your local machine in `~/.ssh/id_ed25519`.
 
 Here is an example session:
 
@@ -168,10 +168,10 @@ Keys will have filenames like `id_rsa` and `id_rsa.pub` or `id_ed25519` and `id_
 
 ### Step 1: Create the private/public key pair (if you don't already have keys)
 
-On your **local machine** (e.g., laptop), first create the RSA key pair. This is done by running the following command in a terminal (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
+On your **local machine** (e.g., laptop), first create the key pair. This is done by running the following command in a terminal (press the "Enter" key 3 times after running the command below, i.e., do not answer any of the questions):
 
 ```
-PS C:\Users\aturing\.ssh> ssh-keygen -t rsa
+PS C:\Users\aturing\.ssh> ssh-keygen -t ed25519
  [Enter] 
  [Enter] 
  [Enter] 
@@ -180,17 +180,17 @@ PS C:\Users\aturing\.ssh> ssh-keygen -t rsa
 Here is an example:
 
 ```
-PS C:\Users\aturing\.ssh> ssh-keygen -t rsa
-Generating public/private rsa key pair.
-Enter file in which to save the key (C:\Users\aturing/.ssh/id_rsa):
+PS C:\Users\aturing\.ssh> ssh-keygen -t ed25519
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (C:\Users\aturing/.ssh/id_ed25519):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
-Your identification has been saved in C:\Users\aturing/.ssh/id_rsa
-Your public key has been saved in C:\Users\aturing/.ssh/id_rsa.pub
+Your identification has been saved in C:\Users\aturing/.ssh/id_ed25519
+Your public key has been saved in C:\Users\aturing/.ssh/id_ed25519.pub
 The key fingerprint is:
 SHA256:NJas/NpWxce0dsLp5qTDcfAlIJfxvFyIYPE9RojWh2M princeton\jdh4@PVD-SLAB-fabe
 The key's randomart image is:
-+---[RSA 3072]----+
++-[ed25519 3072]--+
 |          ++.=.  |
 |       . o+oE*o. |
 |        *. =oBBo.|
@@ -216,13 +216,13 @@ If you encounter `ssh-copy-id : The term 'ssh-copy-id' is not recognized` then u
 (Option 2) If `ssh-copy-id` is not recognized then run the following command:
 
 ```
-PS C:\Users\<username>\.ssh> type C:\Users\<username>\.ssh\id_rsa.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+PS C:\Users\<username>\.ssh> type C:\Users\<username>\.ssh\id_ed25519.pub | ssh <YourNetID>@<HPC-Cluster>.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 Below is a specific example for `aturing` and `adroit`:
 
 ```
-PS C:\Users\aturing\.ssh> type C:\Users\aturing\.ssh\id_rsa.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+PS C:\Users\aturing\.ssh> type C:\Users\aturing\.ssh\id_ed25519.pub | ssh aturing@adroit.princeton.edu "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 ```
 
 ### Step 3: Connect to the Research Computing cluster
