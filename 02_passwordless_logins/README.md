@@ -24,7 +24,7 @@ drwxr-xr-x  2 aturing  staff    64 Apr 17  2024 controlmasters
 drwx------  8 aturing  staff   256 Sep 23 14:12 sockets
 ```
 
-You may also see keys with names `id_rsa` and `id_rsa.pub`.
+If you see keys with names `id_rsa` and `id_rsa.pub` then recognize that those are outdated (create new keys using `ed25519` below).
 
 This user does not have SSH keys:
 
@@ -164,7 +164,7 @@ PS C:\Users\aturing> cd .ssh
 PS C:\Users\aturing\.ssh> dir
 ```
 
-Keys will have filenames like `id_rsa` and `id_rsa.pub` or `id_ed25519` and `id_ed25519.pub`. If these files do not exist then you need to make them in Step 1. Otherwise, proceed to Step 2.
+Keys will have filenames like `id_ed25519` and `id_ed25519.pub`. If these files do not exist then you need to make them in Step 1. Otherwise, proceed to Step 2. Note that `id_rsa` and `id_rsa.pub` are outdated and you should create new keys using `ed25519` (see Step 1 below).
 
 ### Step 1: Create the private/public key pair (if you don't already have keys)
 
