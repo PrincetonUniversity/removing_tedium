@@ -294,6 +294,178 @@ $ modl openmpi/gcc/4.1.6
 
 Unfortunately, tab completion cannot be used with `modl`.
 
+## Slurm
+
+### Submitting batch jobs
+
+If you submit a lot of jobs with commands like `sbatch job.slurm` or `sbatch submit.sh` then you may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
+
+```bash
+SLURMSCRIPT='job.slurm'
+alias sb='sbatch $SLURMSCRIPT'
+```
+
+Jobs can then be submitted with:
+
+```
+$ sb
+```
+
+You can distinguish different jobs by setting the job name in the Slurm script:
+
+```bash
+#SBATCH --job-name=low-temp      # create a short name for your job
+```
+
+The alias below submits the job and then launches `watch`. This allows one to know when short test jobs start running:
+
+```bash
+alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue --me'
+```
+
+To exit from `watch` hold down [Ctrl] and press [c].
+
+### Enhancements to squeue
+
+Show the state of your running and pending jobs:
+
+```bash
+alias sq='squeue --me'
+```
+
+See the expected start times of pending jobs:
+
+```bash
+alias sqs='squeue --me --start'
+```
+
+Watch your jobs in the queue (useful for knowing when test jobs run):
+
+```bash
+alias wq='watch -n 1 squeue --me'
+```
+
+This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To exit from `watch` hold down [Ctrl] and press [c].
+
+Display the contents `job.slurm` in the terminal:
+
+```
+js() { if [ -f ./$SLURMSCRIPT ]; then cat $SLURMSCRIPT; else echo "$SLURMSCRIPT not found"; fi }
+```
+
+### Interactive allocations
+
+Use the aliases below to work interactively on a compute node (with and without a GPU) for 5 minutes:
+
+```bash
+alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
+alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
+```
+
+Note that you can modify the values of the parameters. For instance, for a 20-minute CPU allocation:
+
+```bash
+$ cpu5 -t 20
+```
+
+For more on `salloc` see [this page](https://researchcomputing.princeton.edu/slurm).
+
+### ssh to the compute node where your last job is running without specifying the job id
+
+It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, thread performance and GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
+
+```bash
+goto() { ssh $(squeue --me -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
+```
+
+The function above uses `squeue` to list all your job id's in ascending order along with the corresponding node where the job is running. It then takes the last row, extracts the node and calls `ssh` on that. This method will not work when multiple nodes are used to run the job.
+
+### Cancel your most recently submitted job without specifying the job id
+
+Running `mycancel` will automatically find the job id of your most recent job and cancel the job:
+
+```bash
+mycancel() { scancel $(squeue --me -o "%i" -S i -h | tail -n 1); }
+```
+
+The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo we present implementations of `mycancel` in Python and C++. The implementation above is of course in Bash.
+
+### Generate a report on your recent job history
+
+Previoulsy we used a lengthy shell function for this. That function helped many users so now it has been promoted to a system command:
+
+```
+$ shistory
+```
+
+Give the command above a try. To see the help menu: `$ shistory -h`.
+
+### View Slurm efficiency reports without specifying the job id
+
+If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
+
+```bash
+eff() { jobstats $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
+```
+
+The `eff` function figures out the jobid and runs `jobstats` on that.
+
+### Number of free GPUs
+
+Previously we used shell function for this. Those functions helped many users so now they have been promoted to a system command:
+
+```
+$ gfree
+```
+
+To see the source code:
+
+```
+$ cat /usr/local/bin/gfree
+```
+
+### Get your fairshare value
+
+Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your Unix group run over the last 30 days, the lower your fairshare value. Fairshare varies between 0 and 1 with 1 corresponding to the largest job priority.
+
+```bash
+alias fair='echo "Fairshare: " && sshare | grep $USER | awk '"'"'{print $(NF)}'"'"''
+```
+
+To learn more about job priority see [this page](https://researchcomputing.princeton.edu/priority).
+
+## Find people
+
+Search the university database by name:
+
+```bash
+findperson() {
+  if [ $1 = "-h" ] || [ $1 = "--help" ]; then
+    echo "$ findperson George Jones"
+    echo "$ findperson _ Smith"
+    echo "$ findperson John _"
+    return
+  fi
+  if [ $1 = "_" ]; then
+    ldapsearch -x -LLL "(&(givenName=*)(sn=$2))"
+    return
+  fi
+  if [ $2 = "_" ]; then
+    ldapsearch -x -LLL "(&(givenName=$1)(sn=*))"
+    return
+  fi
+  ldapsearch -x -LLL "(&(givenName=$1)(sn=$2))"
+}
+```
+
+Example usage:
+
+```
+$ findperson _ witherspoon           # only last name is known
+$ findperson rex _                   # only first name is known
+$ findperson christopher eisgruber   # full name is known
+```
+
 ## Finding Files
 
 When searching for files, one often wants to do a case-insensitive search while suppressing error messages. The shell function below does this. If only one command-line parameter is specified then it begins the search in the current directory. One can also explicitly specify the path.
@@ -409,101 +581,35 @@ Loading anaconda3 module ...
 
 Note that aliases do not work in Slurm scripts. You will need to explicitly load your modules in Slurm scripts.
 
-## Slurm
-
-### Submitting batch jobs
-
-If you submit a lot of jobs with commands like `sbatch job.slurm` or `sbatch submit.sh` then you may try calling all your Slurm scripts by the same name (e.g., `job.slurm`) and then introducing this alias:
+## GPU aliases
 
 ```bash
-SLURMSCRIPT='job.slurm'
-alias sb='sbatch $SLURMSCRIPT'
+alias smi='nvidia-smi'
+alias wsmi='watch -n 1 nvidia-smi'
 ```
 
-Jobs can then be submitted with:
+After submitting a GPU job it is common to run `goto` followed by `wsmi` on the compute node. This allows one to examine GPU utilization. To exit from `watch` hold down [Ctrl] and press [c].
 
-```
-$ sb
-```
-
-You can distinguish different jobs by setting the job name in the Slurm script:
+## Specific to Adroit
 
 ```bash
-#SBATCH --job-name=low-temp      # create a short name for your job
+if [[ $(hostname) == adroit* ]]; then
+  alias gpu80='ssh adroit-h11g1'
+fi
 ```
 
-The alias below submits the job and then launches `watch`. This allows one to know when short test jobs start running:
+If you have a job running on `adroit-h11g1` then with the alias above you can quickly connect.
+
+## Specific to Della
+
+To get the runtime limits for the different job partitions (QOS) on Della:
 
 ```bash
-alias sw='sbatch $SLURMSCRIPT && watch -n 1 squeue --me'
+if [[ $(hostname) == della* ]]; then
+    alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '"'"'/_MINS/ \
+                  {print "  "$1,"<=",$3" mins ("$3/60 " hrs)"}'"'"''
+fi
 ```
-
-To exit from `watch` hold down [Ctrl] and press [c].
-
-### Enhancements to squeue
-
-Show the state of your running and pending jobs:
-
-```bash
-alias sq='squeue --me'
-```
-
-See the expected start times of pending jobs:
-
-```bash
-alias sqs='squeue --me --start'
-```
-
-Watch your jobs in the queue (useful for knowing when test jobs run):
-
-```bash
-alias wq='watch -n 1 squeue --me'
-```
-
-This will create an alias which will display the result of the squeue command for a given user and update the output every second. This is very useful for monitoring short test jobs. To exit from `watch` hold down [Ctrl] and press [c].
-
-Display the contents `job.slurm` in the terminal:
-
-```
-js() { if [ -f ./$SLURMSCRIPT ]; then cat $SLURMSCRIPT; else echo "$SLURMSCRIPT not found"; fi }
-```
-
-### Interactive allocations
-
-Use the aliases below to work interactively on a compute node (with and without a GPU) for 5 minutes:
-
-```bash
-alias cpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00'
-alias gpu5='salloc --nodes=1 --ntasks=1 --mem=4G --time=00:05:00 --gres=gpu:1'
-```
-
-Note that you can modify the values of the parameters. For instance, for a 20-minute CPU allocation:
-
-```bash
-$ cpu5 -t 20
-```
-
-For more on `salloc` see [this page](https://researchcomputing.princeton.edu/slurm).
-
-### ssh to the compute node where your last job is running without specifying the job id
-
-It is often useful to SSH to the compute node where your job is running. From there one can inspect memory usage, thread performance and GPU utilization, for instance. The following function will connect you to the compute node that your most recent job is on:
-
-```bash
-goto() { ssh $(squeue --me -o "%i %R" -S i -h | tail -n 1 | cut -d' ' -f2); }
-```
-
-The function above uses `squeue` to list all your job id's in ascending order along with the corresponding node where the job is running. It then takes the last row, extracts the node and calls `ssh` on that. This method will not work when multiple nodes are used to run the job.
-
-### Cancel your most recently submitted job without specifying the job id
-
-Running `mycancel` will automatically find the job id of your most recent job and cancel the job:
-
-```bash
-mycancel() { scancel $(squeue --me -o "%i" -S i -h | tail -n 1); }
-```
-
-The function above uses `squeue` to list all your job id's in ascending order and then it passes the last one to `scancel`. Later in this repo we present implementations of `mycancel` in Python and C++. The implementation above is of course in Bash.
 
 ## Tensorboard
 
@@ -542,80 +648,6 @@ $ board 9100 della-l09g6
 ```
 
 Be sure to specify the correct port and host in the commands above for your case. If the username on your local machine (where the board function is defined) is not the same as your Princeton NetID then you will need to replace `${USER}` with your NetID.
-
-### Generate a report on your recent job history
-
-Previoulsy we used a lengthy shell function for this. That function helped many users so now it has been promoted to a system command:
-
-```
-$ shistory
-```
-
-Give the command above a try. To see the help menu: `$ shistory -h`.
-
-### View Slurm efficiency reports without specifying the job id
-
-If you set `#SBATCH --mail-user` in your Slurm script then you will receive an efficiency report by email. The following command can also be used from the directory containing the slurm output file (e.g., `slurm-3741530.out`):
-
-```bash
-eff() { jobstats $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' ))); }
-```
-
-The `eff` function figures out the jobid and runs `jobstats` on that.
-
-### Number of free GPUs
-
-Previously we used shell function for this. Those functions helped many users so now they have been promoted to a system command:
-
-```
-$ gfree
-```
-
-To see the source code:
-
-```
-$ cat /usr/local/bin/gfree
-```
-
-### Get your fairshare value
-
-Your fairshare value plays a key role in determining your job priority. The more jobs you or members of your Unix group run over the last 30 days, the lower your fairshare value. Fairshare varies between 0 and 1 with 1 corresponding to the largest job priority.
-
-```bash
-alias fair='echo "Fairshare: " && sshare | grep $USER | awk '"'"'{print $(NF)}'"'"''
-```
-
-To learn more about job priority see [this page](https://researchcomputing.princeton.edu/priority).
-
-## GPU aliases
-
-```bash
-alias smi='nvidia-smi'
-alias wsmi='watch -n 1 nvidia-smi'
-```
-
-After submitting a GPU job it is common to run `goto` followed by `wsmi` on the compute node. This allows one to examine GPU utilization. To exit from `watch` hold down [Ctrl] and press [c].
-
-## Specific to Adroit
-
-```bash
-if [[ $(hostname) == adroit* ]]; then
-  alias gpu80='ssh adroit-h11g1'
-fi
-```
-
-If you have a job running on `adroit-h11g1` then with the alias above you can quickly connect.
-
-## Specific to Della
-
-To get the runtime limits for the different job partitions (QOS) on Della:
-
-```bash
-if [[ $(hostname) == della* ]]; then
-    alias limits='cat /etc/slurm/job_submit.lua | egrep -v "job_desc|--" | awk '"'"'/_MINS/ \
-                  {print "  "$1,"<=",$3" mins ("$3/60 " hrs)"}'"'"''
-fi
-```
 
 ## TurboVNC
 
@@ -662,37 +694,7 @@ fi
 
 To learn about interactive shells and `$PS1` see [this page](https://www.gnu.org/software/bash/manual/html_node/Is-this-Shell-Interactive_003f.html). Learn about `.bashrc` and `.bash_profile` [here](https://linuxize.com/post/bashrc-vs-bash-profile/).
 
-## Find people
 
-Search the university database by name:
-
-```bash
-findperson() {
-  if [ $1 = "-h" ] || [ $1 = "--help" ]; then
-    echo "$ findperson George Jones"
-    echo "$ findperson _ Smith"
-    echo "$ findperson John _"
-    return
-  fi
-  if [ $1 = "_" ]; then
-    ldapsearch -x -LLL "(&(givenName=*)(sn=$2))"
-    return
-  fi
-  if [ $2 = "_" ]; then
-    ldapsearch -x -LLL "(&(givenName=$1)(sn=*))"
-    return
-  fi
-  ldapsearch -x -LLL "(&(givenName=$1)(sn=$2))"
-}
-```
-
-Example usage:
-
-```
-$ findperson _ witherspoon           # only last name is known
-$ findperson rex _                   # only first name is known
-$ findperson christopher eisgruber   # full name is known
-```
 
 ## Weather
 
