@@ -410,6 +410,34 @@ eff() { jobstats $(( $(echo $(ls -t slurm-*.out | head -n 1) | tr -dc '0-9' )));
 
 The `eff` function figures out the jobid and runs `jobstats` on that.
 
+### Who's hogging all the resources?
+
+Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. To see usage, use the shell function command below to see CPU-hours per user:
+
+```bash
+hog() {
+  start_date=$(date -d"30 days ago" +%D);
+  account=$(sshare | grep $USER | awk '{print $1}' | head -n 1);
+  sreport user topusage start=${start_date} end=now TopCount=100 accounts=${account} -t hourper --tres=cpu;
+}
+```
+
+A small number of users have multiple Slurm accounts. Modifications to the above function may be needed for these users. One can get GPU-hours by replacing `--tres=cpu` with `--tres=gres/gpu`.
+
+To see the choice(s) for `account`:
+
+```
+$ sshare | grep $USER | awk '{print $1}'
+```
+
+One can also use:
+
+```
+$ sshare -la -A <account> -o User,RawUsage
+```
+
+Replace `<account>` with your Slurm account.
+
 ### Number of free GPUs
 
 Previously we used shell function for this. Those functions helped many users so now they have been promoted to a system command:
@@ -750,34 +778,6 @@ Location: Princeton, Mercer County, New Jersey, United States of America [40.349
 
 Follow @igor_chubin for wttr.in updates
 ```
-
-### Who's hogging all the resources?
-
-Your job priority is in part determined by the cluster usage of other members of your Slurm group over the past 30 days. To see usage, use the shell function command below to see CPU-hours per user:
-
-```bash
-hog() {
-  start_date=$(date -d"30 days ago" +%D);
-  account=$(sshare | grep $USER | awk '{print $1}' | head -n 1);
-  sreport user topusage start=${start_date} end=now TopCount=100 accounts=${account} -t hourper --tres=cpu;
-}
-```
-
-A small number of users have multiple Slurm accounts. Modifications to the above function may be needed for these users. One can get GPU-hours by replacing `--tres=cpu` with `--tres=gres/gpu`.
-
-To see the choice(s) for `account`:
-
-```
-$ sshare | grep $USER | awk '{print $1}'
-```
-
-One can also use:
-
-```
-$ sshare -la -A <account> -o User,RawUsage
-```
-
-Replace `<account>` with your Slurm account.
 
 ## Enhanced commands
 
