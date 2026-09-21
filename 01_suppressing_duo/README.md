@@ -37,7 +37,7 @@ The use of a VPN will decrease your internet connection speed. The table below w
 | SonicWall     | 57            |    60 |
 | SonicWall     | 57            |    62 |
 
-The SonicWall VPN severely decreases transfer rates and should be avoided. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below which is VPN-free.
+The SonicWall VPN severely decreased transfer rates. If you still find poor performance with the GlobalProtect VPN then consider the multiplexing solution described below which is VPN-free.
 
 On campus, you can measure the speed of your network connection at [https://tigerspeed.princeton.edu](https://tigerspeed.princeton.edu). If you are having trouble connecting to the Research Computing systems using SSH then [see this page](https://researchcomputing.princeton.edu/ssh) and in particular [https://myip.rc.princeton.edu/](https://myip.rc.princeton.edu/).
 
@@ -140,7 +140,7 @@ Note that a [VPN](https://www.princeton.edu/vpn) is required from off-campus to 
 
 ## On-Campus and Off-Campus (Recommended)
 
-When off-campus and not using a VPN, one cannot `ssh` to the login node of a Research Computing cluster. **However, for users with an account on one of the large clusters** (not Adroit, not Nobel) one can use `tigressgateway` as a proxyjump server:
+When off-campus and not using a VPN, one cannot `ssh` to the login node of a Research Computing cluster. **However, for users with an account on one of the large clusters** (not Adroit) one can use `tigressgateway` as a proxyjump server:
 
 ![SSH Multiplexing](multiplexed_connection.png)
 
@@ -250,9 +250,21 @@ Host della-vis1 della-vis2
   ControlPersist yes
   ControlPath ~/.ssh/sockets/%p-%h-%r
 
-Host nobel.princeton.edu nobel
+Host stellarai-amd sai-amd.princeton.edu sai-amd sai
   User aturing
-  HostName nobel.princeton.edu
+  HostName stellarai-amd.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
+
+Host stellarai-vis1.princeton.edu stellarai-vis1 sai-vis1
+  User aturing
+  HostName stellarai-vis1.princeton.edu
+  ProxyJump tigressgateway.princeton.edu
+  ControlMaster auto
+  ControlPersist yes
+  ControlPath ~/.ssh/sockets/%p-%h-%r
 
 Host stellar-amd.princeton.edu stellar-amd
   User aturing
