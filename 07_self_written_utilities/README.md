@@ -55,7 +55,7 @@ Below is a utility called `slr` which will generate a custom Slurm script in the
 ### Python source code
 
 ```python
-#!/usr/licensed/anaconda3/2024.6/bin/python
+#!/usr/licensed/anaconda3/2026.7/bin/python
 
 import argparse
 import os
@@ -92,7 +92,7 @@ with open('job.slurm', 'w') as f:
     f.write(fmt("mail-user", f"{os.environ['USER']}@princeton.edu", ""))
     f.write("\n")
     f.write("module purge\n")
-    f.write("module load anaconda3/2025.6\n")
+    f.write("module load anaconda3/2026.7\n")
     f.write("conda activate myenv\n")
     f.write("\n")
     f.write("python myscript.py\n")
@@ -224,7 +224,7 @@ mycancel() { scancel $(squeue -u $USER -o "%i" -S i -h | tail -n 1); }
 The shell function above is written in Bash. Below is `pycancel` which performs the same function as `mycancel` except it is written in Python which is a language that most people prefer over Bash:
 
 ```python
-#!/usr/licensed/anaconda3/2023.9/bin/python
+#!/usr/licensed/anaconda3/2026.7/bin/python
 
 import os
 import subprocess
