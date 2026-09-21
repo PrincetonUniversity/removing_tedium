@@ -95,10 +95,12 @@ One could also store the shortcuts in `myshortcuts.sh` and then load that file i
 
 ```bash
 # source local definitions
-if [ -f /home/aturing/myshortcuts.sh ] && [ ! -z "$PS1" ]; then
+if [[ "$-" == *i* ]] && [[ -f /home/aturing/myshortcuts.sh ]]; then
   source /home/aturing/myshortcuts.sh
 fi
 ```
+
+The "if" statement above checks that the shell is interactive (as opposed to non-interactive such as when using scp) and that the file exists and is a regular file.
 
 ## Checking which aliases are defined
 
