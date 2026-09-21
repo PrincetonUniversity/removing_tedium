@@ -420,7 +420,7 @@ $ cat data.txt | myfilter | wc -l
 Below is the Python code called `myfilter`:
 
 ```python
-#!/usr/licensed/anaconda3/2023.9/bin/python
+#!/usr/bin/env python
 import sys
 from math import sin
 for line in sys.stdin:
