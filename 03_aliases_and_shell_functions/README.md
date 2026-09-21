@@ -300,11 +300,34 @@ When searching for files, one often wants to do a case-insensitive search while 
 
 ```bash
 myfind() {
-  if [ "$#" -eq 1 ]; then
-    find . -iname \*"$1"\* 2>/dev/null
-  else
-    [ -d "$1" ] && find "$1" -iname \*"$2"\* 2>/dev/null
+  # catch invalid argument counts (0 or more than 2)
+  if [ "$#" -eq 0 ] || [ "$#" -gt 2 ]; then
+    echo "Usage: myfind [directory] <search_term>" >&2
+    return 1
   fi
+
+  # handle single argument (search current directory)
+  if [ "$#" -eq 1 ]; then
+    find . -iname "*$1*" 2>/dev/null
+    return 0
+  fi
+
+  # handle two arguments (directory + search term)
+  local target_dir="$1"
+  local search_term="$2"
+
+  # error out if the provided directory doesn't exist
+  if [ ! -d "$target_dir" ]; then
+    echo "myfind: Directory '$target_dir' not found." >&2
+    return 1
+  fi
+
+  # protect against directories starting with a hyphen (e.g., "-foo")
+  case "$target_dir" in
+    -*) target_dir="./$target_dir" ;;
+  esac
+
+  find "$target_dir" -iname "*$search_term*" 2>/dev/null
 }
 ```
 
