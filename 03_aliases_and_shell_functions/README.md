@@ -1,6 +1,6 @@
 # Aliases and Shell Functions
 
-While working on the Research Computing clusters you will probably find yourself entering the same commands over and over again. There will also be times when you will run multiple commands to get a result. These two types of actions reduce your productivity and they can be partially eliminated.
+While working on the Research Computing clusters you will probably find yourself entering the same commands over and over again. There will also be times when you will run multiple commands to get a result.
 
 Commonly repeated commands should be replaced by an alias, which is a short name for the command. An alias can also combine multiple commands into one. Shell functions are like aliases but they are more flexible because they accept command-line parameters.
 
@@ -38,7 +38,7 @@ $ sq
 
 ## Store your aliases and shell functions in .bashrc
 
-To make your aliases and shell functions available each time you log in, store them in your `~/.bashrc` file. Here is the contents of `~/.bashrc` for a new account:
+To make your aliases and shell functions available each time you log in, store them in your `~/.bashrc` file. Below are the contents of `~/.bashrc` for a new account:
 
 ```bash
 $ cat ~/.bashrc
