@@ -260,11 +260,11 @@ Here are some aliases for quickly working with modules:
 alias ma='module avail'
 alias mp='module purge'
 alias ml='echo && module -l list 2>&1 | tail -n +3 && echo'
-alias mla='module load anaconda3/2025.6'
-alias mlc='module load cudatoolkit/13.0'
+alias mla='module load anaconda3/2026.7'
+alias mlc='module load cudatoolkit/13.3'
 ```
 
-One could also use a shell function to find and load the latest version:
+One could also use a shell function to automatically find and load the latest version:
 
 ```
 mla () 
