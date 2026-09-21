@@ -55,7 +55,7 @@ Below is a utility called `slr` which will generate a custom Slurm script in the
 ### Python source code
 
 ```python
-#!/usr/licensed/anaconda3/2026.7/bin/python
+#!/usr/bin/env python3
 
 import argparse
 import os
@@ -420,7 +420,7 @@ $ cat data.txt | myfilter | wc -l
 Below is the Python code called `myfilter`:
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys
 from math import sin
 for line in sys.stdin:
