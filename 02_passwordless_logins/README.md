@@ -8,7 +8,7 @@ As indicated in the figure below, the first step is to create private and public
 
 # Mac, Linux and WSL
 
-### Step 0: See you already have keys
+### Step 0: Check if you already have keys
 
 This shows a user that already has SSH keys (`id_ed25519` and `id_ed25519.pub`):
 
@@ -139,7 +139,7 @@ If you encounter the error `Bad owner or permissions on ~/.ssh/config` then try 
 
 ### Step 4: Return to Step 2 for additional Research Computing clusters
 
-Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test. Remember to do the visualization nodes as well (e.g., `adroit-vis`, `della-vis1`, and so on).
+Return to Step 2 and copy the public key using `ssh-copy-id` to each cluster that you have an account on. Try connecting to that cluster as a test.
 
 # Windows
 
@@ -241,7 +241,7 @@ PS C:\Users\aturing\.ssh> ssh adroit
 
 ### Step 4: Return to Step 2 for additional Research Computing clusters
 
-Return to Step 2 and copy the public key to each cluster that you have an account on (e.g., `adroit-vis`, `della`, `stellar`, `tiger`). Try connecting to that cluster as a test.
+Return to Step 2 and copy the public key to each cluster that you have an account on (e.g., `adroit`, `della`, `stellar`, `stellarai`, `tiger`). Try connecting to that cluster as a test.
 
 ## Looking ahead
 
