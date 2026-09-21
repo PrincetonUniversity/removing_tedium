@@ -163,13 +163,13 @@ To turn off a specific alias for the current shell session:
 $ unalias <alias>
 ```
 
-To turn off for a single command:
+To turn off an alias for a single command, precede the command with a backslash:
 
 ```
 $ \<alias>
 ```
 
-Return to the **Word of caution** section above and try running `\icc` at the very end.
+Return to the **Word of caution** section above and try running `\icx` at the very end.
 
 ## The home keys system: Working with recent files
 
@@ -194,7 +194,7 @@ The `jj` command prints the contents of the newest file in the current working d
 
 Note that `aa` and `ss` are waiting to be defined. While `ss` is a pre-existing command, it is obscure and can be overwritten. `gg` and `hh` are also available.
 
-The meaning of `--` in the commands above is explained [here](https://unix.stackexchange.com/questions/510857/what-is-meaning-of-double-hyphen-in-ls-command).
+In the commands above, "--" is used to mark the end of options and thus the beginning of arguments. It tells the command to treat everything following it as arguments and not as options, even if something may look like an option.
 
 ## Navigation (and first shell function)
 
@@ -202,13 +202,13 @@ Here are some shell functions and aliases for creating directories and moving ar
 
 ```bash
 mk() { mkdir -p "$1" && cd "$1"; }
-cl() { cd "$1" && ll; } # uses alias defined above
+cl() { cd "$1" && ll; }  # uses alias defined above
 alias ..='cd .. && ll'
 alias ...='cd ../.. && ll'
 alias pwd='pwd -P'
 ```
 
-`mk` is the first shell function that we have encountered. The existence of `$1` in the body of the function corresponds to the input paramter. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. The `mk` function makes a directory and then cd's into that directory:
+`mk` is the first shell function that we have encountered. The existence of `$1` in the body of the function corresponds to the input parameter. The `&&` operator ensures that the command on the right is only executed if the command on the left is successful. The `mk` function makes a directory and then cd's into that directory:
 
 ```bash
 $ pwd
@@ -220,20 +220,17 @@ $ pwd
 
 The `cl` function cd's into a specified directory and runs the `ll` alias. The `..` alias above allows us to type 2 keys to go up a level and list the directory contents.
 
-Note that there are many pre-defined functions.
-
 Instead of `cl` one can automatically call `ll` after `cd`:
 
 ```bash
 mk() { mkdir -p "$1" && command cd "$1"; }
-if [ ! -z "$PS1" ]; then
+if [[ "$-" == *i* ]]; then
     cd() {
       if [ $# -eq 0 ]; then
-        command cd
-        pwd
+        command cd && pwd
       else
         # ll is defined above
-        command cd "$1" && ll;
+        command cd "$@" && ll
       fi
     }
 fi
@@ -241,13 +238,17 @@ alias ..='command cd .. && ls -ltrh'
 alias ...='command cd ../.. && ls -ltrh'
 ```
 
-If you use the above then make sure to use `command cd` instead of `cd` in other aliases and shell functions. The `command` command ignores the user definition of the command and instead calls the original version. You will lose `shopt -s autocd` (see below).
+If you use the above then make sure to use `command cd` instead of `cd` in other aliases and shell functions. The `command` command ignores the user definition of the command and instead calls the built-in version. You will lose `shopt -s autocd` (see below) which is minor.
+
+If you have directories with a vast number of files then you may consider not using the `cd` shell function since its use will cause the files to be listed.
 
 ## To see your shell functions
 
 ```bash
 $ set | less
 ```
+
+You will see that there are many pre-defined functions.
 
 ## Environment modules
 
