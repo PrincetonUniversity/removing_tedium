@@ -6,7 +6,7 @@
 
 + Use aliases and shell functions to save time. Be conscious of the commands you are running and create new aliases and shell functions when appropriate.
 
-+ Navigate the command line using keyboard shortcuts such as `[Ctrl]+[a]` and `[Ctrl]+[e]`.
++ Navigate the command line using keyboard shortcuts such as <kbd>Control</kbd> + <kbd>a</kbd> and <kbd>Control</kbd> + <kbd>e</kbd>.
 
 + The more proficient you are with vim or emacs, the faster you will be able to work.
 
@@ -19,5 +19,7 @@
 
    Don't get caught up in the technical challenges. Start by thinking about the inputs and outputs. **Imagination plays a
    far more important role in identifying tasks to automate than having lots of technical knowledge.**
-   
+
++ Use AI code generation to create Bash aliases and shell functions.
+
 + When you reduce the number of monotonous tasks, you will have more time to concentrate on the real work.
