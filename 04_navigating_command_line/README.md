@@ -5,13 +5,13 @@ On this page we present the essential keyboard shortcuts and concepts for workin
 ## Keyboard shortcuts
 
 ```
-[Ctrl] + [a]   # move cursor to beginning of line (think: the beginning letter of the alphabet is 'a')
-[Ctrl] + [e]   # move cursor to end of line (think: 'e' stands for 'end')
-[Ctrl] + [u]   # delete from cursor to beginning of line
-[Ctrl] + [k]   # delete from cursor to end of line
-[Ctrl] + [w]   # delete the last word
-Up arrow       # cycle backward through your history
-Down arrow     # cycle forward through your history
+<kbd>Control</kbd> + <kbd>a</kbd>   # move cursor to beginning of line (think: the beginning letter of the alphabet is 'a')
+<kbd>Control</kbd> + <kbd>e</kbd>   # move cursor to end of line (think: 'e' stands for 'end')
+<kbd>Control</kbd> + <kbd>u</kbd>   # delete from cursor to beginning of line
+<kbd>Control</kbd> + <kbd>k</kbd>   # delete from cursor to end of line
+<kbd>Control</kbd> + <kbd>w</kbd>   # delete the last word
+<kbd>Up Arrow</kbd>       # cycle backward through your history
+<kbd>Down Arrow</kbd>     # cycle forward through your history
 ```
 
 Exercise: Paste the line below on to the command line and try out the sequences above:
@@ -24,7 +24,7 @@ How do you move the cursor to the middle of the line? You may be able to use `[m
 
 ## Tab completion
 
-The `[tab]` key can be used to autocomplete the command. Most everyone is aware of this but not everyone uses it. Train yourself to use tab completion whenever possible.
+Press <kbd>tab</kbd> to autocomplete the command. Most everyone is aware of this but not everyone uses it. Train yourself to use tab completion whenever possible.
 
 ## Changing to the previous working directory
 
@@ -66,7 +66,7 @@ $
 
 ## Search and run (or modify) a previous command
 
-Hold down `[Ctrl]` and press `[r]` to invoke "reverse-i-search." Then type a letter like 'p' and you will get a match for the most recent command in your history that contains 'p'. Keep typing to narrow your search. When you find the desired command, press `[Enter]` to execute. Or hit one of the side arrow keys to modify the command before running it. Or press `[Ctrl]+[r]` to advance to the next match. You can cancel by running either `[Ctrl]+[g]` or `[Ctrl]+[c]`.
+Hold down <kbd>Control</kbd> and press <kbd>r</kbd> to invoke "reverse-i-search." Then type a letter like 'p' and you will get a match for the most recent command in your history that contains 'p'. Keep typing to narrow your search. When you find the desired command, press `[Enter]` to execute. Or hit one of the side arrow keys to modify the command before running it. Or press <kbd>Control</kbd> + <kbd>r</kbd> to advance to the next match. You can cancel by running either <kbd>Control</kbd> + <kbd>g</kbd> or <kbd>Control</kbd> + <kbd>c</kbd>.
 
 ## A general note on text editors
 
