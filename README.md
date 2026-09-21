@@ -34,7 +34,7 @@ Toward the end of the workshop please complete [this survey](https://forms.gle/r
 
 ## How to Configure Your Local Machine for Productivity
 
-See [this workshop](https://github.com/jdh4/mac_productivity) for installing and configuring Raycast for Mac or Windows (beta).
+See [this workshop](https://github.com/jdh4/mac_productivity) for installing and configuring Raycast for Mac or maybe Windows.
 
 ## Getting Help
 
