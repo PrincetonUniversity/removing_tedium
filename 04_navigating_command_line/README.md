@@ -20,7 +20,7 @@ Exercise: Paste the line below on to the command line and try out the sequences 
 squeue --start --format="%.7i %.7Q %.14q %6P %.15j %.12u %.10a %.20S %.6D %.5C %R" --sort=S --states=PENDING | egrep -v "N/A" | head -20
 ```
 
-How do you move the cursor to the middle of the line? You may be able to use `[meta] + [f]` and `[meta] + [b]` to advance forward and backward by words, respectively. What is the `[meta]` key for your system? On Mac is it the <kbd>Option</kbd> key. On Mac with Terminal, try holding down the <kbd>Option</kbd> key and click with the mouse where you want the cursor to go on the command line.
+How do you move the cursor to the middle of the line? You may be able to use `[meta]` + <kbd>f</kbd> and `[meta]` + <kbd>b</kbd> to advance forward and backward by words, respectively. What is the `[meta]` key for your system? On Mac is it the <kbd>Option</kbd> key. On Mac with Terminal, try holding down the <kbd>Option</kbd> key and click with the mouse where you want the cursor to go on the command line.
 
 ## Tab completion
 
@@ -66,7 +66,7 @@ $
 
 ## Search and run (or modify) a previous command
 
-Hold down <kbd>Control</kbd> and press <kbd>r</kbd> to invoke "reverse-i-search." Then type a letter like 'p' and you will get a match for the most recent command in your history that contains 'p'. Keep typing to narrow your search. When you find the desired command, press `[Enter]` to execute. Or hit one of the side arrow keys to modify the command before running it. Or press <kbd>Control</kbd> + <kbd>r</kbd> to advance to the next match. You can cancel by running either <kbd>Control</kbd> + <kbd>g</kbd> or <kbd>Control</kbd> + <kbd>c</kbd>.
+Hold down <kbd>Control</kbd> and press <kbd>r</kbd> to invoke "reverse-i-search." Then type a letter like 'p' and you will get a match for the most recent command in your history that contains 'p'. Keep typing to narrow your search. When you find the desired command, press <kbd>Enter</kbd> to execute. Or hit one of the side arrow keys to modify the command before running it. Or press <kbd>Control</kbd> + <kbd>r</kbd> to advance to the next match. You can cancel by running either <kbd>Control</kbd> + <kbd>g</kbd> or <kbd>Control</kbd> + <kbd>c</kbd>.
 
 ## A general note on text editors
 
