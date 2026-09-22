@@ -11,7 +11,7 @@ On this page we present the essential keyboard shortcuts and concepts for workin
 | <kbd>Control</kbd> + <kbd>u</kbd> | delete from cursor to beginning of line |
 | <kbd>Control</kbd> + <kbd>k</kbd> | delete from cursor to end of line |
 | <kbd>Control</kbd> + <kbd>w</kbd> | delete the last word |
-| <kbd>Up</kbd>       | cycle backward through your history |
+| <kbd>↑</kbd>       | cycle backward through your history |
 | <kbd>Down</kbd>     | cycle forward through your history |
 
 Exercise: Paste the line below on to the command line and try out the sequences above:
