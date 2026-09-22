@@ -11,8 +11,8 @@ On this page we present the essential keyboard shortcuts and concepts for workin
 | <kbd>Control</kbd> + <kbd>u</kbd> | delete from cursor to beginning of line |
 | <kbd>Control</kbd> + <kbd>k</kbd> | delete from cursor to end of line |
 | <kbd>Control</kbd> + <kbd>w</kbd> | delete the last word |
-| <kbd>↑</kbd>       | cycle backward through your history |
-| <kbd>Down</kbd>     | cycle forward through your history |
+| <kbd>&#8593;</kbd>       | cycle backward through your history |
+| <kbd>&#8595;</kbd>     | cycle forward through your history |
 
 Exercise: Paste the line below on to the command line and try out the sequences above:
 
@@ -20,7 +20,7 @@ Exercise: Paste the line below on to the command line and try out the sequences 
 squeue --start --format="%.7i %.7Q %.14q %6P %.15j %.12u %.10a %.20S %.6D %.5C %R" --sort=S --states=PENDING | egrep -v "N/A" | head -20
 ```
 
-How do you move the cursor to the middle of the line? You may be able to use `[meta]` + <kbd>Up</kbd> and `[meta]` + <kbd>Down</kbd> to advance forward and backward by words, respectively. What is the `[meta]` key for your system? On Mac is it the <kbd>Option</kbd> key. On Mac with Terminal, try holding down the <kbd>Option</kbd> key and click with the mouse where you want the cursor to go on the command line.
+How do you move the cursor to the middle of the line? You may be able to use `[meta]` + <kbd>&#8594;</kbd> and `[meta]` + <kbd>&#8592;</kbd> to advance forward and backward by words, respectively. What is the `[meta]` key for your system? On Mac is it the <kbd>Option</kbd> key. On Mac with Terminal, try holding down the <kbd>Option</kbd> key and click with the mouse where you want the cursor to go on the command line.
 
 ## Tab completion
 
